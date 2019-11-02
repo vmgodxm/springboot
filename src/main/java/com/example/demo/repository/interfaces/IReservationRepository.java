@@ -1,6 +1,6 @@
 package com.example.demo.repository.interfaces;
 
-import com.hairgram.model.Reservation;
+import com.example.demo.model.Reservation;
 
 public interface IReservationRepository {
 	

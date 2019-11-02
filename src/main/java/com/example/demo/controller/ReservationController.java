@@ -1,23 +1,24 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.hairgram.model.Reservation;
-import com.hairgram.service.interfaces.IReservationService;
+import com.example.demo.model.Reservation;
+import com.example.demo.repository.interfaces.IReservationRepository;
 
-@Controller
+@RestController
 public class ReservationController {
 
 	@Autowired
-	private IReservationService service;
+	private IReservationRepository reposiroty;
 	
-	@RequestMapping(value = "reservation")
+	@GetMapping(path = "reservation")
 	public String getRes(@RequestParam(required = true, defaultValue = "1")Long resNo, Model model) throws Exception {
-		Reservation reservation = service.getRes(resNo);
+		Reservation reservation = reposiroty.getRes(resNo);
 		model.addAttribute("reservation", reservation);
 		return "reservation";
 	}

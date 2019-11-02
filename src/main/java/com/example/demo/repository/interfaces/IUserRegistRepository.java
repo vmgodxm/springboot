@@ -1,6 +1,6 @@
 package com.example.demo.repository.interfaces;
 
-import com.hairgram.model.UserRegist;
+import com.example.demo.model.UserRegist;
 
 public interface IUserRegistRepository {
 	UserRegist getUser(String userId) throws Exception;

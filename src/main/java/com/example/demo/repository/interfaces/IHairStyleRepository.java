@@ -1,6 +1,6 @@
 package com.example.demo.repository.interfaces;
 
-import com.hairgram.model.HairStyle;
+import com.example.demo.model.HairStyle;
 
 public interface IHairStyleRepository {
 

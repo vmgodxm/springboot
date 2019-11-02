@@ -2,7 +2,7 @@ package com.example.demo.repository.interfaces;
 
 import java.util.List;
 
-import com.hairgram.model.DesignerFavorite;
+import com.example.demo.model.DesignerFavorite;
 
 
 public interface IDesignerFavoriteRepository {

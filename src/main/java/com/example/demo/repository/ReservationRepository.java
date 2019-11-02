@@ -4,8 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hairgram.model.Reservation;
-import com.hairgram.repository.interfaces.IReservationRepository;
+import com.example.demo.model.Reservation;
+import com.example.demo.repository.interfaces.IReservationRepository;
 
 @Repository
 public class ReservationRepository implements IReservationRepository {

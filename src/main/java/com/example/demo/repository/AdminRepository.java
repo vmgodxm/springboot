@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hairgram.model.Admin;
-import com.hairgram.repository.interfaces.IAdminRepository;
+import com.example.demo.model.Admin;
+import com.example.demo.repository.interfaces.IAdminRepository;
 
 @Repository
 public class AdminRepository implements IAdminRepository {

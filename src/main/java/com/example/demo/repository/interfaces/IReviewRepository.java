@@ -1,6 +1,6 @@
 package com.example.demo.repository.interfaces;
 
-import com.hairgram.model.Review;
+import com.example.demo.model.Review;
 
 public interface IReviewRepository {
 

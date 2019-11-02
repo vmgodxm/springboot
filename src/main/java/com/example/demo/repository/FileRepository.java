@@ -4,8 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hairgram.model.FileStorage;
-import com.hairgram.repository.interfaces.IFileRepository;
+import com.example.demo.model.FileStorage;
+import com.example.demo.repository.interfaces.IFileRepository;
 
 @Repository
 public class FileRepository implements IFileRepository {

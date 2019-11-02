@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.UserRegist;
-import com.example.demo.repository.IUserRegistRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.UserRegist;
+import com.example.demo.repository.interfaces.IUserRegistRepository;
 
 @RestController
 public class UserRegistController {

@@ -1,6 +1,6 @@
 package com.example.demo.repository.interfaces;
 
-import com.hairgram.model.FileStorage;
+import com.example.demo.model.FileStorage;
 
 public interface IFileRepository {
 

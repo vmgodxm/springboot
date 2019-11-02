@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.hairgram.repository.interfaces.IBusinessRegistRepository;
+import com.example.demo.repository.interfaces.IBusinessRegistRepository;
 
 public class BusinessRegistRepository implements IBusinessRegistRepository {
 

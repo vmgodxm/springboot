@@ -2,7 +2,7 @@ package com.example.demo.repository.interfaces;
 
 import java.util.List;
 
-import com.hairgram.model.Admin;
+import com.example.demo.model.Admin;
 
 public interface IAdminRepository {
 

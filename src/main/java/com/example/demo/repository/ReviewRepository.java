@@ -4,8 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hairgram.model.Review;
-import com.hairgram.repository.interfaces.IReviewRepository;
+import com.example.demo.model.Review;
+import com.example.demo.repository.interfaces.IReviewRepository;
 
 @Repository
 public class ReviewRepository implements IReviewRepository {

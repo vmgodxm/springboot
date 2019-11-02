@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.hairgram.model.DesignerFavorite;
-import com.hairgram.repository.interfaces.IDesignerFavoriteRepository;
+import com.example.demo.model.DesignerFavorite;
+import com.example.demo.repository.interfaces.IDesignerFavoriteRepository;
 
 
 @Repository

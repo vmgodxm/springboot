@@ -162,7 +162,7 @@ INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin5', '5555', 'admin5@a
 --한명
 --SELECT * FROM admin WHERE adminUserId = 'admin';
 --수정
-UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin.com',phone ='000-2222-0000' ,address = 'BUSAN' 
+UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin.com',adminname ='admin2', phone ='000-2222-0000' ,address = 'BUSAN' 
        where adminUserId = 'admin2';
 --삭제
 --delete from admin where adminuserid = 'admin2';

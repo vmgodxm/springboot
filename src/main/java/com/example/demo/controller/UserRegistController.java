@@ -15,7 +15,7 @@ public class UserRegistController {
     private IUserRegistRepository repoistory;
 
     @GetMapping(path = "/user")
-    public UserRegist message(@RequestParam(required=true, defaultValue="test@test.com")String userId) {
+    public UserRegist message(@RequestParam(required=true, defaultValue="test@test.com")String userId) throws Exception {
         return repoistory.getUser(userId);
     }
 }

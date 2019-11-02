@@ -18,7 +18,7 @@ public class ReservationController {
 	
 	@GetMapping(path = "reservation")
 	public String getRes(@RequestParam(required = true, defaultValue = "1")Long resNo, Model model) throws Exception {
-		Reservation reservation = reposiroty.getRes(resNo);
+		Reservation reservation = reposiroty.getResvation(resNo);
 		model.addAttribute("reservation", reservation);
 		return "reservation";
 	}

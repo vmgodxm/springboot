@@ -4,7 +4,7 @@ package com.example.demo.model;
 public class Company {
 
 	// 사업자 번호
-	private Long companyNo;
+	private String businessNumber;
 
 	// 지역번호
 	private String regionNo;
@@ -16,31 +16,22 @@ public class Company {
 	private String companyAddress;
 
 	public Company() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Company(Long companyNo, String regionNo, String companyName, String companyAddress) {
+	public Company(String businessNumber, String regionNo, String companyName, String companyAddress) {
 		super();
-		this.companyNo = companyNo;
+		this.businessNumber = businessNumber;
 		this.regionNo = regionNo;
 		this.companyName = companyName;
 		this.companyAddress = companyAddress;
 	}
 
-	public String getCompanyAddress() {
-		return companyAddress;
+	public String getBusinessNumber() {
+		return businessNumber;
 	}
 
-	public void setCompanyAddress(String companyAddress) {
-		this.companyAddress = companyAddress;
-	}
-
-	public Long getCompanyNo() {
-		return companyNo;
-	}
-
-	public void setCompanyNo(Long companyNo) {
-		this.companyNo = companyNo;
+	public void setBusinessNumber(String businessNumber) {
+		this.businessNumber = businessNumber;
 	}
 
 	public String getRegionNo() {
@@ -59,10 +50,21 @@ public class Company {
 		this.companyName = companyName;
 	}
 
+	public String getCompanyAddress() {
+		return companyAddress;
+	}
+
+	public void setCompanyAddress(String companyAddress) {
+		this.companyAddress = companyAddress;
+	}
+
 	@Override
 	public String toString() {
-		return "Company [companyNo=" + companyNo + ", regionNo=" + regionNo + ", companyName=" + companyName
+		return "Company [businessNumber=" + businessNumber + ", regionNo=" + regionNo + ", companyName=" + companyName
 				+ ", companyAddress=" + companyAddress + "]";
 	}
+
+	
+	
 
 }

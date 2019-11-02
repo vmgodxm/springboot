@@ -4,6 +4,6 @@ import com.example.demo.model.Reservation;
 
 public interface IReservationRepository {
 	
-	Reservation getResvation(Long resNo) throws Exception;
+	String getResvation(Long resNo) throws Exception;
 
 }

@@ -19,11 +19,10 @@ public class HairStyleFavoriateController {
 	@Autowired
 	private IHairFavoriteRepository repository;
 	
-	@GetMapping(path = "hstylefav")
-	public String HStyleFavInfo(@RequestParam(required=true, defaultValue="test@test.com")String userId, Model model) throws Exception{
+	@GetMapping(path = "/hstylefav")
+	public List<HairStyleFavorite> message(@RequestParam(required=true, defaultValue="test@test.com")String userId) throws Exception{
 		List<HairStyleFavorite> hstyleFavList = repository.getHStyleFav(userId);
-		model.addAttribute("hstylefav",hstyleFavList);
-		return "hstylefav";
+		return hstyleFavList;
 		
 	}
 	

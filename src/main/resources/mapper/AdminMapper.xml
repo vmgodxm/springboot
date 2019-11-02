@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AdminMapper">
+	<select id="adminAll" resultType="com.hairgram.model.Admin">
+		SELECT * FROM admin
+	</select>
+	<select id="getAdminId" parameterType="String" resultType="com.hairgram.model.Admin">
+		SELECT * FROM admin WHERE adminUserId = #{adminUserId}
+	</select>
+	<insert id="insertAdmin" parameterType="com.hairgram.model.Admin" >
+		INSERT INTO admin 
+		VALUES (#{adminUserId}, #{password}, #{email}, #{adminname}, #{phone}, #{address});
+	</insert>
+	
+</mapper>

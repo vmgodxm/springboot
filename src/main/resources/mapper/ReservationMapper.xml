@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ReservationMapper">
+	<select id="getReserviaton" parameterType="Long" resultType="com.hairgram.model.Reservation">
+		SELECT * FROM reservation where resNo = #{resNo}
+	</select>
+	<select id="insertReserviaton" parameterType="Long" resultType="com.hairgram.model.Reservation">
+	
+	</select>
+	<select id="deleteReserviaton" parameterType="Long" resultType="com.hairgram.model.Reservation">
+	
+	</select>
+	<select id="updateReserviaton" parameterType="Long" resultType="com.hairgram.model.Reservation">
+	
+	</select>
+</mapper>

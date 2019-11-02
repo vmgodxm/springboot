@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserController {
+public class UserRegistController {
 
     @Autowired
     private IUserRegistRepository repoistory;

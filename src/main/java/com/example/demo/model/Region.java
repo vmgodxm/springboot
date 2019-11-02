@@ -1,16 +1,15 @@
 package com.example.demo.model;
 
-//ì§€ì—­ ì •ë³´ í…Œì´ë¸” 
+//ì§??—­ ? •ë³? ?…Œ?´ë¸? 
 public class Region {
 
-	// ì§€ì—­ ë²ˆí˜¸
+	// ì§??—­ ë²ˆí˜¸
 	private Long regionNo;
 
-	// ì§€ì—­ ì´ë¦„
+	// ì§??—­ ?´ë¦?
 	private String regionName;
 
 	public Region() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Region(Long regionNo, String regionName) {

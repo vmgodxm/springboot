@@ -1,37 +1,36 @@
 package com.example.demo.model;
 
-//ì‚¬ì—…ì¥ ìš´ì˜ì‹œê°„ í…Œì´ë¸” 
+//?‚¬?—…?¥ ?š´?˜?‹œê°? ?…Œ?´ë¸? 
 public class CompanyOperation {
 
-	// ì—°ë„
+	// ?—°?„
 	private Long year;
 
-	// ì›”
+	// ?›”
 	private Long month;
 
-	// ì‹œì‘ë‚ ì§œ
+	// ?‹œ?‘?‚ ì§?
 	private Long beginDay;
 
-	// ì¢…ë£Œë‚ ì§œ
+	// ì¢…ë£Œ?‚ ì§?
 	private Long endDay;
 
-	// ì‹œì‘ì‹œê°„
+	// ?‹œ?‘?‹œê°?
 	private Long beginHour;
 
-	// ì¢…ë£Œì‹œê°„
+	// ì¢…ë£Œ?‹œê°?
 	private Long endHour;
 
-	// ì‹œì‘ë¶„
+	// ?‹œ?‘ë¶?
 	private Long beginMinute;
 
-	// ì¢…ë£Œë¶„
+	// ì¢…ë£Œë¶?
 	private Long endMinute;
 
-	// ì‚¬ìš©ì ì•„ì´ë””
+	// ?‚¬?š©? ?•„?´?””
 	private String userId;
 
 	public CompanyOperation() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public CompanyOperation(Long year, Long month, Long beginDay, Long endDay, Long beginHour, Long endHour,

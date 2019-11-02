@@ -1,22 +1,21 @@
 package com.example.demo.model;
 
-//íŒŒì¼ ì €ì¥ í…Œì´ë¸” 
+//?ŒŒ?¼ ????¥ ?…Œ?´ë¸? 
 public class FileStorage {
 
-	// íŒŒì¼ ë²ˆí˜¸(ìˆœë²ˆ)
+	// ?ŒŒ?¼ ë²ˆí˜¸(?ˆœë²?)
 	private Long fileNo;
 
-	// íŒŒì¼ ê²½ë¡œ
+	// ?ŒŒ?¼ ê²½ë¡œ
 	private String filePath;
 
-	// ì›ë³¸ íŒŒì¼ ì´ë¦„
+	// ?›ë³? ?ŒŒ?¼ ?´ë¦?
 	private String originFileName;
 
-	// ì €ì¥ íŒŒì¼ ì´ë¦„
+	// ????¥ ?ŒŒ?¼ ?´ë¦?
 	private String storageFileName;
 
 	public FileStorage() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public FileStorage(Long fileNo, String filePath, String originFileName, String storageFileName) {

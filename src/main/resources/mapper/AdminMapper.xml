@@ -9,7 +9,14 @@
 	</select>
 	<insert id="insertAdmin" parameterType="com.example.demo.model.Admin" >
 		INSERT INTO admin 
-		VALUES (#{adminUserId}, #{password}, #{email}, #{adminname}, #{phone}, #{address});
+		VALUES (#{adminUserId}, #{password}, #{email}, #{adminName}, #{phone}, #{address})
 	</insert>
+	<delete id="delectAdmin" parameterType="com.example.demo.model.Admin" >
+		DELETE FROM admin WHERE adminUserId = #{adminUserId}
+	</delete>
+	<update id="updateAdmin" parameterType="com.example.demo.model.Admin"> 
+		UPDATE admin SET password=#{password},email=#{email},adminName=#{adminName},phone=#{phone},address=#{address}
+		WHERE adminUserId=#{adminUserId}
+	</update>
 	
 </mapper>

@@ -1,20 +1,19 @@
 package com.example.demo.model;
 
 public class HairStyleFavorite {
-	// ì¦ê²¨ì°¾ê¸° ë²ˆí˜¸(ìˆœë²ˆ)
+	// ì¦ê²¨ì°¾ê¸° ë²ˆí˜¸(?ˆœë²?)
 	private Long hfavoriteNo;
 
-	// ë””ìì´ë„ˆ ì•„ì´ë””
+	// ?””??´?„ˆ ?•„?´?””
 	private String designerId;
 
-	// ì‚¬ìš©ì ì•„ì´ë””
+	// ?‚¬?š©? ?•„?´?””
 	private String userId;
 
-	// í—¤ì–´ìŠ¤íƒ€ì¼ ë²ˆí˜¸
+	// ?—¤?–´?Š¤????¼ ë²ˆí˜¸
 	private Long styleNo;
 
 	public HairStyleFavorite() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public HairStyleFavorite(Long hfavoriteNo, String designerId, String userId, Long styleNo) {

@@ -13,11 +13,13 @@ public class CompanyRepository implements ICompanyRepository {
 	@Autowired
 	private SqlSession sqlSession;
 
+
 	@Override
 	 public Company getBusinessNumber(String businessNumber) throws Exception { 
 		 return sqlSession.selectOne("mapper.CompanyMapper.getBusinessNumber", businessNumber); 
 	 }
 	 
 	 
+
 
 }

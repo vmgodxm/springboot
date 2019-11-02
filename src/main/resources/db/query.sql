@@ -18,26 +18,26 @@ INSERT INTO userRegist
                 null,
                 0);
                 
-                
-INSERT INTO company values (COMPANY_COMNO_SEQ.nextVal,0,'리안헤어','서울 강남점','test@test.com');
-             
+              
+INSERT INTO company values ('000-00-00000',0,'리안헤어','서울 강남점');
+--delete from company where businessnumber = '0';          
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, '주노헤어 강남점', 'test@test.com');
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, '차홍룸 분당점', 'test@test.com');
 
 INSERT INTO userRegist
         VALUES(USERREGIST_USERNO_SEQ.nextVal,
-                'test@test2.com', 
+                'test2@test.com', 
                 'testName2', 
                 0, 
-                '000-0000-0000',
-                'nickName',
+                '000-2222-0000',
+                'nickName2',
                 null,
                 null,
                 null,
                 0);
                 
                 
-INSERT INTO company values (COMPANY_COMNO_SEQ.nextVal,0,'블루클럽','서울 강남점','test@test.com');
+INSERT INTO company values ('000-01-00000',0,'블루클럽','서울 강남점');
              
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, '주노헤어 강남점', 'test@test.com');
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, '차홍룸 분당점', 'test@test.com');
@@ -46,18 +46,18 @@ INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, '차홍룸 분당
 
 INSERT INTO userRegist
         VALUES(USERREGIST_USERNO_SEQ.nextVal,
-                'test@test3.com', 
+                'test3@test.com', 
                 'testName3', 
                 0, 
-                '000-0000-0000',
-                'nickName',
+                '000-3333-0000',
+                'nickName3',
                 null,
                 null,
                 null,
                 0);
                 
                 
-INSERT INTO company values (COMPANY_COMNO_SEQ.nextVal,0,'리안헤어','서울 강남점','test@test.com');
+INSERT INTO company values ('000-02-00000',0,'리안헤어','서울 강남점');
              
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, '블루클럽 강남점', 'test@test.com');
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, '동네미용실 분당점', 'test@test.com');
@@ -70,10 +70,10 @@ INSERT INTO fileStorage values (2, 'web/test/' , 'test2.png', '멍충이.png');
 INSERT INTO userRegist
         VALUES(USERREGIST_USERNO_SEQ.nextVal,
                 'designer1@test.com', 
-                'testName4', 
+                'desigName1', 
                 1, 
                 '000-0000-0000',
-                'nickName',
+                'desigName1',
                 '000-00-00000',
                 0,
                 1,
@@ -82,10 +82,10 @@ INSERT INTO userRegist
 INSERT INTO userRegist
         VALUES(USERREGIST_USERNO_SEQ.nextVal,
                 'designer2@test.com', 
-                'testName5', 
+                'desigName2', 
                 1, 
                 '000-0000-0000',
-                'nickName',
+                'desigName2',
                 '000-00-00000',
                 0,
                 1,
@@ -94,15 +94,19 @@ INSERT INTO userRegist
 INSERT INTO userRegist
         VALUES(USERREGIST_USERNO_SEQ.nextVal,
                 'designer3@test.com', 
-                'testName6', 
+                'desigName3', 
                 1, 
                 '000-0000-0000',
-                'nickName',
+                'desigName3',
                 '000-00-00000',
                 0,
                 1,
-                1);                
-
+                1); 
+--디자이너 수정
+/*UPDATE userRegist set userid = 'designer1@test.com',userName = 'testName4', gender = 1,phone ='010-0000-0000',
+                      nickname = 'nickName',businessNumber = '000-00-00000',regionNo = 0, fileNo = 1,userLevel= 1
+       where userid = 'designer1@test.com';
+*/               
 -- 운영 시간
 INSERT INTO companyOperation VALUES(2019, 11, 29, 30, 09, 20, 00, 00, 'designer1@test.com');
             
@@ -132,30 +136,32 @@ INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, 2019, 11, 29,
                                 12, 13, 00, 30, '이쁘게 해주세요', 0, 1, 'designer1@test.com', 'test@test.com');
 
 -- 사용자 후기
-INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal, '핑크염색 후기', '망헀어요', sysdate, 'designer1@test.com', 'test@test.com', 1, 1);
+INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal, '핑크염색 후기', '망헀어요', sysdate, 'designer1@test.com', 'test@test.com', 1, 2);
 
 
 -- 디자이너 즐겨찾기
 INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'designer1@test.com', 'test@test.com');
 INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'designer2@test.com', 'test@test.com');
 INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'designer3@test.com', 'test@test.com');
+INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'designer1@test.com', 'test2@test.com');
+INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'designer2@test.com', 'test3@test.com');
 
 
 -- 헤어스타일 즐겨찾기
 INSERT INTO hairStyleFavorite VALUES(HAIRSTYLEFAVORITE_STYLENO_SEQ.nextVal, 'designer1@test.com', 'test@test.com', 1);
+INSERT INTO hairStyleFavorite VALUES(HAIRSTYLEFAVORITE_STYLENO_SEQ.nextVal, 'designer1@test.com', 'test2@test.com', 1);
+INSERT INTO hairStyleFavorite VALUES(HAIRSTYLEFAVORITE_STYLENO_SEQ.nextVal, 'designer2@test.com', 'test@test.com', 1);
 
--- 어드민
+-- 어드민 등록
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin', '1111', 'admin@admin.com', 'Admin', '000-0000-0000', 'SEOUL');
---admin 전체
-SELECT * FROM admin;
---한명
-SELECT * FROM admin WHERE adminUserId = 'admin';
---등록
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin2', '2222', 'admin2@admin.com', 'Admin2', '000-2222-0000', 'SEOUL');
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin3', '3333', 'admin3@admin.com', 'Admin3', '000-3333-0000', 'SEOUL');
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin4', '4444', 'admin4@admin.com', 'Admin4', '000-4444-0000', 'SEOUL');
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin5', '5555', 'admin5@admin.com', 'Admin5', '000-5555-0000', 'SEOUL');
-
+--admin 전체
+SELECT * FROM admin;
+--한명
+SELECT * FROM admin WHERE adminUserId = 'admin';
 --수정
 UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin.com',phone ='000-2222-0000' ,address = 'BUSAN' 
        where adminUserId = 'admin2';

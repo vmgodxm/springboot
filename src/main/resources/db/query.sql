@@ -135,8 +135,7 @@ INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,
 INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, 2019, 11, 29,
                                 12, 13, 00, 30, '이쁘게 해주세요', 0, 1, 'designer1@test.com', 'test@test.com');
 
--- 사용자 후기
-INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal, '핑크염색 후기', '망헀어요', sysdate, 'designer1@test.com', 'test@test.com', 1, 2);
+
 
 
 -- 디자이너 즐겨찾기
@@ -166,8 +165,11 @@ SELECT * FROM admin WHERE adminUserId = 'admin';
 UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin.com',phone ='000-2222-0000' ,address = 'BUSAN' 
        where adminUserId = 'admin2';
 --삭제
-delete from admin where adminuserid = 'admin2';
+--delete from admin where adminuserid = 'admin2';
 
+
+-- 사용자 후기
+INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal, '핑크염색 후기', '망헀어요', sysdate, 'designer1@test.com', 'test@test.com', 1, 1);
 commit; 
 
         

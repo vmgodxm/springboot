@@ -4,7 +4,9 @@
 	<select id="getUser" parameterType="String" resultType="com.example.demo.model.UserRegist">
 		SELECT * FROM userRegist WHERE userId = #{userId}
 	</select>
-	<select id="getDisigner" parameterType="String" resultType="com.example.demo.model.UserRegist">
-		SELECT * FROM userRegist WHERE userName = #{userName}
-	</select>
+
+	<insert id="insertUser" parameterType="com.example.demo.model.UserRegist">
+		INSERT INTO userRegist(userNo, userId, userName, gender, phone, nickName, userLevel) VALUES 
+				(USERREGIST_USERNO_SEQ.nextVal, #{userId}, #{userName}, #{gender}, #{phone}, #{nickName}, #{userLevel})
+	</insert>
 </mapper>

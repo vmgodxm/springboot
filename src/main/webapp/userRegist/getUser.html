@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+//     "userNo": 1,
+//   "userId": "test@test.com",
+//   "userName": "testName",
+//   "gender": 0,
+//   "phone": "000-0000-0000",
+//   "nickName": "nickName",
+//   "businessNumber": null,
+//   "region": null,
+//   "fileStorage": null,
+//   "userLevel": 0
+        $(function() {
+            $.ajax({
+                url:"http://localhost/user"
+            }).then(function(data){
+                $('#userNo').text(data.userNo);
+                $('#userId').text(data.userId);
+                $('#userName').text(data.userName);
+                $('#gender').text(data.gender);
+                $('#phone').text(data.phone);
+                $('#nickName').text(data.nickName);
+                $('#businessNumber').text(data.businessNumber);
+                $('#region').text(data.region);
+                $('#fileStorage').text(data.fileStorage);
+                $('#userLevel').text(data.userLevel);
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <h1>[Get]userRegist</h1>
+    <div id="user">
+        userNo:<p id="userNo"></p>
+        userId:<p id="userId"></p>
+        userName:<p id="userName"></p>
+        gender:<p id="gender"></p>
+        phone:<p id="phone"></p>
+        nickName:<p id="nickName"></p>
+        businessNumber:<p id="businessNumber"></p>
+        region:<p id="region"></p>
+        fileStorage:<p id="fileStorage"></p>
+        userLevel:<p id="userLevel"></p>
+    </div>
+</body>
+</html>

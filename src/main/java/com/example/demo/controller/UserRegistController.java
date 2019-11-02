@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.UserRegist;
+import com.example.demo.repository.interfaces.IUserRegistRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.model.UserRegist;
-import com.example.demo.repository.interfaces.IUserRegistRepository;
 
 @RestController
 public class UserRegistController {
@@ -15,7 +15,17 @@ public class UserRegistController {
     private IUserRegistRepository repoistory;
 
     @GetMapping(path = "/user")
-    public UserRegist message(@RequestParam(required=true, defaultValue="test@test.com")String userId) throws Exception {
+    public UserRegist message(@RequestParam(required=true, defaultValue="test@test.com")String userId) {
         return repoistory.getUser(userId);
     }
+
+    @GetMapping(path = "/insert")
+	public int insertUserInfo(UserRegist userRegist) throws Exception {
+		
+		if (userRegist.getUserId() == null) {
+			userRegist = new UserRegist("rusiell00@outlook.com", "±Ë¿Á¿Õ", 0L, "010-0000-0000", "rusiela", 0L);
+		}
+		
+		return repoistory.insertUser(userRegist);
+	}
 }

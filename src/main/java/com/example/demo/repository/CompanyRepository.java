@@ -18,7 +18,7 @@ public class CompanyRepository implements ICompanyRepository {
 	 public Company getBusinessNumber(String businessNumber) throws Exception { 
 		 return sqlSession.selectOne("mapper.CompanyMapper.getBusinessNumber", businessNumber); 
 	 }
-	 
+	  
 	 
 
 

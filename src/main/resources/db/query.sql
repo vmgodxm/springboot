@@ -158,9 +158,9 @@ INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin3', '3333', 'admin3@a
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin4', '4444', 'admin4@admin.com', 'Admin4', '000-4444-0000', 'SEOUL');
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin5', '5555', 'admin5@admin.com', 'Admin5', '000-5555-0000', 'SEOUL');
 --admin 전체
-SELECT * FROM admin;
+--SELECT * FROM admin;
 --한명
-SELECT * FROM admin WHERE adminUserId = 'admin';
+--SELECT * FROM admin WHERE adminUserId = 'admin';
 --수정
 UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin.com',phone ='000-2222-0000' ,address = 'BUSAN' 
        where adminUserId = 'admin2';

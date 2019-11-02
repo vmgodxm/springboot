@@ -2,35 +2,34 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-//ì´ìš© í›„ê¸° í…Œì´ë¸” 
+//?´?š© ?›„ê¸? ?…Œ?´ë¸? 
 public class Review {
 
-	// ì´ìš©í›„ê¸° ë²ˆí˜¸(ìˆœë²ˆ)
+	// ?´?š©?›„ê¸? ë²ˆí˜¸(?ˆœë²?)
 	private Long replyNo;
 
-	// ì œëª©
+	// ? œëª?
 	private String title;
 
-	// ë‚´ìš©
+	// ?‚´?š©
 	private String useContent;
 
-	// ì‘ì„±ì‹œê°„
+	// ?‘?„±?‹œê°?
 	private Date writeTime;
 
-	// ë””ìì´ë„ˆ ì•„ì´ë””
+	// ?””??´?„ˆ ?•„?´?””
 	private String designerId;
 
-	// ì‚¬ìš©ì ì•„ì´ë””
+	// ?‚¬?š©? ?•„?´?””
 	private String userId;
 
-	// í—¤ì–´ìŠ¤íƒ€ì¼ ë²ˆí˜¸
+	// ?—¤?–´?Š¤????¼ ë²ˆí˜¸
 	private Long styleNo;
 
-	// ì˜ˆì•½ë²ˆí˜¸
+	// ?˜ˆ?•½ë²ˆí˜¸
 	private Long resNo;
 	
 	public Review() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Review(Long replyNo, String title, String useContent, Date writeTime, String designerId, String userId,

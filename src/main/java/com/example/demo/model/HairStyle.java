@@ -1,40 +1,39 @@
 package com.example.demo.model;
 
-//í—¤ì–´ìŠ¤íƒ€ì¼ í…Œì´ë¸” 
+//?—¤?–´?Š¤????¼ ?…Œ?´ë¸? 
 public class HairStyle {
 
-	// í—¤ì–´ìŠ¤íƒ€ì¼ ë²ˆí˜¸
+	// ?—¤?–´?Š¤????¼ ë²ˆí˜¸
 	private Long styleNo;
 
-	// ì„±ë³„
+	// ?„±ë³?
 	private Long gender;
 
-	// í—¤ì–´ìŠ¤íƒ€ì¼ ì´ë¦„
+	// ?—¤?–´?Š¤????¼ ?´ë¦?
 	private String styleName;
 
 	// ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
 	private Long categoryNo;
 
-	// ê°€ê²©
+	// ê°?ê²?
 	private Long price;
 
-	// ì‹œìˆ ì‹œê°„(ì‹œê°„)
+	// ?‹œ?ˆ ?‹œê°?(?‹œê°?)
 	private Long beginHour;
 
-	// ì‹œìˆ ì‹œê°„(ë¶„)
+	// ?‹œ?ˆ ?‹œê°?(ë¶?)
 	private Long minute;
 
-	// ìŠ¤íƒ€ì¼ ì„¤ëª…
+	// ?Š¤????¼ ?„¤ëª?
 	private String styleComment;
 
-	// í—¤ì–´ìŠ¤íƒ€ì¼ íŒŒì¼ ë²ˆí˜¸
+	// ?—¤?–´?Š¤????¼ ?ŒŒ?¼ ë²ˆí˜¸
 	private Long fileNo;
 
-	// ì‚¬ìš©ì ì•„ì´ë””
+	// ?‚¬?š©? ?•„?´?””
 	private String userId;
 
 	public HairStyle() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public HairStyle(Long styleNo, Long gender, String styleName, Long categoryNo, Long price, Long beginHour,

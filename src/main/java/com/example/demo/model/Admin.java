@@ -1,31 +1,30 @@
 package com.example.demo.model;
 
-//ê´€ë¦¬ì í…Œì´ë¸” 
+//ê´?ë¦¬ì ?…Œ?´ë¸? 
 public class Admin {
 
-	// ê´€ë¦¬ì ë²ˆí˜¸(ìˆœë²ˆ)
+	// ê´?ë¦¬ì ë²ˆí˜¸(?ˆœë²?)
 	private Long adminNo;
 
-	// ê´€ë¦¬ì ì•„ì´ë””
+	// ê´?ë¦¬ì ?•„?´?””
 	private String adminUserId;
  
-	// ë¹„ë°€ë²ˆí˜¸
+	// ë¹„ë??ë²ˆí˜¸
 	private String password;
  
-	// ì´ë©”ì¼
+	// ?´ë©”ì¼
 	private String email;
 
-	// ê´€ë¦¬ì ì´ë¦„
+	// ê´?ë¦¬ì ?´ë¦?
 	private String adminName; 
 
-	// ì „í™”ë²ˆí˜¸
+	// ? „?™”ë²ˆí˜¸
 	private String phone; 
 
 	// ì£¼ì†Œ
 	private String address;
 
 	public Admin() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Admin(Long adminNo, String adminUserId, String password, String email, String adminName, String phone,

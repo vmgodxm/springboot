@@ -1,49 +1,48 @@
 package com.example.demo.model;
 
-//ì´ìš©ì˜ˆì•½ í…Œì´ë¸” 
+//?´?š©?˜ˆ?•½ ?…Œ?´ë¸? 
 public class Reservation {
 
- // ì˜ˆì•½ë²ˆí˜¸(ìˆœë²ˆ) 
+ // ?˜ˆ?•½ë²ˆí˜¸(?ˆœë²?) 
  private Long resNo;
 
- // ì—°ë„ 
+ // ?—°?„ 
  private Long year;
 
- // ì›” 
+ // ?›” 
  private Long month;
 
- // ì¼ 
+ // ?¼ 
  private Long beginDay;
 
- // ì‹œì‘ì‹œê°„ 
+ // ?‹œ?‘?‹œê°? 
  private Long beginHour;
 
- // ì¢…ë£Œì‹œê°„ 
+ // ì¢…ë£Œ?‹œê°? 
  private Long endHour;
 
- // ì‹œì‘ë¶„ 
+ // ?‹œ?‘ë¶? 
  private Long beginMinute;
 
- // ì¢…ë£Œë¶„ 
+ // ì¢…ë£Œë¶? 
  private Long endMinute;
 
- // ì‚¬ìš©ì ìš”ì²­ì‚¬í•­ 
+ // ?‚¬?š©? ?š”ì²??‚¬?•­ 
  private String userComment;
 
- // ì‹œìˆ ì™„ë£Œ 
+ // ?‹œ?ˆ ?™„ë£? 
  private Integer userComplete;
 
- // í—¤ì–´ìŠ¤íƒ€ì¼ ë²ˆí˜¸ 
+ // ?—¤?–´?Š¤????¼ ë²ˆí˜¸ 
  private Long styleNo;
 
- // ë””ìì´ë„ˆ ì•„ì´ë”” 
+ // ?””??´?„ˆ ?•„?´?”” 
  private String desinerId;
 
- // ì‚¬ìš©ì ì•„ì´ë”” 
+ // ?‚¬?š©? ?•„?´?”” 
  private String userId;
 
 public Reservation() {
-	// TODO Auto-generated constructor stub
 }
 
 public Reservation(Long resNo, Long year, Long month, Long beginDay, Long beginHour, Long endHour, Long beginMinute,

@@ -1,19 +1,18 @@
 package com.example.demo.model;
 
-//ì´ì „ ì‚¬ì—…ì¥ í…Œì´ë¸” 
+//?´? „ ?‚¬?—…?¥ ?…Œ?´ë¸? 
 public class PreCompany {
 
-	// ì‚¬ì—…ì¥ ë²ˆí˜¸(ìˆœë²ˆ)
+	// ?‚¬?—…?¥ ë²ˆí˜¸(?ˆœë²?)
 	private Long preCompanyNo;
 
-	// ì‚¬ì—…ì¥ ì´ë¦„
+	// ?‚¬?—…?¥ ?´ë¦?
 	private String companyName;
 
-	// ì‚¬ìš©ì ì´ë¦„
+	// ?‚¬?š©? ?´ë¦?
 	private String userId;
 
 	public PreCompany() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public PreCompany(Long preCompanyNo, String companyName, String userId) {

@@ -15,11 +15,10 @@ public class FileController {
 	@Autowired
 	private IFileRepository repository;
 	
-	@GetMapping(path = "filetest")
-	public String getFileInfo(@RequestParam(required=true, defaultValue="1")Long fileNo , Model model) throws Exception {
+	@GetMapping(path = "/filetest")
+	public FileStorage getFileInfo(@RequestParam(required=true, defaultValue="1")Long fileNo ) throws Exception {
 		FileStorage file = repository.getFile(fileNo);
-		model.addAttribute("file", file);
-		return "filetest";
+		return file;
 	}
 	
 	

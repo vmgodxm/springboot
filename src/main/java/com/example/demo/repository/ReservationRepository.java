@@ -14,7 +14,7 @@ public class ReservationRepository implements IReservationRepository {
 	private SqlSession sqlSessoin;
 	
 	@Override
-	public String getResvation(Long resNo) throws Exception {
+	public Reservation getResvation(Long resNo) throws Exception {
 		return sqlSessoin.selectOne("mapper.ReservationMapper.getReserviaton",resNo);
 	}
 	

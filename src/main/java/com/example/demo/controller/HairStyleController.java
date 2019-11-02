@@ -16,11 +16,9 @@ public class HairStyleController {
 	@Autowired
 	private IHairStyleRepository reposotory;
 	
-	@GetMapping(path="hairStyle")
-	public String HairStyleInfo(@RequestParam(required=true,defaultValue="1") Long styleNo , Model model) throws Exception {
+	@GetMapping(path="/hairStyle")
+	public HairStyle HairStyleInfo(@RequestParam(required=true,defaultValue="1") Long styleNo  ) throws Exception {
 		HairStyle hairStyle = reposotory.getHairStyle(styleNo);
-		//System.out.println(hairStyle.getStyleNo());
-		model.addAttribute("hairStyle",hairStyle);
-		return "hairStyle";
+		return hairStyle;
 	}
 }

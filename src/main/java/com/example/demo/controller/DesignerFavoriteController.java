@@ -19,10 +19,9 @@ public class DesignerFavoriteController {
 	
 	
 	@GetMapping(path = "/dfavorite")
-	public String getDesigner(@RequestParam(required=true, defaultValue="test@test.com")String userId, Model model) throws Exception {
+	public List<DesignerFavorite> getDesigner(@RequestParam(required=true, defaultValue="test@test.com")String userId ) throws Exception {
 		List<DesignerFavorite> designerList = repository.getDesignerList(userId);
-		model.addAttribute("designerList", designerList);
-		return "dfavorite";
+		return designerList;
 	}
 
 }

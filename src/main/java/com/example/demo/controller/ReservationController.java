@@ -17,8 +17,8 @@ public class ReservationController {
 	private IReservationRepository reposiroty;
 	
 	@GetMapping(path = "/reservation")
-	public String getRes(@RequestParam(required = true, defaultValue = "1")Long resNo) throws Exception {
-		return "resolvation";
-		//return reposiroty.getResvation(resNo);
+	public Reservation getRes(@RequestParam(required = true, defaultValue = "1")Long resNo) throws Exception {
+		Reservation resolvation = reposiroty.getResvation(resNo);
+		return resolvation;
 	}
 }

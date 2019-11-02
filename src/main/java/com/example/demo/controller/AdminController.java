@@ -18,17 +18,18 @@ public class AdminController {
 	private IAdminRepository repository;
 	
 	@GetMapping(path="/admintest")
-	public String getAdminInfo(@RequestParam(required=true, defaultValue="admin") String adminUserId,Model model) throws Exception{
+	public Admin getAdminInfo(@RequestParam(required=true, defaultValue="admin") String adminUserId,Model model) throws Exception{
 		Admin admin = repository.getAdminId(adminUserId);
-		model.addAttribute("admin",admin);
-		return "admintest";
+		return admin;
+		
+//		model.addAttribute("admin",admin);
+//		return "admintest";
 	}
 	
 	@GetMapping(path="/adminList")
-	public String getAdminAll(Model model) throws Exception{
+	public List<Admin> getAdminAll() throws Exception{
 		List<Admin> adminList = repository.adminAll();
-		model.addAttribute("adminList", adminList);
-		return "adminList";
+		return adminList;
 	}
 	
 

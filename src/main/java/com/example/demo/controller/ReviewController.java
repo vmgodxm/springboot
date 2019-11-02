@@ -15,11 +15,10 @@ public class ReviewController {
 	@Autowired
 	private IReviewRepository repository;
 	
-	@GetMapping(path="review")
-	public String getReply(@RequestParam(required=true, defaultValue="test@test.com")String userId, Model model) throws Exception {
+	@GetMapping(path="/review")
+	public Review getReply(@RequestParam(required=true, defaultValue="test@test.com")String userId) throws Exception {
 		Review reply = repository.getReply(userId);
-		model.addAttribute("reply",reply);
-		return "review";
+		return reply;
 	}
 	
 }

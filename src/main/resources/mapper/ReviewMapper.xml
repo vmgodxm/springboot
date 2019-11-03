@@ -5,7 +5,7 @@
 		SELECT * FROM usereply WHERE userId = #{userId}
 	</select> 
 	<select id="cereteReply" parameterType="String" resultType="com.example.demo.model.Review">
-		INSERT INTO usereply values (USEREPLY_REPLYNO_SEQ.nextval, title = #{title} , useContent = #{useContent} , SYSDATE, designerId = #{designerId} , userId=#{userId} ,styleNo=#{styleNo},resNo=#{resNo});
+		INSERT INTO usereply values (USEREPLY_REPLYNO_SEQ.nextval, #{title} , #{useContent} , SYSDATE, #{designerId} , #{userId} ,#{styleNo},#{resNo});
 	</select> 
 	<select id="deleteReply" parameterType="String" resultType="com.example.demo.model.Review">
 		DELETE usereply WHERE replyNo = #{replyNo}

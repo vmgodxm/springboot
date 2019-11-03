@@ -10,6 +10,6 @@ public interface IReviewRepository {
 
 	Review updateReply(Long replyNo) throws Exception;
 
-	Review cereteReply(Review review) throws Exception;
+	int cereteReply(Review review) throws Exception;
 
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            $.ajax({
+                url:"http://localhost/hstylefav",
+            }).then(function(data){
+            	console.log($(this).serializeArray());
+            	$('#hstyleFavList').text(data);
+                $('#userNo').text();
+           
+            });
+        });
+        
+    </script>
+
+</head>
+<body>
+    <h1>[Get]HairStyleFav</h1>
+    <div id="user">
+        hstyleFavList:<p id="hstyleFavList"></p>
+        hstyleFavList:<p id="userNo"></p>
+     
+    </div>
+</body>
+</html>

@@ -4,4 +4,13 @@
 	<select id="getReply" parameterType="String" resultType="com.example.demo.model.Review">
 		SELECT * FROM usereply WHERE userId = #{userId}
 	</select> 
+	<select id="cereteReply" parameterType="String" resultType="com.example.demo.model.Review">
+		INSERT INTO usereply values (USEREPLY_REPLYNO_SEQ.nextval, title = #{title} , useContent = #{useContent} , SYSDATE, designerId = #{designerId} , userId=#{userId} ,styleNo=#{styleNo},resNo=#{resNo});
+	</select> 
+	<select id="deleteReply" parameterType="String" resultType="com.example.demo.model.Review">
+		DELETE usereply WHERE replyNo = #{replyNo}
+	</select> 
+	<select id="updateReply" parameterType="String" resultType="com.example.demo.model.Review">
+		UPDATE usereply SET USECONTENT = useContent=#{useContent} where replyNo = #{replyNo}
+		</select> 
 </mapper>

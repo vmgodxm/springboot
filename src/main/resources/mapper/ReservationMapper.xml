@@ -5,12 +5,12 @@
 		SELECT * FROM reservation where resNo = #{resNo}
 	</select>
 	<select id="insertReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
-	
+		INSERT INTO reservation VALUES();
 	</select>
 	<select id="deleteReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
-	
+		DELETE reservation WHERE resNo = #{resNo}
 	</select>
 	<select id="updateReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
-	
+		UPDATE reservation SET ?? where resNo = #{resNo}
 	</select>
 </mapper>

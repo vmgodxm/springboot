@@ -17,5 +17,17 @@ public class ReviewRepository implements IReviewRepository {
 	public Review getReply(String userId) throws Exception {
 		return sqlSession.selectOne("mapper.ReviewMapper.getReply", userId);
 	}
+	@Override
+	public int cereteReply(Review review) throws Exception {
+		return sqlSession.insert("mapper.ReviewMapper.cereteReply", review);
+	}
+	@Override
+	public Review deleteReply(Long replyNo) throws Exception {
+		return sqlSession.selectOne("mapper.ReviewMapper.deleteReply", replyNo);
+	}
+	@Override
+	public Review updateReply(Long replyNo) throws Exception {
+		return sqlSession.selectOne("mapper.ReviewMapper.updateReply", replyNo);
+	}
 	
 }

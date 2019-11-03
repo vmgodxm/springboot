@@ -18,8 +18,8 @@ public class ReviewRepository implements IReviewRepository {
 		return sqlSession.selectOne("mapper.ReviewMapper.getReply", userId);
 	}
 	@Override
-	public int cereteReply(Review review) throws Exception {
-		return sqlSession.insert("mapper.ReviewMapper.cereteReply", review);
+	public Review cereteReply(Review review) throws Exception {
+		return sqlSession.selectOne("mapper.ReviewMapper.cereteReply", review);
 	}
 	@Override
 	public Review deleteReply(Long replyNo) throws Exception {

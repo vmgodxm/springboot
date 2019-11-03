@@ -5,14 +5,22 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript">
-
+    
+    
         $(function() {
             $.ajax({
                 url:"http://localhost/hstylefav",
+                Type:"GET",
+                dataType:"json"
             }).then(function(data){
-            	console.log($(this).serializeArray());
-            	$('#hstyleFavList').text(data);
-                $('#userNo').text();
+            	console.log(data.length)
+            	$.each(data,function(i,v){
+            		console.log(data[i].userId);
+            		$('#hfavoriteNo').text(data[i].hfavoriteNo);
+            		$('#designerId').text(data[i].designerId);
+            		$('#userId').text(data[i].userId);
+            		$('#styleNo').text(data[i].styleNo);
+            	});
            
             });
         });
@@ -23,8 +31,10 @@
 <body>
     <h1>[Get]HairStyleFav</h1>
     <div id="user">
-        hstyleFavList:<p id="hstyleFavList"></p>
-        hstyleFavList:<p id="userNo"></p>
+        hfavoriteNo:<p id="hfavoriteNo"></p>
+        designerId:<p id="designerId"></p>
+        userId:<p id="userId"></p>
+        styleNo:<p id="styleNo"></p>
      
     </div>
 </body>

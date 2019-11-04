@@ -47,5 +47,10 @@ public class AdminController {
 		return adminList;
 	}
 	
+	@GetMapping(path="/admininsert")
+	public int insertAdmin(Admin admin) throws Exception{
+		int insertadmin = repository.insertAdmin(admin);
+		return insertadmin;
+	}
 
 }

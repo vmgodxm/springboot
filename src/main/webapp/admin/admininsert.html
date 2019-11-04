@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url:"http://localhost/admininsert"
+			}).then(function(data){
+				$('#adminNo').text(data.adminNo);
+				$('#adminUserId')text(data.adminUserId);
+				$('#password')text(data.password);
+				$('#email')text(data.email);
+				$('#adminName')text(data.adminName);
+				$('#phone')text(data.phone);
+				$('#address')text(data.address);		
+			});
+		});		
+	</script>
+	</head>
+	<body>
+		<h1>adminInsert</h1>
+	    <div id="admin">
+	        번호 :<p id="adminNo"></p>
+	      	아이디 :<p id="adminUserId"></p>
+	       	비밀번호 :<p id="password"></p>
+	      	이메일 :<p id="email"></p>
+	        이름 :<p id="adminName"></p>
+	        전화번호 :<p id="phone"></p>
+	        주소 :<p id="address"></p>
+	       
+	    </div>
+</body>
+</html>

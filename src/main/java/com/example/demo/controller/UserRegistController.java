@@ -5,6 +5,8 @@ import com.example.demo.repository.interfaces.IUserRegistRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +21,11 @@ public class UserRegistController {
         return repoistory.getUser(userId);
     }
 
-    @GetMapping(path = "/insert")
+    @PostMapping(path = "/user")
 	public int insertUserInfo(UserRegist userRegist) throws Exception {
 		
 		if (userRegist.getUserId() == null) {
-			userRegist = new UserRegist("rusiell00@outlook.com", "±Ë¿Á¿Õ", 0L, "010-0000-0000", "rusiela", 0L);
+			userRegist = new UserRegist("rusiell00@outlook.com", "kim", 0L, "010-0000-0000", "rusiela", 0L);
 		}
 		
 		return repoistory.insertUser(userRegist);

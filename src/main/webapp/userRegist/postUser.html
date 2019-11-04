@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#send').on('click', function (e) {
+                $.ajax({
+                    url: "http://localhost/user",
+                    type: "POST",
+                    data: $('#user').serialize(),
+                    dataType: 'application/json'
+                }).then(function (data) {
+                    console.log(data);
+                });
+            })
+        });
+
+    </script>
+</head>
+
+<body>
+    <form id="user">
+        userNo : <input id="userNo" name="userNo" type="text" value=""><br>
+        userId : <input id="userId" name="userId" type="text"><br>
+        userName : <input id="userName" name="userName" type="text"><br>
+        gender : <input id="gender" name="gender" type="text"><br>
+        phone : <input id="phone" name="phone" type="text"><br>
+        nickName : <input id="nickName" name="nickName" type="text"><br>
+        businessNumber : <input id="businessNumber" name="businessNumber" type="text"><br>
+        region : <input id="region" name="region" type="text"><br>
+        fileStorage : <input id="fileStorage" name="fileStorage" type="text"><br>
+        userLevel : <input id="userLevel" name="userLevel" type="text"><br>
+        <input type="reset" value="reset">
+        <input id="send" type="button" value="send">
+    </form>
+</body>
+
+</html>

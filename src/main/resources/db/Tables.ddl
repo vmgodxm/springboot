@@ -12,7 +12,7 @@ DROP TABLE company CASCADE CONSTRAINTS;
 DROP TABLE userLevel CASCADE CONSTRAINTS;
 DROP TABLE fileStorage CASCADE CONSTRAINTS;
 DROP TABLE region CASCADE CONSTRAINTS;
-
+ 
 /**********************************/
 /* Table Name: 지역정보 테이블 */
 /**********************************/
@@ -98,6 +98,7 @@ CREATE TABLE userRegist(
 DROP SEQUENCE userRegist_userNo_SEQ;
 
 CREATE SEQUENCE userRegist_userNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
 
 
 COMMENT ON TABLE userRegist is '회원등록 테이블';
@@ -246,8 +247,8 @@ COMMENT ON COLUMN hairStyle.userId is '사용자 아이디';
 CREATE TABLE reservation(
 		resNo                         		NUMBER(10)		 NOT NULL,
 		year                          		NUMBER(10)		 NOT NULL,
-		month                         		NUMBER(10)		 NOT NULL,
-		day                           		NUMBER(10)		 NOT NULL,
+		month                               NUMBER(10)		 NOT NULL,
+        day                           		NUMBER(10)		 NOT NULL,
 		beginHour                     		NUMBER(10)		 NOT NULL,
 		endHour                       		NUMBER(10)		 NOT NULL,
 		beingMinute                   		NUMBER(10)		 NOT NULL,
@@ -255,7 +256,7 @@ CREATE TABLE reservation(
 		useComment                    		VARCHAR2(255)		 NULL ,
 		useComplete                   		NUMBER(2)		 NULL ,
 		styleNo                       		NUMBER(10)		 NULL ,
-		designerId                		VARCHAR2(100)		 NULL ,
+		designerId                    		VARCHAR2(100)		 NULL ,
 		userId                        		VARCHAR2(100)		 NULL 
 );
 
@@ -266,7 +267,7 @@ CREATE SEQUENCE reservation_resNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 COMMENT ON TABLE reservation is '예약 현황 테이블';
-COMMENT ON COLUMN reservation.resNo is '순번';
+COMMENT ON COLUMN reservation.resNo is '예약번호';
 COMMENT ON COLUMN reservation.year is '연도';
 COMMENT ON COLUMN reservation.month is '월';
 COMMENT ON COLUMN reservation.day is '일';
@@ -278,7 +279,7 @@ COMMENT ON COLUMN reservation.useComment is '사용자 요청사항';
 COMMENT ON COLUMN reservation.useComplete is '시술완료';
 COMMENT ON COLUMN reservation.styleNo is '스타일 번호';
 COMMENT ON COLUMN reservation.designerId is '디자이너 아이디';
-COMMENT ON COLUMN reservation.userId is '예약자 아이디';
+COMMENT ON COLUMN reservation.userId is '사용자 아이디';
 
 
 /**********************************/
@@ -317,7 +318,6 @@ DROP SEQUENCE hairStyleFavorite_styleNo_SEQ;
 CREATE SEQUENCE hairStyleFavorite_styleNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
-
 COMMENT ON TABLE hairStyleFavorite is '헤어스타일 즐겨찾기 테이블';
 COMMENT ON COLUMN hairStyleFavorite.HFavoriteNo is '헤어스타일 즐겨찾기 번호';
 COMMENT ON COLUMN hairStyleFavorite.designerId is '디자이너 아이디';
@@ -330,13 +330,13 @@ COMMENT ON COLUMN hairStyleFavorite.styleNo is '순번';
 /**********************************/
 CREATE TABLE useReply(
 		replyNo                       		NUMBER(10)		 NOT NULL,
+		resNo                         		NUMBER(10)		 NOT NULL,
 		title                         		VARCHAR2(100)		 NOT NULL,
 		useContent                    		VARCHAR2(255)		 NOT NULL,
 		writeTime                     		DATE		 NOT NULL,
-		designerId                		VARCHAR2(100)		 NOT NULL,
 		userId                        		VARCHAR2(100)		 NULL ,
 		styleNo                       		NUMBER(10)		 NULL ,
-		resNo                         		NUMBER(10)		 NULL 
+		designerId                    		VARCHAR2(100)		 NULL 
 );
 
 DROP SEQUENCE useReply_replyNo_SEQ;
@@ -347,13 +347,13 @@ CREATE SEQUENCE useReply_replyNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 COMMENT ON TABLE useReply is '이용후기 테이블';
 COMMENT ON COLUMN useReply.replyNo is '후기 번호';
+COMMENT ON COLUMN useReply.resNo is '예약번호';
 COMMENT ON COLUMN useReply.title is '제목';
 COMMENT ON COLUMN useReply.useContent is '후기 내용';
 COMMENT ON COLUMN useReply.writeTime is '작성시간';
-COMMENT ON COLUMN useReply.designerId is '디자이너 아이디';
 COMMENT ON COLUMN useReply.userId is '사용자 아이디';
 COMMENT ON COLUMN useReply.styleNo is '순번';
-COMMENT ON COLUMN useReply.resNo is '순번';
+COMMENT ON COLUMN useReply.designerId is '디자이너 아이디';
 
 
 
@@ -385,10 +385,8 @@ ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK0 FOREIGN KEY (fileNo) REFE
 ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId);
 ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK2 FOREIGN KEY (categoryNo) REFERENCES hairCategory (categoryNo);
 
-ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_PK PRIMARY KEY (resNo);
-ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_FK0 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
-ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_FK1 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
-ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_FK2 FOREIGN KEY (userId) REFERENCES userRegist (userId);
+ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_PK PRIMARY KEY (resNo, designerId, userId);
+ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_FK0 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
 
 ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK0 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
 ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId);
@@ -398,9 +396,8 @@ ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK0 FOREIGN K
 ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId);
 ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK2 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
 
-ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_FK0 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
-ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId);
-ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_FK2 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
-ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_FK3 FOREIGN KEY (resNo) REFERENCES reservation (resNo);
+ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_PK PRIMARY KEY (replyNo, resNo);
+ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_FK0 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
 
 commit;
+

@@ -1,4 +1,4 @@
-INSERT INTO userLevel VALUES (0, 'normal');
+﻿INSERT INTO userLevel VALUES (0, 'normal');
 INSERT INTO userLevel VALUES (1, 'designer');
 
 INSERT INTO region VALUES (0, '서울');
@@ -169,8 +169,8 @@ UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin
 
 
 -- 사용자 후기
-INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal, '핑크염색 후기', '망헀어요', sysdate, 'designer1@test.com', 'test@test.com', 1, 1);
+INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal,1, '핑크염색 후기', '망헀어요', sysdate, 'test@test.com', 1,'designer1@test.com' );
 commit; 
 
         
-        
+         

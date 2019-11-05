@@ -3,10 +3,14 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Admin;
@@ -18,11 +22,11 @@ public class AdminController {
 	@Autowired
 	private IAdminRepository repository;
 	
+	@ResponseBody
 	@PostMapping(path="/loginAdmin")
-	public boolean loginAdmin(Admin adminInfo) throws Exception{
+	public ResponseEntity<Boolean> loginAdmin(Admin adminInfo) throws Exception{
 				
-		boolean result = repository.loginAdmin(adminInfo);
-		return result;
+		return new ResponseEntity<Boolean>(repository.loginAdmin(adminInfo), HttpStatus.OK);
 		
 //		model.addAttribute("admin",admin);
 //		return "admintest";

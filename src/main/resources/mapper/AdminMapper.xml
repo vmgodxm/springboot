@@ -7,6 +7,11 @@
 	<select id="getAdminId" parameterType="String" resultType="com.example.demo.model.Admin">
 		SELECT * FROM admin WHERE adminUserId = #{adminUserId}
 	</select>
+	
+	<select id="loginAdmin" parameterType="com.example.demo.model.Admin" resultType="int">
+		SELECT adminNo FROM admin WHERE adminUserId = #{adminUserId} and password = #{password}
+	</select>
+	
 	<insert id="insertAdmin" parameterType="com.example.demo.model.Admin" >
 		INSERT INTO admin 
 		VALUES (ADMIN_ADMINNO_SEQ.naxtVal,#{adminUserId}, #{password}, #{email}, #{adminName}, #{phone}, #{address})

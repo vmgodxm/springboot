@@ -1,30 +1,35 @@
 package com.example.demo.model;
 
-//ê´?ë¦¬ì ?…Œ?´ë¸? 
+//ï¿½?ë¦¬ì ?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
 public class Admin {
 
-	// ê´?ë¦¬ì ë²ˆí˜¸(?ˆœë²?)
-	private Long adminNo;
+	// ï¿½?ë¦¬ì ë²ˆí˜¸(?ï¿½ï¿½ï¿½?)
+	private Long adminNo = 0L;
 
-	// ê´?ë¦¬ì ?•„?´?””
-	private String adminUserId;
+	// ï¿½?ë¦¬ì ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
+	private String adminUserId = "";
  
-	// ë¹„ë??ë²ˆí˜¸
-	private String password;
+	// ë¹„ï¿½??ë²ˆí˜¸
+	private String password = "";
  
-	// ?´ë©”ì¼
-	private String email;
+	// ?ï¿½ï¿½ë©”ì¼
+	private String email = "";
 
-	// ê´?ë¦¬ì ?´ë¦?
-	private String adminName; 
+	// ï¿½?ë¦¬ì ?ï¿½ï¿½ï¿½?
+	private String adminName = ""; 
 
-	// ? „?™”ë²ˆí˜¸
-	private String phone; 
+	// ?ï¿½ï¿½?ï¿½ï¿½ë²ˆí˜¸
+	private String phone = ""; 
 
 	// ì£¼ì†Œ
-	private String address;
+	private String address = "";
 
 	public Admin() {
+	}
+
+	public Admin(String adminUserId, String password) {
+		this.adminUserId = adminUserId;
+		this.password = password;
 	}
 
 	public Admin(Long adminNo, String adminUserId, String password, String email, String adminName, String phone,

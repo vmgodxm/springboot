@@ -32,12 +32,12 @@ public class UserRegistController {
     }
 
     @PostMapping(path = "/user")
-	public int insertUserInfo(@RequestBody UserRegist userRegist) throws Exception {
+	public int insertUserInfo(UserRegist userRegist) throws Exception {
 		return repoistory.insertUser(userRegist);
     }
     
     @PutMapping(value="/user/")
-    public int updateUser(@RequestBody UserRegist userRegist) throws Exception {
+    public int updateUser(UserRegist userRegist) throws Exception {
         return repoistory.updateUser(userRegist);
     }
 

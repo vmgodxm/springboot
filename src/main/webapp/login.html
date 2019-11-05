@@ -16,20 +16,24 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script type="text/javascript">
-  	$(function() {
-  		$('#btnLogin').on('click', function(e) {
-  			$.ajax({
-  				url:"http://localhost/login",
-  				type : "POST",
-  				data : $('#loginForm').serialize(),
-  				dataType:"application/json"
-  			}).done(function(responseData) {
-  				console.log(responseData);
-  			}); 
-  		});
-  	});
+    $(function () {
+      $('#btnLogin').on('click', function (e) {
+        $.ajax({
+          url: "http://localhost/loginAdmin",
+          type: "POST",
+          data: $('#loginForm').serialize(),
+          dataType: 'application/json',
+        }).done(function (data) {
+          // 성공 시 처리되는 함수
+          console.log(data);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+          // 실패 시 처리되는 함수
+          console.log(jqXHR.responseText);
+        });
+      })
+    });
   </script>
 </head>
 
@@ -39,16 +43,18 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form id="loginForm" name="loginForm">
+        <form id="loginForm">
           <div class="form-group">
             <div class="form-label-group">
-              <input name="adminUserId" type="text" id="adminUserId" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <input name="adminUserId" type="text" id="adminUserId" class="form-control" placeholder="Email address"
+                required="required" autofocus="autofocus">
               <label for="inputEmail">Email address</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input name="password" type="text" id="password" class="form-control" placeholder="Password" required="required">
+              <input name="password" type="text" id="password" class="form-control" placeholder="Password"
+                required="required">
               <label for="inputPassword">Password</label>
             </div>
           </div>

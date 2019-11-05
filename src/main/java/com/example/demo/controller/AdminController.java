@@ -19,10 +19,10 @@ public class AdminController {
 	@Autowired
 	private IAdminRepository repository;
 	
-	@PostMapping(path="/login")
-	public boolean loginAdmin(@RequestBody Admin admin) throws Exception{
+	@PostMapping(path="/loginAdmin")
+	public boolean loginAdmin(Admin adminInfo) throws Exception{
 				
-		boolean result = repository.loginAdmin(admin);
+		boolean result = repository.loginAdmin(adminInfo);
 		return result;
 		
 //		model.addAttribute("admin",admin);

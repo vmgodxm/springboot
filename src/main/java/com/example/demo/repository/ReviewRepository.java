@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,20 +16,20 @@ public class ReviewRepository implements IReviewRepository {
 	private SqlSession sqlSession;
 	
 	@Override
-	public Review getReply(String userId) throws Exception {
-		return sqlSession.selectOne("mapper.ReviewMapper.getReply", userId);
+	public List<Review> getReply(String userId) throws Exception {
+		return sqlSession.selectList("mapper.ReviewMapper.getReply", userId);
 	}
 	@Override
-	public Review cereteReply(Review review) throws Exception {
-		return sqlSession.selectOne("mapper.ReviewMapper.cereteReply", review);
+	public int insertReply(Review review) throws Exception {
+		return sqlSession.insert("mapper.ReviewMapper.insertReply", review);
 	}
 	@Override
-	public Review deleteReply(Long replyNo) throws Exception {
-		return sqlSession.selectOne("mapper.ReviewMapper.deleteReply", replyNo);
+	public int deleteReply(Long replyNo) throws Exception {
+		return sqlSession.delete("mapper.ReviewMapper.deleteReply", replyNo);
 	}
 	@Override
-	public Review updateReply(Long replyNo) throws Exception {
-		return sqlSession.selectOne("mapper.ReviewMapper.updateReply", replyNo);
+	public int updateReply(Long replyNo) throws Exception {
+		return sqlSession.update("mapper.ReviewMapper.updateReply", replyNo);
 	}
 	
 }

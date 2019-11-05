@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            $.ajax({
+                url:"http://localhost/review"
+            }).then(function(data){
+                $('#replyNo').text(data.replyNo);
+                $('#title').text(data.title);
+                $('#useContent').text(data.useContent);
+                $('#writeTime').text(data.writeTime);
+                $('#designerId').text(data.designerId);
+                $('#userId').text(data.userId);
+                $('#styleNo').text(data.styleNo);
+                $('#resNo').text(data.resNo);
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <h1>[Get]Review</h1>
+    <div id="reserv">
+        번호 :<p id="replyNo"></p>
+      	제목 :<p id="title"></p>
+       	내용 :<p id="useContent"></p>
+      	쓴시간 :<p id="writeTime"></p>
+        디자이너 :<p id="designerId"></p>
+        유저 :<p id="userId"></p>
+        스타일번호 :<p id="styleNo"></p>
+        예약번호 :<p id="resNo"></p>
+    </div>
+</body>
+</html>

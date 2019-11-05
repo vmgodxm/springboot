@@ -21,8 +21,8 @@
                 url: "http://localhost/user"
             }).done(function (data) {
                 var html = '';
-                for (const userId of data) {
-                    html += '<a id="linkId" href=#>' + userId + '</a>' + '<br>';
+                for (const iterator of data) {
+                    html += '<a id="linkId" href=#>' + iterator + '</a>' + '<br>';
                 }
 
                 $('#userList').html(html);

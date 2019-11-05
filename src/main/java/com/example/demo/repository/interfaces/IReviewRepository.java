@@ -1,15 +1,18 @@
 package com.example.demo.repository.interfaces;
 
+import java.util.List;
+
 import com.example.demo.model.Review;
 
 public interface IReviewRepository {
 
-	Review getReply(String userId) throws Exception;
+	List<Review> getReply(String userId) throws Exception;
 
-	Review deleteReply(Long replyNo) throws Exception;
+	int deleteReply(Long replyNo) throws Exception;
 
-	Review updateReply(Long replyNo) throws Exception;
+	int updateReply(Long replyNo) throws Exception;
 
-	Review cereteReply(Review review) throws Exception;
+	int insertReply(Review review) throws Exception;
+
 
 }

@@ -1,14 +1,19 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IUserRegistRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class UserRegistController {
@@ -16,18 +21,28 @@ public class UserRegistController {
     @Autowired
     private IUserRegistRepository repoistory;
 
-    @GetMapping(path = "/user")
-    public UserRegist message(@RequestParam(required=true, defaultValue="test2@test.com")String userId) {
+    @GetMapping(path ="/user")
+    public List<String> getUserList() throws Exception {
+        return repoistory.getUserList();
+    }
+
+    @GetMapping(path = "/user/{userId}")
+    public UserRegist message(@PathVariable  String userId) throws Exception {
         return repoistory.getUser(userId);
     }
 
     @PostMapping(path = "/user")
-	public int insertUserInfo(UserRegist userRegist) throws Exception {
-		
-		if (userRegist.getUserId() == null) {
-			userRegist = new UserRegist("rusiell00@outlook.com", "kim", 0L, "010-0000-0000", "rusiela", 0L);
-		}
-		
+	public int insertUserInfo(@RequestBody UserRegist userRegist) throws Exception {
 		return repoistory.insertUser(userRegist);
-	}
+    }
+    
+    @PutMapping(value="/user/")
+    public int updateUser(@RequestBody UserRegist userRegist) throws Exception {
+        return repoistory.updateUser(userRegist);
+    }
+
+    @DeleteMapping(value="/user/{userId}")
+    public int deleteUser(@PathVariable String userId) throws Exception {
+        return repoistory.deleteUser(userId);
+    }
 }

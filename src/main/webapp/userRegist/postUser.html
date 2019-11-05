@@ -13,8 +13,12 @@
                     type: "POST",
                     data: $('#user').serialize(),
                     dataType: 'application/json'
-                }).then(function (data) {
+                }).done(function (data) {
+                    // 성공 시 처리되는 함수
                     console.log(data);
+                }).fail(function (jqXHR, textStatus, errorThrown) { 
+                    // 실패 시 처리되는 함수
+                    console.log(textStatus);
                 });
             })
         });

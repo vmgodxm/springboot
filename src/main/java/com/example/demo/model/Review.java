@@ -2,36 +2,36 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-//?´?š© ?›„ê¸? ?…Œ?´ë¸? 
+//?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
 public class Review {
 
-	// ?´?š©?›„ê¸? ë²ˆí˜¸(?ˆœë²?)
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ë²ˆí˜¸(?ï¿½ï¿½ï¿½?)
 	private Long replyNo;
 
-	// ? œëª?
+	// ?ï¿½ï¿½ï¿½?
 	private String title;
 
-	// ?‚´?š©
+	// ?ï¿½ï¿½?ï¿½ï¿½
 	private String useContent;
 
-	// ?‘?„±?‹œê°?
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?
 	private Date writeTime;
 
-	// ?””??´?„ˆ ?•„?´?””
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 	private String designerId;
 
-	// ?‚¬?š©? ?•„?´?””
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 	private String userId;
 
-	// ?—¤?–´?Š¤????¼ ë²ˆí˜¸
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½ ë²ˆí˜¸
 	private Long styleNo;
 
-	// ?˜ˆ?•½ë²ˆí˜¸
+	// ?ï¿½ï¿½?ï¿½ï¿½ë²ˆí˜¸
 	private Long resNo;
 	
 	public Review() {
 	}
-
+	
 	public Review(Long replyNo, String title, String useContent, Date writeTime, String designerId, String userId,
 			Long styleNo, Long resNo) {
 		super();
@@ -39,6 +39,16 @@ public class Review {
 		this.title = title;
 		this.useContent = useContent;
 		this.writeTime = writeTime;
+		this.designerId = designerId;
+		this.userId = userId;
+		this.styleNo = styleNo;
+		this.resNo = resNo;
+	}
+	public Review(String title, String useContent,  String designerId, String userId,
+			Long styleNo, Long resNo) {
+		super();
+		this.title = title;
+		this.useContent = useContent;
 		this.designerId = designerId;
 		this.userId = userId;
 		this.styleNo = styleNo;

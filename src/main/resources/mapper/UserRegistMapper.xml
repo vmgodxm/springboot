@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.UserRegistMapper">
+	<select id="getUserList" resultType="String">
+		SELECT userId FROM userRegist
+	</select>
+	
 	<select id="getUser" parameterType="String" resultType="com.example.demo.model.UserRegist">
 		SELECT * FROM userRegist WHERE userId = #{userId}
 	</select>
@@ -9,4 +13,14 @@
 		INSERT INTO userRegist(userNo, userId, userName, gender, phone, nickName, userLevel) VALUES 
 				(USERREGIST_USERNO_SEQ.nextVal, #{userId}, #{userName}, #{gender}, #{phone}, #{nickName}, #{userLevel})
 	</insert>
+
+	<update id="updateUser" parameterType="String">
+		UPDATE userRegist SET userName = #{userName}, gender = #{gender}, phone = #{phone}, nickName = #{nickName} WHERE userId = #{userId}
+	</update>
+
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM hairstyleFavorite WHERE userId = #{userId}
+		DELETE FROM designerFavorite WHERE userId= #{userId}
+		DELETE FROM userRegist WHERE userId= #{userId}
+	</delete>
 </mapper>

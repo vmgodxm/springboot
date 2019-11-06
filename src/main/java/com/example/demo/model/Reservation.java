@@ -1,52 +1,52 @@
 package com.example.demo.model;
 
-//?´?š©?˜ˆ?•½ ?…Œ?´ë¸? 
+//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
 public class Reservation {
 
- // ?˜ˆ?•½ë²ˆí˜¸(?ˆœë²?) 
+ // ?ï¿½ï¿½?ï¿½ï¿½ë²ˆí˜¸(?ï¿½ï¿½ï¿½?) 
  private Long resNo;
 
- // ?—°?„ 
+ // ?ï¿½ï¿½?ï¿½ï¿½ 
  private Long year;
 
- // ?›” 
+ // ?ï¿½ï¿½ 
  private Long month;
 
- // ?¼ 
+ // ?ï¿½ï¿½ 
  private Long beginDay;
 
- // ?‹œ?‘?‹œê°? 
+ // ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
  private Long beginHour;
 
- // ì¢…ë£Œ?‹œê°? 
+ // ì¢…ë£Œ?ï¿½ï¿½ï¿½? 
  private Long endHour;
 
- // ?‹œ?‘ë¶? 
+ // ?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
  private Long beginMinute;
 
- // ì¢…ë£Œë¶? 
+ // ì¢…ë£Œï¿½? 
  private Long endMinute;
 
- // ?‚¬?š©? ?š”ì²??‚¬?•­ 
- private String userComment;
+ // ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ 
+ private String useComment;
 
- // ?‹œ?ˆ ?™„ë£? 
- private Integer userComplete;
+ // ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
+ private Integer useComplete;
 
- // ?—¤?–´?Š¤????¼ ë²ˆí˜¸ 
+ // ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½ ë²ˆí˜¸ 
  private Long styleNo;
 
- // ?””??´?„ˆ ?•„?´?”” 
+ // ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ 
  private String desinerId;
 
- // ?‚¬?š©? ?•„?´?”” 
+ // ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ 
  private String userId;
 
 public Reservation() {
 }
 
 public Reservation(Long resNo, Long year, Long month, Long beginDay, Long beginHour, Long endHour, Long beginMinute,
-		Long endMinute, String userComment, Integer userComplete, Long styleNo, String desinerId, String userId) {
+		Long endMinute, String useComment, Integer useComplete, Long styleNo, String desinerId, String userId) {
 	super();
 	this.resNo = resNo;
 	this.year = year;
@@ -56,8 +56,25 @@ public Reservation(Long resNo, Long year, Long month, Long beginDay, Long beginH
 	this.endHour = endHour;
 	this.beginMinute = beginMinute;
 	this.endMinute = endMinute;
-	this.userComment = userComment;
-	this.userComplete = userComplete;
+	this.useComment = useComment;
+	this.useComplete = useComplete;
+	this.styleNo = styleNo;
+	this.desinerId = desinerId;
+	this.userId = userId;
+}
+
+public Reservation(Long year, Long month, Long beginDay, Long beginHour, Long endHour, Long beginMinute, Long endMinute,
+		String useComment, Integer useComplete, Long styleNo, String desinerId, String userId) {
+	super();
+	this.year = year;
+	this.month = month;
+	this.beginDay = beginDay;
+	this.beginHour = beginHour;
+	this.endHour = endHour;
+	this.beginMinute = beginMinute;
+	this.endMinute = endMinute;
+	this.useComment = useComment;
+	this.useComplete = useComplete;
 	this.styleNo = styleNo;
 	this.desinerId = desinerId;
 	this.userId = userId;
@@ -127,24 +144,24 @@ public void setEndMinute(Long endMinute) {
 	this.endMinute = endMinute;
 }
 
-public String getUserComment() {
-	return userComment;
+public String getUseComment() {
+	return useComment;
 }
 
-public void setUserComment(String userComment) {
-	this.userComment = userComment;
+public void setUseComment(String useComment) {
+	this.useComment = useComment;
 }
 
-public Integer getUserComplete() {
-	return userComplete;
+public Integer getUseComplete() {
+	return useComplete;
 }
- 
-public void setUserComplete(Integer userComplete) {
-	this.userComplete = userComplete;
+
+public void setUseComplete(Integer useComplete) {
+	this.useComplete = useComplete;
 }
 
 public Long getStyleNo() {
-	return styleNo; 
+	return styleNo;
 }
 
 public void setStyleNo(Long styleNo) {
@@ -171,9 +188,10 @@ public void setUserId(String userId) {
 public String toString() {
 	return "Reservation [resNo=" + resNo + ", year=" + year + ", month=" + month + ", beginDay=" + beginDay
 			+ ", beginHour=" + beginHour + ", endHour=" + endHour + ", beginMinute=" + beginMinute + ", endMinute="
-			+ endMinute + ", userComment=" + userComment + ", userComplete=" + userComplete + ", styleNo=" + styleNo
+			+ endMinute + ", useComment=" + useComment + ", useComplete=" + useComplete + ", styleNo=" + styleNo
 			+ ", desinerId=" + desinerId + ", userId=" + userId + "]";
 }
 
- 
+
+
 }

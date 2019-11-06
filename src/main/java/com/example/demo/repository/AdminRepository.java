@@ -29,6 +29,8 @@ public class AdminRepository implements IAdminRepository {
 	public int insertAdmin(Admin admin) throws Exception{
 		return sqlSession.insert("mapper.AdminMapper.insertAdmin", admin);
 	}
+	
+
 
 	@Override
 	public int loginAdmin(Admin admin) throws Exception {

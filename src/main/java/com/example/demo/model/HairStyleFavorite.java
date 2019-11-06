@@ -1,16 +1,16 @@
 package com.example.demo.model;
 
 public class HairStyleFavorite {
-	// ì¦ê²¨ì°¾ê¸° ë²ˆí˜¸(?ˆœë²?)
+	// ì¦ê²¨ì°¾ê¸° ë²ˆí˜¸(?ï¿½ï¿½ï¿½?)
 	private Long hfavoriteNo;
 
-	// ?””??´?„ˆ ?•„?´?””
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 	private String designerId;
 
-	// ?‚¬?š©? ?•„?´?””
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 	private String userId;
 
-	// ?—¤?–´?Š¤????¼ ë²ˆí˜¸
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½ ë²ˆí˜¸
 	private Long styleNo;
 
 	public HairStyleFavorite() {

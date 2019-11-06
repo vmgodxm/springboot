@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.HStyleFavoriteMapper">
+	
+	<select id="getHStyleFavList" parameterType="String" resultType="com.example.demo.model.HairStyleFavorite">
+	select * from hairStyleFavorite
+	</select>
 	<select id="getHStyleFav" parameterType="String" resultType="com.example.demo.model.HairStyleFavorite">
-	select * from hairStyleFavorite where userId=#{userId}
+	select * from hairStyleFavorite where hfavoriteNo=#{hfavoriteNo}
 	</select>
-	<select id="insertHStyleFav" parameterType="String" resultType="com.example.demo.model.HairStyleFavorite">
-	
+	<select id="insertHStyleFav" parameterType="com.example.demo.model.HairStyleFavorite">
+	INSERT INTO hairStyleFavorite(hfavoriteNo,designerId,userId,styleNo) values(HAIRSTYLEFAVORITE_STYLENO_SEQ.nextVal,#{designerId},#{userId},#{styleNo})
 	</select>
-	<select id="deleteHStyleFav" parameterType="String" resultType="com.example.demo.model.HairStyleFavorite">
-	
+	<select id="updateHStyleFav" parameterType="long" resultType="com.example.demo.model.HairStyleFavorite">
+	UPDATE hairStyleFavorite SET ?? where hfavoriteNo = #{hfavoriteNo}
+	</select>
+	<select id="deleteHStyleFav" parameterType="com.example.demo.model.HairStyleFavorite">
+	DELETE hairStyleFavorite WHERE hfavoriteNo = #{hfavoriteNo}
 	</select>
 </mapper>

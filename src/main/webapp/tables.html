@@ -43,7 +43,12 @@
       }).done(function (responseData) {
         var html = '<thead id="thead"><tr><th>userId</th><th>userName</th><th>phone</th><th>nickName</th><th>gender</th><th>userLevel</th><th>etc</th></tr></thead>';
         for (const user of responseData) {
-          html += '<tbody id=' + user.userId + '><tr><td><a id="getUser" href="#">' + user.userId + '</a></td><td>' + user.userName + '</td><td>' + user.phone + '</td><td>' + user.nickName + '</td><td>' + user.gender + '</td><td>' + user.userLevel + '</td><td><a id="btnDelete"  href="#">DELETE<a></td></tr></tbody>';
+          html += '<tbody id=' + user.userId + '><tr><td><a id="getUser" href="#">' + user.userId + '</a></td><td>' + user.userName + '</td><td>' + user.phone + '</td><td>' + user.nickName + '</td><td>' + user.gender + '</td><td>' + user.userLevel;
+          if (user.userLevel == 0) {
+              html += '</td><td><a id="btnDelete"  href="#">DELETE<a></td></tr>'
+          }
+
+          html += '</tbody>';
         }
 
         $('#dataTable').html(html);

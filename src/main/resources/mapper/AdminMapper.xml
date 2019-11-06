@@ -13,8 +13,13 @@
 	</select>
 	
 	<insert id="insertAdmin" parameterType="com.example.demo.model.Admin" >
+<<<<<<< HEAD
 		INSERT INTO admin(adminNo, adminUserId, password, email, adminName, phone, address) VALUES 
 				(ADMIN_ADMINNO_SEQ.nextVal, #{adminUserId}, #{password}, #{email}, #{adminName}, #{phone}, #{address})
+=======
+		INSERT INTO admin(adminNo,adminUserId,password,email,adminName,phone,address) 
+		VALUES (ADMIN_ADMINNO_SEQ.nextVal, #{adminUserId}, #{password}, #{email}, #{adminName}, #{phone}, #{address})
+>>>>>>> branch 'master' of https://github.com/vmgodxm/springboot
 	</insert>
 	<delete id="delectAdmin" parameterType="String" >
 		DELETE FROM admin WHERE adminUserId = #{adminUserId}

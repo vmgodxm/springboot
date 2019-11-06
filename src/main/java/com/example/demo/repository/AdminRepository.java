@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Admin;
-import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IAdminRepository;
 
 @Repository

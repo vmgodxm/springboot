@@ -4,25 +4,25 @@ package com.example.demo.model;
 public class Admin {
 
 	// �?리자 번호(?���?)
-	private Long adminNo = 0L;
+	private Long adminNo;
 
 	// �?리자 ?��?��?��
-	private String adminUserId = "";
+	private String adminUserId;
  
 	// 비�??번호
-	private String password = "";
+	private String password;
  
 	// ?��메일
-	private String email = "";
+	private String email;
 
 	// �?리자 ?���?
-	private String adminName = ""; 
+	private String adminName; 
 
 	// ?��?��번호
-	private String phone = ""; 
+	private String phone; 
 
 	// 주소
-	private String address = "";
+	private String address;
 
 	public Admin() {
 	}

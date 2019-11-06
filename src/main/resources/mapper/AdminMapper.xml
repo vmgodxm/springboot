@@ -13,8 +13,8 @@
 	</select>
 	
 	<insert id="insertAdmin" parameterType="com.example.demo.model.Admin" >
-		INSERT INTO admin(adminNo,adminUserId,password,email,adminName,phone,address) VALUES 
-		(ADMIN_ADMINNO_SEQ.naxtVal, #{adminUserId}, #{password}, #{email}, #{adminName}, #{phone}, #{address})
+		INSERT INTO admin(adminNo,adminUserId,password,email,adminName,phone,address) 
+		VALUES (ADMIN_ADMINNO_SEQ.nextVal, #{adminUserId}, #{password}, #{email}, #{adminName}, #{phone}, #{address})
 	</insert>
 	<delete id="delectAdmin" parameterType="com.example.demo.model.Admin" >
 		DELETE FROM admin WHERE adminUserId = #{adminUserId}

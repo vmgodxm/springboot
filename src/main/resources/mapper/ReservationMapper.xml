@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ReservationMapper">
-	<select id="getReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
+	<select id="getReserviaton" parameterType="String" resultType="com.example.demo.model.Reservation">
 		SELECT * FROM reservation where resNo = #{resNo}
+	</select>
+	<select id="getReserviatonList" parameterType="String" resultType="com.example.demo.model.Reservation">
+		SELECT * FROM reservation
 	</select>
 	<select id="insertReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
 		INSERT INTO reservation VALUES();
 	</select>
-	<select id="deleteReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
+	<select id="deleteReserviaton" parameterType="Long" >
 		DELETE reservation WHERE resNo = #{resNo}
 	</select>
 	<select id="updateReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">

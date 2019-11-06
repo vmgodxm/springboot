@@ -10,12 +10,12 @@
 	<select id="insertReply" parameterType="com.example.demo.model.Review">
 		INSERT INTO usereply(replyno,resno,title,usecontent,writetime,userid,styleno,designerid) values (USEREPLY_REPLYNO_SEQ.nextval,#{resNo},#{title},#{useContent} , SYSDATE ,#{userId} ,#{styleNo},#{designerId})
 	</select> 
-	<select id="deleteReply" parameterType="int" resultType="com.example.demo.model.Review">
-		DELETE usereply WHERE replyNo = #{replyNo}
-	</select> 
-	<select id="updateReply" parameterType="int" resultType="com.example.demo.model.Review">
+	<select id="updateReply" parameterType="long" resultType="com.example.demo.model.Review">
 		UPDATE usereply SET USECONTENT = useContent=#{useContent} where replyNo = #{replyNo}
 		</select> 
+	<select id="deleteReply" parameterType="long">
+		DELETE FROM usereply WHERE replyNo = #{replyNo}
+	</select> 
 </mapper>
 
 <!-- 

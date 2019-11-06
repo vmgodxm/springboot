@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#send').on('click', function (e) {
+                $.ajax({
+                    url: 'http://localhost/reservation',
+                    type: 'get',
+                    data: $('#reservation').serialize(),
+                    dataType: 'application/json'
+                }).then(function (data) {
+                    console.log(data);
+                });
+            })
+        });
+
+    </script>
+</head>
+
+<body>
+<h1>[Post]InsertReservation</h1>
+    <form id="reservation">
+        year : <input id="year" name="year" type="text"><br>
+        month : <input id="month" name="month" type="text"><br>
+        beginDay : <input id="beginDay" name="beginDay" type="text"><br>
+        beginHour : <input id="beginHour" name="beginHour" type="text"><br>
+        endHour : <input id="endHour" name="endHour" type="text"><br>
+        beginMinute : <input id="beginMinute" name="beginMinute" type="text"><br>
+        endMinute : <input id="endMinute" name="endMinute" type="text"><br>
+        useComment : <input id="useComment" name="useComment" type="text"><br>
+        useComplete : <input id="useComplete" name="useComplete" type="text"><br>
+        styleNo : <input id="styleNo" name="styleNo" type="text"><br>
+        designerId : <input id="designerId" name="designerId" type="text"><br>
+        userId : <input id="userId" name="userId" type="text"><br>
+        <input type="reset" value="reset">
+        <input id="send" type="button" value="send">
+    </form>
+</body>
+
+</html>

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Admin;
 import com.example.demo.model.ResponseData;
-import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IAdminRepository;
 
 @RestController

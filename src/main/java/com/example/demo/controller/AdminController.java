@@ -22,7 +22,7 @@ public class AdminController {
 	@Autowired
 	private IAdminRepository repository;
 	
-	@ResponseBody
+	
 	@PostMapping(path="/loginAdmin")
 	public ResponseEntity<Boolean> loginAdmin(Admin adminInfo) throws Exception{
 				

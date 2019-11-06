@@ -8,7 +8,7 @@
 		SELECT * FROM admin WHERE adminUserId = #{adminUserId}
 	</select>
 	
-	<select id="loginAdmin" parameterType="com.example.demo.model.Admin" resultType="int">
+	<select id="loginAdmin"  parameterType="com.example.demo.model.Admin" resultType="int">
 		SELECT adminNo FROM admin WHERE adminUserId = #{adminUserId} and password = #{password}
 	</select>
 	

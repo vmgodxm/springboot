@@ -6,6 +6,8 @@ import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IUserRegistRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +23,17 @@ public class UserRegistController {
     private IUserRegistRepository repoistory;
 
     @GetMapping(path ="/user")
-    public List<String> getUserList() throws Exception {
-        return repoistory.getUserList();
+    public ResponseEntity<List<UserRegist>> getUserList() throws Exception {
+        ResponseEntity<List<UserRegist>> retVal = null;
+
+        List<UserRegist> list = repoistory.getUserList();
+        if (list != null) {
+			retVal = new ResponseEntity<>(list, HttpStatus.OK);
+        } else {
+            retVal = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return retVal;
     }
 
     @GetMapping(path = "/user/{userId}")
@@ -35,8 +46,15 @@ public class UserRegistController {
 		return repoistory.insertUser(userRegist);
     }
     
-    @PutMapping(value="/user/")
-    public int updateUser(UserRegist userRegist) throws Exception {
+    @PutMapping(value="/user/{userId}")
+    public int updateUser(@PathVariable String userId, UserRegist userRegist) throws Exception {
+        // #1: userId 가 있는지 유효성 검사를 먼저 실시
+        //     이 부분은 공통적으로 제공되어야 하는 서비스의 부분으로.. 
+        //     공통 모듈로 제공되어야 한다.
+
+
+        // #2 : user 정보를 수정한다.
+
         return repoistory.updateUser(userRegist);
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.UserRegistMapper">
-	<select id="getUserList" resultType="String">
-		SELECT userId FROM userRegist
+	<select id="getUserList" resultType="com.example.demo.model.UserRegist">
+		SELECT * FROM userRegist
 	</select>
 	
 	<select id="getUser" parameterType="String" resultType="com.example.demo.model.UserRegist">
@@ -14,13 +14,19 @@
 				(USERREGIST_USERNO_SEQ.nextVal, #{userId}, #{userName}, #{gender}, #{phone}, #{nickName}, #{userLevel})
 	</insert>
 
-	<update id="updateUser" parameterType="String">
+	<update id="updateUser" parameterType="com.example.demo.model.UserRegist">
 		UPDATE userRegist SET userName = #{userName}, gender = #{gender}, phone = #{phone}, nickName = #{nickName} WHERE userId = #{userId}
 	</update>
 
-	<delete id="deleteUser" parameterType="String">
+	<delete id="deleteHFavorite" parameterType="String">
 		DELETE FROM hairstyleFavorite WHERE userId = #{userId}
-		DELETE FROM designerFavorite WHERE userId= #{userId}
-		DELETE FROM userRegist WHERE userId= #{userId}
+	</delete>
+
+	<delete id="deleteDFavorite" parameterType="String">
+		DELETE FROM designerFavorite WHERE userId = #{userId}
+	</delete>
+
+	<delete id="deleteUser" parameterType="String">
+		DELETE FROM userRegist WHERE userId = #{userId}
 	</delete>
 </mapper>

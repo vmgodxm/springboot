@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ReservationMapper">
-	<select id="getReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
+	<select id="getReserviaton" parameterType="String" resultType="com.example.demo.model.Reservation">
 		SELECT * FROM reservation where resNo = #{resNo}
 	</select>
-	<select id="insertReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
-		INSERT INTO reservation VALUES();
+	<select id="getReserviatonList" parameterType="String" resultType="com.example.demo.model.Reservation">
+		SELECT * FROM reservation
 	</select>
-	<select id="deleteReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
+	<select id="insertReserviaton" parameterType="com.example.demo.model.Reservation">
+		INSERT INTO reservation(resNo,year,month,Day,beginHour,endHour,beingMinute,endMinute,useComment,useComplete,styleNo,designerId,userId) VALUES(RESERVATION_RESNO_SEQ.nextval,#{year},#{month},#{beginDay},#{beginHour},#{endHour},#{beginMinute},#{endMinute},#{useComment},#{useComplete},#{styleNo},#{desinerId},#{userId})
+	</select>
+	<select id="deleteReserviaton" parameterType="long" >
 		DELETE reservation WHERE resNo = #{resNo}
 	</select>
-	<select id="updateReserviaton" parameterType="Long" resultType="com.example.demo.model.Reservation">
+	<select id="updateReserviaton" parameterType="long" resultType="com.example.demo.model.Reservation">
 		UPDATE reservation SET ?? where resNo = #{resNo}
 	</select>
 </mapper>

@@ -16,7 +16,7 @@ public class UserRegistRepository implements IUserRegistRepository {
     private SqlSession sqlSession;
 
     @Override
-    public List<String> getUserList() throws Exception {
+    public List<UserRegist> getUserList() throws Exception {
         return sqlSession.selectList("mapper.UserRegistMapper.getUserList");
     }
 
@@ -32,12 +32,15 @@ public class UserRegistRepository implements IUserRegistRepository {
 
     @Override
     public int updateUser(UserRegist userRegist) throws Exception {
-        return sqlSession.insert("mapper.UserRegistMapper.updateUser", userRegist);
+        return sqlSession.update("mapper.UserRegistMapper.updateUser", userRegist);
     }
 
     @Override
     public int deleteUser(String userId) {
-        return sqlSession.insert("mapper.UserRegistMapper.deleteUser", userId);
+        //deleteHFavorite
+        sqlSession.delete("mapper.UserRegistMapper.deleteHFavorite", userId);
+        sqlSession.delete("mapper.UserRegistMapper.deleteDFavorite", userId);
+        return sqlSession.delete("mapper.UserRegistMapper.deleteUser", userId);
     }
 
     

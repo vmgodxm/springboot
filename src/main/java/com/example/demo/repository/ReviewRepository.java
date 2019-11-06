@@ -16,8 +16,12 @@ public class ReviewRepository implements IReviewRepository {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<Review> getReply(String userId) throws Exception {
-		return sqlSession.selectList("mapper.ReviewMapper.getReply", userId);
+	public List<Review> ReplyList() throws Exception {
+		return sqlSession.selectList("mapper.ReviewMapper.getReplyList");
+	}
+	@Override
+	public Long getReply(Long replyNo) throws Exception {
+		return sqlSession.selectOne("mapper.ReviewMapper.getReply", replyNo);
 	}
 	@Override
 	public int insertReply(Review review) throws Exception {

@@ -5,6 +5,32 @@
     <title>DeleteReview</title>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url:"http://localhost/review"
+			}).done(function(){
+				var html = '';
+				for (const iterator of data){
+				html += '<a id="linkId" href=#>' + iterator + '</a>'+'<br>';
+				}
+				
+				$('#review').html(html);
+			}).fail(function(){
+				//실패시 실행되는 함수
+				console.log(textStatus);
+			});
+		});
+		
+		$('#deleteBt').on('click', function(e){
+			$.ajax({
+				url:"http://localhost/review/" + $('#replyNo').val() 
+			}).done(function(){
+			
+			}).fail(function(jqXHR, textStatus, errorThrown){
+			console.log(textStatus)
+			});
+		});
+		
 		
 		$(function() {
             $.ajax({
@@ -14,32 +40,13 @@
             }).then(function(data){
             	$.each(data,function(i,v){
             		console.log(data[i].replyNo);
-            		console.log(data[i].title);
             		$("#review").append('<tr> <td>'+data[i].replyNo+'</td><td>'+data[i].title+'</td><td>'+data[i].useContent+'</td><td>'+data[i].designerId+'</td><td>'+data[i].userId+'</td><td>'+data[i].styleNo+'</td><td>'+data[i].resNo+'</td></tr>');
             		$("#userId").append('<tr><td>'+data[i].userId+'</td></tr>');
             	});
             });
         });;
-    </script>
-	<script>
-	$(".button1").click(function(e){
-		e.preventDefault();
-		var input = confirm('댓글을 삭제하겠습니까?');
-		if (input == true){
-			alert('댓글을 삭제하였습니다.');
-			comment = $(this).parents('tr');
-			user = $(this).attr('href')+"?is_ajax=1";
-		$.ajax({
-			url:url
-		}).done(function(data){
-			if(data.works){
-			comment.remove();
-			}
-		});
-}		
-	});
-	</script>
-
+        
+</script>
 
 </head>
 
@@ -54,20 +61,9 @@
     <th>스타일</th>
     <th>예약</th>
     </table>
-        <button id="button1">삭제</button> 
+        <button id="deleteBt">삭제</button> 
     </form>
 </table>
 
-
-<!--    <div id="reserv">
-        번호 :<p id="replyNo"></p>
-      	제목 :<p id="title"></p>
-       	내용 :<p id="useContent"></p>
-      	쓴시간 :<p id="writeTime"></p>
-        디자이너 :<p id="designerId"></p>
-        유저 :<p id="userId"></p>
-        스타일번호 :<p id="styleNo"></p>
-        예약번호 :<p id="resNo"></p>
-    </div>-->
 </body>
 </html>

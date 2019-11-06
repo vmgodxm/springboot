@@ -14,32 +14,13 @@
             }).then(function(data){
             	$.each(data,function(i,v){
             		console.log(data[i].replyNo);
-            		console.log(data[i].title);
             		$("#review").append('<tr> <td>'+data[i].replyNo+'</td><td>'+data[i].title+'</td><td>'+data[i].useContent+'</td><td>'+data[i].designerId+'</td><td>'+data[i].userId+'</td><td>'+data[i].styleNo+'</td><td>'+data[i].resNo+'</td></tr>');
             		$("#userId").append('<tr><td>'+data[i].userId+'</td></tr>');
             	});
             });
         });;
-    </script>
-	<script>
-	$(".button1").click(function(e){
-		e.preventDefault();
-		var input = confirm('댓글을 삭제하겠습니까?');
-		if (input == true){
-			alert('댓글을 삭제하였습니다.');
-			comment = $(this).parents('tr');
-			user = $(this).attr('href')+"?is_ajax=1";
-		$.ajax({
-			url:url
-		}).done(function(data){
-			if(data.works){
-			comment.remove();
-			}
-		});
-}		
-	});
-	</script>
-
+        
+</script>
 
 </head>
 

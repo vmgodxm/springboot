@@ -15,20 +15,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
 public class UserRegistController {
 
     @Autowired
     private IUserRegistRepository repoistory;
 
-    @GetMapping(path ="/user")
+    @GetMapping(path = "/user")
     public ResponseEntity<List<UserRegist>> getUserList() throws Exception {
         ResponseEntity<List<UserRegist>> retVal = null;
 
         List<UserRegist> list = repoistory.getUserList();
         if (list != null) {
-			retVal = new ResponseEntity<>(list, HttpStatus.OK);
+            retVal = new ResponseEntity<>(list, HttpStatus.OK);
         } else {
             retVal = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -37,28 +36,43 @@ public class UserRegistController {
     }
 
     @GetMapping(path = "/user/{userId}")
-    public UserRegist message(@PathVariable  String userId) throws Exception {
-        return repoistory.getUser(userId);
+    public ResponseEntity<UserRegist> getUser(@PathVariable String userId) throws Exception {
+
+        ResponseEntity<UserRegist> retVal = null;
+        UserRegist user = null;
+
+        try {
+            user = repoistory.getUser(userId);
+        } catch (Exception e) {
+            retVal = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if (user != null) {
+            retVal = new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            retVal = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return retVal;
     }
 
     @PostMapping(path = "/user")
-	public int insertUserInfo(UserRegist userRegist) throws Exception {
-		return repoistory.insertUser(userRegist);
+    public int insertUserInfo(UserRegist userRegist) throws Exception {
+        return repoistory.insertUser(userRegist);
     }
-    
-    @PutMapping(value="/user/{userId}")
+
+    @PutMapping(value = "/user/{userId}")
     public int updateUser(@PathVariable String userId, UserRegist userRegist) throws Exception {
         // #1: userId 가 있는지 유효성 검사를 먼저 실시
-        //     이 부분은 공통적으로 제공되어야 하는 서비스의 부분으로.. 
-        //     공통 모듈로 제공되어야 한다.
-
+        // 이 부분은 공통적으로 제공되어야 하는 서비스의 부분으로..
+        // 공통 모듈로 제공되어야 한다.
 
         // #2 : user 정보를 수정한다.
 
         return repoistory.updateUser(userRegist);
     }
 
-    @DeleteMapping(value="/user/{userId}")
+    @DeleteMapping(value = "/user/{userId}")
     public int deleteUser(@PathVariable String userId) throws Exception {
         return repoistory.deleteUser(userId);
     }

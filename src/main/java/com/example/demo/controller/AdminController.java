@@ -6,13 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Admin;
 import com.example.demo.model.ResponseData;
+import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IAdminRepository;
 
 @RestController
@@ -77,5 +81,14 @@ public class AdminController {
 	public int insertAdmin(Admin admin) throws Exception{
 		return repository.insertAdmin(admin);
 	}
-
+	
+	@DeleteMapping(path="/admin/{adminUserId}")
+	public int delectAdmin(@PathVariable String adminUserId) throws Exception{
+		return repository.deleteAdmin(adminUserId);
+	}
+	
+	@PutMapping(path="/admin/")
+	public int updateAdmin(Admin admin) throws Exception {
+        return repository.updateAdmin(admin);
+    }
 }

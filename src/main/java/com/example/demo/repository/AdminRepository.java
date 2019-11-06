@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Admin;
+import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IAdminRepository;
 
 @Repository
@@ -30,6 +31,15 @@ public class AdminRepository implements IAdminRepository {
 		return sqlSession.insert("mapper.AdminMapper.insertAdmin", admin);
 	}
 	
+	@Override
+	public int deleteAdmin(String adminUserId) throws Exception{
+		return sqlSession.delete("mapper.AdminMapper.delectAdmin", adminUserId);
+	}
+	
+	@Override
+	public int updateAdmin(Admin admin) throws Exception {
+	   return sqlSession.insert("mapper.AdminMapper.updateAdmin", admin);
+    }
 
 
 	@Override

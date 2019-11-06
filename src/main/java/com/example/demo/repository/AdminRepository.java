@@ -31,13 +31,8 @@ public class AdminRepository implements IAdminRepository {
 	}
 
 	@Override
-	public boolean loginAdmin(Admin admin) throws Exception {
+	public int loginAdmin(Admin admin) throws Exception {
 
-		int result = sqlSession.selectOne("mapper.AdminMapper.loginAdmin", admin);
-		if (result > 0)
-			return true;
-		else
-			return false;
+		return sqlSession.selectOne("mapper.AdminMapper.loginAdmin", admin);
 	}
-	
 }

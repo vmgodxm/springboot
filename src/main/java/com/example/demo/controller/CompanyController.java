@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,5 +22,9 @@ public class CompanyController {
 		return getbusinessNumber;
 	}
 	
+	@GetMapping(path="/company")
+	public List<Company> companyList() throws Exception{
+		return repository.companyList();
+	}
 
 }

@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.CompanyMapper">
-	<select id="getBusinessNumber" parameterType="String" resultType="com.example.demo.model.Company">
-		SELECT * FROM company WHERE BusinessNumber = #{BusinessNumber}
+	<select id="companyList" resultType="com.example.demo.model.Company">
+		SELECT * FROM company
 	</select>
+	<select id="getBusinessNumber" parameterType="String" resultType="com.example.demo.model.Company">
+		SELECT * FROM company WHERE businessNumber = #{businessNumber}
+	</select>
+	<insert id="insertCompany" parameterType="com.example.demo.model.Company">
+		INSERT INTO company(businessNumber,regionNo,companyName,companyAddress) VALUES 
+			(#{businessNumber}, #{regionNo}, #{companyName}, #{companyAddress})
+	</insert>
+	<update id="updateCompany" parameterType="com.example.demo.model.Company" >
+		UPDATE company SET regionNo=#{regionNo},companyName=#{companyName},companyAddress=#{companyAddress}
+		WHERE businessNumber=#{businessNumber}
+	</update>
+	<delete id="deleteCompany" parameterType="String">
+		DELETE FROM company WHERE businessNumber = #{businessNumber}
+	</delete>
+	
 </mapper>

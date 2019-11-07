@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: "http://localhost/admin",
+                type: "GET",
+                data: $('#admin').serialize(),
+                dataType: "json",
+                success: function(jsonArray){
+                	var html="<ul>";
+                	for (var i =0; i< jsonArray.length; i++){
+                		var adminJsonObject = jsonArray[i];
+                		var adminUserIdStr = adminJsonObject.adminUserId;
+                		html+="<li><a href='/adminInfo.html?"+adminUserIdStr+"'>"+adminUserIdStr+"</a></li>";
+                	}
+                	html+="</ul>";
+                	document.getElementById('adminUserId').innerHTML=html;
+                }
+            })
+        });
+    </script>
+
+</head>
+<body>
+	
+	<div class="adminUserId" id="adminUserId">
+		<ul>
+			<li>springTest11111[HTML]</li>
+		</ul>
+	</div>
+	
+</body>
+</html>

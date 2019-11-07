@@ -61,8 +61,8 @@ public class AdminController {
 		return retVal;
 	}
 	
-	@GetMapping(path="/admintest")
-	public Admin getAdminInfo(@RequestParam(required=true, defaultValue="admin") String adminUserId,Model model) throws Exception{
+	@GetMapping(path="/admin/{adminUserId}")
+	public Admin getAdminInfo(@PathVariable String adminUserId) throws Exception{
 		Admin admin = repository.getAdminId(adminUserId);
 		return admin;
 		
@@ -70,7 +70,7 @@ public class AdminController {
 //		return "admintest";
 	}
 	
-	@GetMapping(path="/adminList")
+	@GetMapping(path="/admin")
 	public List<Admin> getAdminAll() throws Exception{
 		List<Admin> adminList = repository.adminAll();
 		return adminList;
@@ -86,8 +86,8 @@ public class AdminController {
 		return repository.deleteAdmin(adminUserId);
 	}
 	
-	@PutMapping(path="/admin/")
-	public int updateAdmin(Admin admin) throws Exception {
+	@PutMapping(path="/admin/{adminUserId}")
+	public int updateAdmin(@PathVariable String adminUserId, Admin admin) throws Exception {
         return repository.updateAdmin(admin);
     }
 }

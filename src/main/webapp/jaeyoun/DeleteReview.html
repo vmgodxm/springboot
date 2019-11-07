@@ -10,10 +10,9 @@
 				url:"http://localhost/review"
 			}).done(function(){
 				var html = '';
-				for (const iterator of data){
+				for (const iterator of review){
 				html += '<a id="linkId" href=#>' + iterator + '</a>'+'<br>';
 				}
-				
 				$('#review').html(html);
 			}).fail(function(){
 				//실패시 실행되는 함수
@@ -41,7 +40,6 @@
             	$.each(data,function(i,v){
             		console.log(data[i].replyNo);
             		$("#review").append('<tr> <td>'+data[i].replyNo+'</td><td>'+data[i].title+'</td><td>'+data[i].useContent+'</td><td>'+data[i].designerId+'</td><td>'+data[i].userId+'</td><td>'+data[i].styleNo+'</td><td>'+data[i].resNo+'</td></tr>');
-            		$("#userId").append('<tr><td>'+data[i].userId+'</td></tr>');
             	});
             });
         });;

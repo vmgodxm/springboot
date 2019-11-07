@@ -1,18 +1,13 @@
 package com.example.demo.model;
 
-//?ŒŒ?¼ ????¥ ?…Œ?´ë¸? 
 public class FileStorage {
 
-	// ?ŒŒ?¼ ë²ˆí˜¸(?ˆœë²?)
 	private Long fileNo;
 
-	// ?ŒŒ?¼ ê²½ë¡œ
 	private String filePath;
 
-	// ?›ë³? ?ŒŒ?¼ ?´ë¦?
 	private String originFileName;
 
-	// ????¥ ?ŒŒ?¼ ?´ë¦?
 	private String storageFileName;
 
 	public FileStorage() {

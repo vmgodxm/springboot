@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.FileStorage;
+import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IFileRepository;
 
 @Repository
@@ -18,5 +19,8 @@ public class FileRepository implements IFileRepository {
 		return sqlSession.selectOne("mapper.FileStorageMapper.getFile", fileNo);
 	}
 	
-	
+	@Override
+    public int insertFile(FileStorage file) throws Exception {
+        return sqlSession.insert("mapper.FileStorageMapper.insertFile", file);
+    }
 }

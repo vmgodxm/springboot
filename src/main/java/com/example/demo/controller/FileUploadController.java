@@ -32,10 +32,10 @@ public class FileUploadController {
     @Autowired
     private FileUploadDownloadService service;
     
-    @GetMapping("/")
-    public String controllerMain() {
-        return "Hello~ File Upload Test.";
-    }
+	/*
+	 * @GetMapping("/") public String controllerMain() { return
+	 * "Hello~ File Upload Test."; }
+	 */
     
     @PostMapping("/uploadFile")
     public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {

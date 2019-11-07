@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import org.springframework.util.StringUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,7 +57,7 @@ public class FileUploadDownloadService {
     }
     
     
-    public org.springframework.core.io.Resource loadFileAsResource(String fileName) {
+    public Resource loadFileAsResource(String fileName) {
         try {
             Path filePath = this.fileLocation.resolve(fileName).normalize();
             org.springframework.core.io.Resource resource = new UrlResource(filePath.toUri());

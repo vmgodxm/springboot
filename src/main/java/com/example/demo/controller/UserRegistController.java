@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class UserRegistController {
 
     @Autowired
-    private IUserRegistRepository repoistory;
+    private IUserRegistRepository repository;
 
     @GetMapping(path = "/user")
     public ResponseEntity<List<UserRegist>> getUserList() throws Exception {
         ResponseEntity<List<UserRegist>> retVal = null;
 
-        List<UserRegist> list = repoistory.getUserList();
+        List<UserRegist> list = repository.getUserList();
         if (list != null) {
             retVal = new ResponseEntity<>(list, HttpStatus.OK);
         } else {
@@ -42,7 +42,7 @@ public class UserRegistController {
         UserRegist user = null;
 
         try {
-            user = repoistory.getUser(userId);
+            user = repository.getUser(userId);
         } catch (Exception e) {
             retVal = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -58,7 +58,7 @@ public class UserRegistController {
 
     @PostMapping(path = "/user")
     public int insertUserInfo(UserRegist userRegist) throws Exception {
-        return repoistory.insertUser(userRegist);
+        return repository.insertUser(userRegist);
     }
 
     @PutMapping(value = "/user/{userId}")
@@ -69,11 +69,11 @@ public class UserRegistController {
 
         // #2 : user 정보를 수정한다.
 
-        return repoistory.updateUser(userRegist);
+        return repository.updateUser(userRegist);
     }
 
     @DeleteMapping(value = "/user/{userId}")
     public int deleteUser(@PathVariable String userId) throws Exception {
-        return repoistory.deleteUser(userId);
+        return repository.deleteUser(userId);
     }
 }

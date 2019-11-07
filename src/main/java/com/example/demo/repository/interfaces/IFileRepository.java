@@ -6,6 +6,8 @@ public interface IFileRepository {
 
 	FileStorage getFile(Long fileNo) throws Exception;
 
+	int insertFile(FileStorage file) throws Exception;
+
 	
 	
 }

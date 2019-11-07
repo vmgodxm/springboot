@@ -31,7 +31,7 @@ public class FileUploadDownloadService {
                 .toAbsolutePath().normalize();
         
         try {
-            java.nio.file.Files.createDirectories(this.fileLocation);
+            Files.createDirectories(this.fileLocation);
         }catch(Exception e) {
             throw new FileUploadException("파일을 업로드할 디렉토리를 생성하지 못했습니다.", e);
         }

@@ -22,9 +22,9 @@ public class CompanyController {
 		return getbusinessNumber;
 	}
 	
-	@GetMapping(path="/company")
-	public List<Company> companyList() throws Exception{
-		return repository.companyList();
-	}
+	/*
+	 * @GetMapping(path="/company") public List<Company> companyList() throws
+	 * Exception{ return repository.companyList(); }
+	 */
 
 }

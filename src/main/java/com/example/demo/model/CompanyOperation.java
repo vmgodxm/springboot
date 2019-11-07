@@ -1,33 +1,33 @@
 package com.example.demo.model;
 
-//?‚¬?—…?¥ ?š´?˜?‹œê°? ?…Œ?´ë¸? 
+//ì‚¬ì—…ì¥ ìš´ì˜ì‹œê°„ í…Œì´ë¸” 
 public class CompanyOperation {
 
-	// ?—°?„
+	// ì—°ë„
 	private Long year;
 
-	// ?›”
+	// ì›”
 	private Long month;
 
-	// ?‹œ?‘?‚ ì§?
+	// ì‹œì‘ë‚ ì§œ
 	private Long beginDay;
 
-	// ì¢…ë£Œ?‚ ì§?
+	// ì¢…ë£Œë‚ ì§œ
 	private Long endDay;
 
-	// ?‹œ?‘?‹œê°?
+	// ì‹œì‘ì‹œê°„
 	private Long beginHour;
 
-	// ì¢…ë£Œ?‹œê°?
+	// ì¢…ë£Œì‹œê°„
 	private Long endHour;
 
-	// ?‹œ?‘ë¶?
+	// ì‹œì‘ë¶„
 	private Long beginMinute;
 
-	// ì¢…ë£Œë¶?
+	// ì¢…ë£Œë¶„
 	private Long endMinute;
 
-	// ?‚¬?š©? ?•„?´?””
+	// ì‚¬ìš©ì ì•„ì´ë””
 	private String userId;
 
 	public CompanyOperation() {
@@ -110,7 +110,6 @@ public class CompanyOperation {
 	public void setEndMinute(Long endMinute) {
 		this.endMinute = endMinute;
 	}
- 
 
 	public String getUserId() {
 		return userId;
@@ -126,6 +125,5 @@ public class CompanyOperation {
 				+ ", beginHour=" + beginHour + ", endHour=" + endHour + ", beginMinute=" + beginMinute + ", endMinute="
 				+ endMinute + ", userId=" + userId + "]";
 	}
-
 
 }

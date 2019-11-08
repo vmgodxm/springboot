@@ -32,7 +32,7 @@ public class AdminRepository implements IAdminRepository {
 	
 	@Override
 	public int deleteAdmin(String adminUserId) throws Exception{
-		return sqlSession.delete("mapper.AdminMapper.delectAdmin", adminUserId);
+		return sqlSession.delete("mapper.AdminMapper.deleteAdmin", adminUserId);
 	}
 	
 	@Override

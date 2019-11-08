@@ -80,7 +80,7 @@ public class AdminController {
 	}
 	
 	@DeleteMapping(path="/admin/{adminUserId}")
-	public int delectAdmin(@PathVariable String adminUserId) throws Exception{
+	public int deleteAdmin(@PathVariable String adminUserId) throws Exception{
 		return repository.deleteAdmin(adminUserId);
 	}
 	

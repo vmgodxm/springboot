@@ -27,7 +27,7 @@
     $(function () {
       $('#btnLogin').on('click', function (e) {
         $.ajax({
-          url: "http://localhost/loginAdmin",
+          url: "http://localhost/admin/login",
           type: "POST",
           data: $('#loginForm').serialize(),
           dataType: 'json',

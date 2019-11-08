@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AuthenticationMapper">
+    <insert id="insertAuthentication" parameterType="com.example.demo.model.LoginInfo">
+        INSERT INTO 
+            authentication(authNo, userId, apiKey, loginTime, userLevel)
+        VALUES
+            (auth_authNo_SEQ.nextVal, #{userId}, #{apiKey}, sysdate, #{userLevel})
+    </insert>
+
+    <insert id="insertAuthenticationHistory" parameterType="com.example.demo.model.LoginInfo">
+        INSERT INTO 
+            authenticationHistory(hisNo, userId, apiKey, loginTime, userLevel) 
+        VALUES
+            (authHistory_hisNo_SEQ.nextVal, #{userId}, #{apiKey}, sysdate, #{userLevel})
+    </insert>
+
+    <update id="updateAPIKeyToNull" parameterType="String">
+        UPDATE authentication SET 
+            apiKey = '' 
+        WHERE 
+            userId = #{userId}
+    </update>
+
+    <update id="updateHistoryLogoutTime" parameterType="String">
+        UPDATE authenticationHistory SET 
+            logoutTime = sysdate 
+        WHERE 
+            userId = #{userId}
+    </update>
+</mapper>

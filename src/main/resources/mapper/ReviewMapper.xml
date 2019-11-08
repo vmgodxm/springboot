@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ReviewMapper">
 	<select id="getReplyList" parameterType="String" resultType="com.example.demo.model.Review">
-		SELECT * FROM usereply
+		<!-- select A.replyNo,a.designerId,a.resNo,a.styleNo,a.title,a.useContent,a.userId,a.writeTime,c.filePath,c.storagefilename,B.fileNo from userePly A LEFT OUTER JOIN hairStyle B ON a.styleno=b.styleno LEFT OUTER JOIN fileStorage C ON b.fileno = c.fileno -->
+		select * from userePly A LEFT OUTER JOIN hairStyle B ON a.styleno=b.styleno LEFT OUTER JOIN fileStorage C ON b.fileno = c.fileno
+
 	</select> 
 	<select id="getReply" parameterType="String" resultType="com.example.demo.model.Review">
-		SELECT * FROM usereply WHERE userId = #{userId}
+			select A.replyno,a.designerid,a.resno,a.styleno,a.title,a.usecontent,a.userid,a.writetime,c.filepath,c.storagefilename FROM userePly A LEFT OUTER JOIN hairStyle B ON a.styleno=b.styleno LEFT OUTER JOIN fileStorage C ON b.fileno = c.fileno WHERE a.userId=#{userId}
 	</select> 
 	<select id="insertReply" parameterType="com.example.demo.model.Review">
 		INSERT INTO usereply(replyno,resno,title,usecontent,writetime,userid,styleno,designerid) values (USEREPLY_REPLYNO_SEQ.nextval,#{resNo},#{title},#{useContent} , SYSDATE ,#{userId} ,#{styleNo},#{designerId})

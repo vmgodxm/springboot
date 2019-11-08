@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.Admin;
 import com.example.demo.model.FileStorage;
 import com.example.demo.repository.interfaces.IFileRepository;
 
@@ -22,4 +23,16 @@ public class FileRepository implements IFileRepository {
     public int insertFile(FileStorage file) throws Exception {
         return sqlSession.insert("mapper.FileStorageMapper.insertFile", file);
     }
+	
+	@Override
+	public int updateFile(FileStorage file) throws Exception {
+	   return sqlSession.insert("mapper.FileStorageMapper.updateFile", file);
+    }
+	
+	@Override
+	public int deleteFile(String fileNo) throws Exception{
+		return sqlSession.delete("mapper.FileStorageMapper.deleteFile", fileNo);
+	}
+	
+	
 }

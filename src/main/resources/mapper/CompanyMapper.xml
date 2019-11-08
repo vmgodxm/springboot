@@ -11,12 +11,40 @@
 		INSERT INTO company(businessNumber,regionNo,companyName,companyAddress) VALUES 
 			(#{businessNumber}, #{regionNo}, #{companyName}, #{companyAddress})
 	</insert>
+	
+	<!-- 사용자(userRegist)의 사업자 번호 null로 변경 -->
+	<update id="updateRegist" parameterType="com.example.demo.model.UserRegist">
+		UPDATE userRegist SET businessNumber = null
+			WHERE userId = #{userId}
+	</update>
+	
+	<!-- Company에 있는 내용을 PreCompany로 삽입  -->
+	<insert id="insertPreCompany" parameterType="com.example.demo.model.PreCompany">
+		INSERT INTO PreCompany VALUES 
+			(PRECOMPANY_PRECOMNO_SEQ.nextVal, #{companyName},#{userId})
+	</insert>
+	
+	<!-- Company 번호 삭제 -->
+	<delete id="deleteCompany" parameterType="String">
+		DELETE FROM company WHERE businessNumber = #{businessNumber} 
+	</delete>
+	
+	<!--변경된 사업자 번호를 company에 삽입  -->
+	<insert id="changeCompany" parameterType="com.example.demo.model.Company">
+		INSERT INTO Company VALUES 
+			(#{businessNumber},#{regionNo},#{companyName},#{companyAddress})
+	</insert>
+	
+	<!-- 변경된 사업자 번호를 사용자 테이블에 수정 -->
+	<update id="">
+		UPDATE userRegist SET businessNumber = #{businessNumber}
+			WHERE userId = #{userId}
+	</update>
+	
 	<update id="updateCompany" parameterType="com.example.demo.model.Company" >
 		UPDATE company SET regionNo=#{regionNo},companyName=#{companyName},companyAddress=#{companyAddress}
 		WHERE businessNumber=#{businessNumber}
 	</update>
-	<delete id="deleteCompany" parameterType="String">
-		DELETE FROM company WHERE businessNumber = #{businessNumber}
-	</delete>
+
 	
 </mapper>

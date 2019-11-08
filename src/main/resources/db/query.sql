@@ -101,7 +101,22 @@ VALUES
 
 -- 사용자 후기
 INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal,1, '핑크염색 후기', '망헀어요', sysdate, 'test@test.com', 1,'designer1@test.com' );
-commit; 
+ 
+
+-- 파일 업데이트
+UPDATE filestorage SET filePath=#{filePath},originFileName=#{originFileName},storageFileName=#{storageFileName}
+		WHERE fileNo=#{fileNo}
+
+
+
+
+commit;
+
+
+
+
+
+
 
 
 SELECT * FROM USERREGIST;

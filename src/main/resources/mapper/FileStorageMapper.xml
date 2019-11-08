@@ -7,6 +7,13 @@
 	<insert id="insertFile" parameterType="com.example.demo.model.FileStorage">
 		INSERT INTO fileStorage values (FILESTORAGE_FILENO_SEQ.nextVal, #{filePath}, #{originFileName}, #{storageFileName})
 	</insert>
+	<update id="updateFile" parameterType="com.example.demo.model.FileStorage"> 
+		UPDATE filestorage SET filePath=#{filePath},originFileName=#{originFileName},storageFileName=#{storageFileName}
+		WHERE fileNo=#{fileNo}
+	</update>
+	<delete id="deleteFile" parameterType="String" >
+		DELETE FROM filestorage WHERE fileNo = #{fileNo}
+	</delete>
 	
 	
 </mapper>

@@ -8,6 +8,10 @@ public interface IFileRepository {
 
 	int insertFile(FileStorage file) throws Exception;
 
+	int updateFile(FileStorage file) throws Exception;
+
+	int deleteFile(String fileNo) throws Exception;
+
 	
 	
 }

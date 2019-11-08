@@ -74,13 +74,13 @@ public class AdminController {
 		return adminList;
 	}
 	
-	@PostMapping(path="/admininsert")
+	@PostMapping(path="/admin")
 	public int insertAdmin(Admin admin) throws Exception{
 		return repository.insertAdmin(admin);
 	}
 	
 	@DeleteMapping(path="/admin/{adminUserId}")
-	public int delectAdmin(@PathVariable String adminUserId) throws Exception{
+	public int deleteAdmin(@PathVariable String adminUserId) throws Exception{
 		return repository.deleteAdmin(adminUserId);
 	}
 	

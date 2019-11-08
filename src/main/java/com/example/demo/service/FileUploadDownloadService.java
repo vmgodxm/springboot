@@ -7,7 +7,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import org.springframework.util.StringUtils;
-
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -39,7 +40,9 @@ public class FileUploadDownloadService {
     }
     
     public String storeFile(MultipartFile file)   {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String originalfileName = StringUtils.cleanPath(file.getOriginalFilename());
+        		
+        String fileName = RandomStringUtils.randomAlphanumeric(16) + "." + FilenameUtils.getExtension(originalfileName).toLowerCase();
         
         try {
             // 파일명에 부적합 문자가 있는지 확인한다.

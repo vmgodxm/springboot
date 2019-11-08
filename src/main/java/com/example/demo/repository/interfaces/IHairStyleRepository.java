@@ -6,7 +6,7 @@ import com.example.demo.model.HairStyle;
 
 public interface IHairStyleRepository {
 
-	List getHairStyleList() throws Exception;
+	//List getHairStyleList() throws Exception;
 	
 	HairStyle getHairStyle(Long styleNo) throws Exception;
 

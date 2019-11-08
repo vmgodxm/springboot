@@ -17,11 +17,12 @@ public class HairStyleController {
 	@Autowired
 	private IHairStyleRepository repository;
 	
-	public ResponseEntity<List<HairStyle>> getHairStyleList() throws Exception{
-		ResponseEntity<List<HairStyle>> retVal = null;
-
-		List<HairStyle> list = repository.HairStyleList();
-	}
+	/*
+	 * public ResponseEntity<List<HairStyle>> getHairStyleList() throws Exception{
+	 * //ResponseEntity<List<HairStyle>> retVal = null;
+	 * 
+	 * //List<HairStyle> list = repository.HairStyleList(); return null; }
+	 */
 
 	
 	@GetMapping(path="/hairStyle")

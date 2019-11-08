@@ -74,7 +74,7 @@ public class AdminController {
 		return adminList;
 	}
 	
-	@PostMapping(path="/admininsert")
+	@PostMapping(path="/admin")
 	public int insertAdmin(Admin admin) throws Exception{
 		return repository.insertAdmin(admin);
 	}

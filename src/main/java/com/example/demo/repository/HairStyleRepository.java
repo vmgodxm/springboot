@@ -1,7 +1,5 @@
 package com.example.demo.repository;
 
-import java.util.List;
-
 import com.example.demo.model.HairStyle;
 import com.example.demo.repository.interfaces.IHairStyleRepository;
 
@@ -32,13 +30,11 @@ public class HairStyleRepository implements IHairStyleRepository {
 
 	@Override
 	public int updateHairStyle(Long styleNo) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int deleteHairStyle(Long styleNo) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

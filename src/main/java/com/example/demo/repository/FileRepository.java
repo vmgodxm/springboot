@@ -1,6 +1,5 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Admin;
 import com.example.demo.model.FileStorage;
 import com.example.demo.repository.interfaces.IFileRepository;
 

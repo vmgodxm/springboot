@@ -80,7 +80,19 @@ INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin5', '5555', 'admin5@a
 --SELECT * FROM admin;
 --한명
 --SELECT * FROM admin WHERE adminUserId = 'admin';
---수정
+--수정INSERT INTO ADMIN.COMPANY (
+    BUSINESSNUMBER,
+    COMPANYADDRESS,
+    COMPANYNAME,
+    REGIONNO
+  )
+VALUES
+  (
+    'BUSINESSNUMBER:VARCHAR2',
+    'COMPANYADDRESS:VARCHAR2',
+    'COMPANYNAME:VARCHAR2',
+    REGIONNO:NUMBER
+  );
 --UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin.com',adminname ='admin2', phone ='000-2222-0000' ,address = 'BUSAN' 
 --       where adminUserId = 'admin2';
 --삭제
@@ -91,5 +103,36 @@ INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin5', '5555', 'admin5@a
 INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal,1, '핑크염색 후기', '망헀어요', sysdate, 'test@test.com', 1,'designer1@test.com' );
 commit; 
 
-        
-         
+
+SELECT * FROM USERREGIST;
+SELECT * FROM COMPANY;
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'designer4@test.com',  'desigName1', 1, '000-0000-0000','desigName1','000-01-00000',0,1,1);
+
+UPDATE userRegist SET
+       businessNumber = ''
+WHERE 
+       userId = 'designer4@test.com';
+
+DELETE FROM userRegist 
+WHERE
+       userId = 'designer4@test.com';
+
+DELETE FROM COMPANY
+WHERE 
+       businessNumber = '000-01-00000';
+
+-- 로그인 인증번호 테이블
+INSERT INTO authentication VALUES(auth_authNo_SEQ.nextVal, 'test@test.com', 'wqkejdqowej123', sysdate, 0);
+INSERT INTO authentication VALUES(auth_authNo_SEQ.nextVal, 'test2@test.com', 'wqkejdqowej123', sysdate, 0);
+INSERT INTO authentication VALUES(auth_authNo_SEQ.nextVal, 'test3@test.com', 'wqkejdqowej123', sysdate, 0);
+INSERT INTO authentication VALUES(auth_authNo_SEQ.nextVal, 'test4@test.com', 'wqkejdqowej123', sysdate, 0);
+INSERT INTO authentication VALUES(auth_authNo_SEQ.nextVal, 'test5@test.com', 'wqkejdqowej123', sysdate, 0);
+INSERT INTO authentication VALUES(auth_authNo_SEQ.nextVal, 'test6@test.com', 'wqkejdqowej123', sysdate, 0);
+
+-- 로그인 내역 테이블
+INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
+INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test2@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
+INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test3@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
+INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test4@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
+INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test5@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
+INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test6@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);

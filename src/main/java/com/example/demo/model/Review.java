@@ -28,10 +28,32 @@ public class Review {
 
 	// ?��?��번호
 	private Long resNo;
+
+	//파일번호
+	private Long fileNo;
 	
+	private String storageFileName;				
+
 	public Review() {
 	}
 	
+
+
+	public Review(Long replyNo, String title, String useContent, Date writeTime, String designerId, String userId, Long styleNo, Long resNo, Long fileNo, String storageFileName) {
+		this.replyNo = replyNo;
+		this.title = title;
+		this.useContent = useContent;
+		this.writeTime = writeTime;
+		this.designerId = designerId;
+		this.userId = userId;
+		this.styleNo = styleNo;
+		this.resNo = resNo;
+		this.fileNo = fileNo;
+		this.storageFileName = storageFileName;
+	}
+	
+	
+
 	public Review(Long replyNo, String title, String useContent, Date writeTime, String designerId, String userId,
 			Long styleNo, Long resNo) {
 		super();
@@ -53,6 +75,14 @@ public class Review {
 		this.userId = userId;
 		this.styleNo = styleNo;
 		this.resNo = resNo;
+	}
+
+	public String getStorageFileName() {
+		return this.storageFileName;
+	}
+
+	public void setStorageFileName(String storageFileName) {
+		this.storageFileName = storageFileName;
 	}
 
 	public Long getReplyNo() {
@@ -117,6 +147,14 @@ public class Review {
 
 	public void setResNo(Long resNo) {
 		this.resNo = resNo;
+	}
+
+	public Long getFileNo() {
+		return this.fileNo;
+	}
+
+	public void setFileNo(Long fileNo) {
+		this.fileNo = fileNo;
 	}
 
 	@Override

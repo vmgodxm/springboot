@@ -17,7 +17,7 @@
 		(ADMIN_ADMINNO_SEQ.nextVal, #{adminUserId}, #{password}, #{email}, #{adminName}, #{phone}, #{address})
 
 	</insert>
-	<delete id="delectAdmin" parameterType="String" >
+	<delete id="deleteAdmin" parameterType="String" >
 		DELETE FROM admin WHERE adminUserId = #{adminUserId}
 	</delete>
 	<update id="updateAdmin" parameterType="com.example.demo.model.Admin"> 

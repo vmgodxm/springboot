@@ -8,13 +8,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <title>Modern Business - Start Bootstrap Template</title>
+  <title>재연 리뷰 테스트중</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="../bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
   <!-- Custom styles for this template -->
-  <link href="../css/modern-business.css" rel="stylesheet">
+  <link href="../bootstrap/css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -98,27 +98,31 @@ $(function() {
 				   $('#resNo').text(data[i].resNo);    		
 			       $('#reviewNo').text(data[i].replyNo);    		
             	
-            		console.log('데이타 리플번호 -> '+data[i].replyNo);
-            		var replyNoStr = data[i].replyNo;
+             console.log('데이타 리플번호 -> '+data[i].replyNo);
+             console.log('파일번호 -> '+data[i].fileNo);
+             console.log('파일이름 -> '+data[i].storageFileName);
+             var replyNoStr = data[i].replyNo;
+            		var titleStr = data[i].titlPath
             		var titleStr = data[i].title;
             		var useContentStr = data[i].useContent;
-            		var writeTimeStr = data[i].writeTime
-            		var userIdStr = data[i].userId
+                var writeTimeStr = data[i].writeTime;
+                var writeTimeStrTrim = writeTimeStr.substr(0,19);
+                var userIdStr = data[i].userId;
             		var deleteStr = 'deleteNo'+data[i].replyNo;
-            		console.log(deleteStr);
-            		
+                console.log(writeTimeStrTrim);
+                
             		//alert($('#reviewList .pagination'));
 					$('#reviewList .pagination').before(
 				      "<div class=\"card mb-4\">"+
-			          "<img class=\"card-img-top\" src=\"http://placehold.it/750x300\" alt=\"Card image cap\">"+
+			          "<img class=\"card-img-top\" src=\"http://image.news1.kr/system/photos/2018/1/26/2933821/article.jpg\" alt=\"Card image cap\">"+
 			          "<div id="+data[i].replyNo+" class=\"card-body\">"+
 			          "<h2 class=\"card-title\"></h2><h3 id="+data[i].replyNo+">"+replyNoStr+ "</h3><p id="+data[i].title+">"+titleStr+"</p>"+
 			          " <p class=\"card-text\"></p><p id="+data[i].useContent+">"+useContentStr+"</p>"+
 			          "<a href=\"#\"id='btnDelete' class=\"btn btn-primary\">댓글삭제</a>"+
 			          "<div>"+
 			          "<div class=\"card-footer text-muted\">"+
-			          "<p id="+data[i].writeTime+">"+writeTimeStr+"</p>"+
-			          "<p>작성자</p><p id="+data[i].userId+">"+userIdStr+"</p></div>"+
+			          "<p id="+data[i].writeTime+">"+writeTimeStrTrim+"</p>"+
+			          "<p id="+data[i].userId+">"+userIdStr+"</p></div>"+
 			          "<div>");
             	
             	});
@@ -264,8 +268,8 @@ $(function() {
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

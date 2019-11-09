@@ -36,15 +36,16 @@
 	</insert>
 	
 	<!-- 변경된 사업자 번호를 사용자 테이블에 수정 -->
-	<update id="">
+	<update id="updateRegCompany" parameterType="com.example.demo.model.UserRegist">
 		UPDATE userRegist SET businessNumber = #{businessNumber}
 			WHERE userId = #{userId}
 	</update>
 	
+	<!-- 
 	<update id="updateCompany" parameterType="com.example.demo.model.Company" >
 		UPDATE company SET regionNo=#{regionNo},companyName=#{companyName},companyAddress=#{companyAddress}
 		WHERE businessNumber=#{businessNumber}
 	</update>
-
+	 -->
 	
 </mapper>

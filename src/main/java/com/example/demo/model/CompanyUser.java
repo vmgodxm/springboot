@@ -7,5 +7,5 @@ public class CompanyUser {
 
     private UserRegist user;
     private Company currentCompany;
-    private Company preCompeny;
+    private PreCompany preCompeny;
 }

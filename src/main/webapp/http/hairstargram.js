@@ -1,16 +1,12 @@
 class HttpClient {
     host = 'http://localhost/';
     constructor() {
-        
+
     }
 
     get(url) {
-       var data = '';
-       fetch(this.host + url)
-       .then(response => data = response)
-       .catch(err => data = err);
-
-       return data;
+        ()
+        var data = this.sendAsync(this.host + url);
     }
 
     send(sender) {
@@ -18,6 +14,18 @@ class HttpClient {
     }
 
     async sendAsync(sender) {
+        var data = await fetch(sender)
+            .then(function (response) {
+                console.log(response);
+                data = response;
+                return response;
+            })
+            .catch(function (err) {
+                data = err;
+                console.log(err);
+                return err;
+            });
 
+        return await data.json();
     }
 }

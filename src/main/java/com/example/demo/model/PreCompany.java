@@ -1,15 +1,15 @@
 package com.example.demo.model;
 
-//?´? „ ?‚¬?—…?¥ ?…Œ?´ë¸? 
+//?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
 public class PreCompany {
 
-	// ?‚¬?—…?¥ ë²ˆí˜¸(?ˆœë²?)
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ë²ˆí˜¸(?ï¿½ï¿½ï¿½?)
 	private Long preCompanyNo;
 
-	// ?‚¬?—…?¥ ?´ë¦?
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½?
 	private String companyName;
 
-	// ?‚¬?š©? ?´ë¦?
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½?
 	private String userId;
 
 	public PreCompany() {
@@ -18,6 +18,13 @@ public class PreCompany {
 	public PreCompany(Long preCompanyNo, String companyName, String userId) {
 		super();
 		this.preCompanyNo = preCompanyNo;
+		this.companyName = companyName;
+		this.userId = userId;
+	}
+	
+	
+	public PreCompany(String companyName, String userId) {
+		super();
 		this.companyName = companyName;
 		this.userId = userId;
 	}

@@ -15,8 +15,8 @@ INSERT INTO company values ('000-01-00000',0,'블루클럽','서울 강남점');
 INSERT INTO company values ('000-02-00000',0,'리안헤어','서울 강남점');
 
 -- 파일스토리지
-INSERT INTO fileStorage values (1, 'web/test/' , 'test1.png', 'AKSEJWQE.png');
-INSERT INTO fileStorage values (2, 'web/test/' , 'test2.png', '멍충이.png');
+INSERT INTO fileStorage values (1, 'test@test.com', 'web/test/' , 'test1.png', 'AKSEJWQE.png','th_AFVJBjIFuCnJ8s4t.jpg');
+INSERT INTO fileStorage values (2, 'test2@test.com', 'images/' , 'test2.png', '멍충이.png', 'th_AFVJBjIFuCnJ8s4t.jpg');
            
 -- 디자이너
 INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'designer1@test.com',  'desigName1', 1, '000-0000-0000','desigName1','000-00-00000',0,1,1);
@@ -76,23 +76,9 @@ INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin2', '2222', 'admin2@a
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin3', '3333', 'admin3@admin.com', 'Admin3', '000-3333-0000', 'SEOUL');
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin4', '4444', 'admin4@admin.com', 'Admin4', '000-4444-0000', 'SEOUL');
 INSERT INTO admin VALUES (ADMIN_ADMINNO_SEQ.nextVal, 'admin5', '5555', 'admin5@admin.com', 'Admin5', '000-5555-0000', 'SEOUL');
---admin 전체
---SELECT * FROM admin;
---한명
---SELECT * FROM admin WHERE adminUserId = 'admin';
---수정INSERT INTO ADMIN.COMPANY (
-    BUSINESSNUMBER,
-    COMPANYADDRESS,
-    COMPANYNAME,
-    REGIONNO
-  )
-VALUES
-  (
-    'BUSINESSNUMBER:VARCHAR2',
-    'COMPANYADDRESS:VARCHAR2',
-    'COMPANYNAME:VARCHAR2',
-    REGIONNO:NUMBER
-  );
+
+
+
 --UPDATE admin set adminuserid = 'admin2',password = '2222', email = 'admin2@admin.com',adminname ='admin2', phone ='000-2222-0000' ,address = 'BUSAN' 
 --       where adminUserId = 'admin2';
 --삭제
@@ -104,13 +90,8 @@ INSERT INTO useReply VALUES(USEREPLY_REPLYNO_SEQ.nextVal,1, '핑크염색 후기
  
 
 -- 파일 업데이트
-UPDATE filestorage SET filePath=#{filePath},originFileName=#{originFileName},storageFileName=#{storageFileName}
-		WHERE fileNo=#{fileNo}
-
-
-
-
-commit;
+-- UPDATE filestorage SET filePath=#{filePath},originFileName=#{originFileName},storageFileName=#{storageFileName}
+--		WHERE fileNo=#{fileNo}
 
 
 
@@ -119,8 +100,13 @@ commit;
 
 
 
-SELECT * FROM USERREGIST;
-SELECT * FROM COMPANY;
+
+
+
+
+
+--SELECT * FROM USERREGIST;
+--SELECT * FROM COMPANY;
 INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'designer4@test.com',  'desigName1', 1, '000-0000-0000','desigName1','000-01-00000',0,1,1);
 
 UPDATE userRegist SET
@@ -151,3 +137,13 @@ INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test3@t
 INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test4@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
 INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test5@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
 INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test6@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
+
+
+
+
+
+
+
+
+commit;
+

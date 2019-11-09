@@ -80,10 +80,14 @@ COMMENT ON COLUMN region.regionName is '지역이름';
 /* Table Name: FILE */
 /**********************************/
 CREATE TABLE fileStorage(
-		fileNo                        		NUMBER(10)		 NOT NULL,
+		
+        fileNo                        		NUMBER(10)		 NOT NULL,
+        userId               		        VARCHAR2(50)		 NOT NULL,
 		filePath                      		VARCHAR2(255)		 NOT NULL,
 		originFileName                		VARCHAR2(255)		 NOT NULL,
-		storageFileName               		VARCHAR2(100)		 NOT NULL
+		storageFileName               		VARCHAR2(100)		 NOT NULL,
+        thumbnailFileName               	VARCHAR2(100)		 NOT NULL
+        
 );
 
 DROP SEQUENCE fileStorage_fileNo_SEQ;
@@ -94,9 +98,11 @@ CREATE SEQUENCE fileStorage_fileNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 COMMENT ON TABLE fileStorage is 'FILE';
 COMMENT ON COLUMN fileStorage.fileNo is '파일번호';
+COMMENT ON COLUMN fileStorage.userId is '사용자 아이디';
 COMMENT ON COLUMN fileStorage.filePath is '파일경로';
 COMMENT ON COLUMN fileStorage.originFileName is '원본 파일 이름';
 COMMENT ON COLUMN fileStorage.storageFileName is '저장파일 이름';
+COMMENT ON COLUMN fileStorage.thumbnailFileName is '섬네일파일 이름';
 
 
 /**********************************/

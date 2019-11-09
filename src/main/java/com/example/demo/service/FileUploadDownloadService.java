@@ -1,18 +1,23 @@
 package com.example.demo.service;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import org.springframework.util.StringUtils;
+import javax.imageio.ImageIO;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.exeption.FileDownloadException;
@@ -43,7 +48,7 @@ public class FileUploadDownloadService {
         String originalfileName = StringUtils.cleanPath(file.getOriginalFilename());
         		
         String fileName = RandomStringUtils.randomAlphanumeric(16) + "." + FilenameUtils.getExtension(originalfileName).toLowerCase();
-        
+        //파일명을 16자리 랜덤알파뱃과 .확장자소문자 를 조합해 만든다.
         try {
             // 파일명에 부적합 문자가 있는지 확인한다.
             if(fileName.contains(".."))
@@ -53,11 +58,33 @@ public class FileUploadDownloadService {
             
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             
-            return fileName;
+            makeThumbnail(targetLocation.toString(), fileName);
+            
+            
+            
+            
         }catch(Exception e) {
             throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
         }
+        return fileName;
     }
+    
+    private void makeThumbnail(String filePath, String fileName) throws IOException {
+
+    	BufferedImage srcImg = ImageIO.read(new File(filePath));
+    	
+    	String[] array = fileName.split(".");
+    	
+    	String path = filePath.replace(fileName, "");
+    	
+    	String thumbName = path +"th_"+ fileName;
+    	
+    	File thumbFile = new File(thumbName);
+
+    	ImageIO.write(srcImg, array[1].toUpperCase(), thumbFile);
+    	
+
+	}
     
     
     public Resource loadFileAsResource(String fileName) {
@@ -75,5 +102,10 @@ public class FileUploadDownloadService {
         }
     }
 
+    /** * 썸네일을 생성합니다. * 250 x 150 크기의 썸네일을 만듭니다. */ 
+
+    
+    
+    
     
 }

@@ -53,7 +53,7 @@ public class ReviewController {
 	}
 	
 	@PutMapping(path="/review")
-	public int updateReply(@RequestParam(required=true, defaultValue="test@test.com")Long replyNo) throws Exception {
+	public int updateReply(Long replyNo) throws Exception {
 		int reply = repository.updateReply(replyNo);
 		return reply;
 	}

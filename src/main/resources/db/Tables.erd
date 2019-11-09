@@ -256,8 +256,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>369</x>
-              <y>504</y>
+              <x>338</x>
+              <y>477</y>
             </constraint>
             <sourceConnections/>
             <targetConnections>
@@ -1080,6 +1080,22 @@
                 <defaultValue></defaultValue>
               </net.java.amateras.db.visual.model.ColumnModel>
               <net.java.amateras.db.visual.model.ColumnModel>
+                <columnName>userId</columnName>
+                <logicalName>사용자 아이디</logicalName>
+                <columnType class="net.java.amateras.db.dialect.ColumnType">
+                  <name>VARCHAR2</name>
+                  <logicalName>String</logicalName>
+                  <supportSize>true</supportSize>
+                  <type>12</type>
+                </columnType>
+                <size>50</size>
+                <notNull>true</notNull>
+                <primaryKey>false</primaryKey>
+                <description></description>
+                <autoIncrement>false</autoIncrement>
+                <defaultValue></defaultValue>
+              </net.java.amateras.db.visual.model.ColumnModel>
+              <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>filePath</columnName>
                 <logicalName>파일경로</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType">
@@ -1098,7 +1114,7 @@
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>originFileName</columnName>
                 <logicalName>원본 파일 이름</logicalName>
-                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
                 <size>255</size>
                 <notNull>true</notNull>
                 <primaryKey>false</primaryKey>
@@ -1109,6 +1125,17 @@
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>storageFileName</columnName>
                 <logicalName>저장파일 이름</logicalName>
+                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
+                <size>100</size>
+                <notNull>true</notNull>
+                <primaryKey>false</primaryKey>
+                <description></description>
+                <autoIncrement>false</autoIncrement>
+                <defaultValue></defaultValue>
+              </net.java.amateras.db.visual.model.ColumnModel>
+              <net.java.amateras.db.visual.model.ColumnModel>
+                <columnName>thumbnailFileName</columnName>
+                <logicalName>섬네일파일 이름</logicalName>
                 <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
                 <size>100</size>
                 <notNull>true</notNull>
@@ -2037,7 +2064,7 @@
   </children>
   <dommains/>
   <dialectName>Oracle</dialectName>
-  <logicalMode>false</logicalMode>
+  <logicalMode>true</logicalMode>
   <jarFile></jarFile>
   <jdbcDriver>sun.jdbc.odbc.JdbcOdbc</jdbcDriver>
   <jdbcUrl></jdbcUrl>

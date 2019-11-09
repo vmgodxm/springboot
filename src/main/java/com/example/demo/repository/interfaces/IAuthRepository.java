@@ -4,5 +4,5 @@ import com.example.demo.model.LoginInfo;
 
 public interface IAuthRepository {
     int insertAuthentication(LoginInfo loginInfo);
-    int updateLogout(String userId);
+    int updateLogout(LoginInfo loginInfo);
 }

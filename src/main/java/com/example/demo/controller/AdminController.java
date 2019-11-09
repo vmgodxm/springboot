@@ -29,7 +29,7 @@ public class AdminController {
 	private IAuthRepository authRepository;
 
 	@PostMapping(path = "/admin/login")
-	public ResponseEntity<ResponseData> loginAdmin(Admin admin) throws Exception {
+	public ResponseEntity<ResponseData> loginAdmin(HttpEntity<Admin> httpEntity) throws Exception {
 
 		// 1# : Http 상태를 반환하기 위한 객체
 		ResponseEntity<ResponseData> retVal = null;
@@ -39,8 +39,11 @@ public class AdminController {
 
 		// 3# : SQL 문을 수행한 후 결과 값을 받는다.
 		int result = 0;
+		Admin admin = httpEntity.getBody();
 		try {
-			result = adminRepository.loginAdmin(admin);
+			if (admin != null) {
+				result = adminRepository.loginAdmin(admin);
+			}
 		} catch (Exception e) {
 			// 3-1# : SQL 문을 수행 중 예외가 발생한다면, 오류로 간주한다.
 			// 하지만, 여기서는 adminUserId, password에 해당하는 데이터가 없다는 뜻이므로
@@ -74,14 +77,15 @@ public class AdminController {
 	public HttpStatus logoutAdmin(HttpEntity<String> httpEntity) throws Exception {
 
 		HttpStatus httpStatus = HttpStatus.OK;
-
 		String adminId = httpEntity.getBody();
-		if (adminId != null) {
-			try {
-				authRepository.updateLogout(adminId);
-			} catch (Exception e) {
-				httpStatus = HttpStatus.BAD_GATEWAY;
+
+		try {
+			if (adminId != null) {
+				LoginInfo loginInfo = new LoginInfo(adminId, "AdminApiKey", 1);
+				authRepository.updateLogout(loginInfo);
 			}
+		} catch (Exception e) {
+			httpStatus = HttpStatus.BAD_GATEWAY;
 		}
 
 		return httpStatus;

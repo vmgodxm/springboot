@@ -15,17 +15,19 @@
             (authHistory_hisNo_SEQ.nextVal, #{userId}, #{apiKey}, sysdate, #{userLevel})
     </insert>
 
-    <update id="updateAPIKeyToNull" parameterType="String">
+    <update id="updateAPIKeyToNull" parameterType="com.example.demo.model.LoginInfo">
         UPDATE authentication SET 
             apiKey = '' 
         WHERE 
-            userId = #{userId}
+            userId = #{userId} AND
+            apiKey = #{apiKey}
     </update>
 
-    <update id="updateHistoryLogoutTime" parameterType="String">
+    <update id="updateHistoryLogoutTime" parameterType="com.example.demo.model.LoginInfo">
         UPDATE authenticationHistory SET 
             logoutTime = sysdate 
         WHERE 
-            userId = #{userId}
+            userId = #{userId} AND
+            apiKey = #{apiKey}
     </update>
 </mapper>

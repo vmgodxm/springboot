@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import com.example.demo.model.Review;
+import com.example.demo.repository.interfaces.IReviewRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.model.Review;
-import com.example.demo.repository.interfaces.IReviewRepository;
 
 @RestController
 public class ReviewController {
@@ -36,9 +35,23 @@ public class ReviewController {
 		return retVal;
 	}
 	
-	@GetMapping(path="/review/{replyNo}")
-	public Long getReply(@RequestParam(required=true, defaultValue="1")Long replyNo) throws Exception {
-		return repository.getReply(replyNo);
+	@GetMapping(path="/review/{userId}")
+	public ResponseEntity<Review> getReply(@PathVariable String userId) throws Exception {
+		ResponseEntity<Review> retVal = null;
+		Review reply = null;
+
+		try {
+			reply = repository.getReply(userId);
+		} catch (Exception e) {
+			retVal = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		if (reply !=null) {
+			retVal = new ResponseEntity<>(reply, HttpStatus.OK);
+		} else {
+			retVal = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+		return retVal;
 	}
 	
 	@PostMapping(path="/review")

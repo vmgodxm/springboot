@@ -6,15 +6,11 @@ import com.example.demo.model.Review;
 
 public interface IReviewRepository {
 
-	Long getReply(Long replyNo) throws Exception;
-
-	int deleteReply(Long replyNo) throws Exception;
-
-	int updateReply(Long replyNo) throws Exception;
-
-	int insertReply(Review review) throws Exception;
-
 	List<Review> ReplyList() throws Exception;
+	Review getReply(String userId) throws Exception;
+	int deleteReply(Long replyNo) throws Exception;
+	int updateReply(Long replyNo) throws Exception;
+	int insertReply(Review review) throws Exception;
 
 
 }

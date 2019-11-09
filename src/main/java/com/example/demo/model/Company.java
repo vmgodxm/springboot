@@ -25,6 +25,13 @@ public class Company {
 		this.companyName = companyName;
 		this.companyAddress = companyAddress;
 	}
+	
+
+	public Company(String businessNumber, String companyName) {
+		super();
+		this.businessNumber = businessNumber;
+		this.companyName = companyName;
+	}
 
 	public String getBusinessNumber() {
 		return businessNumber;

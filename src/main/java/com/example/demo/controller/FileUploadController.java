@@ -41,12 +41,13 @@ public class FileUploadController {
     public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = service.storeFile(file);
         
+        String fileThumbNailName = fileName + "_th.JPG" ;
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                                 .path("/downloadFile/")
                                 .path(fileName)
                                 .toUriString();
         
-        return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
+        return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName);
     }
     
     @PostMapping("/uploadMultipleFiles")

@@ -4,13 +4,13 @@ public class FileUploadResponse {
 	 private String fileName;
 	    private String fileDownloadUri;
 	    private String fileType;
-	    private long size;
+	    private String fileThumbNailName;
 	    
-	    public FileUploadResponse(String fileName, String fileDownloadUri, String fileType, long size) {
+	    public FileUploadResponse(String fileName, String fileDownloadUri, String fileType, String fileThumbNailName) {
 	        this.fileName = fileName;
 	        this.fileDownloadUri = fileDownloadUri;
 	        this.fileType = fileType;
-	        this.size = size;
+	        this.fileThumbNailName = fileThumbNailName;
 	    }
 	 
 	    public String getFileName() {
@@ -37,11 +37,11 @@ public class FileUploadResponse {
 	        this.fileType = fileType;
 	    }
 	 
-	    public long getSize() {
-	        return size;
+	    public String getfileThumbNailName() {
+	        return fileThumbNailName;
 	    }
 	 
-	    public void setSize(long size) {
-	        this.size = size;
+	    public void setfileThumbNailName(String fileThumbNailName) {
+	        this.fileThumbNailName = fileThumbNailName;
 	    }
 }

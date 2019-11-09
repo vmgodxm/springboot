@@ -46,8 +46,10 @@ public class FileUploadDownloadService {
     
     public String storeFile(MultipartFile file)   {
         String originalfileName = StringUtils.cleanPath(file.getOriginalFilename());
-        		
-        String fileName = RandomStringUtils.randomAlphanumeric(16) + "." + FilenameUtils.getExtension(originalfileName).toLowerCase();
+        	
+        String frontFileName = RandomStringUtils.randomAlphanumeric(16);
+        String extFileName = FilenameUtils.getExtension(originalfileName).toLowerCase();
+        String fileName =  frontFileName + "." + extFileName ;
         //파일명을 16자리 랜덤알파뱃과 .확장자소문자 를 조합해 만든다.
         try {
             // 파일명에 부적합 문자가 있는지 확인한다.
@@ -58,7 +60,7 @@ public class FileUploadDownloadService {
             
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             
-            makeThumbnail(targetLocation.toString(), fileName);
+            makeThumbnail(targetLocation.toString(), frontFileName, extFileName);
             
             
             
@@ -66,22 +68,22 @@ public class FileUploadDownloadService {
         }catch(Exception e) {
             throw new FileUploadException("["+fileName+"] 파일 업로드에 실패하였습니다. 다시 시도하십시오.",e);
         }
-        return fileName;
+        return fileName; 
     }
     
-    private void makeThumbnail(String filePath, String fileName) throws IOException {
+    private void makeThumbnail(String filePath, String frontFileName, String extFileName) throws IOException {
 
     	BufferedImage srcImg = ImageIO.read(new File(filePath));
     	
-    	String[] array = fileName.split(".");
     	
-    	String path = filePath.replace(fileName, "");
     	
-    	String thumbName = path +"th_"+ fileName;
+    	String path = fileLocation.toString();
+    	
+    	String thumbName = path +"/"+ frontFileName + "_th.JPG";
     	
     	File thumbFile = new File(thumbName);
 
-    	ImageIO.write(srcImg, array[1].toUpperCase(), thumbFile);
+    	ImageIO.write(srcImg, "JPG", thumbFile);
     	
 
 	}

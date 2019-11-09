@@ -5,7 +5,7 @@ class HttpClient {
     }
 
     get(url) {
-        ()
+
         var data = this.sendAsync(this.host + url);
     }
 

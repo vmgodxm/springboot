@@ -46,23 +46,21 @@ public class UserController {
     }
 
     @PostMapping(path = "/user/logout")
-	public HttpStatus logoutAdmin(HttpEntity<LoginInfo> httpEntity) throws Exception {
+    public HttpStatus logoutAdmin(HttpEntity<LoginInfo> httpEntity) throws Exception {
 
-		HttpStatus httpStatus = HttpStatus.OK;
+        HttpStatus httpStatus = HttpStatus.OK;
 
-		String userId = httpEntity.getBody().getUserId();
-		if (userId != null) {
-			try {
-                LoginInfo loginInfo = new LoginInfo(httpEntity.getBody().getUserId(), "AdminApiKey", 1);
-				authRepository.updateLogout(loginInfo);
-			} catch (Exception e) {
-				httpStatus = HttpStatus.BAD_GATEWAY;
-			}
-		}
+        try {
+            LoginInfo loginInfo = httpEntity.getBody();
+            if (loginInfo != null) {
+                authRepository.updateLogout(loginInfo);
+            }
+        } catch (Exception e) {
+            httpStatus = HttpStatus.BAD_GATEWAY;
+        }
 
-		return httpStatus;
-	}
-
+        return httpStatus;
+    }
 
     @GetMapping(path = "/user")
     public ResponseEntity<List<UserRegist>> getUserList() throws Exception {

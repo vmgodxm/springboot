@@ -1,4 +1,15 @@
+### admin login
+POST http://localhost/admin/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "adminId" : "admin",
+    "password" : 1111
+}
+
+### admin logout
 POST http://localhost/admin/logout HTTP/1.1
 Content-Type: application/json
 
 admin
+

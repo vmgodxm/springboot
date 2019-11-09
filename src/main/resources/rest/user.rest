@@ -1,0 +1,19 @@
+### user login
+POST http://localhost/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId" : "test@test.com",
+    "apiKey" : "qkwej12i39lwqe",
+    "userLevel" : 0
+}
+
+### user logout
+POST http://localhost/user/logout HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId" : "test@test.com",
+    "apiKey" : "qkwej12i39lwqe",
+    "userLevel" : 0
+}

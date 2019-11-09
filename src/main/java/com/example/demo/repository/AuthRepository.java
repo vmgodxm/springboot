@@ -21,10 +21,10 @@ public class AuthRepository implements IAuthRepository {
     }
 
     @Override
-    public int updateLogout(String userId) {
+    public int updateLogout(LoginInfo loginInfo) {
 
-        sqlSession.update("mapper.AuthenticationMapper.updateAPIKeyToNull", userId);
-        return sqlSession.update("mapper.AuthenticationMapper.updateHistoryLogoutTime", userId);
+        sqlSession.update("mapper.AuthenticationMapper.updateAPIKeyToNull", loginInfo);
+        return sqlSession.update("mapper.AuthenticationMapper.updateHistoryLogoutTime", loginInfo);
     }
     
 }

@@ -8,39 +8,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>재연 리뷰 테스트중</title>
+  <title>재연 댓글 달기</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="../bootstrap/css/modern-business.css" rel="stylesheet">
-
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
-
-  <script type="text/javascript">
-
-  
-      $(function () {
-          $('#send').on('click', function (e) {
-              $.ajax({
-                  url: 'http://localhost/review',
-                  type: 'POST',
-                  data: $('#review').serialize(),
-                  dataType: 'application/json'
-              }).then(function (data) {
-                  console.log(data);
-                });
-              })
-            });
-            $(function(){
-              $('#send').click(function(){
-                location.href = 'http://localhost/jaeyoun/blog-home-1.html';
-        });
-      });
-  </script>
-
 
 </head>
 
@@ -75,10 +49,18 @@
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                 <a class="dropdown-item" href="/jaeyoun/blog-post.html">jaeyoun-1</a>
                 <a class="dropdown-item" href="/jaeyoun/blog-home-1.html">jaeyoun-2</a>
+                <a class="dropdown-item" href="/jaeyoun/blog-reply.html">jaeyoun-reply</a>
                 <a class="dropdown-item" href="bootstrap/portfolio-item.html">Single Portfolio Item</a>
               </div>
             </li>
-           
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+            </div>
+          </li>
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Blog
@@ -110,7 +92,7 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3" id="title">댓글달기
+    <h1 class="mt-4 mb-3">헤어 스타일 이름
       <small>by
         <a href="#">Designer Name</a>
       </small>
@@ -132,25 +114,16 @@
         <img class="img-fluid rounded" src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/6431/Mgz_Main_Top_20190322122912.jpg" alt="">
 
         <hr>
-        
+
         <!-- Date/Time -->
         <p>글 포스트 날짜 및 시간</p>
 
         <hr>
 
         <!-- Post Content -->
-        <form id="review">
-          title : <input id="title" name="title" type="text"><br>
-          useContent : <input id="useContent" name="useContent" type="text"><br>
-          designerId : <input id="designerId" name="designerId" type="text"><br>
-          userId : <input id="userId" name="userId" type="text"><br>
-          styleNo : <input id="styleNo" name="styleNo" type="text"><br>
-          resNo : <input id="resNo" name="resNo" type="text"><br>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
 
-          <input type="reset" value="reset">
-          <input id="send" type="button" value="send">
-      </form>
-      
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
 
         <blockquote class="blockquote">
           <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -167,7 +140,7 @@
           <div class="card-body">
             <form>
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3">여기에 써주세요</textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

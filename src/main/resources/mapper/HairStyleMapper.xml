@@ -4,7 +4,6 @@
 	<select id="getHairStyleList" parameterType="com.example.demo.model.HairStyle">
 		select * from hairStyle
 	</select>
-
 	<select id="getHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">
 		select * from hairStyle where styleNo = #{styleNo}
 	</select>

@@ -54,7 +54,7 @@ public class CompanyController {
 	public void getCompany(UserRegist user, Company com){
 		Company preCompany = null; // repository.getBusinessNumber(user.getBusinessNUmber());
 
-		CompanyUser comUser = new CompanyUser(user, com, preCom);
+		//CompanyUser comUser = new CompanyUser(user, com, preCom);
 	}
 
 	/*

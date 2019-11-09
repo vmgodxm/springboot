@@ -53,7 +53,8 @@ public class UserController {
 		String userId = httpEntity.getBody().getUserId();
 		if (userId != null) {
 			try {
-				authRepository.updateLogout(userId);
+                LoginInfo loginInfo = new LoginInfo(httpEntity.getBody().getUserId(), "AdminApiKey", 1);
+				authRepository.updateLogout(loginInfo);
 			} catch (Exception e) {
 				httpStatus = HttpStatus.BAD_GATEWAY;
 			}

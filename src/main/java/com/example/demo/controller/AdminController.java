@@ -71,14 +71,15 @@ public class AdminController {
 	}
 
 	@PostMapping(path = "/admin/logout")
-	public HttpStatus logoutAdmin(HttpEntity<String> httpEntity) throws Exception {
+	public HttpStatus logoutAdmin(HttpEntity<Admin> httpEntity) throws Exception {
 
 		HttpStatus httpStatus = HttpStatus.OK;
 
-		String adminId = httpEntity.getBody();
+		String adminId = httpEntity.getBody().getAdminUserId();
 		if (adminId != null) {
 			try {
-				authRepository.updateLogout(adminId);
+				LoginInfo loginInfo = new LoginInfo(httpEntity.getBody().getAdminUserId(), "AdminApiKey", 1);
+				authRepository.updateLogout(loginInfo);
 			} catch (Exception e) {
 				httpStatus = HttpStatus.BAD_GATEWAY;
 			}

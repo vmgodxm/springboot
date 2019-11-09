@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,31 +25,42 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
  
 import com.example.demo.payload.FileUploadResponse;
+import com.example.demo.property.FileUploadProperties;
 import com.example.demo.service.FileUploadDownloadService;
  
 @RestController
 public class FileUploadController {
     private static final Logger logger = LoggerFactory.getLogger(FileUploadController.class);
-    
+    private final Path filelocation;
     @Autowired
     private FileUploadDownloadService service;
     
+    //private FileUploadProperties fileStoragePath;
 	/*
 	 * @GetMapping("/") public String controllerMain() { return
 	 * "Hello~ File Upload Test."; }
 	 */
+    @Autowired
+    public FileUploadController(FileUploadProperties prop) {
+    	filelocation = Paths.get(prop.getUploadDir())
+         //        .toAbsolutePath().normalize();  //서버의 절대경로
+    	.normalize();
+	}
     
     @PostMapping("/uploadFile")
     public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = service.storeFile(file);
         
-        String fileThumbNailName = fileName + "_th.JPG" ;
+        
+        //파일 경로 요청
+        String fileStorageName = filelocation.toString();
+        String fileThumbNailName = fileName.substring(fileName.lastIndexOf(".")+1) +"_th.JPG"; //확장자 이름 변경 - 실제 변경은 섬네일 imageio가 변경
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                                 .path("/downloadFile/")
                                 .path(fileName)
                                 .toUriString();
         
-        return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName);
+        return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName ,fileStorageName);
     }
     
     @PostMapping("/uploadMultipleFiles")

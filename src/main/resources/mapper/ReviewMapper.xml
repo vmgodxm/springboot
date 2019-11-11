@@ -6,7 +6,8 @@
 		select * from useReply A LEFT OUTER JOIN hairStyle B ON a.styleno=b.styleno LEFT OUTER JOIN fileStorage C ON b.fileno = c.fileno
 	</select> 
 	<select id="getReply" parameterType="String" resultType="com.example.demo.model.Review">
-			select * FROM useReply A LEFT OUTER JOIN hairStyle B ON a.styleno=b.styleno LEFT OUTER JOIN fileStorage C ON b.fileno = c.fileno WHERE a.userId = #{userId}
+			 select * FROM useReply A LEFT OUTER JOIN hairStyle B ON A.styleno=B.styleno LEFT OUTER JOIN fileStorage C ON B.fileno = C.fileno WHERE A.replyNo = #{replyNo}
+		
 	</select> 
 	<select id="insertReply" parameterType="com.example.demo.model.Review">
 		INSERT INTO usereply(replyno,resno,title,usecontent,writetime,userid,styleno,designerid) values (USEREPLY_REPLYNO_SEQ.nextval,#{resNo},#{title},#{useContent} , SYSDATE ,#{userId} ,#{styleNo},#{designerId})

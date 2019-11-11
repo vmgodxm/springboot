@@ -8,14 +8,16 @@ import com.example.demo.model.UserRegist;
 
 public interface ICompanyRepository {
 
-	Company getBusinessNumber(String businessNumber) throws Exception;
+	Company getUserId(String userId) throws Exception;
 
 	List<Company> companyList() throws Exception;
 
 	int insertCompany(Company company) throws Exception;
 
-	int updateCompany(Company company,String userId,PreCompany preCompany,String businessNumber,UserRegist userRegist) throws Exception;
+	int updateCompany(Company company) throws Exception;
 
-	int deleteCompany(String businessNumber) throws Exception;
+	int deleteCompany(String userId) throws Exception;
 
+
+	//int updateCompany(Company company,String userId,PreCompany preCompany,String businessNumber,UserRegist userRegist) throws Exception;
 }

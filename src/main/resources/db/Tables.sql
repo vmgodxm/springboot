@@ -1,3 +1,20 @@
+-- 모든 테이블 삭제
+--Begin
+--for c in (select table_name from user_tables) loop
+--  execute immediate 'drop table '||c.table_name||' cascade constraints';
+--end loop;
+--End;
+
+-- 모든 시퀀스 삭제
+--Begin
+--for c in (SELECT * FROM all_sequences WHERE SEQUENCE_OWNER='ADMIN') loop
+--  execute immediate 'drop SEQUENCE '||c.sequence_name;
+--end loop;
+--End;
+
+DROP TABLE preCompany CASCADE CONSTRAINTS;
+DROP TABLE authenticationHistory CASCADE CONSTRAINTS;
+DROP TABLE authentication CASCADE CONSTRAINTS;
 DROP TABLE useReply CASCADE CONSTRAINTS;
 DROP TABLE hairStyleFavorite CASCADE CONSTRAINTS;
 DROP TABLE designerFavorite CASCADE CONSTRAINTS;
@@ -6,94 +23,27 @@ DROP TABLE hairStyle CASCADE CONSTRAINTS;
 DROP TABLE hairCategory CASCADE CONSTRAINTS;
 DROP TABLE companyOperation CASCADE CONSTRAINTS;
 DROP TABLE admin CASCADE CONSTRAINTS;
-DROP TABLE preCompany CASCADE CONSTRAINTS;
-DROP TABLE userRegist CASCADE CONSTRAINTS;
+DROP TABLE region CASCADE CONSTRAINTS;
 DROP TABLE company CASCADE CONSTRAINTS;
+DROP TABLE userRegist CASCADE CONSTRAINTS;
 DROP TABLE userLevel CASCADE CONSTRAINTS;
 DROP TABLE fileStorage CASCADE CONSTRAINTS;
-DROP TABLE region CASCADE CONSTRAINTS;
-DROP TABLE authenticationHistory CASCADE CONSTRAINTS;
-DROP TABLE authentication CASCADE CONSTRAINTS;
-
-
-/**********************************/
-/* Table Name: 인증 정보 테이블 */
-/**********************************/
-CREATE TABLE authentication(
-		authNo                        		NUMBER(10)		 NOT NULL,
-		userId                        		VARCHAR2(50)		 NOT NULL,
-		apiKey                        		VARCHAR2(255)		 NOT NULL,
-		loginTime                     		DATE		 NOT NULL,
-		userLevel                     		NUMBER(10)		 NOT NULL
-);
-
-DROP SEQUENCE auth_authNo_SEQ;
-
-CREATE SEQUENCE auth_authNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
-COMMENT ON TABLE authentication is '인증 정보 테이블';
-COMMENT ON COLUMN authentication.authNo is '순번';
-COMMENT ON COLUMN authentication.userId is '사용자 아이디';
-COMMENT ON COLUMN authentication.apiKey is '인증키';
-COMMENT ON COLUMN authentication.loginTime is '로그인 시간';
-COMMENT ON COLUMN authentication.userLevel is '사용자 등급';
-
-
-/**********************************/
-/* Table Name: 인증 내역 테이블 */
-/**********************************/
-CREATE TABLE authenticationHistory(
-		hisNo                         		NUMBER(10)		 NOT NULL,
-		userId                        		VARCHAR2(50)		 NOT NULL,
-		apiKey                        		VARCHAR2(255)		 NULL,
-		loginTime                     		DATE		 NOT NULL,
-		logoutTime                    		DATE		 NULL,
-		userLevel                     		NUMBER(10)		 NOT NULL
-);
-
-DROP SEQUENCE authHistory_hisNo_SEQ;
-
-CREATE SEQUENCE authHistory_hisNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
-COMMENT ON TABLE authenticationHistory is '인증 내역 테이블';
-COMMENT ON COLUMN authenticationHistory.hisNo is '순번';
-COMMENT ON COLUMN authenticationHistory.userId is '사용자 이름';
-COMMENT ON COLUMN authenticationHistory.apiKey is '인증키';
-COMMENT ON COLUMN authenticationHistory.loginTime is '로그인 시간';
-COMMENT ON COLUMN authenticationHistory.logoutTime is '로그아웃 시간';
-COMMENT ON COLUMN authenticationHistory.userLevel is '사용자 등급';
-
-/**********************************/
-/* Table Name: 지역정보 테이블 */
-/**********************************/
-CREATE TABLE region(
-		regionNo                      		NUMBER(10)		 NOT NULL,
-		regionName                    		VARCHAR2(50)		 NULL 
-);
-
-COMMENT ON TABLE region is '지역정보 테이블';
-COMMENT ON COLUMN region.regionNo is '지역번호';
-COMMENT ON COLUMN region.regionName is '지역이름';
-
 
 /**********************************/
 /* Table Name: FILE */
 /**********************************/
 CREATE TABLE fileStorage(
-		
-        fileNo                        		NUMBER(10)		 NOT NULL,
-        userId               		        VARCHAR2(50)		 NOT NULL,
+		fileNo                        		NUMBER(10)		 NOT NULL,
+		userId                        		VARCHAR2(50)		 NOT NULL,
 		filePath                      		VARCHAR2(255)		 NOT NULL,
 		originFileName                		VARCHAR2(255)		 NOT NULL,
 		storageFileName               		VARCHAR2(100)		 NOT NULL,
-        thumbnailFileName               	VARCHAR2(100)		 NOT NULL
-        
+		thumbnailFileName             		VARCHAR2(100)		 NOT NULL
 );
 
 DROP SEQUENCE fileStorage_fileNo_SEQ;
 
 CREATE SEQUENCE fileStorage_fileNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
-
 
 
 COMMENT ON TABLE fileStorage is 'FILE';
@@ -119,23 +69,6 @@ COMMENT ON COLUMN userLevel.userLevelName is '등급이름';
 
 
 /**********************************/
-/* Table Name: 사업자 등록 테이블 */
-/**********************************/
-CREATE TABLE company(
-		businessNumber                		VARCHAR2(50)		 NOT NULL,
-		regionNo                      		NUMBER(10)		 NOT NULL,
-		companyName                   		VARCHAR2(50)		 NOT NULL,
-		companyAddress                		VARCHAR2(50)		 NULL 
-);
-
-COMMENT ON TABLE company is '사업자 등록 테이블';
-COMMENT ON COLUMN company.businessNumber is '순번';
-COMMENT ON COLUMN company.regionNo is '지역번호';
-COMMENT ON COLUMN company.companyName is '사업장 이름';
-COMMENT ON COLUMN company.companyAddress is '사업장 주소';
-
-
-/**********************************/
 /* Table Name: 회원등록 테이블 */
 /**********************************/
 CREATE TABLE userRegist(
@@ -145,7 +78,6 @@ CREATE TABLE userRegist(
 		gender                        		NUMBER(1)		 NOT NULL,
 		phone                         		VARCHAR2(50)		 NOT NULL,
 		nickname                      		VARCHAR2(50)		 NOT NULL,
-		businessNumber                		VARCHAR2(50)		 NULL ,
 		regionNo                      		NUMBER(10)		 NULL ,
 		fileNo                        		NUMBER(10)		 NULL ,
 		userLevel                     		NUMBER(10)		 NULL 
@@ -164,31 +96,41 @@ COMMENT ON COLUMN userRegist.userName is '사용자 이름';
 COMMENT ON COLUMN userRegist.gender is '성별';
 COMMENT ON COLUMN userRegist.phone is '연락처';
 COMMENT ON COLUMN userRegist.nickname is '별명(닉네임)';
-COMMENT ON COLUMN userRegist.businessNumber is '순번';
 COMMENT ON COLUMN userRegist.regionNo is '지역번호';
 COMMENT ON COLUMN userRegist.fileNo is '파일번호';
 COMMENT ON COLUMN userRegist.userLevel is '회원등급';
 
 
 /**********************************/
-/* Table Name: 이전 사업장 테이블 */
+/* Table Name: 사업자 등록 테이블 */
 /**********************************/
-CREATE TABLE preCompany(
-		preComNo                      		NUMBER(10)		 NOT NULL,
+CREATE TABLE company(
+		userId                        		VARCHAR2(50)		 NOT NULL,
+		businessNumber                		VARCHAR2(50)		 NULL ,
+		regionNo                      		NUMBER(10)		 NOT NULL,
 		companyName                   		VARCHAR2(50)		 NOT NULL,
-		userId                        		VARCHAR2(100)		 NULL 
+		companyAddress                		VARCHAR2(50)		 NOT NULL
 );
 
-DROP SEQUENCE preCompany_preComNo_SEQ;
+COMMENT ON TABLE company is '사업자 등록 테이블';
+COMMENT ON COLUMN company.userId is '사용자 아이디';
+COMMENT ON COLUMN company.businessNumber is '사업자 등록번호';
+COMMENT ON COLUMN company.regionNo is '지역번호';
+COMMENT ON COLUMN company.companyName is '사업장 이름';
+COMMENT ON COLUMN company.companyAddress is '사업장 주소';
 
-CREATE SEQUENCE preCompany_preComNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
+/**********************************/
+/* Table Name: 지역정보 테이블 */
+/**********************************/
+CREATE TABLE region(
+		regionNo                      		NUMBER(10)		 NOT NULL,
+		regionName                    		VARCHAR2(50)		 NULL 
+);
 
-
-COMMENT ON TABLE preCompany is '이전 사업장 테이블';
-COMMENT ON COLUMN preCompany.preComNo is '순번';
-COMMENT ON COLUMN preCompany.companyName is '사업장 이름';
-COMMENT ON COLUMN preCompany.userId is '사용자 아이디';
+COMMENT ON TABLE region is '지역정보 테이블';
+COMMENT ON COLUMN region.regionNo is '지역번호';
+COMMENT ON COLUMN region.regionName is '지역이름';
 
 
 /**********************************/
@@ -278,9 +220,9 @@ CREATE TABLE hairStyle(
 		userId                        		VARCHAR2(100)		 NULL 
 );
 
-DROP SEQUENCE hairStyle_styleNo_SEQ;
+DROP SEQUENCE HAIRSTYLE_STYLENO_SEQ;
 
-CREATE SEQUENCE hairStyle_styleNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+CREATE SEQUENCE HAIRSTYLE_STYLENO_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
@@ -303,8 +245,8 @@ COMMENT ON COLUMN hairStyle.userId is '사용자 아이디';
 CREATE TABLE reservation(
 		resNo                         		NUMBER(10)		 NOT NULL,
 		year                          		NUMBER(10)		 NOT NULL,
-		month                               NUMBER(10)		 NOT NULL,
-        day                           		NUMBER(10)		 NOT NULL,
+		month                         		NUMBER(10)		 NOT NULL,
+		day                           		NUMBER(10)		 NOT NULL,
 		beginHour                     		NUMBER(10)		 NOT NULL,
 		endHour                       		NUMBER(10)		 NOT NULL,
 		beingMinute                   		NUMBER(10)		 NOT NULL,
@@ -347,9 +289,9 @@ CREATE TABLE designerFavorite(
 		userId                        		VARCHAR2(100)		 NULL 
 );
 
-DROP SEQUENCE DESIGNERFAVORITENO_SEQ;
+DROP SEQUENCE designerFavoriteNo_SEQ;
 
-CREATE SEQUENCE DESIGNERFAVORITENO_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+CREATE SEQUENCE designerFavoriteNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
@@ -369,9 +311,9 @@ CREATE TABLE hairStyleFavorite(
 		styleNo                       		NUMBER(10)		 NOT NULL
 );
 
-DROP SEQUENCE hairStyleFavorite_styleNo_SEQ;
+DROP SEQUENCE HAIRSTYLEFAVORITE_STYLENO_SEQ;
 
-CREATE SEQUENCE hairStyleFavorite_styleNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+CREATE SEQUENCE HAIRSTYLEFAVORITE_STYLENO_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 COMMENT ON TABLE hairStyleFavorite is '헤어스타일 즐겨찾기 테이블';
@@ -412,23 +354,93 @@ COMMENT ON COLUMN useReply.styleNo is '순번';
 COMMENT ON COLUMN useReply.designerId is '디자이너 아이디';
 
 
+/**********************************/
+/* Table Name: 인증 정보 테이블 */
+/**********************************/
+CREATE TABLE authentication(
+		authNo                        		NUMBER(10)		 NOT NULL,
+		userId                        		VARCHAR2(50)		 NOT NULL,
+		apiKey                        		VARCHAR2(255)		 NOT NULL,
+		loginTime                     		DATE		 NOT NULL,
+		userLevel                     		NUMBER(10)		 NOT NULL
+);
 
-ALTER TABLE region ADD CONSTRAINT IDX_region_PK PRIMARY KEY (regionNo);
+DROP SEQUENCE auth_authNo_SEQ;
+
+CREATE SEQUENCE auth_authNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
+
+
+COMMENT ON TABLE authentication is '인증 정보 테이블';
+COMMENT ON COLUMN authentication.authNo is '순번';
+COMMENT ON COLUMN authentication.userId is '사용자 아이디';
+COMMENT ON COLUMN authentication.apiKey is '인증키';
+COMMENT ON COLUMN authentication.loginTime is '로그인 시간';
+COMMENT ON COLUMN authentication.userLevel is '사용자 등급';
+
+
+/**********************************/
+/* Table Name: 인증 내역 테이블 */
+/**********************************/
+CREATE TABLE authenticationHistory(
+		hisNo                         		NUMBER(10)		 NOT NULL,
+		userId                        		VARCHAR2(50)		 NOT NULL,
+		apiKey                        		VARCHAR2(255)		 NOT NULL,
+		loginTime                     		DATE		 NOT NULL,
+		logoutTime                    		DATE		 NOT NULL,
+		userLevel                     		NUMBER(10)		 NOT NULL
+);
+
+DROP SEQUENCE authHistory_hisNo_SEQ;
+
+CREATE SEQUENCE authHistory_hisNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
+
+
+COMMENT ON TABLE authenticationHistory is '인증 내역 테이블';
+COMMENT ON COLUMN authenticationHistory.hisNo is '순번';
+COMMENT ON COLUMN authenticationHistory.userId is '사용자 이름';
+COMMENT ON COLUMN authenticationHistory.apiKey is '인증키';
+COMMENT ON COLUMN authenticationHistory.loginTime is '로그인 시간';
+COMMENT ON COLUMN authenticationHistory.logoutTime is '로그아웃 시간';
+COMMENT ON COLUMN authenticationHistory.userLevel is '사용자 등급';
+
+
+/**********************************/
+/* Table Name: 이전 사업자 테이블 */
+/**********************************/
+CREATE TABLE preCompany(
+		preComNo                      		NUMBER(10)		 NOT NULL,
+		userId                        		VARCHAR2(50)		 NOT NULL,
+		regionNo                      		NUMBER(10)		 NOT NULL,
+		companyName                   		VARCHAR2(50)		 NOT NULL,
+		companyAddress                		VARCHAR2(50)		 NOT NULL
+);
+
+DROP SEQUENCE PRECOMPANY_PRECOMNO_SEQ;
+
+CREATE SEQUENCE PRECOMPANY_PRECOMNO_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+
+COMMENT ON TABLE preCompany is '이전 사업자 테이블';
+COMMENT ON COLUMN preCompany.preComNo is '순번';
+COMMENT ON COLUMN preCompany.userId is '사용자 아이디';
+COMMENT ON COLUMN preCompany.regionNo is '지역번호';
+COMMENT ON COLUMN preCompany.companyName is '사업장 이름';
+COMMENT ON COLUMN preCompany.companyAddress is '사업장 주소';
+
+
 
 ALTER TABLE fileStorage ADD CONSTRAINT IDX_fileStorage_PK PRIMARY KEY (fileNo);
 
 ALTER TABLE userLevel ADD CONSTRAINT IDX_userLevel_PK PRIMARY KEY (userLevel);
 
-ALTER TABLE company ADD CONSTRAINT IDX_company_PK PRIMARY KEY (businessNumber);
-ALTER TABLE company ADD CONSTRAINT IDX_company_FK0 FOREIGN KEY (regionNo) REFERENCES region (regionNo);
-
 ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_PK PRIMARY KEY (userId);
-ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK0 FOREIGN KEY (regionNo) REFERENCES region (regionNo);
-ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK1 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo);
-ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK2 FOREIGN KEY (userLevel) REFERENCES userLevel (userLevel);
-ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK3 FOREIGN KEY (businessNumber) REFERENCES company (businessNumber);
+ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK0 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo);
+ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK1 FOREIGN KEY (userLevel) REFERENCES userLevel (userLevel);
 
-ALTER TABLE preCompany ADD CONSTRAINT IDX_preCompany_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId);
+ALTER TABLE company ADD CONSTRAINT IDX_company_PK PRIMARY KEY (userId);
+
+ALTER TABLE region ADD CONSTRAINT IDX_region_PK PRIMARY KEY (regionNo);
 
 ALTER TABLE admin ADD CONSTRAINT IDX_admin_PK PRIMARY KEY (adminNo, adminUserId);
 
@@ -444,12 +456,12 @@ ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK2 FOREIGN KEY (categoryNo) 
 ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_PK PRIMARY KEY (resNo, designerId, userId);
 ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_FK0 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
 
-ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK0 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
-ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId);
+ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId);
+ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK1 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
 
 ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_PK PRIMARY KEY (HFavoriteNo);
-ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK0 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
-ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId);
+ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId);
+ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK1 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
 ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK2 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
 
 ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_PK PRIMARY KEY (replyNo, resNo);
@@ -459,6 +471,6 @@ ALTER TABLE authentication ADD CONSTRAINT IDX_authentication_PK PRIMARY KEY (aut
 
 ALTER TABLE authenticationHistory ADD CONSTRAINT IDX_authenticationHistory_PK PRIMARY KEY (hisNo, userId);
 
+ALTER TABLE preCompany ADD CONSTRAINT IDX_preCompany_PK PRIMARY KEY (preComNo, userId);
 
 commit;
-

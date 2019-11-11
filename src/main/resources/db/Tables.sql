@@ -360,7 +360,7 @@ COMMENT ON COLUMN useReply.designerId is '디자이너 아이디';
 CREATE TABLE authentication(
 		authNo                        		NUMBER(10)		 NOT NULL,
 		userId                        		VARCHAR2(50)		 NOT NULL,
-		apiKey                        		VARCHAR2(255)		 NOT NULL,
+		apiKey                        		VARCHAR2(255)		 NULL,
 		loginTime                     		DATE		 NOT NULL,
 		userLevel                     		NUMBER(10)		 NOT NULL
 );
@@ -387,7 +387,7 @@ CREATE TABLE authenticationHistory(
 		userId                        		VARCHAR2(50)		 NOT NULL,
 		apiKey                        		VARCHAR2(255)		 NOT NULL,
 		loginTime                     		DATE		 NOT NULL,
-		logoutTime                    		DATE		 NOT NULL,
+		logoutTime                    		DATE		  NULL,
 		userLevel                     		NUMBER(10)		 NOT NULL
 );
 

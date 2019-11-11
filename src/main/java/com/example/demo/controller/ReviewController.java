@@ -35,13 +35,13 @@ public class ReviewController {
 		return retVal;
 	}
 	
-	@GetMapping(path="/review/{userId}")
-	public ResponseEntity<Review> getReply(@PathVariable String userId) throws Exception {
+	@GetMapping(path="/review/{replyNo}")
+	public ResponseEntity<Review> getReply(@PathVariable Long replyNo) throws Exception {
 		ResponseEntity<Review> retVal = null;
 		Review reply = null;
 
 		try {
-			reply = repository.getReply(userId);
+			reply = repository.getReply(replyNo);
 		} catch (Exception e) {
 			retVal = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

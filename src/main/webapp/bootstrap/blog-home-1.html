@@ -7,14 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>Modern Business - Start Bootstrap Template</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <title>재연 리뷰 테스트중</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="../bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="../bootstrap/css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -23,21 +23,49 @@
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+      <a class="navbar-brand" href="index.html">HairStargram</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              헤어스타일
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="portfolio-4-col.html">염색</a>
+              <a class="dropdown-item" href="portfolio-4-col.html">파마</a>
+              <a class="dropdown-item" href="portfolio-4-col.html">커트</a>
+            </div>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.html">디자이너 정보</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="services.html">Services</a>
           </li>
+      <!--
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
+      -->
+       
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Mypages.html">My Page</a>
+          </li>
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jaeyoun
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <a class="dropdown-item" href="blog-post.html">jaeyoun-1</a>
+                <a class="dropdown-item" href="blog-home-1.html">jaeyoun-2</a>
+                <a class="dropdown-item" href="bootstrap/portfolio-item.html">Single Portfolio Item</a>
+              </div>
+            </li>
+            <!--
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Portfolio
@@ -50,12 +78,12 @@
               <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
             </div>
           </li>
-          <li class="nav-item active dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Blog
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-              <a class="dropdown-item active" href="blog-home-1.html">Blog Home 1</a>
+              <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
               <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
               <a class="dropdown-item" href="blog-post.html">Blog Post</a>
             </div>
@@ -66,23 +94,92 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
               <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-              <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
+              <a class="dropdown-item" href="sidebar.html">정보수정</a>
               <a class="dropdown-item" href="faq.html">FAQ</a>
               <a class="dropdown-item" href="404.html">404</a>
               <a class="dropdown-item" href="pricing.html">Pricing Table</a>
             </div>
           </li>
+            -->
         </ul>
       </div>
     </div>
   </nav>
-
+  <!-- 리스트 불러오기 -->
+ <script type="text/javascript">
+ 
+$(function() {
+            $.ajax({
+                url:"http://localhost/review",
+                Type:"GET",
+                dataType:"json"
+            }).then(function(data){
+            	$.each(data,function(i,v){
+					var reviewList = data[i];
+				  
+				   $('#replyNo').text(data[i].replyNo);    		
+				   $('#title').text(data[i].title);    		
+				   $('#useContent').text(data[i].useContent);    		
+				   $('#writeTime').text(data[i].writeTime);    		
+				   $('#designerId').text(data[i].designerId);    		
+				   $('#userId').text(data[i].userId);    		
+				   $('#styleNo').text(data[i].styleNo);    		
+				   $('#resNo').text(data[i].resNo);    		
+			       $('#reviewNo').text(data[i].replyNo);    		
+            	
+             console.log('데이타 리플번호 -> '+data[i].replyNo);
+             console.log('파일번호 -> '+data[i].fileNo);
+             console.log('파일이름 -> '+data[i].storageFileName);
+             var replyNoStr = data[i].replyNo;
+            		var titleStr = data[i].titlPath
+            		var titleStr = data[i].title;
+            		var useContentStr = data[i].useContent;
+                var writeTimeStr = data[i].writeTime;
+                var writeTimeStrTrim = writeTimeStr.substr(0,19);
+                var userIdStr = data[i].userId;
+            		var deleteStr = 'deleteNo'+data[i].replyNo;
+                console.log(writeTimeStrTrim);
+                
+            		//alert($('#reviewList .pagination'));
+					$('#reviewList .pagination').before(
+				      "<div class=\"card mb-4\">"+
+			          "<img class=\"card-img-top\" src=\"http://image.news1.kr/system/photos/2018/1/26/2933821/article.jpg\" alt=\"Card image cap\">"+
+			          "<div id="+data[i].replyNo+" class=\"card-body\">"+
+			          "<h2 class=\"card-title\"></h2><h3 id="+data[i].replyNo+">"+replyNoStr+ "</h3><p id="+data[i].title+">"+titleStr+"</p>"+
+			          " <p class=\"card-text\"></p><p id="+data[i].useContent+">"+useContentStr+"</p>"+
+			          "<a href=\"#\"id='btnDelete' class=\"btn btn-primary\">삭제</a>"+
+			          "<div>"+
+			          "<div class=\"card-footer text-muted\">"+
+			          "<p id="+data[i].writeTime+">"+writeTimeStrTrim+"</p>"+
+			          "<p id="+data[i].userId+">"+userIdStr+"</p></div>"+
+			          "<div>");
+            	
+            	});
+            });
+        });;
+		 //딜리트 버튼 만들기  
+             $(document).on('click', '#btnDelete', function (e) {
+        // 상위의 div 태그의 id 값을 가져온다.
+        var replyNo = $(this).closest('div').attr('id');
+        $.ajax({
+          url : 'http://localhost/review/' + replyNo,
+          type : 'DELETE',
+          dataType : 'json'
+        }).done(function (responseData) {
+          // 성공 시 처리되는 함수
+          location.reload(true);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+          // 실패 시 처리되는 함수
+          console.log(textStatus);
+        });
+      });
+    </script>
   <!-- Page Content -->
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Blog Home One
-      <small>Subheading</small>
+    <h1 class="mt-4 mb-3">리뷰 테스트중
+      <small>어렵다</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -95,50 +192,23 @@
     <div class="row">
 
       <!-- Blog Entries Column -->
-      <div class="col-md-8">
+      <div class="col-md-8" id="reviewList">
 
-        <!-- Blog Post -->
+        <!-- Blog Post 
         <div class="card mb-4">
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
           <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <h2 class="card-title"><h3 id="replyNo"></h3><p id="title"></p></h2>
+            <p class="card-text"><p id="useContent"></p>
+            <a href="#" id ="deleteBt" class="btn btn-primary">댓글삭제</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
+            <p id="writeTime"></p>
+            <p>작성자</p><p id="userId"></a>
           </div>
         </div>
-
-        <!-- Blog Post -->
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
-        </div>
-
-        <!-- Blog Post -->
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
-        </div>
-
+		-->
+        
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
           <li class="page-item">
@@ -227,8 +297,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

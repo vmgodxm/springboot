@@ -18,8 +18,8 @@ public class CompanyRepository implements ICompanyRepository {
 	private SqlSession sqlSession;
 
 	@Override
-	public Company getBusinessNumber(String businessNumber) throws Exception {
-		return sqlSession.selectOne("mapper.CompanyMapper.getBusinessNumber", businessNumber);
+	public Company getUserId(String userId) throws Exception {
+		return sqlSession.selectOne("mapper.CompanyMapper.getUserId", userId);
 	}
 
 	@Override
@@ -32,6 +32,15 @@ public class CompanyRepository implements ICompanyRepository {
 		return sqlSession.insert("mapper.CompanyMapper.insertCompany", company);
 	}
 	
+	@Override
+	public int updateCompany(Company company) throws Exception{
+		return sqlSession.update("mapper.CompanyMapper.updateCompany", company);
+	}
+	@Override
+	public int deleteCompany(String userId) throws Exception {
+		return sqlSession.delete("mapper.CompanyMapper.deleteCompany", userId);
+	}
+	/*
 	//사용자 사업자번호 변경시 company,precompany 사업자번호 변경
 	@Override
 	public int updateCompany(Company company,String userId,PreCompany preCompany,String businessNumber,UserRegist userRegist) throws Exception {
@@ -46,9 +55,5 @@ public class CompanyRepository implements ICompanyRepository {
 		//변경된 사업자 번호를 사용자 테이블에 수정
 		return sqlSession.update("mapper.CompanyMapper.updateRegCompany", userRegist);
 	}
-
-	@Override
-	public int deleteCompany(String businessNumber) throws Exception {
-		return sqlSession.delete("mapper.CompanyMapper.deleteCompany", businessNumber);
-	}
+	 */
 }

@@ -15,5 +15,8 @@
 		DELETE FROM filestorage WHERE fileNo = #{fileNo}
 	</delete>
 	
+	<select id="getDeleteFileInfoList" parameterType="String" resultType="com.example.demo.model.DeleteFileInfo">
+		SELECT storageFileName , thumbnailFileName FROM fileStorage WHERE userId = #{userId}
+	</select>
 	
 </mapper>

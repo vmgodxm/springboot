@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import com.example.demo.model.LoginInfo;
+import com.example.demo.model.ResponseData;
 import com.example.demo.model.UserRegist;
 import com.example.demo.repository.interfaces.IAuthRepository;
 import com.example.demo.repository.interfaces.IUserRepository;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -29,17 +29,24 @@ public class UserController {
     private IAuthRepository authRepository;
 
     @PostMapping(path = "/user/login")
-    public ResponseEntity<Boolean> loginUser(@RequestBody LoginInfo loginInfo) {
-        ResponseEntity<Boolean> retVal = new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+    public ResponseEntity<ResponseData> loginUser(HttpEntity<LoginInfo> httpEntity) {
+        ResponseEntity<ResponseData> retVal = new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
+        ResponseData responseData = new ResponseData();        
         try {
+            LoginInfo loginInfo = httpEntity.getBody();
             String userId = userRepository.getUserId(loginInfo.getUserId());
             if (userId != null) {
                 authRepository.insertAuthentication(loginInfo);
-                retVal = new ResponseEntity<>(true, HttpStatus.OK);
+
+                responseData.setIsSuccess(true);
+                responseData.setData(userId);
+                retVal = new ResponseEntity<>(responseData, HttpStatus.OK);
             }
         } catch (Exception e) {
-            retVal = new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+            responseData.setIsSuccess(true);
+            responseData.setMessage("login failure");
+            retVal = new ResponseEntity<>(responseData, HttpStatus.BAD_REQUEST);
         }
 
         return retVal;

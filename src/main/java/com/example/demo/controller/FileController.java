@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.FileStorage;
-import com.example.demo.repository.interfaces.IFileRepository;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,11 +11,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.DeleteFileInfo;
+import com.example.demo.model.FileStorage;
+import com.example.demo.repository.interfaces.IFileRepository;
+import com.example.demo.service.FileUploadDownloadService;
+
 @RestController
 public class FileController {
 
 	@Autowired
 	private IFileRepository repository;
+	
+	@Autowired
+    private FileUploadDownloadService service;
 	
 	@GetMapping(path = "/filetest")
 	public FileStorage getFileInfo(@RequestParam(required=true, defaultValue="1")Long fileNo ) throws Exception {
@@ -39,7 +46,18 @@ public class FileController {
         return repository.updateFile(file);
     }
 	 	
-	
+	@DeleteMapping(path = "/fileUpload/{userId}" )
+    public boolean deleteDeletFileList(@PathVariable String userId) throws Exception {
+		List<DeleteFileInfo> deleteFilelist = repository.getDeleteFileInfoList(userId);
+		boolean result = service.deleteFile(deleteFilelist);
+		
+		return result;
+	}
+//	
+//	@DeleteMapping("/deleteFiles")
+//    public  boolean deleteFiles(List<DeleteFileInfo> deleteFilelist){
+//        return service.deleteFile(deleteFilelist);
+//    }
 	
 	
 }

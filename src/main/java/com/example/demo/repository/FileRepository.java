@@ -1,7 +1,10 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.DeleteFileInfo;
 import com.example.demo.model.FileStorage;
 import com.example.demo.repository.interfaces.IFileRepository;
+
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,11 @@ public class FileRepository implements IFileRepository {
 	@Override
 	public int deleteFile(String fileNo) throws Exception{
 		return sqlSession.delete("mapper.FileStorageMapper.deleteFile", fileNo);
+	}
+
+	@Override
+	public List<DeleteFileInfo> getDeleteFileInfoList(String userId) throws Exception {
+		return sqlSession.selectList("mapper.FileStorageMapper.getDeleteFileInfoList", userId);
 	}
 	
 	

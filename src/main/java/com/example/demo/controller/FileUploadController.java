@@ -23,7 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
- 
+
+import com.example.demo.model.DeleteFileInfo;
 import com.example.demo.payload.FileUploadResponse;
 import com.example.demo.property.FileUploadProperties;
 import com.example.demo.service.FileUploadDownloadService;
@@ -43,18 +44,19 @@ public class FileUploadController {
     @Autowired
     public FileUploadController(FileUploadProperties prop) {
     	filelocation = Paths.get(prop.getUploadDir())
-         //        .toAbsolutePath().normalize();  //서버의 절대경로
-    	.normalize();
+                 .toAbsolutePath().normalize();  //서버의 절대경로
+    	//.normalize();
 	}
     
     @PostMapping("/uploadFile")
-    public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public FileUploadResponse uploadFile( MultipartFile file) {
+    //public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = service.storeFile(file);
         
         
         //파일 경로 요청
         String fileStorageName = filelocation.toString();
-        String fileThumbNailName = fileName.substring(fileName.lastIndexOf(".")+1) +"_th.JPG"; //확장자 이름 변경 - 실제 변경은 섬네일 imageio가 변경
+        String fileThumbNailName = fileName.replace(fileName.substring(fileName.lastIndexOf(".")), "_th.JPG") ; //확장자 이름 변경 - 실제 변경은 섬네일 imageio가 변경
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                                 .path("/downloadFile/")
                                 .path(fileName)
@@ -70,6 +72,10 @@ public class FileUploadController {
                 .map(file -> uploadFile(file))
                 .collect(Collectors.toList());
     }
+    
+    
+    
+    
     
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request){

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.AuthenticationMapper">
+    <select id="selectAuthentication" parameterType="String" resultType="com.example.demo.model.LoginInfo">
+        SELECT userId, apiKey, userLevel FROM authentication WHERE userId = #{userId}
+    </select>
+
     <insert id="insertAuthentication" parameterType="com.example.demo.model.LoginInfo">
         INSERT INTO 
             authentication(authNo, userId, apiKey, loginTime, userLevel)
@@ -15,13 +19,12 @@
             (authHistory_hisNo_SEQ.nextVal, #{userId}, #{apiKey}, sysdate, #{userLevel})
     </insert>
 
-    <update id="updateAPIKeyToNull" parameterType="com.example.demo.model.LoginInfo">
-        UPDATE authentication SET 
-            apiKey = '' 
+    <delete id="deleteAuthentication">
+        DELETE FROM authentication 
         WHERE 
             userId = #{userId} AND
             apiKey = #{apiKey}
-    </update>
+    </delete>
 
     <update id="updateHistoryLogoutTime" parameterType="com.example.demo.model.LoginInfo">
         UPDATE authenticationHistory SET 

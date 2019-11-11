@@ -14,17 +14,22 @@ public class AuthRepository implements IAuthRepository {
     private SqlSession sqlSession;
     
     @Override
-    public int insertAuthentication(LoginInfo loginInfo) {
+    public LoginInfo getAuthencication(String userId) {
+        return sqlSession.selectOne("mapper.AuthenticationMapper.selectAuthentication", userId);
+    }
 
+    @Override
+    public int insertAuthentication(LoginInfo loginInfo) {
         sqlSession.insert("mapper.AuthenticationMapper.insertAuthentication", loginInfo);
         return sqlSession.insert("mapper.AuthenticationMapper.insertAuthenticationHistory", loginInfo);
     }
 
     @Override
     public int updateLogout(LoginInfo loginInfo) {
-
-        sqlSession.update("mapper.AuthenticationMapper.updateAPIKeyToNull", loginInfo);
+        sqlSession.delete("mapper.AuthenticationMapper.deleteAuthentication", loginInfo);
         return sqlSession.update("mapper.AuthenticationMapper.updateHistoryLogoutTime", loginInfo);
     }
+
+    
     
 }

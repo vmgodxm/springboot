@@ -16,7 +16,7 @@ function checkLoginState() {               // Called when a person is finished w
                         type: "POST",
                         data: JSON.stringify(loginInfo),
                         dataType: 'json',
-                        accept : 'application/json',
+                        accept: 'application/json',
                         contentType: 'application/json;charset=utf-8'
                     }).done(function (responseData) {
                         // 성공 시 처리되는 함수
@@ -41,7 +41,7 @@ function checkLoginState() {               // Called when a person is finished w
             );
         }
     });
-}
+};
 
 function setCookie(cookieName, value, days) {
     var exdate = new Date();
@@ -50,7 +50,7 @@ function setCookie(cookieName, value, days) {
 
     var cookie_value = escape(value) + ((days == null) ? '' : ';    expires=' + exdate.toUTCString());
     document.cookie = cookieName + '=' + cookie_value;
-}
+};
 
 function getCookie(cookieName) {
     var x, y;
@@ -64,7 +64,21 @@ function getCookie(cookieName) {
             return unescape(y); // unescape로 디코딩 후 값 리턴
         }
     }
-}
+};
+
+function deleteCookie(cookieName) {
+    var expireCookie = "";
+    expireCookie += `${cookieName}=""`;
+    expireCookie += "expires=" + new Date().toUTCString();
+
+    // 쿠키에 넣는다.
+    document.cookie = expireCookie;
+
+    //어제 날짜를 쿠키 소멸 날짜로 설정한다.
+    // expireDate.setDate(expireDate.getDate() - 1);
+    // var st = cookieName + "= " + " " + "; expires=" + expireDate.toGMTString() + "; path=/";
+    // document.cookie = st;
+};
 
 window.fbAsyncInit = function () {
     FB.init({

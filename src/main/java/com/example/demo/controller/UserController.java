@@ -53,13 +53,14 @@ public class UserController {
     }
 
     @PostMapping(path = "/user/logout")
-    public HttpStatus logoutAdmin(HttpEntity<LoginInfo> httpEntity) throws Exception {
+    public HttpStatus logoutAdmin(HttpEntity<String> httpEntity) throws Exception {
 
         HttpStatus httpStatus = HttpStatus.OK;
 
         try {
-            LoginInfo loginInfo = httpEntity.getBody();
-            if (loginInfo != null) {
+            String userId = httpEntity.getBody();
+            if (userId != null) {
+                LoginInfo loginInfo = authRepository.getAuthencication(userId);
                 authRepository.updateLogout(loginInfo);
             }
         } catch (Exception e) {

@@ -3,11 +3,14 @@ package com.example.demo.model;
 //사업장 테이블 
 public class Company {
 
+	// 사용자ID
+	private String userId;
+
 	// 사업자 번호
 	private String businessNumber;
 
 	// 지역번호
-	private String regionNo;
+	private int regionNo;
 
 	// 사업장 이름
 	private String companyName;
@@ -16,21 +19,24 @@ public class Company {
 	private String companyAddress;
 
 	public Company() {
+
 	}
 
-	public Company(String businessNumber, String regionNo, String companyName, String companyAddress) {
+	public Company(String userId, String businessNumber, int regionNo, String companyName, String companyAddress) {
 		super();
+		this.userId = userId;
 		this.businessNumber = businessNumber;
 		this.regionNo = regionNo;
 		this.companyName = companyName;
 		this.companyAddress = companyAddress;
 	}
-	
 
-	public Company(String businessNumber, String companyName) {
-		super();
-		this.businessNumber = businessNumber;
-		this.companyName = companyName;
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getBusinessNumber() {
@@ -41,11 +47,11 @@ public class Company {
 		this.businessNumber = businessNumber;
 	}
 
-	public String getRegionNo() {
+	public int getRegionNo() {
 		return regionNo;
 	}
 
-	public void setRegionNo(String regionNo) {
+	public void setRegionNo(int regionNo) {
 		this.regionNo = regionNo;
 	}
 
@@ -65,12 +71,20 @@ public class Company {
 		this.companyAddress = companyAddress;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Company [businessNumber=" + businessNumber + ", regionNo=" + regionNo + ", companyName=" + companyName
-				+ ", companyAddress=" + companyAddress + "]";
+		return "Company [userId=" + userId + ", businessNumber=" + businessNumber + ", regionNo=" + regionNo
+				+ ", companyName=" + companyName + ", companyAddress=" + companyAddress + "]";
 	}
+	
+	
 
+
+
+	
 	
 	
 

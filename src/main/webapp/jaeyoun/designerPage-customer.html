@@ -43,71 +43,13 @@
             </div>
           </li>
           <!--
-            
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">디자이너 정보</a>
-          </li>
-        
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-      -->
+        -->
          <li class="nav-item">
             <a class="nav-link" href="designerPage.html">Designer Page</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Mypages.html">My Page</a>
           </li>
-          <!-- 
-
-           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Jaeyoun
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="blog-post.html">jaeyoun-1</a>
-                <a class="dropdown-item" href="blog-home-1.html">jaeyoun-2</a>
-                <a class="dropdown-item" href="bootstrap/portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            -->
-            <!--
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Portfolio
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Blog
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-              <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-              <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-              <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Other Pages
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-              <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-              <a class="dropdown-item" href="sidebar.html">정보수정</a>
-              <a class="dropdown-item" href="faq.html">FAQ</a>
-              <a class="dropdown-item" href="404.html">404</a>
-              <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-            </div>
-          </li>
-            -->
             <!-- 검색창-->
           <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -152,8 +94,55 @@
       </div>
       <!-- Content Column -->
       <div class="col-lg-9 mb-4">
-        <h2>예약현황 출력</h2>
-        <p>사이드바 고정시키고 오른쪽에 페이지만 변경하는 걸로 수정해야함</p>
+        <h2>고객리스트</h2>
+         <table class="table table-striped">
+        <!-- 내역 테스트-->
+        <thead>
+    <tr>
+      <th>등록번호</th>
+      <th>예약일</th>
+      <th>이름</th>
+      <th>연락처</th>
+      <th>완료여부</th>
+      <th>후기</th>
+    </tr> 
+    </thead>
+    <tbody>
+    <tr>
+      <th>1</th>
+      <th>2019-11-11</th>
+      <th>유산슬</th>
+      <th>010-4567-8998</th>
+      <th>완료</th>
+      <th> <a class="btn btn-primary" href="#">후기</a></th>
+    </tr>
+    <tr>
+      <th>2</th>
+      <th>2019-11-11</th>
+      <th>유산슬</th>
+      <th>010-4567-8998</th>
+      <th>미완료</th>
+      <th> <a class="btn btn-primary" href="#">후기</a></th>
+    </tr>
+    <tr>
+      <th>3</th>
+      <th>2019-11-11</th>
+      <th>유산슬</th>
+      <th>010-4567-8998</th>
+      <th>미완료</th>
+      <th> <a class="btn btn-primary" href="#">후기</a></th>
+    </tr>
+    </tbody> 
+       </table>
+       <hr/>
+       <div class="text-center">
+        <ul class="pagination">
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+        </ul>
+       </div>
       </div>
     </div>
     <!-- /.row -->

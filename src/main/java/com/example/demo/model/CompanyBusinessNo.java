@@ -14,7 +14,6 @@ public class CompanyBusinessNo {
 	private UserRegist userRegist;
 	
 	public CompanyBusinessNo() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public CompanyBusinessNo(String userId, PreCompany preCompany, String businessNumber, Company company,

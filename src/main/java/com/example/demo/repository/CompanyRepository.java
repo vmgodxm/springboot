@@ -2,14 +2,12 @@ package com.example.demo.repository;
 
 import java.util.List;
 
+import com.example.demo.model.Company;
+import com.example.demo.repository.interfaces.ICompanyRepository;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.example.demo.model.Company;
-import com.example.demo.model.PreCompany;
-import com.example.demo.model.UserRegist;
-import com.example.demo.repository.interfaces.ICompanyRepository;
 
 @Repository
 public class CompanyRepository implements ICompanyRepository {

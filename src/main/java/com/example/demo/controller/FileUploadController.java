@@ -6,9 +6,13 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
- 
+
 import javax.servlet.http.HttpServletRequest;
- 
+
+import com.example.demo.payload.FileUploadResponse;
+import com.example.demo.property.FileUploadProperties;
+import com.example.demo.service.FileUploadDownloadService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +27,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import com.example.demo.model.DeleteFileInfo;
-import com.example.demo.payload.FileUploadResponse;
-import com.example.demo.property.FileUploadProperties;
-import com.example.demo.service.FileUploadDownloadService;
  
 @RestController
 public class FileUploadController {

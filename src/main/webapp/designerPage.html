@@ -16,18 +16,41 @@
   <link href="bootstrap/css/modern-business.css" rel="stylesheet">
 
 </head>
-
 <body>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
     
     window.onload=   
    $(function(){
       $("#contents").load("index-menu.html");
     });
+   	$(window).load('designerPage-reservation.html');
+    </script>
+   <script> 
+  	function hairstyle() {
+  	$('#change').load('designerPage-hairstyle.html');
+  	}
+  	function timetable() {
+  	$('#change').load('designerPage-timetable.html');
+  	}
+  	function reservation() {
+  	$('#change').load('designerPage-reservation.html');
+  	}
+  	function customer() {
+  	$('#change').load('designerPage-customer.html');
+  	}
+  	function info() {
+  	$('#change').load('designerPage-info.html');
+  	}
+  	function fileupload() {
+  	$('#change').load('uploadfile.html');
+  	}
+  </script>
+
     </script>
   <!-- Navigation -->
   <div id="contents"></div>
+
   <!-- Page Content -->
   <div class="container">
 
@@ -48,17 +71,16 @@
       <!-- Sidebar Column -->
       <div class="col-lg-3 mb-4">
         <div class="list-group">
-          <a href="designerPage-timetable.html" class="list-group-item active">영업시간</a>
-          <a href="designerPage-reservation.html" class="list-group-item">예약현황</a>
-          <a href="designerPage-hairstyle.html" class="list-group-item">헤어스타일 관리</a>
-          <a href="designerPage-customer.html" class="list-group-item">고객현황</a>
-          <a href="designerPage-info.html" class="list-group-item">정보수정</a>
+          <a href="javascript:reservation();" class="list-group-item">예약현황</a>
+          <a href="javascript:hairstyle();" class="list-group-item">헤어스타일 관리</a>
+          <a href="javascript:timetable();" class="list-group-item">영업시간</a>
+          <a href="javascript:customer();" class="list-group-item">고객현황</a>
+          <a href="javascript:info();" class="list-group-item">정보수정</a>
         </div>
       </div>
       <!-- Content Column -->
       <div class="col-lg-9 mb-4">
-        <h2>예약현황 출력</h2>
-        <p>사이드바 고정시키고 오른쪽에 페이지만 변경하는 걸로 수정해야함</p>
+         <span class="col-lg-9" id="change"></span>
       </div>
     </div>
     <!-- /.row -->
@@ -66,8 +88,8 @@
   </div>
   <!-- /.container -->
 
-   <!-- Footer -->
-  <script>
+  <!-- Footer -->
+    <script>
 window.onload=   
    $(function(){
       $("#index-footer").load("index-footer.html");

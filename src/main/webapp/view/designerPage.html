@@ -9,81 +9,70 @@
   <meta name="author" content="">
 
   <title>Modern Business - Start Bootstrap Template</title>
-	
+
   <!-- Bootstrap core CSS -->
-  <link href="../bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../bootstrap/css/modern-business.css" rel="stylesheet">
-  
-   <!-- Bootstrap core JavaScript -->
-  <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../bootstrap/vendor/jquery/jquery.ajax-cross-origin.min.js"></script>
-  
-  
-  <script>
-  	window.onload = function() {
-  	 
- 	$('#content').load('./designerPage-reservation.html');
-  	
-  	 
-  	 
-  	};
-  	
-  	function hairstyle() {
-  	
-  	$('#content').load('./designerPage-hairstyle.html');
-  	}
-  	
-  	function timetable() {
-  	
-  	$('#content').load('designerPage-timetable.html');
-  	}
-  	
-  	function reservation() {
-  	
-  	$('#content').load('designerPage-reservation.html');
-  	}
-  	
-  	function customer() {
-  	
-  	$('#content').load('designerPage-customer.html');
-  	}
-  	
-  	function info() {
-  	
-  	$('#content').load('designerPage-info.html');
-  	}
-  	
-  	function fileupload() {
-  	
-  	$('#content').load('uploadfile.html');
-  	}
-  </script>
+  <link href="css/modern-business.css" rel="stylesheet">
 
 </head>
 
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+      <a class="navbar-brand" href="index.html">HairStargram</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <li class="nav-item">
+            <a class="nav-link" href="facebookLogin.html">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              HairStyle
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="portfolio-4-col.html">염색</a>
+              <a class="dropdown-item" href="portfolio-4-col.html">파마</a>
+              <a class="dropdown-item" href="portfolio-4-col.html">커트</a>
+            </div>
           </li>
+          <!--
+            
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">디자이너 정보</a>
+          </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
+      -->
+         <li class="nav-item">
+            <a class="nav-link" href="designerPage.html">Designer Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Mypages.html">My Page</a>
+          </li>
+          <!-- 
+
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jaeyoun
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                <a class="dropdown-item" href="blog-post.html">jaeyoun-1</a>
+                <a class="dropdown-item" href="blog-home-1.html">jaeyoun-2</a>
+                <a class="dropdown-item" href="bootstrap/portfolio-item.html">Single Portfolio Item</a>
+              </div>
+            </li>
+            -->
+            <!--
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Portfolio
@@ -106,18 +95,29 @@
               <a class="dropdown-item" href="blog-post.html">Blog Post</a>
             </div>
           </li>
-          <li class="nav-item active dropdown">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Other Pages
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
               <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-              <a class="dropdown-item active" href="sidebar.html">Sidebar Page</a>
+              <a class="dropdown-item" href="sidebar.html">정보수정</a>
               <a class="dropdown-item" href="faq.html">FAQ</a>
               <a class="dropdown-item" href="404.html">404</a>
               <a class="dropdown-item" href="pricing.html">Pricing Table</a>
             </div>
           </li>
+            -->
+            <!-- 검색창-->
+          <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--
+        <button type="submit" class="btn btn-default">Submit</button>
+        -->
+      </form>
+
         </ul>
       </div>
     </div>
@@ -127,8 +127,8 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Designer - MyPage
-      <small>정보수정</small>
+    <h1 class="mt-4 mb-3">Designer Page
+      <small>Subheading</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -143,22 +143,18 @@
       <!-- Sidebar Column -->
       <div class="col-lg-3 mb-4">
         <div class="list-group">
-          <a href="javascript:reservation();" class="list-group-item">예약현황</a>
-          <a href="javascript:hairstyle();" class="list-group-item">헤어스타일 관리</a>
-          <a href="javascript:timetable();" class="list-group-item">영업시간</a>
-          <a href="javascript:customer();" class="list-group-item">고객현황</a>
-          <a href="javascript:info();" class="list-group-item">정보수정</a>
-    
+          <a href="designerPage-timetable.html" class="list-group-item active">영업시간</a>
+          <a href="designerPage-reservation.html" class="list-group-item">예약현황</a>
+          <a href="designerPage-hairstyle.html" class="list-group-item">헤어스타일 관리</a>
+          <a href="designerPage-customer.html" class="list-group-item">고객현황</a>
+          <a href="designerPage-info.html" class="list-group-item">정보수정</a>
         </div>
       </div>
-      
       <!-- Content Column -->
-      <span class="col-lg-9" id="content"> My page 	</span>
-      	
-    
-      
-      
-	  
+      <div class="col-lg-9 mb-4">
+        <h2>예약현황 출력</h2>
+        <p>사이드바 고정시키고 오른쪽에 페이지만 변경하는 걸로 수정해야함</p>
+      </div>
     </div>
     <!-- /.row -->
 
@@ -173,8 +169,9 @@
     <!-- /.container -->
   </footer>
 
- 
- 
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

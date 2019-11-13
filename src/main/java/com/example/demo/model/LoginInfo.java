@@ -6,11 +6,11 @@ package com.example.demo.model;
 public class LoginInfo {
     private String userId;
     private String apiKey;
-    private int userLevel;
+    private long userLevel;
 
     public LoginInfo() { }
 
-    public LoginInfo(String userId, String apiKey, int userLevel) {
+    public LoginInfo(String userId, String apiKey, long userLevel) {
         this.userId = userId;
         this.apiKey = apiKey;
         this.userLevel = userLevel;
@@ -32,11 +32,11 @@ public class LoginInfo {
         this.apiKey = apiKey;
     }
 
-    public int getUserLevel() {
+    public long getUserLevel() {
         return this.userLevel;
     }
 
-    public void setUserLevel(int userLevel) {
+    public void setUserLevel(long userLevel) {
         this.userLevel = userLevel;
     }
 

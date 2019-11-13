@@ -11,7 +11,7 @@
   <title>Modern Business - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
@@ -26,32 +26,37 @@
   <script>
     window.onload = function () {
       var userId = getCookie('userId');
-      if (userId != null) {
+      if (userId != null && userId != "") {
         $('#liLogin').html('Logout');
         $('#userId').html(userId);
       }
 
       $('#liLogin').on('click', function (e) {
         var userId = getCookie('userId');
-        $.ajax({
-          url: `/user/logout`,
-          type: "POST",
-          data: userId,
-          dataType: 'json',
-          accept: 'application/json',
-          contentType: 'application/json;charset=utf-8'
-        }).done(function (responseData) {
-          // 성공 시 처리되는 함수
-          console.log(responseData);
-          if (responseData == 'OK') {
-            deleteCookie('userId');
-            $('#liLogin').html('Login');
-            $('#userId').html('');
-          }
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-          // 실패 시 처리되는 함수
-          console.log(jqXHR.responseText);
-        });
+        if (userId == undefined) {
+          window.location.href = 'facebookLogin.html';
+        } else {
+          $.ajax({
+            url: `/user/logout`,
+            type: "POST",
+            data: userId,
+            dataType: 'json',
+            accept: 'application/json',
+            contentType: 'application/json;charset=utf-8'
+          }).done(function (responseData) {
+            // 성공 시 처리되는 함수
+            console.log(responseData);
+            if (responseData == 'OK') {
+              deleteCookie('userId');
+              $('#liLogin').html('Login');
+              $('#userId').html('');
+            }
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            // 실패 시 처리되는 함수
+            console.log(jqXHR.responseText);
+          });
+        }
+
       });
     };
   </script>
@@ -81,9 +86,6 @@
               aria-haspopup="true" aria-expanded="false">
               헤어스타일
             </a>
-             <li class="nav-item">
-              <a class="nav-link" href="bootstrap/facebookLogin.html">Login</a>
-          </li>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
               <a class="dropdown-item" href="portfolio-4-col.html">염색</a>
               <a class="dropdown-item" href="portfolio-4-col.html">파마</a>
@@ -209,43 +211,62 @@
 
     <!-- Marketing Icons Section -->
     <div class="row">
-      <div class="col-lg-4 mb-4">
+       <div class="col-lg-2 col-sm-9 portfolio-item">
         <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
-              neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">44dddddddddddddddddddddddddddddddddddddddddddddd4</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 mb-4">
+      <div class="col-lg-2 col-sm-9 portfolio-item">
         <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam
-              perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut
-              consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">sdfsdf</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 mb-4">
+          <div class="col-lg-2 col-sm-9 portfolio-item">
         <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
-              neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">dsfsdfsdf</p>
           </div>
         </div>
       </div>
+       <div class="col-lg-2 col-sm-9 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">sdfsdf</p>
+          </div>
+        </div>
+      </div>
+       <div class="col-lg-2 col-sm-9 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">sdfsdf</p>
+          </div>
+        </div>
+      </div>
+      
     </div>
     <!-- /.row -->
 
@@ -253,7 +274,7 @@
     <h2>추천 헤어스타일</h2>
 
     <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-2 col-sm-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
@@ -266,7 +287,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-2 col-sm-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
@@ -278,7 +299,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-2 col-sm-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
@@ -291,7 +312,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-2 col-sm-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
@@ -303,7 +324,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-2 col-sm-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
@@ -315,7 +336,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-2 col-sm-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Login</title>
+    <title>헤어스타그램 - 로그인</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,11 +24,19 @@
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/hairStargram/facebook.js"></script>
+    <script>
+        window.onload = function () {
+            $('#header').load('header.html');
+        };
+    </script>
 </head>
 
 <body class="bg-dark">
 
     <div id="container" class="container">
+        <div id="header">
+
+        </div>
         <div class="card card-login mx-auto mt-5">
             <div class="card-header">Login</div>
             <div class="card-body">
@@ -48,13 +56,13 @@
                         </div>
                     </div>
                     <div class="container" style="display: inline-block;text-align: center;">
-                        <div class="fb-login-button" data-width="50" data-size="large" data-button-type="login_with"
-                            data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();">
+                        <div class="fb-login-button" scope="public_profile,email" data-width="50" data-size="large" data-button-type="login_with"
+                            data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState()">
                         </div>
                     </div>
                 </form>
                 <div class="text-center">
-                    <a class="d-block small mt-3" href="register.html">Register an Account</a>
+                    <a class="d-block small mt-3" href="join.html">Register an Account</a>
                     <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
                 </div>
             </div>

@@ -31,7 +31,7 @@
         $('#userId').html(userId);
       }
 
-      $('#liLogin').on('click', function (e) {
+      $(document).on('click', '#liLogin', function (e) {
         var userId = getCookie('userId');
         if (userId == undefined) {
           window.location.href = 'facebookLogin.html';

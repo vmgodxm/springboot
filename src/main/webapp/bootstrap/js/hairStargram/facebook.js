@@ -1,13 +1,13 @@
+
+
 function checkLoginState() {               // Called when a person is finished with the Login Button.
     FB.getLoginStatus(function (response) {   // See the onlogin handler
         var authInfo = response.authResponse;
         if (authInfo != null) {
-            FB.api('/' + authInfo.userID + '/?fields=id,name,email', 'GET', {},
-                function (response) {
+            FB.api('/me', {fields: 'email,name'}, function(response) {
                     var loginInfo = {
                         userId: response.email,
                         apiKey: authInfo.accessToken,
-                        userLevel: 1
                     };
 
                     // // 사용자 email을 받아왔다면 서버에 저장한다.
@@ -33,7 +33,7 @@ function checkLoginState() {               // Called when a person is finished w
                             // 서버에 사용자 정보가 없으므로, 사용자에게 회원가입 여부를 물어본다.
                             var result = confirm("회원정보가 없습니다. 회원가입을 하시겠습니까?");
                             if (result == true) {
-                                window.location.href = 'register.html';
+                                window.location.href = 'join.html';
                             }
                         }
                     });
@@ -43,42 +43,6 @@ function checkLoginState() {               // Called when a person is finished w
     });
 };
 
-function setCookie(cookieName, value, days) {
-    var exdate = new Date();
-    exdate.setDate(exdate.getDate() + days);
-    // 설정 일수만큼 현재시간에 만료값으로 지정
-
-    var cookie_value = escape(value) + ((days == null) ? '' : ';    expires=' + exdate.toUTCString());
-    document.cookie = cookieName + '=' + cookie_value;
-};
-
-function getCookie(cookieName) {
-    var x, y;
-    var val = document.cookie.split(';');
-
-    for (var i = 0; i < val.length; i++) {
-        x = val[i].substr(0, val[i].indexOf('='));
-        y = val[i].substr(val[i].indexOf('=') + 1);
-        x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
-        if (x == cookieName) {
-            return unescape(y); // unescape로 디코딩 후 값 리턴
-        }
-    }
-};
-
-function deleteCookie(cookieName) {
-    var expireCookie = "";
-    expireCookie += `${cookieName}=""`;
-    expireCookie += "expires=" + new Date().toUTCString();
-
-    // 쿠키에 넣는다.
-    document.cookie = expireCookie;
-
-    //어제 날짜를 쿠키 소멸 날짜로 설정한다.
-    // expireDate.setDate(expireDate.getDate() - 1);
-    // var st = cookieName + "= " + " " + "; expires=" + expireDate.toGMTString() + "; path=/";
-    // document.cookie = st;
-};
 
 window.fbAsyncInit = function () {
     FB.init({
@@ -87,7 +51,6 @@ window.fbAsyncInit = function () {
         xfbml: true,                     // Parse social plugins on this webpage.
         version: 'v5.0'           // Use this Graph API version for this call.
     });
-
 
     FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
         statusChangeCallback(response);        // Returns the login status.
@@ -102,3 +65,40 @@ window.fbAsyncInit = function () {
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+function setCookie(cookieName, value, days) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + days);
+    // 설정 일수만큼 현재시간에 만료값으로 지정
+
+    var cookie_value = escape(value) + ((days == null) ? '' : '; expires=' + exdate.toUTCString());
+    document.cookie = cookieName + '=' + cookie_value;
+};
+
+function getCookie(cookieName) {
+    var x, y;
+    var val = document.cookie.split(';');
+
+    for (var i = 0; i < val.length; i++) {
+        x = val[i].substr(0, val[i].indexOf('='));
+        y = val[i].substr(val[i].indexOf('=') + 1);
+        x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+        if (x == cookieName && y != "") {
+            return unescape(y); // unescape로 디코딩 후 값 리턴
+        }
+    }
+};
+
+function deleteCookie(cookieName) {
+    var expireCookie = "";
+    expireCookie += `${cookieName}=`;
+    //expireCookie += "expires=" + new Date().toUTCString();
+
+    // 쿠키에 넣는다.
+    document.cookie = expireCookie;
+
+    //어제 날짜를 쿠키 소멸 날짜로 설정한다.
+    // expireDate.setDate(expireDate.getDate() - 1);
+    // var st = cookieName + "= " + " " + "; expires=" + expireDate.toGMTString() + "; path=/";
+    // document.cookie = st;
+};

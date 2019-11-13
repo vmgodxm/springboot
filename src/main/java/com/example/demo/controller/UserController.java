@@ -35,12 +35,13 @@ public class UserController {
         ResponseData responseData = new ResponseData();        
         try {
             LoginInfo loginInfo = httpEntity.getBody();
-            String userId = userRepository.getUserId(loginInfo.getUserId());
-            if (userId != null) {
+            UserRegist user = userRepository.getUser(loginInfo.getUserId());
+            if (user != null) {
+                loginInfo.setUserLevel(user.getUserLevel());
                 authRepository.insertAuthentication(loginInfo);
 
                 responseData.setIsSuccess(true);
-                responseData.setData(userId);
+                responseData.setData(user.getUserId());
                 retVal = new ResponseEntity<>(responseData, HttpStatus.OK);
             }
         } catch (Exception e) {
@@ -55,13 +56,14 @@ public class UserController {
     @PostMapping(path = "/user/logout")
     public HttpStatus logoutAdmin(HttpEntity<String> httpEntity) throws Exception {
 
-        HttpStatus httpStatus = HttpStatus.OK;
+        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
 
         try {
             String userId = httpEntity.getBody();
             if (userId != null) {
                 LoginInfo loginInfo = authRepository.getAuthencication(userId);
                 authRepository.updateLogout(loginInfo);
+                httpStatus = HttpStatus.OK;
             }
         } catch (Exception e) {
             httpStatus = HttpStatus.BAD_GATEWAY;

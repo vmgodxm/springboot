@@ -66,8 +66,8 @@
           <div class="form-group">
             <div class="form-label-group">
               <select class="custom-select" name="gender">
-                <option value="0" selected="selected">남성</option>
-                <option value="1">여성</option>
+                <option value="0" selected="selected">Man</option>
+                <option value="1">Woman</option>
               </select>
             </div>
           </div>
@@ -85,18 +85,36 @@
             </div>
           </div>
           <div class="form-group">
-              <div class="form-label-group">
-                <select class="custom-select" name="region">
-                  <option value="0" selected="selected">서울</option>
-                  <option value="1">경기</option>
-                  <option value="2">부산</option>
-                </select>
-              </div>
+            <div class="form-label-group">
+              <select class="custom-select" name="region">
+                <option value="0" selected="selected">서울</option>
+                <option value="1">경기</option>
+                <option value="2">부산</option>
+              </select>
             </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group2">
+              <input type="text" name="businessNumber" id="businessNumber" class="form-control-sm"
+                placeholder="businessNumber" required="required">
+              <label for="businessNumber">사업자 번호</label>
+              <a id="btn" class="btn btn-primary btn-block-sm" href="#">인증하기</a>
+            </div>
+
+          </div>
+          <!-- <div class="form-group">
+            <div class="form-label-group2">
+              <input type="text" name="businessNumber" id="businessNumber" class="form-control-sm"
+                placeholder="businessNumber" required="required">
+              <label for="businessNumber">이전 사업장 주소</label>
+              <a id="btn" class="btn btn-primary btn-block-sm" href="index.html">추가</a>
+            </div>
+          </div> -->
+
           <div class="form-group">
             <div class="form-label-group">
               <input type="hidden" name="userLevel" id="userLevel" class="form-control" placeholder="userLevel"
-                required="required" value="0">
+                required="required" value="1">
             </div>
           </div>
 

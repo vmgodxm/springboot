@@ -1,9 +1,15 @@
-<script>
-  function review(){
-    $("#change").load(blog-reply.html);
-  }
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+  $(function(){
+    $("#review").click(function(){
+      $("#change").load("blog-reply.html");
+    }).done(function(){
+      location.replace('javascript:review()');
+    });
+  });
+
 </script>
-                 <table class="table table-striped">
+   <table class="table table-striped">
         <thead>
     <tr>
       <th>번호</th>
@@ -25,7 +31,7 @@
       <th>010-4567-8998</th>
       <th>해병대머리</th>
       <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-       <th> <a id ="review" class="btn btn-primary" href="javascript:review">평가</a></th>
+       <th> <a id ="review" class="btn btn-primary" href="#">평가</a></th>
     </tr>
        </tbody> 
        </table>

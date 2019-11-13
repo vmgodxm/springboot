@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Modern Business - Start Bootstrap Template</title>
+<!-- Bootstrap core CSS -->
+  <link href="bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="bootstrap/css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+  window.onload=    
+   $(function(){
+      $("#contents").load("index-menu.html");
+    });
+  $(window).load("Mypages-reservation.html");
+    </script>
+<!-- Navigation -->
+<div id="contents"></div>
+  <!-- 이너 페이지 펑션-->
+  <script>
+
+
+    function reservation(){
+      $("#change").load("Mypages-reservation.html");
+    }
+    function hairStyleFav(){
+      $("#change").load("Mypages-hairFav.html");
+    }
+    function designerFav(){
+      $("#change").load("Mypages-designerFav.html");
+    }
+    function history(){
+      $("#change").load("Mypages-history.html");
+    }
+    function myInfo(){
+      $("#change").load("Mypages-info.html");
+    }
+    function review(){
+      $("#change").load("blog-rep ly.html");
+    }
+    
+    </script>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">My Page
+      <small>Subheading</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">MyPage</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Sidebar Column -->
+      <div class="col-lg-3 mb-4">
+        <div class="list-group">
+          <a href="javascript:reservation()" class="list-group-item">예약현황</a>
+          <a href="javascript:hairStyleFav()" class="list-group-item">헤어스타일 즐겨찾기</a>
+          <a href="javascript:designerFav()" class="list-group-item">디자이너 즐겨찾기</a>
+          <a href="javascript:history()" class="list-group-item">이용내역</a>
+          <a href="javascript:myInfo()" class="list-group-item">정보수정</a>
+        </div>
+      </div>
+      <!-- Content Column -->
+      <div class="col-lg-9 mb-4">
+         <table id ="change" class="table table-striped">
+           <script>
+             $("#change").load("Mypages-reservation.html");
+            </script>
+        </table>
+       <hr/>
+       
+      </div>
+    </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <script>
+      window.onload=   
+         $(function(){
+            $("#index-footer").load("index-footer.html");
+          });
+          </script>
+        <!-- Footer -->
+        <div id="index-footer"></div>
+
+  <!-- Bootstrap core JavaScript -->
+<script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -10054,14 +10054,26 @@ a.text-dark:hover, a.text-dark:focus {
 	
 }
 .seul-test{
+	
 	margin-bottom: 2rem !important;
 	margin:10px 5px 5px 5px;
 	border:0px;
-	padding:8px 0px 0px 20px;
+	padding:8px 0px 0px 0px;
 	/*background-color:gold;
 	font-size: 17px;*/
 	font-weight: bold;
 		
+}
+.seul-row {
+  width:1140px;
+  height:40px;
+  box-sizing:border-box;
+  display: -ms-flexbox;
+  display: flex;
+ /* -ms-flex-wrap: wrap;
+  flex-wrap: wrap;*/
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .seul-color{
@@ -10069,8 +10081,17 @@ a.text-dark:hover, a.text-dark:focus {
 	font-weight: bold;
 	color:black;
 }
+
+.seul-color2{
+	font-size:20px;
+	font-weight: bold;
+	color:gray;
+}
 .seul-color:hover{
 	color:pink;
+}
+.seul-color2:hover{
+	color:lightblue;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

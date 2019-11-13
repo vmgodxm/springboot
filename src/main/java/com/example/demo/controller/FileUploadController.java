@@ -35,11 +35,7 @@ public class FileUploadController {
     @Autowired
     private FileUploadDownloadService service;
     
-    //private FileUploadProperties fileStoragePath;
-	/*
-	 * @GetMapping("/") public String controllerMain() { return
-	 * "Hello~ File Upload Test."; }
-	 */
+  
     @Autowired
     public FileUploadController(FileUploadProperties prop) {
     	filelocation = Paths.get(prop.getUploadDir())

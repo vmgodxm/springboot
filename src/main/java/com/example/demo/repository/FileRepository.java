@@ -32,14 +32,17 @@ public class FileRepository implements IFileRepository {
     }
 	
 	@Override
-	public int deleteFile(String fileNo) throws Exception{
+	public int deleteFile(Long fileNo) throws Exception{
 		return sqlSession.delete("mapper.FileStorageMapper.deleteFile", fileNo);
 	}
 
 	@Override
-	public List<DeleteFileInfo> getDeleteFileInfoList(String userId) throws Exception {
-		return sqlSession.selectList("mapper.FileStorageMapper.getDeleteFileInfoList", userId);
+	public List<DeleteFileInfo> getDeleteFileListByUserId(String userId) throws Exception {
+		return sqlSession.selectList("mapper.FileStorageMapper.getDeleteFileListByUserId", userId);
 	}
 	
-	
+	@Override
+	public List<DeleteFileInfo> getDeleteFileListByFileNo(Long fileNo ) throws Exception {
+		return sqlSession.selectList("mapper.FileStorageMapper.getDeleteFileListByFileNo", fileNo);
+	}
 }

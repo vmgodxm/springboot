@@ -9,12 +9,58 @@
   <meta name="author" content="">
 
   <title>Modern Business - Start Bootstrap Template</title>
-
+	
   <!-- Bootstrap core CSS -->
-  <link href="../bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="../bootstrap/css/modern-business.css" rel="stylesheet">
+  
+   <!-- Bootstrap core JavaScript -->
+  <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../bootstrap/vendor/jquery/jquery.ajax-cross-origin.min.js"></script>
+  
+  
+  <script>
+  	window.onload = function() {
+  	 
+ 	$('#content').load('./designerPage-reservation.html');
+  	
+  	 
+  	 
+  	};
+  	
+  	function hairstyle() {
+  	
+  	$('#content').load('./designerPage-hairstyle.html');
+  	}
+  	
+  	function timetable() {
+  	
+  	$('#content').load('designerPage-timetable.html');
+  	}
+  	
+  	function reservation() {
+  	
+  	$('#content').load('designerPage-reservation.html');
+  	}
+  	
+  	function customer() {
+  	
+  	$('#content').load('designerPage-customer.html');
+  	}
+  	
+  	function info() {
+  	
+  	$('#content').load('designerPage-info.html');
+  	}
+  	
+  	function fileupload() {
+  	
+  	$('#content').load('uploadfile.html');
+  	}
+  </script>
 
 </head>
 
@@ -97,37 +143,22 @@
       <!-- Sidebar Column -->
       <div class="col-lg-3 mb-4">
         <div class="list-group">
-          <a href="index.html" class="list-group-item">예약현황</a>
-          <a href="about.html" class="list-group-item">헤어스타일 관리</a>
-          <a href="services.html" class="list-group-item">고객현황</a>
-          <a href="contact.html" class="list-group-item">정보수정</a>
-          <a href="portfolio-1-col.html" class="list-group-item">멍충이</a>
+          <a href="javascript:reservation();" class="list-group-item">예약현황</a>
+          <a href="javascript:hairstyle();" class="list-group-item">헤어스타일 관리</a>
+          <a href="javascript:timetable();" class="list-group-item">영업시간</a>
+          <a href="javascript:customer();" class="list-group-item">고객현황</a>
+          <a href="javascript:info();" class="list-group-item">정보수정</a>
     
         </div>
       </div>
+      
       <!-- Content Column -->
-      <div class="col-lg-9 mb-4">
-        <h2>Section Heading</h2>
-        	<div> 
-        		<form id="uploadForm" enctype="multipart/form-data" method="POST" action="/pentode/upload.do"> 
-	        		<label for="file1">파일 첫 번째</label> 
-	        			<div>
-	        				<input type="file" id="file1" name="file" required="required" />
-	        			</div>
-	        		<label for="file2">파일 두 번째</label> 
-	        			<div>
-	        				<input type="file" id="file2" name="file" required="required" />
-	        			</div> 
-        		</form> 
-        	</div> 
-        	
-        	<div>
-        		<button id="btn-upload">파일 업로드</button>
-        	</div>
-
-
-
-      </div>
+      <span class="col-lg-9" id="content"> My page 	</span>
+      	
+    
+      
+      
+	  
     </div>
     <!-- /.row -->
 
@@ -142,9 +173,8 @@
     <!-- /.container -->
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 
+ 
 
 </body>
 

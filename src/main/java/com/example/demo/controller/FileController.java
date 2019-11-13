@@ -37,18 +37,25 @@ public class FileController {
 	}
 	
 	@DeleteMapping(path="/fileDelete/{fileNo}")
-	public int deleteFile(@PathVariable String fileNo) throws Exception{
+	public int deleteFile(@PathVariable Long fileNo) throws Exception{
 		return repository.deleteFile(fileNo);
 	}
 	
 	@PutMapping(path="/fileUpdate/{fileNo}")
-	public int updateFile(@PathVariable String fileNo, FileStorage file) throws Exception {
+	public int updateFile(@PathVariable Long fileNo, FileStorage file) throws Exception {
         return repository.updateFile(file);
     }
 	 	
-	@DeleteMapping(path = "/fileUpload/{userId}" )
-    public boolean deleteDeletFileList(@PathVariable String userId) throws Exception {
-		List<DeleteFileInfo> deleteFilelist = repository.getDeleteFileInfoList(userId);
+	@DeleteMapping(path = "/fileDeleteStorage/{userId}" )
+    public boolean getDeleteFileListByUserId(@PathVariable String userId) throws Exception {
+		List<DeleteFileInfo> deleteFilelist = repository.getDeleteFileListByUserId(userId);
+		boolean result = service.deleteFile(deleteFilelist);
+		
+		return result;
+	}
+	@DeleteMapping(path = "/fileDeleteStorage/{fileNo}" )
+    public boolean getDeleteFileListByFileNo(@PathVariable Long fileNo) throws Exception {
+		List<DeleteFileInfo> deleteFilelist = repository.getDeleteFileListByFileNo(fileNo);
 		boolean result = service.deleteFile(deleteFilelist);
 		
 		return result;

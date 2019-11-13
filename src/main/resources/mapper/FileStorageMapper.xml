@@ -5,18 +5,25 @@
 		SELECT * FROM filestorage WHERE fileNo = #{fileNo}
 	</select>
 	<insert id="insertFile" parameterType="com.example.demo.model.FileStorage">
-		INSERT INTO fileStorage values (FILESTORAGE_FILENO_SEQ.nextVal, #{filePath}, #{originFileName}, #{storageFileName})
+		INSERT INTO fileStorage values (FILESTORAGE_FILENO_SEQ.nextVal,#{userId}, #{filePath}, #{originFileName}, #{storageFileName}, #{thumbNailFileName})
 	</insert>
 	<update id="updateFile" parameterType="com.example.demo.model.FileStorage"> 
-		UPDATE filestorage SET filePath=#{filePath},originFileName=#{originFileName},storageFileName=#{storageFileName}
+		UPDATE filestorage SET #{userId}, #{filePath}, #{originFileName}, #{storageFileName}, #{thumbNailFileName}
 		WHERE fileNo=#{fileNo}
 	</update>
-	<delete id="deleteFile" parameterType="String" >
+	<delete id="deleteFile" parameterType="Long" >
 		DELETE FROM filestorage WHERE fileNo = #{fileNo}
 	</delete>
 	
-	<select id="getDeleteFileInfoList" parameterType="String" resultType="com.example.demo.model.DeleteFileInfo">
+	<delete id="deleteFileByUserID" parameterType="String" >
+		DELETE FROM filestorage WHERE userId = #{userId}
+	</delete>
+	
+	<select id="getDeleteFileListByUserId" parameterType="String" resultType="com.example.demo.model.DeleteFileInfo">
 		SELECT storageFileName , thumbnailFileName FROM fileStorage WHERE userId = #{userId}
 	</select>
 	
+	<select id="getDeleteFileListByFileNo" parameterType="Long" resultType="com.example.demo.model.DeleteFileInfo">
+		SELECT storageFileName , thumbnailFileName FROM fileStorage WHERE fileNo = #{fileNo}
+	</select>
 </mapper>

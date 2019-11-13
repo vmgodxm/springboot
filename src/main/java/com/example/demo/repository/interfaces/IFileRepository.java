@@ -7,15 +7,17 @@ import com.example.demo.model.FileStorage;
 
 public interface IFileRepository {
 	
-	List<DeleteFileInfo> getDeleteFileInfoList(String userId) throws Exception;
-
 	FileStorage getFile(Long fileNo) throws Exception;
 
 	int insertFile(FileStorage file) throws Exception;
 
 	int updateFile(FileStorage file) throws Exception;
 
-	int deleteFile(String fileNo) throws Exception;
+	int deleteFile(Long fileNo) throws Exception;
+
+	List<DeleteFileInfo> getDeleteFileListByUserId(String userId) throws Exception;
+
+	List<DeleteFileInfo> getDeleteFileListByFileNo(Long fileNo) throws Exception;
 
 	
 	

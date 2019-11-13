@@ -46,6 +46,23 @@ public class FileUploadDownloadService {
         }
     }
     
+    public boolean savefiles(/* 파일 정보 인자, 사용자 아이디 */) {
+    	
+    	// 1. 파일 생성 (반환값이 파일 생성 여부를 반환)
+    	
+    	// { 반복문 실행
+    	
+    	// 1-1. 파일 생성 여부가 true -- 서비스가 실행
+    	// DB에 파일 정보를 저장     -- 따로 함수 안에서 레파지토리에서 실행
+    	
+    	// 1-2. false
+    	//  사용자에게 파일 생성 실패 메시지 전송
+    	
+    	// }
+    	return false;
+    }
+    
+    
     public String storeFile(MultipartFile file)   {
         String originalfileName = StringUtils.cleanPath(file.getOriginalFilename());
         	
@@ -99,7 +116,7 @@ public class FileUploadDownloadService {
     public Resource loadFileAsResource(String fileName) {
         try {
             Path filePath = this.fileLocation.resolve(fileName).normalize();
-            org.springframework.core.io.Resource resource = new UrlResource(filePath.toUri());
+            Resource resource = new UrlResource(filePath.toUri());
             
             if(resource.exists()) {
                 return resource;

@@ -43,7 +43,7 @@
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <select class="custom-select" name="gender">
+              <select class="custom-select" name="gender" id="gender">
                 <option value="0" selected="selected">남성</option>
                 <option value="1">여성</option>
               </select>
@@ -51,7 +51,7 @@
           </div> <!-- 젠더가 1 이면 포스트하기전에 카테고리 벨류 +3 해주는 서비스필요-->
            <div class="form-group">
             <div class="form-label-group">
-              <select class="custom-select" name="categoryNo">
+              <select class="custom-select" name="categoryNo" id="categoryNo">
                 <option value="0" selected="selected">커트</option>
                 <option value="1">펌</option>
                 <option value="2">염색</option>
@@ -115,6 +115,9 @@
 		        		<label for="file1">사진을 선택후 upload 버튼을 눌러주세요. 사진의 비율은 3x4 입니다.</label> 
 		        			<div>
 		        				<input type="file" id="file1" name="file" />
+		        				<span id="getUserId">
+		        				<input type='hidden' name='userId' id="getUserIdtest"  value='test@test.com'>
+		        				</span>
 		        			</div>
 		        	 	<!--<label for="file2">파일 두 번째</label> 
 		        			<div>
@@ -130,13 +133,15 @@
 	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:uploadFile();">upload</a>
 	        	</span>
 	        	<span class="col-lg-3">
-	        		 <a id="btnLogin" class="btn btn-primary " href="#">cancel</a>
+	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:deleteFile();">cancel</a>
 	        	</span>
 	
 	
 	
 </div>
 	      
-
+<script>
+	pageload();
+</script>
 
 	

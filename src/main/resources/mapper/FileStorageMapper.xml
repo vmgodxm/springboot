@@ -4,6 +4,9 @@
 	<select id="getFile" parameterType="Long" resultType="com.example.demo.model.FileStorage">
 		SELECT * FROM filestorage WHERE fileNo = #{fileNo}
 	</select>
+	<select id="getFileNo" parameterType="String" resultType="Long">
+		SELECT fileNo FROM filestorage WHERE storageFileName = #{storageFileName}
+	</select>
 	<insert id="insertFile" parameterType="com.example.demo.model.FileStorage">
 		INSERT INTO fileStorage values (FILESTORAGE_FILENO_SEQ.nextVal,#{userId}, #{filePath}, #{originFileName}, #{storageFileName}, #{thumbNailFileName})
 	</insert>

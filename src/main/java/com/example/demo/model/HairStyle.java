@@ -1,36 +1,36 @@
 package com.example.demo.model;
 
-//?—¤?–´?Š¤????¼ ?…Œ?´ë¸? 
+//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? 
 public class HairStyle {
 
-	// ?—¤?–´?Š¤????¼ ë²ˆí˜¸
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½ ë²ˆí˜¸
 	private Long styleNo;
 
-	// ?„±ë³?
+	// ?ï¿½ï¿½ï¿½?
 	private Long gender;
 
-	// ?—¤?–´?Š¤????¼ ?´ë¦?
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½ ?ï¿½ï¿½ï¿½?
 	private String styleName;
 
 	// ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸
 	private Long categoryNo;
 
-	// ê°?ê²?
+	// ï¿½?ï¿½?
 	private Long price;
 
-	// ?‹œ?ˆ ?‹œê°?(?‹œê°?)
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?(?ï¿½ï¿½ï¿½?)
 	private Long beginHour;
 
-	// ?‹œ?ˆ ?‹œê°?(ë¶?)
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½?(ï¿½?)
 	private Long minute;
 
-	// ?Š¤????¼ ?„¤ëª?
+	// ?ï¿½ï¿½????ï¿½ï¿½ ?ï¿½ï¿½ï¿½?
 	private String styleComment;
 
-	// ?—¤?–´?Š¤????¼ ?ŒŒ?¼ ë²ˆí˜¸
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ë²ˆí˜¸
 	private Long fileNo;
 
-	// ?‚¬?š©? ?•„?´?””
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 	private String userId;
 
 	public HairStyle() {
@@ -52,6 +52,20 @@ public class HairStyle {
 	}
 
 	
+
+	public HairStyle(Long gender, String styleName, Long categoryNo, Long price, Long beginHour, Long minute,
+			String styleComment, Long fileNo, String userId) {
+		super();
+		this.gender = gender;
+		this.styleName = styleName;
+		this.categoryNo = categoryNo;
+		this.price = price;
+		this.beginHour = beginHour;
+		this.minute = minute;
+		this.styleComment = styleComment;
+		this.fileNo = fileNo;
+		this.userId = userId;
+	}
 
 	public Long getStyleNo() {
 		return styleNo;

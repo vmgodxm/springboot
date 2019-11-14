@@ -7,13 +7,14 @@ public class FileUploadResponse {
 	    private String fileThumbNailName;
 	    private String fileStorageName;
 	    private String originalfileName;
+	    private Long fileNo;
 	    
 	 public FileUploadResponse() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public FileUploadResponse(String fileName, String fileDownloadUri, String fileType, String fileThumbNailName,
-			String fileStorageName, String originalfileName) {
+			String fileStorageName, String originalfileName, Long fileNo) {
 		super();
 		this.fileName = fileName;
 		this.fileDownloadUri = fileDownloadUri;
@@ -21,6 +22,7 @@ public class FileUploadResponse {
 		this.fileThumbNailName = fileThumbNailName;
 		this.fileStorageName = fileStorageName;
 		this.originalfileName = originalfileName;
+		this.fileNo = fileNo;
 	}
 
 	public String getFileName() {
@@ -71,12 +73,24 @@ public class FileUploadResponse {
 		this.originalfileName = originalfileName;
 	}
 
+	public Long getFileNo() {
+		return fileNo;
+	}
+
+	public void setFileNo(Long fileNo) {
+		this.fileNo = fileNo;
+	}
+
 	@Override
 	public String toString() {
 		return "FileUploadResponse [fileName=" + fileName + ", fileDownloadUri=" + fileDownloadUri + ", fileType="
 				+ fileType + ", fileThumbNailName=" + fileThumbNailName + ", fileStorageName=" + fileStorageName
-				+ ", originalfileName=" + originalfileName + "]";
+				+ ", originalfileName=" + originalfileName + ", fileNo=" + fileNo + "]";
 	}
+
+
+
+	
 	 
 	
 		

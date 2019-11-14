@@ -13,7 +13,7 @@ import com.example.demo.exeption.FileUploadException;
 import com.example.demo.model.FileStorage;
 import com.example.demo.payload.FileUploadResponse;
 import com.example.demo.property.FileUploadProperties;
-import com.example.demo.repository.interfaces.IFileRepository;
+import com.example.demo.repository.FileRepository;
 import com.example.demo.service.FileUploadDownloadService;
 
 import org.slf4j.Logger;
@@ -40,7 +40,7 @@ public class FileUploadController {
     private FileUploadDownloadService service;
     
     @Autowired
-	private IFileRepository repository;
+	private FileRepository repository;
   
     @Autowired
     public FileUploadController(FileUploadProperties prop) {
@@ -50,7 +50,7 @@ public class FileUploadController {
 	}
     
     @PostMapping("/uploadFile")
-    public FileUploadResponse uploadFile( MultipartFile file) {
+    public FileUploadResponse uploadFile( MultipartFile file, String userId) throws Exception   {
     //public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = service.storeFile(file);
         
@@ -65,7 +65,7 @@ public class FileUploadController {
         
        
         
-        String userId = "test4@test.com";
+        
 		String filePath = fileStorageName;
 		String originFileName = originalfileName;
 		String storageFileName = fileName;
@@ -78,18 +78,24 @@ public class FileUploadController {
 			throw new FileUploadException("파일목록을 데이터베이스에 생성하지 못했습니다.", e);
 			//e.printStackTrace();
 		}
+		Long fileNo = repository.getFileNo(storageFileName);
         
         
-        
-        
-        return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName ,fileStorageName, originalfileName);
+		return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName ,fileStorageName, originalfileName ,fileNo);
     }
     
     @PostMapping("/uploadMultipleFiles")
-    public List<FileUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+    public List<FileUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,String userId )  {
         return Arrays.asList(files)
                 .stream()
-                .map(file -> uploadFile(file))
+                .map(file -> {
+					try {
+						return uploadFile(file,userId);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return null;
+				})
                 .collect(Collectors.toList());
     }
     

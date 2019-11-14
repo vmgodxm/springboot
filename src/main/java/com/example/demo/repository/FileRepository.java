@@ -22,6 +22,11 @@ public class FileRepository implements IFileRepository {
 	}
 	
 	@Override
+	public Long getFileNo(String storageFileName) throws Exception {
+		return sqlSession.selectOne("mapper.FileStorageMapper.getFileNo", storageFileName);
+	}
+	
+	@Override
     public int insertFile(FileStorage files) throws Exception {
         return sqlSession.insert("mapper.FileStorageMapper.insertFile", files);
     }
@@ -34,6 +39,11 @@ public class FileRepository implements IFileRepository {
 	@Override
 	public int deleteFile(Long fileNo) throws Exception{
 		return sqlSession.delete("mapper.FileStorageMapper.deleteFile", fileNo);
+	}
+	
+	@Override
+	public int deleteFileByUserID(String userId) throws Exception{
+		return sqlSession.delete("mapper.FileStorageMapper.deleteFileByUserID", userId);
 	}
 
 	@Override

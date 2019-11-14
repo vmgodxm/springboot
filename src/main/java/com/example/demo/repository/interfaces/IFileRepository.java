@@ -19,6 +19,10 @@ public interface IFileRepository {
 
 	List<DeleteFileInfo> getDeleteFileListByFileNo(Long fileNo) throws Exception;
 
+	Long getFileNo(String storageFileName) throws Exception;
+
+	int deleteFileByUserID(String userId) throws Exception;
+
 	
 	
 }

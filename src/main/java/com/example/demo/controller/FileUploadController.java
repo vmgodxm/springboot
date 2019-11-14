@@ -20,7 +20,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,7 +48,7 @@ public class FileUploadController {
     //public FileUploadResponse uploadFile(@RequestParam("file") MultipartFile file) {
         String fileName = service.storeFile(file);
         
-        String originalfileName = StringUtils.cleanPath(file.getOriginalFilename());
+        
         //파일 경로 요청
         String fileStorageName = filelocation.toString();
         String fileThumbNailName = fileName.replace(fileName.substring(fileName.lastIndexOf(".")), "_th.JPG") ; //확장자 이름 변경 - 실제 변경은 섬네일 imageio가 변경
@@ -58,9 +57,7 @@ public class FileUploadController {
                                 .path(fileName)
                                 .toUriString();
         
-        
-        
-        return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName ,fileStorageName, originalfileName);
+        return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName ,fileStorageName);
     }
     
     @PostMapping("/uploadMultipleFiles")

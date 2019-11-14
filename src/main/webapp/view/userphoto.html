@@ -24,59 +24,39 @@
   
   <script>
   	window.onload = function() {
-	 	$('#content').load('./designerPage-reservation.html');
+  	 
+ 	$('#content').load('./designerPage-reservation.html');
   	};
   	
   	function hairstyle() {
-  		$('#content').load('./designerPage-hairstyle.html');
+  	
+  	$('#content').load('./designerPage-hairstyle.html');
   	}
   	
   	function timetable() {
-  		$('#content').load('designerPage-timetable.html');
+  	
+  	$('#content').load('designerPage-timetable.html');
   	}
   	
   	function reservation() {
-  		$('#content').load('designerPage-reservation.html');
+  	
+  	$('#content').load('designerPage-reservation.html');
   	}
   	
   	function customer() {
-  		$('#content').load('designerPage-customer.html');
+  	
+  	$('#content').load('designerPage-customer.html');
   	}
   	
   	function info() {
-  		$('#content').load('designerPage-info.html');
+  	
+  	$('#content').load('designerPage-info.html');
   	}
   	
   	function fileupload() {
-  		$('#content').load('uploadfile.html');
+  	
+  	$('#content').load('uploadfile.html');
   	}
-  	
-   		
-  	function uploadFile() {
-		  $.ajax({
-				    url: "/uploadFile",
-				    type: "POST",
-				    data: new FormData($("#uploadForm")[0]),
-				    enctype: 'multipart/form-data',
-				    processData: false,
-				    contentType: false,
-				    success: function (responseData) {
-				      alert('파일업로드성공');// Handle upload success
-				    	var fileThumbNailName=responseData.fileThumbNailName;
-				    	
-				    	var ThumbNail = "/images/"+ fileThumbNailName;
-				    		$('#img_src').html
-				    		(`<img id="target_image" src="${ThumbNail}" width="300" height="400">`);
-				    	
-		    	    		},
-		    		error: function () {
-		    		  
-		      		  alert('파일업로드 실패')
-		    				}
-		  });
-	}
-  	
-  	
   </script>
 
 </head>

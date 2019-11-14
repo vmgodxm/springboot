@@ -12,10 +12,9 @@
 
   <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
 
-<<<<<<< HEAD
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-  
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -29,20 +28,8 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="js/hairStargram/login/facebook.js"></script>
   <script src="js/hairStargram/common/common_nev.js"></script>
-=======
-<body>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-  
-  $(function(){
-      $("#contents").load("index-menu.html");
-    });
-
-  $(window).load("Mypages-reservation.html");
-    </script>
-<!-- 이너 페이지 펑션-->
->>>>>>> ac7a1096c81e4a962512370b44d870efd925ca53
   <script>
+
 
     function reservation() {
       $("#change").load("Mypages-reservation.html");
@@ -62,7 +49,7 @@
 
     // 사용자 정보
     function myInfo() {
-      $("#change").load("Mypages-info.html", function(e) {
+      $("#change").load("Mypages-info.html", function (e) {
         var userId = getCookie('userId');
         if (userId != null && userId != "") {
           getUser(userId);
@@ -73,24 +60,19 @@
     function review() {
       $("#change").load("blog-reply.html");
     }
-    function myInfo(){
-      $("#btnInfo").on('click',function(){
-        $("#change").load("Mypages-info.html");
-      });
-     }
-    function review(){
+
+    function review() {
       $("#change").load("blog-reply.html");
     }
-    function hairStyleRev(){
-      $("#btnHairRev").on('click',function(){
+    function hairStyleRev() {
+      $("#btnHairRev").on('click', function () {
         $("#change").load("Mypages-hairFav-rev.html");
       });
-     }
-    </script>
+    }
 
     // 회원탈퇴
     function leave() {
-       $("#change").load("Mypages-leave.html", function(e) {
+      $("#change").load("Mypages-leave.html", function (e) {
         var userId = getCookie('userId');
         if (userId != null && userId != "") {
           getUser(userId);
@@ -105,22 +87,14 @@
   </script>
 
 <body>
+
   <!-- Navigation -->
   <div id="menuContents"></div>
   <!-- Page Content -->
-  <div class="container"> 
+  <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">My Page
-      <small></small>
-    </h1>
-
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
-      </li>
-      <li class="breadcrumb-item active">MyPage</li>
-    </ol>
+    <h1 class="mt-4 mb-3">My Page</h1>
 
     <!-- Content Row -->
     <div class="row">
@@ -139,23 +113,22 @@
       <div class="col-lg-9 mb-4">
         <table id="change" class="table table-striped"></table>
         <hr>
-          <a id="btnInfo" href="javascript:myInfo()" class="list-group-item">정보수정</a>
-        </div>
       </div>
-      <!-- Content Column -->
-      <div class="col-lg-9-1 mb-4">
-         <table id ="change" class="table table-hover">
+    </div>
+    <!-- Content Column -->
+    <div class="col-lg-9-1 mb-4">
+      <table id="change" class="table table-hover">
 
-           <script>
-             $("#change").load("Mypages-reservation.html");
-            </script>
-        </table>
-       <hr/>
-       
-      </div>
+        <script>
+          $("#change").load("Mypages-reservation.html");
+        </script>
+      </table>
+      <hr />
+
     </div>
-      </div>
-    </div>
+  </div>
+  </div>
+  </div>
   </div>
 
   <!-- Footer -->

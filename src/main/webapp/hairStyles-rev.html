@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Modern Business - Start Bootstrap Template</title>
+
+<!-- Bootstrap core CSS -->
+  <link href="bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="bootstrap/css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+  
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+    
+    window.onload=   
+   $(function(){
+      $("#contents").load("index-menu.html");
+    });
+    </script>
+  <!-- Navigation -->
+  <div id="contents"></div>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">예약하기
+         </h1>
+
+         <div class="row">
+            <div class="col-lg-2 col-sm-4 mb-4">
+              <img class="img-fluid" src="https://i.ytimg.com/vi/8LMla1wMC-A/maxresdefault.jpg" alt="">
+            </div>
+            <div>헤어디자이너 정보<br>바르다 김선생<br>청담역 3번출구 한가운데<br><button>정보보기</button></div>&nbsp;&nbsp;<div><button class="btn btn-primary" type="button">
+                즐겨찾기 <span class="badge">4</span>
+              </button></div>
+          </div>
+
+    <!-- Intro Content -->
+   <div class="card mb-4">
+     <div class="row">
+       <div class="col-lg-6">
+         <img class="img-fluid rounded mb-4" src="images/애쉬그레이.jpg" alt="">
+        </div>
+        <div class="col-lg-6">
+          <h2>헤어스타일 정보</h2>
+          <p>#애쉬그레이 #가을머리스타일</p>
+          <hr/>
+          <p>타임테이블 나오기</p>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+    <div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+                <div class="col-md-12">
+
+                    <p>시술메뉴 선택</p>
+                    <form id="frmReq2" method="get" action="welcomeWeb.do" class="form-horizontal">
+                      <label class="checkbox checkbox-inline">
+                        <input type="checkbox" name="myBtn" data-toggle="checkbox" value="아이디">컷트
+                      </label>
+                      <p>10,000원</p>
+                      <label class="checkbox checkbox-inline">
+                        <input type="checkbox" name="myBtn" data-toggle="checkbox" value="이름">펌
+                      </label>
+                      <p>40,000원</p>
+                      <label class="checkbox checkbox-inline">
+                        <input type="checkbox" name="myBtn" data-toggle="checkbox" value="나이">염색
+                      </label>
+                      <p>30,000원</p>
+                    </form>
+                    </div>
+     
+            </div>
+            <div class="col-lg-6">
+              <h2 class="card-title">예약 정보 출력</h2>
+              <p class="card-text">예약 일시: 11월14일 1시30분<br>머리스타일 : 올림머리<br>소요시간 : 2시간<br>비용: 40,000원<br>샵 : 오라클헤어</p>
+            </div>
+          </div>
+        </div>
+    <div class="card-footer text-muted">
+      Posted on January 1, 2017 by
+      <a href="#">Start Bootstrap</a>
+    </div>
+    <div class="card-footer text-muted">
+      <script type="text/javascript">
+        $('#btnRev').click(function(){
+          alert('예약이 완료 되었습니다.');
+        });
+        $('#cancle').click(function(){
+          alert('예약이 취소 되었습니다.');
+        });
+        </script>
+      <a id="btnRev" href="hairStyles-done.html" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;<a id="cancle" href="#" class="btn btn-primary">취소하기</a>
+    </div>
+    </div>
+  <!-- Footer -->
+  <script>
+window.onload=   
+   $(function(){
+      $("#index-footer").load("index-footer.html");
+    });
+    </script>
+  <!-- Footer -->
+  <div id="index-footer"></div>
+    <!-- Bootstrap core JavaScript -->
+  <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

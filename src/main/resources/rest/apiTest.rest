@@ -55,3 +55,7 @@ Content-Type: application/json
     {"regionNo":"1","companyName":"참헤어","companyAddress":"부현점"},
     {"regionNo":"2","companyName":"참헤어","companyAddress":"해운대점"}
 ]
+
+### get preCompanyList
+GET http://localhost/preCompanyList/hairstargram@outlook.com HTTP/1.1
+

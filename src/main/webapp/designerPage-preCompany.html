@@ -22,10 +22,18 @@
         function preCompanyAdd() {
 
             var regionNo = $('#regionNo').val();
-            var regionName = $('#regionNo option:selected').text()
-            var companyName = $('#companyName').val();
-            var companyAddress = $('#companyAddress').val();
+            var regionName = $('#regionNo option:selected').text();
+            var companyName = $('#companyName').val().trim();
+            if (companyName == null || companyName == "") {
+                alert("상호명을 입력하세요.");
+                return;
+            }
 
+            var companyAddress = $('#companyAddress').val().trim();
+            if (companyAddress == null || companyAddress == "") {
+                alert("지점명을 입력하세요.");
+                return;
+            }
 
             var html = `<div id="preCompanyItem" class="form-group">
                             <input type="text" name="regionNo" id="regionNo" class="form-control-sm-25" placeholder="지역" required="required" regionNo="${regionNo}" value="${regionName}" readonly>
@@ -37,20 +45,17 @@
             $('#preCompanyList').append(html);
 
             $('#regionNo').val(0);
-            //$('#regionNo option:selected').text('')
             $('#companyName').val('');
             $('#companyAddress').val('');
         };
 
         function preCompanyClose() {
+
             var jsonArray = new Array();
-            var preComList = $('#preCompanyList').children();
+            for (var preCompany of $('#preCompanyList').children()) {
 
-            for (var preCompany of preComList) {
                 var obj = new Object();
-
                 for (var item of $(preCompany).children()) {
-                    console.log($(item).val(), $(item).attr('name'));
                     
                     var name = $(item).attr('name');
                     switch (name) {
@@ -67,23 +72,18 @@
                         }
                     }
                 }
-
+                obj.userId = localStorage.userId;
                 jsonArray.push(obj);
             }
 
             var retVal = JSON.stringify(jsonArray);
-            console.log(retVal);
-
             window.opener.recvFormData(retVal);
             window.close();
         };
 
         window.onload = function () {
             $(document).on('click', '#btnDelete', function(e) {
-                console.log(e);
-                console.log($(e).parent());
-                //$('#preCompanyList').remove($(e).html());
-                $(e).parent().empty();
+                $(this).parent().remove();
             });
         };
     </script>
@@ -95,8 +95,7 @@
         <div class="card-body">
             <form id="preCompany">
                 <div class="form-group">
-                    <select class="custom-select-30" id="regionNo" name="regionNo" placeholder="regionNo"
-                        required="required">
+                    <select class="custom-select-30" id="regionNo" name="regionNo" placeholder="regionNo" required="required">
                         <option value="0" selected="selected">서울</option>
                         <option value="1">경기</option>
                         <option value="2">부산</option>

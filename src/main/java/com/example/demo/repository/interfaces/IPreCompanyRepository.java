@@ -8,7 +8,7 @@ public interface IPreCompanyRepository {
 
 	PreCompany getPreUserId(String userId) throws Exception;
 
-	List<PreCompany> preCompanyList() throws Exception;
+	List<PreCompany> preCompanyList(String userId) throws Exception;
 
 	int insertPreCompany(PreCompany preCompany) throws Exception;
 

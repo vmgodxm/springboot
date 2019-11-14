@@ -3,11 +3,9 @@ package com.example.demo.controller;
 import java.util.List;
 
 import com.example.demo.model.Company;
-import com.example.demo.model.PreCompany;
 import com.example.demo.repository.interfaces.ICompanyRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,13 +43,5 @@ public class CompanyController {
 	@DeleteMapping(path="/company/{userId}")
 	public int deleteCompany(@PathVariable String userId) throws Exception{
 		return repository.deleteCompany(userId);
-	}
-
-	@PostMapping(path = "/preCompany")
-	public void insertPreCompany(HttpEntity<List<PreCompany>> httpEntity) {
-
-		List<PreCompany> list = httpEntity.getBody();
-
-		int a = 0;
 	}
 }

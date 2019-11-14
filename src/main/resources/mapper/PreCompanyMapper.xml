@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.PreCompanyMapper">
-	<select id="PreCompanyList" resultType="com.example.demo.model.PreCompany">
-		SELECT * FROM PreCompany
+	<select id="getPreCompanyList" resultType="com.example.demo.model.PreCompany">
+		SELECT * FROM PreCompany WHERE userId = #{userId}
 	</select>
 	<select id="getPreUserId" parameterType="String" resultType="com.example.demo.model.PreCompany">
 		SELECT * FROM PreCompany WHERE userId = #{userId}
 	</select>
 	<insert id="insertPreCompany" parameterType="com.example.demo.model.PreCompany">
-		INSERT INTO PreCompany(preComNo,companyName,userId,regionNo,companyAddress) VALUES 
-			(PRECOMPANY_PRECOMNO_SEQ.nextVal, #{companyName},#{userId}, #{regionNo}, #{companyAddress})
+		INSERT INTO preCompany(preComNo, userId, regionNo, companyName, companyAddress) VALUES
+					(PRECOMPANY_PRECOMNO_SEQ.nextVal, #{userId}, #{regionNo}, #{companyName}, #{companyAddress})
 	</insert>
 	<update id="updatePreCompany" parameterType="com.example.demo.model.PreCompany">
 		UPDATE PreCompany SET companyName=#{companyName},regionNo=#{regionNo},companyAddress=#{companyAddress}

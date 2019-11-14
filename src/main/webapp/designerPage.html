@@ -42,7 +42,13 @@
     }
 
     function info() {
-      $('#change').load('designerPage-info.html');
+      $('#change').load('designerPage-info.html', function(){
+        var userId = getCookie('userId');
+        if (userId != null && userId != "") {
+          getUser(userId);
+          getPreCompanyList(userId);
+        }
+      });
     }
 
     function fileupload() {

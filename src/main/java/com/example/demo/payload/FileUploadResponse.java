@@ -9,7 +9,6 @@ public class FileUploadResponse {
 	    private String originalfileName;
 	    
 	 public FileUploadResponse() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public FileUploadResponse(String fileName, String fileDownloadUri, String fileType, String fileThumbNailName,

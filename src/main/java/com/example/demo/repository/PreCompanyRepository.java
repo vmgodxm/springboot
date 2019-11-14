@@ -21,8 +21,8 @@ public class PreCompanyRepository implements IPreCompanyRepository {
 	}
 	
 	@Override
-	public List<PreCompany> preCompanyList() throws Exception{
-		return sqlSession.selectList("mapper.PreCompanyMapper.PreCompanyList");
+	public List<PreCompany> preCompanyList(String userId) throws Exception{
+		return sqlSession.selectList("mapper.PreCompanyMapper.getPreCompanyList", userId);
 	}
 	
 	@Override

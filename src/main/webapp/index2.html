@@ -3,6 +3,7 @@
 
 <head>
 
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -11,9 +12,63 @@
   <title>Modern Business - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
   <!-- Custom styles for this template -->
-  <link href="bootstrap/css/modern-business.css" rel="stylesheet">
+  <link href="css/modern-business.css" rel="stylesheet">
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/jquery/jquery.ajax-cross-origin.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/hairStargram/facebook.js"></script>
+  <script src="js/hairStargram/designer.js"></script>
+  <script>
+    
+    window.onload = function () {
+      $("#contents").load("index-menu.html");
+      $("#index-footer").load("index-footer.html");
+      makeDesignerList();
+      randomBestList();
+
+      var userId = getCookie('userId');
+      if (userId != null && userId != "") {
+        $('#liLogin').html('Logout');
+        $('#userId').html(userId);
+      }
+
+      $(document).on('click', '#liLogin', function (e) {
+        var userId = getCookie('userId');
+        if (userId == undefined) {
+          window.location.href = 'login.html';
+        } else {
+          $.ajax({
+            url: `/user/logout`,
+            type: "POST",
+            data: userId,
+            dataType: 'json',
+            accept: 'application/json',
+            contentType: 'application/json;charset=utf-8'
+          }).done(function (responseData) {
+            // 성공 시 처리되는 함수
+            console.log(responseData);
+            if (responseData == 'OK') {
+              deleteCookie('userId');
+              $('#liLogin').html('Login');
+              $('#userId').html('');
+            }
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            // 실패 시 처리되는 함수
+            console.log(jqXHR.responseText);
+          });
+        }
+
+      });
+    };
+  </script>
+</head>
 
 </head>
 
@@ -132,28 +187,28 @@
 
   <!-- Page Content -->
   <div class="container">
-  <div class="mb-1">
-	  <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">지역별</a></span> 
-	  <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">가격순</a></span>
-	  <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">추천순</a></span>
+  <div class="seul-row mb-1">
+	  <span class="col-lg-8 seul-test"></span> 
+	  <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Local</a></span> 
+	  <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Price</a></span>
+	  <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Recommand</a></span>
   </div>
   <div class="seul-row seul-color">
   	
-  	<div class="col-lg-2 mb-2">
-	  <ul class="col-lg-12 seul-dropdown">
-		 
-			  <li class="nav-item dropdown">
-		            <a class="nav-link dropdown-toggle seul-color" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		            Gender
-		            </a>
-		            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownBlog">
-		              <a class="dropdown-item" href="bootstrap/full-width.html">Ladies</a>
-		              <a class="dropdown-item" href="bootstrap/sidebar.html">Gentleman</a> 
-		            </div>
-		         </li>
-		</ul>
-		
-	</div>
+  	 <div class="col-lg-2 mb-2">
+        <ul class="col-lg-12 seul-dropdown">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle seul-color" href="#" id="navbarDropdownBlog" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Gender</a>
+            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownBlog">
+              <a class="dropdown-item" href="bootstrap/full-width.html">Ladies</a>
+              <a class="dropdown-item" href="bootstrap/sidebar.html">Gentleman</a>
+            </div>
+          </li>
+        </ul>
+
+      </div>
 	
 	<span class="col-lg-1 seul-test"><a class="seul-color" href="#">&nbsp&nbspCut</a></span>
 	<span class="col-lg-1 seul-test"><a class="seul-color" href="#">Perm</a></span>
@@ -165,134 +220,16 @@
     <h1 class="my-4">Weekly Best</h1>
 
     <!-- Marketing Icons Section -->
-      <div class="row">
-      <div class="col-lg-2 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="bootstrap/portfolio-4-col.html"><img class="card-img-top" src="images/매직스트레이트d.jpg" alt=""></a>
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="#">Project One</a>
-            </h5>
-            <p class="card-text">#매직스트레이트 #가을머리스타일</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="images/긴웨이브.jpg" alt=""></a>
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="#">Project Two</a>
-            </h5>
-            <p class="card-text">#굵은웨이브펌 #가을머리스타일</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="images/단발 보니펌.jpg" alt=""></a>
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="#">Project Three</a>
-            </h5>
-            <p class="card-text">#단발 보니펌 #가을머리스타일</p>
-          </div>
-        </div>
-      </div>
-        <div class="col-lg-2 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="images/애쉬그레이.jpg" alt=""></a>
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="#">Project Three</a>
-            </h5>
-            <p class="card-text">#애쉬그레이 #가을머리스타일</p>
-          </div>
-        </div>
-      </div>
-        <div class="col-lg-2 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="images/남자펌.jpg" alt=""></a>
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="#">Project Three</a>
-            </h5>
-            <p class="card-text">#남자펌 #가을머리스타일</p>
-          </div>
-        </div>
+      <div class="row" id="desingerrr">
+      <span class="col-lg-12" id="designerMain"></span>
       </div>
     <!-- /.row -->
 
     <!-- Portfolio Section -->
     <h2>Random Best</h2>
 
-    <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">#ㅇㅇㅇㅇ #</p>
-          </div>
-        </div>
-      </div>
+    <div class="row" id="randombest">
+     <span class="col-lg-12" id="randomdesign"></span>
     </div>
     <!-- /.row -->
 
@@ -334,7 +271,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" >
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>

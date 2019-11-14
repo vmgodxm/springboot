@@ -9,47 +9,57 @@
   <meta name="author" content="">
 
   <title>Modern Business - Start Bootstrap Template</title>
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
 
-<!-- Bootstrap core CSS -->
-  <link href="bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
   <!-- Custom styles for this template -->
-  <link href="bootstrap/css/modern-business.css" rel="stylesheet">
+  <link href="css/modern-business.css" rel="stylesheet">
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-</head>
-<body>
-   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-    
-    window.onload=   
-   $(function(){
-      $("#contents").load("index-menu.html");
-    });
-   	$(window).load('designerPage-reservation.html');
-    </script>
-   <script> 
-  	function hairstyle() {
-  	$('#change').load('designerPage-hairstyle.html');
-  	}
-  	function timetable() {
-  	$('#change').load('designerPage-timetable.html');
-  	}
-  	function reservation() {
-  	$('#change').load('designerPage-reservation.html');
-  	}
-  	function customer() {
-  	$('#change').load('designerPage-customer.html');
-  	}
-  	function info() {
-  	$('#change').load('designerPage-info.html');
-  	}
-  	function fileupload() {
-  	$('#change').load('uploadfile.html');
-  	}
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/hairStargram/login/facebook.js"></script>
+  <script src="js/hairStargram/common/common_nev.js"></script>
+  <script>
+    function hairstyle() {
+      $('#change').load('designerPage-hairstyle.html');
+    }
+
+    function timetable() {
+      $('#change').load('designerPage-timetable.html');
+    }
+
+    function reservation() {
+      $('#change').load('designerPage-reservation.html');
+    }
+
+    function customer() {
+      $('#change').load('designerPage-customer.html');
+    }
+
+    function info() {
+      $('#change').load('designerPage-info.html');
+    }
+
+    function fileupload() {
+      $('#change').load('uploadfile.html');
+    }
+
+    window.onload = function () {
+      loadMenu();
+      reservation();
+    };
   </script>
+</head>
 
-    </script>
+<body>
   <!-- Navigation -->
-  <div id="contents"></div>
+  <div id="menuContents"></div>
 
   <!-- Page Content -->
   <div class="container">
@@ -80,7 +90,7 @@
       </div>
       <!-- Content Column -->
       <div class="col-lg-9 mb-4">
-         <span class="col-lg-9" id="change"></span>
+        <span class="col-lg-9" id="change"></span>
       </div>
     </div>
     <!-- /.row -->
@@ -89,18 +99,8 @@
   <!-- /.container -->
 
   <!-- Footer -->
-    <script>
-window.onload=   
-   $(function(){
-      $("#index-footer").load("index-footer.html");
-    });
-    </script>
-  <!-- Footer -->
   <div id="index-footer"></div>
-    <!-- Bootstrap core JavaScript -->
-  <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <!-- Bootstrap core JavaScript -->
 </body>
 
 </html>

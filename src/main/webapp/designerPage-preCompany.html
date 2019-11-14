@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>이전 사업장 정보 입력</title>
+
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script>
+        function preCompanyAdd() {
+
+            var regionNo = $('#regionNo').val();
+            var regionName = $('#regionNo option:selected').text()
+            var companyName = $('#companyName').val();
+            var companyAddress = $('#companyAddress').val();
+
+
+            var html = `<div id="preCompanyItem" class="form-group">
+                            <input type="text" name="regionNo" id="regionNo" class="form-control-sm-25" placeholder="지역" required="required" regionNo="${regionNo}" value="${regionName}" readonly>
+                            <input type="text" name="companyName" id="companyName" class="form-control-sm-25" placeholder="상호명" required="required" value="${companyName}" readonly>
+                            <input type="text" name="companyAddress" id="companyAddress" class="form-control-sm-25" placeholder="지점명" required="required" value="${companyAddress}" readonly>
+                            <a id="btnDelete" class="btn btn-danger btn-block-sm-del" href="#">삭제</a>
+                        </div>`;
+
+            $('#preCompanyList').append(html);
+
+            $('#regionNo').val(0);
+            //$('#regionNo option:selected').text('')
+            $('#companyName').val('');
+            $('#companyAddress').val('');
+        };
+
+        function preCompanyClose() {
+            var jsonArray = new Array();
+            var preComList = $('#preCompanyList').children();
+
+            for (var preCompany of preComList) {
+                var obj = new Object();
+
+                for (var item of $(preCompany).children()) {
+                    console.log($(item).val(), $(item).attr('name'));
+                    
+                    var name = $(item).attr('name');
+                    switch (name) {
+                        case 'regionNo': {
+                            obj.regionNo = $(item).attr('regionNo');
+                        } break;
+
+                        case 'companyAddress': {
+                            obj.companyAddress = $(item).val();
+                        } break;
+
+                        case 'companyName' : {
+                            obj.companyName = $(item).val();
+                        }
+                    }
+                }
+
+                jsonArray.push(obj);
+            }
+
+            var retVal = JSON.stringify(jsonArray);
+            console.log(retVal);
+
+            window.opener.recvFormData(retVal);
+            window.close();
+        };
+
+        window.onload = function () {
+            $(document).on('click', '#btnDelete', function(e) {
+                console.log(e);
+                console.log($(e).parent());
+                //$('#preCompanyList').remove($(e).html());
+                $(e).parent().empty();
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div class="card card-register mx-auto mt-1">
+        <div class="card-header">이전 사업장 정보</div>
+        <div class="card-body">
+            <form id="preCompany">
+                <div class="form-group">
+                    <select class="custom-select-30" id="regionNo" name="regionNo" placeholder="regionNo"
+                        required="required">
+                        <option value="0" selected="selected">서울</option>
+                        <option value="1">경기</option>
+                        <option value="2">부산</option>
+                        <label for="regionNo">지역</label>
+                    </select>
+                    <input type="text" name="companyName" id="companyName" class="form-control-sm-25" placeholder="상호명"
+                        required="required">
+                    <input type="text" name="companyAddress" id="companyAddress" class="form-control-sm-25"
+                        placeholder="지점명" required="required">
+                    <a id="btnAdd" class="btn btn-primary btn-block-sm-10" href="javascript:preCompanyAdd();">추가</a>
+                </div>
+            </form>
+            <hr>
+            <div id="preCompanyList"></div>
+            <a id="btnClose" class="btn btn-primary btn-block" href="javascript:preCompanyClose()">확인</a>
+
+        </div>
+    </div>
+</body>
+
+</html>

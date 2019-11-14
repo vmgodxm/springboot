@@ -8,7 +8,7 @@ public class UserRegist {
 	private Long gender;
 	private String phone;
 	private String nickName;
-	private Long region;
+	private Long regionNo;
 	private Long fileStorage;
 	private Long userLevel;
 	
@@ -24,26 +24,26 @@ public class UserRegist {
 	}
 	
 	public UserRegist(String userId, String userName, Long gender, String phone,
-			String nickName, Long region, Long fileStorage, Long userLevel) {
+			String nickName, Long regionNo, Long fileStorage, Long userLevel) {
 		this.userId = userId;
 		this.userName = userName;
 		this.gender = gender;
 		this.phone = phone;
 		this.nickName = nickName;
-		this.region = region;
+		this.regionNo = regionNo;
 		this.fileStorage = fileStorage;
 		this.userLevel = userLevel;
 	}
 	
 	public UserRegist(Long userNo, String userId, String userName, Long gender, String phone,
-			String nickName, Long region, Long fileStorage, Long userLevel) {
+			String nickName, Long regionNo, Long fileStorage, Long userLevel) {
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userName = userName;
 		this.gender = gender;
 		this.phone = phone;
 		this.nickName = nickName;
-		this.region = region;
+		this.regionNo = regionNo;
 		this.fileStorage = fileStorage;
 		this.userLevel = userLevel;
 	}
@@ -109,13 +109,13 @@ public class UserRegist {
 
 
 
-	public Long getRegion() {
-		return region;
+	public Long getRegionNo() {
+		return regionNo;
 	}
 
 
-	public void setRegion(Long region) {
-		this.region = region;
+	public void setRegionNo(Long regionNo) {
+		this.regionNo = regionNo;
 	}
 
 
@@ -142,8 +142,8 @@ public class UserRegist {
 	@Override
 	public String toString() {
 		return "UserRegist [userNo=" + userNo + ", userId=" + userId + ", userName=" + userName + ", gender=" + gender
-				+ ", phone=" + phone + ", nickName=" + nickName + ", region="
-				+ region + ", fileStorage=" + fileStorage + ", userLevel=" + userLevel + "]";
+				+ ", phone=" + phone + ", nickName=" + nickName + ", regionNo="
+				+ regionNo + ", fileStorage=" + fileStorage + ", userLevel=" + userLevel + "]";
 	}
 	
 	

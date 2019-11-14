@@ -15,7 +15,7 @@
 
 	<insert id="insertUser" parameterType="com.example.demo.model.UserRegist">
 		INSERT INTO userRegist(userNo, userId, userName, gender, phone, nickName, regionNo, userLevel) VALUES 
-				(USERREGIST_USERNO_SEQ.nextVal, #{userId}, #{userName}, #{gender}, #{phone}, #{nickName}, #{region}, #{userLevel})
+				(USERREGIST_USERNO_SEQ.nextVal, #{userId}, #{userName}, #{gender}, #{phone}, #{nickName}, #{regionNo}, #{userLevel})
 	</insert>
 
 	<update id="updateUser" parameterType="com.example.demo.model.UserRegist">

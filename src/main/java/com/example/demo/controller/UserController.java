@@ -125,6 +125,8 @@ public class UserController {
 
     @DeleteMapping(value = "/user/{userId}")
     public int deleteUser(@PathVariable String userId) throws Exception {
+        LoginInfo loginInfo = authRepository.getAuthencication(userId);
+        authRepository.updateLogout(loginInfo);
         return userRepository.deleteUser(userId);
     }
 }

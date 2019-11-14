@@ -23,17 +23,17 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/hairStargram/facebook.js"></script>
+    <script src="js/hairStargram/login/facebook.js"></script>
+    <script src="js/hairStargram/common/common_nev.js"></script>
     <script>
-        window.onload = function () {
-          $('#header').load("index-menu.html");
-          $("#index-footer").load("index-footer.html");
-        }
+      window.onload = function () {
+        loadMenu();
+      };
     </script>
 </head>
 
 <body class="bg-light">
-
+    <div id="menuContents"></div>
     <div id="container" class="container">
         <header class="card card-login mx-auto mt-5" id="header"></header>
         <div class="card card-login mx-auto mt-5">

@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Modern Business - Start Bootstrap Template</title>
+  <title>Hair Stargram</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -16,51 +16,15 @@
   <link href="css/modern-business.css" rel="stylesheet">
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/jquery/jquery.ajax-cross-origin.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="js/hairStargram/facebook.js"></script>
+  <script src="js/hairStargram/login/facebook.js"></script>
+  <script src="js/hairStargram/common/common_nev.js"></script>
   <script>
-    
     window.onload = function () {
-      $("#contents").load("index-menu.html");
-      $("#index-footer").load("index-footer.html");
-
-      var userId = getCookie('userId');
-      if (userId != null && userId != "") {
-        $('#liLogin').html('Logout');
-        $('#userId').html(userId);
-      }
-
-      $(document).on('click', '#liLogin', function (e) {
-        var userId = getCookie('userId');
-        if (userId == undefined) {
-          window.location.href = 'login.html';
-        } else {
-          $.ajax({
-            url: `/user/logout`,
-            type: "POST",
-            data: userId,
-            dataType: 'json',
-            accept: 'application/json',
-            contentType: 'application/json;charset=utf-8'
-          }).done(function (responseData) {
-            // 성공 시 처리되는 함수
-            console.log(responseData);
-            if (responseData == 'OK') {
-              deleteCookie('userId');
-              $('#liLogin').html('Login');
-              $('#userId').html('');
-            }
-          }).fail(function (jqXHR, textStatus, errorThrown) {
-            // 실패 시 처리되는 함수
-            console.log(jqXHR.responseText);
-          });
-        }
-
-      });
+      loadMenu();
     };
   </script>
 </head>
@@ -68,7 +32,7 @@
 <body>
 
   <!-- Navigation -->
-  <div id="contents"></div>
+  <div id="menuContents"></div>
 
   <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

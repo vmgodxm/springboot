@@ -2529,6 +2529,8 @@ textarea.form-control {
   .form-inline .custom-select {
     width: auto;
   }
+
+
   .form-inline .form-check {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -10938,8 +10940,6 @@ body.sidebar-toggled footer.sticky-footer {
   }
 }
 
-
-
 .btn-block-sm {
   display: inline-block;
   width: 20%;
@@ -10955,6 +10955,20 @@ input[type="button"].btn-block-sm {
   width: 20%;
 }
 
+.btn-block-sm-10 {
+  display: inline-block;
+  width: 10%;
+}
+
+.btn-block-sm-10 + .btn-block-sm-10 {
+  margin-top: 0.5rem;
+}
+
+input[type="submit"].btn-block-sm-10,
+input[type="reset"].btn-block-sm-10,
+input[type="button"].btn-block-sm-10 {
+  width: 10%;
+}
 
 .form-label-group2 {
   position: relative;
@@ -10972,7 +10986,6 @@ input[type="button"].btn-block-sm {
   left: 0;
   display: inline;
   /* Override default `<label>` margin */
-  line-height: 1.5;
   color: #495057;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -11005,7 +11018,7 @@ input[type="button"].btn-block-sm {
   padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group input:not(:placeholder-shown) ~ label {
+.form-label-group2 input:not(:placeholder-shown) ~ label {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
@@ -11050,4 +11063,49 @@ input[type="button"].btn-block-sm {
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-control-sm-25 {
+  position: relative;
+  display: inline-block;
+  width: 25%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-control-sm-25 {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+.form-control-sm-25::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+
+.form-control-sm-25:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-select-30 {
+  width: 30%;
 }

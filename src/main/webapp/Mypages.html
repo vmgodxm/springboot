@@ -19,10 +19,11 @@
 <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
-  window.onload=    
-   $(function(){
+  
+  $(function(){
       $("#contents").load("index-menu.html");
     });
+
   $(window).load("Mypages-reservation.html");
     </script>
 <!-- 이너 페이지 펑션-->
@@ -40,8 +41,10 @@
       $("#change").load("Mypages-history.html");
     }
     function myInfo(){
-      $("#change").load("Mypages-info.html");
-    }
+      $("#btnInfo").on('click',function(){
+        $("#change").load("Mypages-info.html");
+      });
+     }
     function review(){
       $("#change").load("blog-reply.html");
     }
@@ -52,11 +55,11 @@
   
 
   <!-- Page Content -->
-  <div class="container">
+  <div class="container"> 
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">My Page
-      <small>Subheading</small>
+      <small></small>
     </h1>
 
     <ol class="breadcrumb">
@@ -75,12 +78,13 @@
           <a href="javascript:hairStyleFav()" class="list-group-item">헤어스타일 즐겨찾기</a>
           <a href="javascript:designerFav()" class="list-group-item">디자이너 즐겨찾기</a>
           <a href="javascript:history()" class="list-group-item">이용내역</a>
-          <a href="javascript:myInfo()" class="list-group-item">정보수정</a>
+          <a id="btnInfo" href="javascript:myInfo()" class="list-group-item">정보수정</a>
         </div>
       </div>
       <!-- Content Column -->
-      <div class="col-lg-9 mb-4">
-         <table id ="change" class="table table-striped">
+      <div class="col-lg-9-1 mb-4">
+         <table id ="change" class="table table-hover">
+
            <script>
              $("#change").load("Mypages-reservation.html");
             </script>

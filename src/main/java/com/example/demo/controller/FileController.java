@@ -32,8 +32,8 @@ public class FileController {
 	}
 	
 	@PostMapping(path = "/fileUpload")
-	public int insertFile(FileStorage file) throws Exception {
-	        return repository.insertFile(file);
+	public int insertFile(FileStorage files) throws Exception {
+	        return repository.insertFile(files);
 	}
 	
 	@DeleteMapping(path="/fileDelete/{fileNo}")

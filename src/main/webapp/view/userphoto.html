@@ -61,6 +61,7 @@
 				    processData: false,
 				    contentType: false,
 				    success: function (responseData) {
+				      window.responseDT =responseData;
 				      alert('파일업로드성공');// Handle upload success
 				    	var fileThumbNailName=responseData.fileThumbNailName;
 				    	
@@ -76,8 +77,34 @@
 		  });
 	}
   	
-  	
-  </script>
+ 	/*
+			function deleteFile() {
+				$
+						.ajax({
+							url : "/fileDeleteStorage/{fileNo}",
+							type : "POST",
+							data : new FormData($("#uploadForm")[0]),
+							enctype : 'multipart/form-data',
+							processData : false,
+							contentType : false,
+							success : function(responseData) {
+								alert('파일업로드성공');// Handle upload success
+								var fileThumbNailName = responseData.fileThumbNailName;
+
+								var ThumbNail = "/images/" + fileThumbNailName;
+								$('#img_src')
+										.html(
+												`<img id="target_image" src="${ThumbNail}" width="300" height="400">`);
+
+							},
+							error : function() {
+
+								alert('파일업로드 실패')
+							}
+						});
+
+			} */
+		</script>
 
 </head>
 

@@ -9,8 +9,11 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.demo.exeption.FileUploadException;
+import com.example.demo.model.FileStorage;
 import com.example.demo.payload.FileUploadResponse;
 import com.example.demo.property.FileUploadProperties;
+import com.example.demo.repository.interfaces.IFileRepository;
 import com.example.demo.service.FileUploadDownloadService;
 
 import org.slf4j.Logger;
@@ -36,6 +39,8 @@ public class FileUploadController {
     @Autowired
     private FileUploadDownloadService service;
     
+    @Autowired
+	private IFileRepository repository;
   
     @Autowired
     public FileUploadController(FileUploadProperties prop) {
@@ -58,13 +63,30 @@ public class FileUploadController {
                                 .path(fileName)
                                 .toUriString();
         
+       
+        
+        String userId = "test4@test.com";
+		String filePath = fileStorageName;
+		String originFileName = originalfileName;
+		String storageFileName = fileName;
+		String thumbNailFileName = fileThumbNailName;
+		FileStorage files =new FileStorage(userId,filePath,originFileName,storageFileName,thumbNailFileName);
+        
+		try {
+			repository.insertFile(files);
+		} catch (Exception e) {
+			throw new FileUploadException("파일목록을 데이터베이스에 생성하지 못했습니다.", e);
+			//e.printStackTrace();
+		}
+        
+        
         
         
         return new FileUploadResponse(fileName, fileDownloadUri, file.getContentType(), fileThumbNailName ,fileStorageName, originalfileName);
     }
     
     @PostMapping("/uploadMultipleFiles")
-    public List<FileUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files){
+    public List<FileUploadResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         return Arrays.asList(files)
                 .stream()
                 .map(file -> uploadFile(file))

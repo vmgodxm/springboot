@@ -34,7 +34,7 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">예약하기
+    <h1 class="mt-4 mb-3">예약 완료 확인
          </h1>
 
          <div class="row">
@@ -53,47 +53,37 @@
          <img class="img-fluid rounded mb-4" src="images/애쉬그레이.jpg" alt="">
         </div>
         <div class="col-lg-6">
-          <h2>헤어스타일 정보</h2>
-          <p>#애쉬그레이 #가을머리스타일</p>
-          <hr/>
-          <p>타임테이블 나오기</p>
+            <div class="col-lg-7">
+                <p class="card-text">예약 확인</p>
+                <table class="table ">
+                    <thead>
+                   <tr>
+                     <th class="col-md-3 col-xs-3">예약일시</th>
+                     <th class="col-md-6 col-xs-6">머리스타일</th>
+                     <th class="col-md-3 col-xs-3">소요시간</th>
+                     <th class="col-md-3 col-xs-3">비용</th>
+                     <th class="col-md-3 col-xs-3">샵</th>
+                   </tr>
+                    </thead>
+                    <tbody>
+                   <tr>
+                     <td>11월14일 1시30분</td>
+                     <td>올림머리</td>
+                     <td>2시간</td>
+                     <td>40,000원</td>
+                     <td>오라클헤어</td>
+                   </tr>
+                  
+                    </tbody>
+                  </table>
+              </div>
         </div>
       </div>
     </div>
     <!-- /.row -->
-    <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-6">
-                <div class="col-md-12">
-
-                    <p>시술메뉴 선택</p>
-                    <form id="frmReq2" method="get" action="welcomeWeb.do" class="form-horizontal">
-                      <label class="checkbox checkbox-inline">
-                        <input type="checkbox" name="myBtn" data-toggle="checkbox" value="아이디">컷트
-                      </label>
-                      <p>10,000원</p>
-                      <label class="checkbox checkbox-inline">
-                        <input type="checkbox" name="myBtn" data-toggle="checkbox" value="이름">펌
-                      </label>
-                      <p>40,000원</p>
-                      <label class="checkbox checkbox-inline">
-                        <input type="checkbox" name="myBtn" data-toggle="checkbox" value="나이">염색
-                      </label>
-                      <p>30,000원</p>
-                    </form>
-                    </div>
-     
-            </div>
-            <div class="col-lg-6">
-              <h2 class="card-title">예약 정보 출력</h2>
-              <p class="card-text">예약 일시: 11월14일 1시30분<br>머리스타일 : 올림머리<br>소요시간 : 2시간<br>비용: 40,000원<br>샵 : 오라클헤어</p>
-            </div>
-          </div>
-        </div>
+    
     <div class="card-footer text-muted">
-      Posted on January 1, 2017 by
-      <a href="#">Start Bootstrap</a>
+      posted date 11/13
     </div>
     <div class="card-footer text-muted">
       <script type="text/javascript">
@@ -104,7 +94,7 @@
           alert('예약이 취소 되었습니다.');
         });
         </script>
-      <a id="btnRev" href="hairStyles-done.html" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;<a id="cancle" href="#" class="btn btn-primary">취소하기</a>
+      <a id="btnRev" href="http://localhost/" class="btn btn-primary">확인</a>
     </div>
     </div>
   <!-- Footer -->

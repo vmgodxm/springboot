@@ -22,8 +22,8 @@ public class FileRepository implements IFileRepository {
 	}
 	
 	@Override
-    public int insertFile(FileStorage file) throws Exception {
-        return sqlSession.insert("mapper.FileStorageMapper.insertFile", file);
+    public int insertFile(FileStorage files) throws Exception {
+        return sqlSession.insert("mapper.FileStorageMapper.insertFile", files);
     }
 	
 	@Override

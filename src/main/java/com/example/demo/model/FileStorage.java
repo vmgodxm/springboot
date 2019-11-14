@@ -29,6 +29,17 @@ public class FileStorage {
 		this.thumbNailFileName = thumbNailFileName;
 	}
 	
+	
+
+	public FileStorage(String userId, String filePath, String originFileName, String storageFileName,
+			String thumbNailFileName) {
+		super();
+		this.userId = userId;
+		this.filePath = filePath;
+		this.originFileName = originFileName;
+		this.storageFileName = storageFileName;
+		this.thumbNailFileName = thumbNailFileName;
+	}
 
 	public Long getFileNo() {
 		return fileNo;

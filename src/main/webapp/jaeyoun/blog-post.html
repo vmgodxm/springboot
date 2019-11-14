@@ -20,25 +20,23 @@
 
 
   <script type="text/javascript">
-
-  
-      $(function () {
-          $('#send').on('click', function (e) {
-              $.ajax({
-                  url: 'http://localhost/review',
-                  type: 'POST',
-                  data: $('#review').serialize(),
-                  dataType: 'application/json'
-              }).then(function (data) {
-                  console.log(data);
-                });
-              })
-            });
-            $(function(){
-              $('#send').click(function(){
-                location.href = 'http://localhost/jaeyoun/blog-home-1.html';
+    $(function () {
+      $('#send').on('click', function (e) {
+        $.ajax({
+          url: 'http://localhost/review',
+          type: 'POST',
+          data: $('#review').serialize(),
+          dataType: 'application/json'
+        }).then(function (data) {
+          console.log(data);
         });
+      })
+    });
+    $(function () {
+      $('#send').click(function () {
+        location.href = 'http://localhost/jaeyoun/blog-home-1.html';
       });
+    });
   </script>
 
 
@@ -50,13 +48,16 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">HairStargram</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
               헤어스타일
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
@@ -71,26 +72,27 @@
           <li class="nav-item">
             <a class="nav-link" href="services.html">Services</a>
           </li>
-      <!--
+          <!--
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
       -->
-       
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Mypages.html">My Page</a>
           </li>
-           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Jaeyoun
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="blog-post.html">jaeyoun-1</a>
-                <a class="dropdown-item" href="blog-home-1.html">jaeyoun-2</a>
-                <a class="dropdown-item" href="bootstrap/portfolio-item.html">Single Portfolio Item</a>
-              </div>
-            </li>
-            <!--
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Jaeyoun
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="blog-post.html">jaeyoun-1</a>
+              <a class="dropdown-item" href="blog-home-1.html">jaeyoun-2</a>
+              <a class="dropdown-item" href="bootstrap/portfolio-item.html">Single Portfolio Item</a>
+            </div>
+          </li>
+          <!--
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -155,10 +157,12 @@
       <div class="col-lg-8">
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/6431/Mgz_Main_Top_20190322122912.jpg" alt="">
+        <img class="img-fluid rounded"
+          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/IV2/Genie_Magazine/6431/Mgz_Main_Top_20190322122912.jpg"
+          alt="">
 
         <hr>
-        
+
         <!-- Date/Time -->
         <p>글 포스트 날짜 및 시간</p>
 
@@ -175,8 +179,8 @@
 
           <input type="reset" value="reset">
           <input id="send" type="button" value="send">
-      </form>
-      
+        </form>
+
 
         <blockquote class="blockquote">
           <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -185,7 +189,7 @@
           </footer>
         </blockquote>
 
-            <hr>
+        <hr>
 
         <!-- Comments Form -->
         <div class="card my-4">
@@ -205,7 +209,9 @@
           <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           <div class="media-body">
             <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+            vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
+            lacinia congue felis in faucibus.
           </div>
         </div>
 
@@ -214,15 +220,11 @@
           <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           <div class="media-body">
             <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-          
-
-   
-
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+            vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
+            lacinia congue felis in faucibus.
           </div>
         </div>
-
       </div>
 
       <!-- Sidebar Widgets Column -->
@@ -280,7 +282,8 @@
         <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            You can put anything you want inside of these side widgets. They are easy to use, and feature the new
+            Bootstrap 4 card containers!
           </div>
         </div>
 

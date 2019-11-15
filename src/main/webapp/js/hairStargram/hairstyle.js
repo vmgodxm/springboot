@@ -1,4 +1,4 @@
 
-function hairStyle-body(){
-    $("#").load("hairStyle-body.html");
+function hairStyle_body(){
+    $('#contents').load('./hairStyle/hairStyles-body.html');
 }

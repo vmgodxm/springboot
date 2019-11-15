@@ -11,14 +11,11 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -55,6 +52,16 @@
       $('#change').load('uploadfile.html');
     }
 
+    // 회원탈퇴
+    function leave() {
+      $("#change").load("./designer/designerPage-leave.html", function (e) {
+        var userId = getCookie('userId');
+        if (userId != null && userId != "") {
+          getUser(userId);
+        }
+      });
+    }
+
     window.onload = function () {
       loadMenu();
       reservation();
@@ -70,16 +77,7 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Designer Page
-      <small></small>
-    </h1>
-
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
-      </li>
-      <li class="breadcrumb-item active">Designer</li>
-    </ol>
+    <h1 class="mt-4 mb-3">Designer Page</h1>
 
     <!-- Content Row -->
     <div class="row">
@@ -91,6 +89,7 @@
           <a href="javascript:timetable();" class="list-group-item">영업시간</a>
           <a href="javascript:customer();" class="list-group-item">고객현황</a>
           <a href="javascript:info();" class="list-group-item">정보수정</a>
+          <a href="javascript:leave()" class="list-group-item">회원탈퇴</a>
         </div>
       </div>
       <!-- Content Column -->

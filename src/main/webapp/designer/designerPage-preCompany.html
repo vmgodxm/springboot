@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <title>이전 사업장 정보 입력</title>
 
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-  <link href="vender/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../css/modern-business.css" rel="stylesheet">
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="../js/bootstrap.bundle.min.js"></script> -->
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     <script>
         function preCompanyAdd() {
             var regionNo = $('#regionNo').val();
@@ -87,21 +87,30 @@
 
         window.onload = function () {
             $(document).on('click', '#btnDelete', function (e) {
+                var preCompanyNo = $(this).parent().attr('preCompanyNo');
+                localStorage.preCompanyNo = preCompanyNo;
                 $.ajax({
-                    url: `http://localhost/preCompany/${localStorage.userId}`,
+                    url: `http://localhost/preCompany/${preCompanyNo}`,
                     type: 'DELETE',
-                    contentType: 'application/json',
                     dataType: 'json',
                 }).done(function (data) {
                     // 성공 시 처리되는 함수
                     console.log(data);
+                    $.each($('#preCompanyList').children(), function (index, item) {
+                        if ($(item).attr('preCompanyNo') == localStorage.preCompanyNo) {
+                            $(item).remove();
+                            localStorage.removeItem('preCompanyNo');
+                        }
+                    });
+
+                    //$(this).parent().remove(); 
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     // 실패 시 처리되는 함수
                     console.log(jqXHR.responseText);
                 });
 
 
-                //$(this).parent().remove();
+                
             });
 
             $.ajax({
@@ -113,8 +122,7 @@
                 //console.log(data);
                 var html = '';
                 for (var preCompany of data) {
-                    html += `<div id="preCompanyItem" class="form-group">
-                                <input type="hidden" name="preCompanyNo" id="preCompanyNo" class="form-control-sm-25" required="required" value="${preCompany.preCompanyNo}">
+                    html += `<div id="preCompanyItem" class="form-group" preCompanyNo="${preCompany.preCompanyNo}">
                                 <input type="text" name="regionNo" id="regionNo" class="form-control-sm-25" placeholder="지역" required="required" regionNo="${preCompany.regionNo}" value="${preCompany.regionNo}" readonly>
                                 <input type="text" name="companyName" id="companyName" class="form-control-sm-25" placeholder="상호명" required="required" value="${preCompany.companyName}" readonly>
                                 <input type="text" name="companyAddress" id="companyAddress" class="form-control-sm-25" placeholder="지점명" required="required" value="${preCompany.companyAddress}" readonly>

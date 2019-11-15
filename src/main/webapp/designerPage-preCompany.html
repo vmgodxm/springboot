@@ -20,7 +20,6 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script>
         function preCompanyAdd() {
-
             var regionNo = $('#regionNo').val();
             var regionName = $('#regionNo option:selected').text();
             var companyName = $('#companyName').val().trim();
@@ -35,10 +34,47 @@
                 return;
             }
 
+            var preCompany = {
+                userId: localStorage.userId,
+                regionNo: regionNo,
+                regionName: regionName,
+                companyName: companyName,
+                companyAddress: companyAddress
+            };
+
+
+
+            var jsonData = JSON.stringify(preCompany);
+            localStorage.preCompany = jsonData;
+            requestPreCompany(jsonData);
+        };
+
+        function requestPreCompany(responseData) {
+            $.ajax({
+                url: `http://localhost/preCompany`,
+                type: 'POST',
+                contentType: 'application/json',
+                data: responseData,
+                dataType: 'json',
+            }).done(function (responseData) {
+                // 성공 시 처리되는 함수
+                addPreCompany(responseData);
+
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                // 실패 시 처리되는 함수
+                console.log(jqXHR.responseText);
+                localStorage.removeItem('preCompany');
+            });
+        }
+
+
+        function addPreCompany(preCompanyNo) {
+            var preCompany = JSON.parse(localStorage.preCompany);
             var html = `<div id="preCompanyItem" class="form-group">
-                            <input type="text" name="regionNo" id="regionNo" class="form-control-sm-25" placeholder="지역" required="required" regionNo="${regionNo}" value="${regionName}" readonly>
-                            <input type="text" name="companyName" id="companyName" class="form-control-sm-25" placeholder="상호명" required="required" value="${companyName}" readonly>
-                            <input type="text" name="companyAddress" id="companyAddress" class="form-control-sm-25" placeholder="지점명" required="required" value="${companyAddress}" readonly>
+                            <input type="hidden" name="preCompanyNo" id="preCompanyNo" class="form-control-sm-25" required="required" value="${preCompanyNo}">
+                            <input type="text" name="regionNo" id="regionNo" class="form-control-sm-25" placeholder="지역" required="required" regionNo="${preCompany.regionNo}" value="${preCompany.regionName}" readonly>
+                            <input type="text" name="companyName" id="companyName" class="form-control-sm-25" placeholder="상호명" required="required" value="${preCompany.companyName}" readonly>
+                            <input type="text" name="companyAddress" id="companyAddress" class="form-control-sm-25" placeholder="지점명" required="required" value="${preCompany.companyAddress}" readonly>
                             <a id="btnDelete" class="btn btn-danger btn-block-sm-del" href="#">삭제</a>
                         </div>`;
 
@@ -47,45 +83,54 @@
             $('#regionNo').val(0);
             $('#companyName').val('');
             $('#companyAddress').val('');
-        };
-
-        function preCompanyClose() {
-
-            var jsonArray = new Array();
-            for (var preCompany of $('#preCompanyList').children()) {
-
-                var obj = new Object();
-                for (var item of $(preCompany).children()) {
-                    
-                    var name = $(item).attr('name');
-                    switch (name) {
-                        case 'regionNo': {
-                            obj.regionNo = $(item).attr('regionNo');
-                        } break;
-
-                        case 'companyAddress': {
-                            obj.companyAddress = $(item).val();
-                        } break;
-
-                        case 'companyName' : {
-                            obj.companyName = $(item).val();
-                        }
-                    }
-                }
-                obj.userId = localStorage.userId;
-                jsonArray.push(obj);
-            }
-
-            var retVal = JSON.stringify(jsonArray);
-            window.opener.recvFormData(retVal);
-            window.close();
+            localStorage.removeItem('preCompany');
         };
 
         window.onload = function () {
-            $(document).on('click', '#btnDelete', function(e) {
-                $(this).parent().remove();
+            $(document).on('click', '#btnDelete', function (e) {
+                $.ajax({
+                    url: `http://localhost/preCompany/${localStorage.userId}`,
+                    type: 'DELETE',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                }).done(function (data) {
+                    // 성공 시 처리되는 함수
+                    console.log(data);
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    // 실패 시 처리되는 함수
+                    console.log(jqXHR.responseText);
+                });
+
+
+                //$(this).parent().remove();
+            });
+
+            $.ajax({
+                url: `http://localhost/preCompanyList/${localStorage.userId}`,
+                type: 'GET',
+                dataType: 'json',
+            }).done(function (data) {
+                // 성공 시 처리되는 함수
+                //console.log(data);
+                var html = '';
+                for (var preCompany of data) {
+                    html += `<div id="preCompanyItem" class="form-group">
+                                <input type="hidden" name="preCompanyNo" id="preCompanyNo" class="form-control-sm-25" required="required" value="${preCompany.preCompanyNo}">
+                                <input type="text" name="regionNo" id="regionNo" class="form-control-sm-25" placeholder="지역" required="required" regionNo="${preCompany.regionNo}" value="${preCompany.regionNo}" readonly>
+                                <input type="text" name="companyName" id="companyName" class="form-control-sm-25" placeholder="상호명" required="required" value="${preCompany.companyName}" readonly>
+                                <input type="text" name="companyAddress" id="companyAddress" class="form-control-sm-25" placeholder="지점명" required="required" value="${preCompany.companyAddress}" readonly>
+                                <a id="btnDelete" class="btn btn-danger btn-block-sm-del" href="#">삭제</a>
+                            </div>`;
+                }
+
+                $('#preCompanyList').html(html);
+
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                // 실패 시 처리되는 함수
+                console.log(jqXHR.responseText);
             });
         };
+
     </script>
 </head>
 
@@ -95,7 +140,8 @@
         <div class="card-body">
             <form id="preCompany">
                 <div class="form-group">
-                    <select class="custom-select-30" id="regionNo" name="regionNo" placeholder="regionNo" required="required">
+                    <select class="custom-select-30" id="regionNo" name="regionNo" placeholder="regionNo"
+                        required="required">
                         <option value="0" selected="selected">서울</option>
                         <option value="1">경기</option>
                         <option value="2">부산</option>
@@ -110,7 +156,7 @@
             </form>
             <hr>
             <div id="preCompanyList"></div>
-            <a id="btnClose" class="btn btn-primary btn-block" href="javascript:preCompanyClose()">확인</a>
+            <a id="btnClose" class="btn btn-primary btn-block" href="javascript:window.close()">확인</a>
 
         </div>
     </div>

@@ -14,7 +14,7 @@ public interface IPreCompanyRepository {
 
 	int updatePreCompany(PreCompany preCompany) throws Exception;
 
-	int deletePreCompany(String userId) throws Exception;
+	int deletePreCompany(int preCompanyNo) throws Exception;
 
-	
+	int deletePreCompany(String userId) throws Exception;
 }

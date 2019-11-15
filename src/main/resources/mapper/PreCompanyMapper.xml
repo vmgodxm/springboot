@@ -8,15 +8,23 @@
 		SELECT * FROM PreCompany WHERE userId = #{userId}
 	</select>
 	<insert id="insertPreCompany" parameterType="com.example.demo.model.PreCompany">
+		<selectKey keyProperty="preCompanyNo" resultType="int" order="BEFORE">
+			SELECT PRECOMPANY_PRECOMNO_SEQ.nextVal FROM dual
+		</selectKey>
+		
 		INSERT INTO preCompany(preComNo, userId, regionNo, companyName, companyAddress) VALUES
-					(PRECOMPANY_PRECOMNO_SEQ.nextVal, #{userId}, #{regionNo}, #{companyName}, #{companyAddress})
+					(#{preCompanyNo}, #{userId}, #{regionNo}, #{companyName}, #{companyAddress})
 	</insert>
 	<update id="updatePreCompany" parameterType="com.example.demo.model.PreCompany">
 		UPDATE PreCompany SET companyName=#{companyName},regionNo=#{regionNo},companyAddress=#{companyAddress}
 		WHERE precomNo=#{preCompanyNo}
 	</update>
-	<delete id="deletePreCompany" parameterType="String">
-		DELETE FROM PreCompany WHERE userId=#{userId}
+	<delete id="deletePreCompanyAsUserId" parameterType="String">
+		DELETE FROM PreCompany WHERE userId = #{userId}
+	</delete>
+
+	<delete id="deletePreCompanyAsPreCompanyNo" parameterType="int">
+		DELETE FROM PreCompany WHERE preComNo = #{preCompanyNo}
 	</delete>
 
 </mapper>

@@ -90,9 +90,14 @@
   		
   	}
   	
+  	
    		
   	function uploadFile() {
-		  $.ajax({
+		  
+  		if(document.getElementById('fileNo').value==""){
+  		
+  		
+  		$.ajax({
 				    url: "/uploadFile",
 				    type: "POST",
 				    data: new FormData($("#uploadForm")[0]),// 폼안에 있는 유저아이디도 같이 넘김
@@ -110,14 +115,17 @@
 				    		document.getElementById('fileNo').value=responseData.fileNo;
 		    	    		},
 		    		error: function () {
-				      		  alert('파일업로드 실패');
+				      		  alert('파일업로드 실패. 파일을 선택해주세요');
 				      		document.getElementById('fileNo').value="";
     				}
 		  });
+  		}
+  		
 	}
 			
 	
 	function deleteFile() {
+		if(!(document.getElementById('fileNo').value=="")){
 		$.ajax({
 			type : 'DELETE',
 			url : "/fileDeleteStorageByfileNo/"+ window.responseDT.fileNo,
@@ -133,6 +141,9 @@
 						$('#img_src').html
 			    		(`<img id="target_image" src="/images/default2.jpg" width="300" height="400">`);
 						document.getElementById('fileNo').value="";
+						$('#fileinput').html(`<input type="file" id="file1" name="file" />`);
+						
+						
 					},
 					error : function(e) {
 						alert('파일DB삭제 실패');
@@ -145,7 +156,7 @@
 				console.log(e);
 			}
 		});
-
+		}
 	}
 </script>
 

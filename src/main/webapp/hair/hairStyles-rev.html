@@ -11,10 +11,9 @@
   <title>Modern Business - Start Bootstrap Template</title>
 
 <!-- Bootstrap core CSS -->
-  <link href="bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="./vender/bootstrap/css/bootstrap.css" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="bootstrap/css/modern-business.css" rel="stylesheet">
-
+  <link href="./css/modern-business.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +23,7 @@
     
     window.onload=   
    $(function(){
-      $("#contents").load("index-menu.html");
+      $("#contents").load("main/index-menu.html");
     });
     </script>
   <!-- Navigation -->
@@ -42,7 +41,7 @@
               <img class="img-fluid" src="https://i.ytimg.com/vi/8LMla1wMC-A/maxresdefault.jpg" alt="">
             </div>
             <div>헤어디자이너 정보<br>바르다 김선생<br>청담역 3번출구 한가운데<br>
-              <input type="button" value="정보보기" onClick="location.href='designers.html'"></div>&nbsp;&nbsp;<div>
+              <input type="button" value="정보보기" onClick="location.href='designer/designers.html'"></div>&nbsp;&nbsp;<div>
                 <button class="btn btn-primary" type="button">
                 즐겨찾기 <span class="badge">4</span>
               </button></div>
@@ -106,22 +105,9 @@
           alert('예약이 취소 되었습니다.');
         });
         </script>
-      <a id="btnRev" href="hairStyles-done.html" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;<a id="cancle" href="index.html" class="btn btn-primary">취소하기</a>
+      <a id="btnRev" href="hairStyle/hairStyles-done.html" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;<a id="cancle" href="index.html" class="btn btn-primary">취소하기</a>
     </div>
     </div>
-  <!-- Footer -->
-  <script>
-window.onload=   
-   $(function(){
-      $("#index-footer").load("index-footer.html");
-    });
-    </script>
-  <!-- Footer -->
-  <div id="index-footer"></div>
-    <!-- Bootstrap core JavaScript -->
-  <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </body>
 
 </html>

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,186 +9,29 @@
 
 <title>Modern Business - Start Bootstrap Template</title>
 
-<!-- Bootstrap core CSS -->
-<link href="bootstrap/vendor/bootstrap/css/bootstrap.css"
-	rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="bootstrap/css/modern-business.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-</head>
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<body>
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript">
-		window.onload = $(function() {
-			$("#contents").load("index-menu.html");
-		});
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/hairStargram/login/facebook.js"></script>
+  <script src="js/hairStargram/common/common_nev.js"></script>
+  <script src="js/hairStargram/designer.js"></script>
+  <script src="js/hairStargram/hairstyle.js"></script>
+  <script>
+    window.onload = function () {
+      loadMenu();
+      hairStyle_body();
+    };
 	</script>
 	<!-- Navigation -->
-	<div id="contents"></div>
-
-	<!-- Page Content -->
-	<div class="container">
-
-		<!-- Page Heading/Breadcrumbs -->
-		<h1 class="mt-4 mb-3">헤어스타일 정보 페이지</h1>
-		<div class="row">
-			<div class="col-lg-2 col-sm-4 mb-4">
-				<img class="img-fluid"
-					src="https://i.ytimg.com/vi/8LMla1wMC-A/maxresdefault.jpg" alt="">
-			</div>
-			<div>
-				헤어디자이너 정보<br>바르다 김선생<br>청담역 3번출구 한가운데<br>
-				<input type="button" value="정보보기" onClick="location.href='designers.html'">
-			</div>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<div>
-				<button class="btn btn-primary" type="button">
-					즐겨찾기<span class="badge">4</span>
-				</button>
-			</div>
-		</div>
-		<!-- Intro Content -->
-		<div class="row">
-			<div class="col-lg-4">
-				<img class="img-fluid rounded mb-4" src="images/애쉬그레이.jpg" alt="">
-				<a class="btn btn-primary" href="hairStyles-rev.html">예약하기</a>
-			</div>
-			<div class="col-lg-6">
-				<h3>상세정보</h3>
-				<div>#연예인머리 #애쉬브라운 #애쉬그레이 #고데기머리</div>
-				<div>소요시간 4시간</div>
-				<div>40,000원</div>
-				<br> <br>
-
-				<h3>디자이너의 헤어스타일들</h3>
-				<div class="row">
-					<div class="col-lg-3 col-sm-4 mb-6">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-					<div class="col-lg-3 col-sm-4 mb-4">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-					<div class="col-lg-3 col-sm-4 mb-4">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-					<div class="col-lg-3 col-sm-4 mb-4">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-					<div class="col-lg-3 col-sm-4 mb-4">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-					<div class="col-lg-3 col-sm-4 mb-4">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-					<div class="col-lg-3 col-sm-4 mb-4">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-					<div class="col-lg-3 col-sm-4 mb-4">
-						<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!-- /.row -->
-		<!-- Call to Action Well -->
-
-		<div class="col-lg-12 card text-white bg-secondary my-5 py-4 text-center">
-			<h2>고객 평가</h2>
-			<div class="card-body">
-				<!-- Comments Form -->
-				<div class="card my-4">
-					<h5 class="card-header">Leave a Comment:</h5>
-					<div class="card-body">
-						<form>
-							<div class="form-group">
-								<textarea class="form-control" rows="3"></textarea>
-							</div>
-							<button type="submit" class="btn btn-primary">댓글달기</button>
-						</form>
-					</div>
-				</div>
-
-				<!-- Single Comment -->
-				<div class="media mb-4">
-					<img class="d-flex mr-3 rounded-circle"
-						src="http://placehold.it/50x50" alt="">
-					<div class="media-body">
-						<h5 class="mt-0">Commenter Name</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-						scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-						vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-						nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					</div>
-				</div>
-
-				<!-- Comment with nested comments -->
-				<div class="media mb-4">
-					<img class="d-flex mr-3 rounded-circle"
-						src="http://placehold.it/50x50" alt="">
-					<div class="media-body">
-						<h5 class="mt-0">Commenter Name</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-						scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-						vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-						nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Our Customers -->
-		<h2>다른 디자이너의 헤어스타일들</h2>
-		<div>
-			<div class="row " >
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-				<div class="col-lg-2 col-sm-4 mb-4">
-					<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /.container -->
-</body>
-<!-- Footer -->
-<script>
-	window.onload = $(function() {
-		$("#index-footer").load("index-footer.html");
-	});
-</script>
-<!-- Footer -->
-<div id="index-footer"></div>
-<!-- Bootstrap core JavaScript -->
-<script src="bootstrap/vendor/jquery/jquery.min.js"></script>
-<script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
+  <div id="menuContents"></div>
+  <div id="contents"></div>
+  <div id="index-footer"></div>
 </html>

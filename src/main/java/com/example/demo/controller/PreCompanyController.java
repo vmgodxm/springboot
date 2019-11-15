@@ -8,6 +8,7 @@ import com.example.demo.repository.interfaces.IPreCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ public class PreCompanyController {
 	@Autowired
 	private IPreCompanyRepository repository;
 
-	@GetMapping(path = "/precompany/{userId}")
+	@GetMapping(path = "/preCompany/{userId}")
 	public PreCompany getPreUserId(@PathVariable String userId) throws Exception {
 		return repository.getPreUserId(userId);
 	}
@@ -31,13 +32,26 @@ public class PreCompanyController {
 		return repository.preCompanyList(userId);
 	}
 
-	@PostMapping(path = "/precompany")
-	public int insertPreCompany(PreCompany preCompany) throws Exception {
-		return repository.insertPreCompany(preCompany);
+	@PostMapping(path = "/preCompany")
+	public ResponseEntity<Integer> insertPreCompany(HttpEntity<PreCompany> httpEntity) throws Exception {
+		ResponseEntity<Integer> retVal = null;
+
+		PreCompany preCompany = httpEntity.getBody();
+		try {
+			if (preCompany != null) {
+				int preCompanyNo = repository.insertPreCompany(preCompany);
+				retVal = new ResponseEntity<>(preCompanyNo, HttpStatus.OK);
+			}
+			
+		} catch (Exception e) {
+			retVal = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		return retVal;
 	}
 
 	@PostMapping(path = "/preCompanyList")
-	public HttpStatus insertPreCompany(HttpEntity<List<PreCompany>> httpEntity) throws Exception{
+	public HttpStatus insertPreCompanyList(HttpEntity<List<PreCompany>> httpEntity) throws Exception{
 		HttpStatus retVal = HttpStatus.BAD_REQUEST;
 
 		List<PreCompany> list = httpEntity.getBody();
@@ -56,14 +70,13 @@ public class PreCompanyController {
 		return retVal;
 	}
 
-	@PutMapping(path = "/precompany/{preCompanyNo}")
-	public int updatePreCompany(@PathVariable Long preCompanyNo, PreCompany preCompany) throws Exception {
+	@PutMapping(path = "/preCompany/{preCompanyNo}")
+	public int updatePreCompany(@PathVariable int preCompanyNo, PreCompany preCompany) throws Exception {
 		return repository.updatePreCompany(preCompany);
 	}
 
-	@DeleteMapping(path = "/precompany/{userId}")
-	public int deletePreCompany(@PathVariable String userId) throws Exception {
-		return repository.deletePreCompany(userId);
+	@DeleteMapping(path = "/preCompany/{preCompanyNo}")
+	public int deletePreCompany(@PathVariable int preCompanyNo) throws Exception {
+		return repository.deletePreCompany(preCompanyNo);
 	}
-
 }

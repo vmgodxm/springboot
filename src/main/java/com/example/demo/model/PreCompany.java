@@ -4,7 +4,7 @@ package com.example.demo.model;
 public class PreCompany {
 
 	// 번호
-	private Long preCompanyNo;
+	private int preComNo;
 
 	// 사업장이름
 	private String companyName;
@@ -21,9 +21,9 @@ public class PreCompany {
 	public PreCompany() {
 	}
 
-	public PreCompany(Long preCompanyNo, String companyName, String userId, int regionNo, String companyAddress) {
+	public PreCompany(int preCompanyNo, String companyName, String userId, int regionNo, String companyAddress) {
 		super();
-		this.preCompanyNo = preCompanyNo;
+		this.preComNo = preCompanyNo;
 		this.companyName = companyName;
 		this.userId = userId;
 		this.regionNo = regionNo;
@@ -41,15 +41,15 @@ public class PreCompany {
 	/**
 	 * @return the preCompanyNo
 	 */
-	public Long getPreCompanyNo() {
-		return preCompanyNo;
+	public int getPreCompanyNo() {
+		return preComNo;
 	}
 
 	/**
 	 * @param preCompanyNo the preCompanyNo to set
 	 */
-	public void setPreCompanyNo(Long preCompanyNo) {
-		this.preCompanyNo = preCompanyNo;
+	public void setPreCompanyNo(int preCompanyNo) {
+		this.preComNo = preCompanyNo;
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class PreCompany {
 	 */
 	@Override
 	public String toString() {
-		return "PreCompany [preCompanyNo=" + preCompanyNo + ", companyName=" + companyName + ", userId=" + userId
+		return "PreCompany [preCompanyNo=" + preComNo + ", companyName=" + companyName + ", userId=" + userId
 				+ ", regionNo=" + regionNo + ", companyAddress=" + companyAddress + "]";
 	}
 	

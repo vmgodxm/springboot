@@ -16,27 +16,35 @@ public class PreCompanyRepository implements IPreCompanyRepository {
 	private SqlSession sqlSession;
 	
 	@Override
-	public PreCompany getPreUserId (String userId) throws Exception{
+	public PreCompany getPreUserId (final String userId) throws Exception {
 		return sqlSession.selectOne("mapper.PreCompanyMapper.getPreUserId", userId);
 	}
-	
+
 	@Override
-	public List<PreCompany> preCompanyList(String userId) throws Exception{
+	public List<PreCompany> preCompanyList(final String userId) throws Exception {
 		return sqlSession.selectList("mapper.PreCompanyMapper.getPreCompanyList", userId);
 	}
-	
+
 	@Override
-	public int insertPreCompany(PreCompany preCompany) throws Exception{
-		return sqlSession.insert("mapper.PreCompanyMapper.insertPreCompany", preCompany);
+	public int insertPreCompany(final PreCompany preCompany) throws Exception {
+		final int result = sqlSession.insert("mapper.PreCompanyMapper.insertPreCompany", preCompany);
+		return result > 0 ? preCompany.getPreCompanyNo() : result;
 	}
-	
+
 	@Override
-	public int updatePreCompany(PreCompany preCompany) throws Exception {
+	public int updatePreCompany(final PreCompany preCompany) throws Exception {
 		return sqlSession.update("mapper.PreCompanyMapper.updatePreCompany", preCompany);
 	}
-	
+
 	@Override
-	public int deletePreCompany(String userId) throws Exception{
-		return sqlSession.delete("mapper.PreCompanyMapper.deletePreCompany", userId);
+	public int deletePreCompany(final String userId) throws Exception {
+		return sqlSession.delete("mapper.PreCompanyMapper.deletePreCompanyAsUserId", userId);
 	}
+
+	@Override
+	public int deletePreCompany(final int preCompanyNo) throws Exception {
+		return sqlSession.delete("mapper.PreCompanyMapper.deletePreCompanyAsPreCompanyNo", preCompanyNo);
+	}
+
+	
 }

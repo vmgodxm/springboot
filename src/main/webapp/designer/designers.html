@@ -11,22 +11,24 @@
   <title>HairStargram - Designer</title>
 
 <!-- Bootstrap core CSS -->
-  <link href="bootstrap/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="vender/bootstrap/css/bootstrap.css" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="bootstrap/css/modern-business.css" rel="stylesheet">
+  <link href="css/modern-business.css" rel="stylesheet">
+  <script src="js/hairStargram/login/facebook.js"></script>
+  <script src="js/hairStargram/common/common_nev.js"></script>
+  <script src="js/hairStargram/designer.js"></script>
+  <script>
+    window.onload = function () {
+      loadMenu();
+    };
 
+  </script>
 </head>
 
 <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-    
-   $(function(){
-      $("#contents").load("index-menu.html");
-    });
-    </script>
-  <!-- Navigation -->
-  <div id="contents"></div>
+   <!-- Navigation -->
+  <div id="menuContents"></div>
 
   <!-- Page Content -->
   <div class="container">
@@ -150,8 +152,8 @@
   <!-- Footer -->
   <div id="index-footer"></div>
     <!-- Bootstrap core JavaScript -->
-  <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -83,17 +84,25 @@ public class FileUploadDownloadService {
 
     	BufferedImage srcImg = ImageIO.read(new File(filePath));
     	
+    	int dw = 300, dh = 400; 
     	
+    	int ow = srcImg.getWidth();
+    	int oh = srcImg.getHeight();
+    	int nw = ow; int nh = (ow * dh) / dw;
+    	
+    	if(nh > oh) { nw = (oh * dw) / dh; nh = oh; }
+    	
+    	BufferedImage cropImg = Scalr.crop(srcImg, (ow-nw)/2, (oh-nh)/2, nw, nh); 
+    	
+    	BufferedImage destImg = Scalr.resize(cropImg, dw, dh);
     	
     	String path = fileLocation.toString();
-    	
-    	
     	
     	String thumbName = path +"/"+ frontFileName + "_th.JPG";
     	
     	File thumbFile = new File(thumbName);
 
-    	ImageIO.write(srcImg, "JPG", thumbFile);
+    	ImageIO.write(destImg, "JPG", thumbFile);
     	
 
 	}

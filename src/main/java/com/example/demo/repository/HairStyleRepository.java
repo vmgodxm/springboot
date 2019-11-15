@@ -31,13 +31,18 @@ public class HairStyleRepository implements IHairStyleRepository {
 	}
 
 	@Override
-	public int insertHairStyle(com.example.demo.model.HairStyle hairStyle) throws Exception {
-		return sqlSession.insert("mapper.HairStyleMapper.insertHairStyle");
+	public HairStyle getHairStyle(HairStyle hairStyle) throws Exception {
+		return sqlSession.selectOne("mapper.HairStyleMapper.getHairStyle",hairStyle);
+	}
+	
+	@Override
+	public int insertHairStyle(HairStyle hairStyle) throws Exception {
+		return sqlSession.insert("mapper.HairStyleMapper.insertHairStyle",hairStyle);
 	}
 
 	@Override
-	public int updateHairStyle(Long styleNo) throws Exception {
-		return sqlSession.update("mapper.HairStyleMapper.updateHairStyle");
+	public int updateHairStyle(HairStyle hairStyle) throws Exception {
+		return sqlSession.update("mapper.HairStyleMapper.updateHairStyle",hairStyle);
 	}
 
 	@Override

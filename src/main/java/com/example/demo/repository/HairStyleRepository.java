@@ -47,7 +47,7 @@ public class HairStyleRepository implements IHairStyleRepository {
 
 	@Override
 	public int deleteHairStyle(Long styleNo) throws Exception {
-		return sqlSession.delete("mapper.HairStyleMapper.deleteHairStyle");
+		return sqlSession.delete("mapper.HairStyleMapper.deleteHairStyle",styleNo);
 	}
 
 	

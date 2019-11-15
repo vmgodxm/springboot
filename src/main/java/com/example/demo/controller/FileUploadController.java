@@ -45,8 +45,8 @@ public class FileUploadController {
     @Autowired
     public FileUploadController(FileUploadProperties prop) {
     	filelocation = Paths.get(prop.getUploadDir())
-                 .toAbsolutePath().normalize();  //서버의 절대경로
-    	//.normalize();
+                // .toAbsolutePath().normalize();  //서버의 절대경로
+    	.normalize();
 	}
     
     @PostMapping("/uploadFile")

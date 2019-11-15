@@ -9,7 +9,9 @@ import com.example.demo.repository.interfaces.IHairStyleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -44,17 +46,20 @@ public class HairStyleController {
 		return hairStyle;
 	}
 	
-	@PostMapping(path="/hairStyle") 
+	@PostMapping(path="/hairStyleInsert") 
 	public int insertHairStyle(HairStyle hairStyle) throws Exception{
 		return repository.insertHairStyle(hairStyle);
 	}
 	
-	/*
-	public int updateHairStyle(HairStyle hairStyle) {
-		return repository.updateHairStyle()
+	@PutMapping(path="/hairStyleUpdate/{styleNo}")
+	public int updateHairStyle(@PathVariable Long styleNo,HairStyle hairStyle) throws Exception{
+		return repository.updateHairStyle(hairStyle);
 	}
-	*/
 	
+	@DeleteMapping(path="/hairStyleDelete/{styleNo}")
+	public int deleteHairStyle(@PathVariable Long styleNo) throws Exception{
+		return repository.deleteHairStyle(styleNo);
+	}
 	
 	
 	

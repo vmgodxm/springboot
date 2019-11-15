@@ -11,49 +11,53 @@
   <title>Modern Business - Start Bootstrap Template</title>
 	
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/modern-business.css" rel="stylesheet">
+  <link href="css/modern-business.css" rel="stylesheet">
   
    <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../vendor/jquery/jquery.ajax-cross-origin.min.js"></script>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
   
-  
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery/jquery.ajax-cross-origin.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/hairStargram/common/common_nev.js"></script>
+  <script src="js/hairStargram/login/facebook.js"></script>
   <script>
   	window.onload = function() {
+  	  loadMenu();
+      reservation();
   		
-  		
-  		$('#content').load('./designerPage-reservation.html');
+  		//$('#change').load('designer/designerPage-reservation.html');
 	 	
   	};
   	
   	function hairstyle() {
-  		$('#content').load('./designerPage-hairstyle.html');
+  		$('#change').load('designer/designerPage-hairstyle.html');
   	}
   	
   	function timetable() {
-  		$('#content').load('designerPage-timetable.html');
+  		$('#change').load('designer/designerPage-timetable.html');
   	}
   	
   	function reservation() {
-  		$('#content').load('designerPage-reservation.html');
+  		$('#change').load('designer/designerPage-reservation.html');
   	}
   	
   	function customer() {
-  		$('#content').load('designerPage-customer.html');
+  		$('#change').load('designer/designerPage-customer.html');
   	}
   	
   	function info() {
-  		$('#content').load('designerPage-info.html');
+  		$('#change').load('designer/designerPage-info.html');
   	}
   	
   	function fileupload() {
   		//var userId = getCookie('userId');
   		
-  		$('#content').load('uploadfile.html');
+  		$('#change').load('uploadfile.html');
   		
   	}
   	
@@ -68,11 +72,14 @@
   	function categoryCheck() {
 		var categoryno = parseInt(document.getElementById('categoryNoselect').value);
   		if(document.getElementById('gender').value==1){
-  				document.getElementById('categoryNo').value=categoryno+3;
-  		}else {
-  				document.getElementById('categoryNo').value=categoryno;
-  			
-  		}
+
+  			document.getElementById('categoryNo').value=categoryno+3;
+  		}else
+  			{
+  			document.getElementById('categoryNo').value=categoryno;
+  			}
+  		
+
   	} 
   	
   	function regist(){
@@ -254,7 +261,7 @@
       </div>
       
       <!-- Content Column -->
-      <span class="col-lg-9" id="content"> My page 	</span>
+      <span class="col-lg-9" id="change"> My page 	</span>
       	
     
       

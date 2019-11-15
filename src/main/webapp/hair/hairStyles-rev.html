@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Modern Business - Start Bootstrap Template</title>
-
-<!-- Bootstrap core CSS -->
-  <link href="./vender/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="./css/modern-business.css" rel="stylesheet">
-</head>
-
+<script src="./js/hairStargram/hairstyle.js"></script>
 <body>
-  
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-    
-    window.onload=   
-   $(function(){
-      $("#contents").load("main/index-menu.html");
-    });
-    </script>
-  <!-- Navigation -->
-  <div id="contents"></div>
-
-  <!-- Page Content -->
+    <!-- Page Content -->
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
@@ -98,16 +69,12 @@
     </div>
     <div class="card-footer text-muted">
       <script type="text/javascript">
-        $('#btnRev').click(function(){
-          alert('예약이 완료 되었습니다.');
-        });
-        $('#cancle').click(function(){
+         $('#btnRevcancle').click(function(){
           alert('예약이 취소 되었습니다.');
         });
         </script>
-      <a id="btnRev" href="hairStyle/hairStyles-done.html" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;<a id="cancle" href="index.html" class="btn btn-primary">취소하기</a>
+      <a id="btnRev" href="javascript:hairStyle_done()" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;<a id="cancle" href="index.html" class="btn btn-primary">취소하기</a>
     </div>
     </div>
 </body>
 
-</html>

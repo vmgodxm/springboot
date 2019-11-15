@@ -1,4 +1,20 @@
 
+$(function(){
+    $('#btnReservation').on('click',function(e){
+        $('#contents').load('./hair/hairStyles-rev.html');
+        e.preventDefault();
+    });
+});
+
+$(function(){
+    $('#btnRev').on('click',function(e){
+        $('#contents').load('./hair/hairStyles-done.html');
+        e.preventDefault();
+    });
+});
+
+
+
 function hairStyle_body(){
     $('#contents').load('./hair/hairStyles-body.html');
 }
@@ -7,13 +23,5 @@ function designer(){
         $('#contents').load('./desinger/designers.html');
     });
 }
-function hairStyle_rev(){
-    $('#btnReservation').on('click',function(){
-        $('#contents').load('./hair/hairStyles-rev.html');
-    });
-}
-function hairStyle_done(){
-    $('#btnRev').on('click',function(){
-        $('#contents').load('./hair/hairStyles-done.html');
-    });
-}
+    
+

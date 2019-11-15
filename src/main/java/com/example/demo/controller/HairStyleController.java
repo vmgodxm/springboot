@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import java.util.List;
 
 import com.example.demo.model.HairStyle;
-import com.example.demo.repository.FileRepository;
 import com.example.demo.repository.interfaces.IHairStyleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ public class HairStyleController {
 	@Autowired
 	private IHairStyleRepository repository;
 	
-	private FileRepository fileRepository;
 
 	// @GetMapping(path="/hairStyle")
 	// public ResponseEntity<List<HairStyle>> HairStyleList() throws Exception{
@@ -60,22 +58,4 @@ public class HairStyleController {
 	public int deleteHairStyle(@PathVariable Long styleNo) throws Exception{
 		return repository.deleteHairStyle(styleNo);
 	}
-	
-	
-	
-	
-	/*
-	@DeleteMapping(path = "/hairStyle/{styleNo}")
-	public void deleteHairStyle(Long styleNo, HairStyle hairStyle) throws Exception{
-		// 1. hairRepository 에서 get hairStyle
-		// 2. fileRepository 에서 delete fileStroge(fileNo)
-		// 3. delete hairStyle
-		HairStyle gethairStyle = repository.getHairStyle(styleNo);
-		int result = fileRepository.deleteFile(gethairStyle.getFileNo());
-		if(result > 0) {
-			repository.deleteHairStyle(gethairStyle.getStyleNo());
-		}
-		
-	}
-	*/
 }

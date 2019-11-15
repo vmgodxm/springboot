@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -9,17 +9,13 @@
 
   <title>Modern Business - Start Bootstrap Template</title>
   <!-- Custom styles for this template-->
- <!-- <link href="css/sb-admin.css" rel="stylesheet">-->
+  <link href="css/sb-admin.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -43,7 +39,7 @@
     }
 
     function info() {
-      $('#change').load('designer/designerPage-info.html', function(){
+      $('#change').load('designer/designerPage-info.html', function () {
         var userId = getCookie('userId');
         if (userId != null && userId != "") {
           getUser(userId);
@@ -55,113 +51,123 @@
     function fileupload() {
       $('#change').load('designer/hairStyleRegist.html');
     }
-	
-	function pageload() {
-  		//var userId = getCookie('userId');
-  		var userId = "test2@test.com";
-  		//$('#getUserId').html(`<input type='hidden' name='userId' value="${userId}">`);
-  		document.getElementById('userId').value=userId;
-  		document.getElementById('getUserIdtest').value=userId;
-  	}
-  	
-  	function categoryCheck() {
-  		var categoryno = parseInt(document.getElementById('categoryNoselect').value);
-  		if(document.getElementById('gender').value==1){
-  			document.getElementById('categoryNo').value=categoryno+3;
-  		}else
-  			{
-  			document.getElementById('categoryNo').value=categoryno;
-  			}
-  		
-  	} 
-  	
-  	function regist(){
-  			categoryCheck();
-  	        $.ajax({
-  	          url: "/hairStyleInsert",
-  	          type: "POST",
-  	          data: $('#hairstyleregist').serialize(),
-  	          dataType: 'json',
-  	        }).done(function (data) {
-  	         
-  	          window.location.href = 'userphoto.html';
-  	        }).fail(function (jqXHR, textStatus, errorThrown) {
-  	         
-  	          console.log(jqXHR.responseText);
-  	        });
-  	     
-  		
-  	}
-  	
-  	
-   		
-  	function uploadFile() {
-		  
-  		if(document.getElementById('fileNo').value==""){
-  		
-  		
-  		$.ajax({
-				    url: "/uploadFile",
-				    type: "POST",
-				    data: new FormData($("#uploadForm")[0]),// 폼안에 있는 유저아이디도 같이 넘김
-				    enctype: 'multipart/form-data',
-				    processData: false,
-				    contentType: false,
-				    success: function (responseData) {
-				      window.responseDT =responseData;
-				      alert('파일업로드성공');// Handle upload success
-				    	var fileThumbNailName=responseData.fileThumbNailName;
-				    	
-				    	var ThumbNail = "/images/"+ fileThumbNailName;
-				    		$('#img_src').html
-				    		(`<img id="target_image" src="${ThumbNail}" width="300" height="400">`);
-				    		document.getElementById('fileNo').value=responseData.fileNo;
-		    	    		},
-		    		error: function () {
-				      		  alert('파일업로드 실패. 파일을 선택해주세요');
-				      		document.getElementById('fileNo').value="";
-    				}
-		  });
-  		}
-  		
-	}
-			
-	
-	function deleteFile() {
-		if(!(document.getElementById('fileNo').value=="")){
-		$.ajax({
-			type : 'DELETE',
-			url : "/fileDeleteStorageByfileNo/"+ window.responseDT.fileNo,
-			success : function(result1) {
-				alert('파일삭제 성공');
-				console.log(result1);
-				$.ajax({
-					type : 'DELETE',
-					url : "/fileDelete/"+ window.responseDT.fileNo,
-					success : function(result2) {
-						alert('파일DB삭제 성공');
-						console.log(result2);
-						$('#img_src').html
-			    		(`<img id="target_image" src="/images/default2.jpg" width="300" height="400">`);
-						document.getElementById('fileNo').value="";
-						$('#fileinput').html(`<input type="file" id="file1" name="file" />`);
-						
-						
-					},
-					error : function(e) {
-						alert('파일DB삭제 실패');
-						console.log(e);
-					}
-			});
-			},
-			error : function(e) {
-				alert('파일삭제 실패');
-				console.log(e);
-			}
-		});
-		}
-	}
-	
+
+    // 회원탈퇴
+    function leave() {
+      $("#change").load("./designer/designerPage-leave.html", function (e) {
+        var userId = getCookie('userId');
+        if (userId != null && userId != "") {
+          getUser(userId);
+        }
+      });
+    }
+
+
+    function pageload() {
+      //var userId = getCookie('userId');
+      var userId = "test2@test.com";
+      //$('#getUserId').html(`<input type='hidden' name='userId' value="${userId}">`);
+      document.getElementById('userId').value = userId;
+      document.getElementById('getUserIdtest').value = userId;
+    }
+
+    function categoryCheck() {
+      var categoryno = parseInt(document.getElementById('categoryNoselect').value);
+      if (document.getElementById('gender').value == 1) {
+        document.getElementById('categoryNo').value = categoryno + 3;
+      } else {
+        document.getElementById('categoryNo').value = categoryno;
+      }
+
+    }
+
+    function regist() {
+      categoryCheck();
+      $.ajax({
+        url: "/hairStyleInsert",
+        type: "POST",
+        data: $('#hairstyleregist').serialize(),
+        dataType: 'json',
+      }).done(function (data) {
+
+        window.location.href = 'userphoto.html';
+      }).fail(function (jqXHR, textStatus, errorThrown) {
+
+        console.log(jqXHR.responseText);
+      });
+
+
+    }
+
+
+
+    function uploadFile() {
+
+      if (document.getElementById('fileNo').value == "") {
+
+
+        $.ajax({
+          url: "/uploadFile",
+          type: "POST",
+          data: new FormData($("#uploadForm")[0]),// 폼안에 있는 유저아이디도 같이 넘김
+          enctype: 'multipart/form-data',
+          processData: false,
+          contentType: false,
+          success: function (responseData) {
+            window.responseDT = responseData;
+            alert('파일업로드성공');// Handle upload success
+            var fileThumbNailName = responseData.fileThumbNailName;
+
+            var ThumbNail = "/images/" + fileThumbNailName;
+            $('#img_src').html
+              (`<img id="target_image" src="${ThumbNail}" width="300" height="400">`);
+            document.getElementById('fileNo').value = responseData.fileNo;
+          },
+          error: function () {
+            alert('파일업로드 실패. 파일을 선택해주세요');
+            document.getElementById('fileNo').value = "";
+          }
+        });
+      }
+
+    }
+
+
+    function deleteFile() {
+      if (!(document.getElementById('fileNo').value == "")) {
+        $.ajax({
+          type: 'DELETE',
+          url: "/fileDeleteStorageByfileNo/" + window.responseDT.fileNo,
+          success: function (result1) {
+            alert('파일삭제 성공');
+            console.log(result1);
+            $.ajax({
+              type: 'DELETE',
+              url: "/fileDelete/" + window.responseDT.fileNo,
+              success: function (result2) {
+                alert('파일DB삭제 성공');
+                console.log(result2);
+                $('#img_src').html
+                  (`<img id="target_image" src="/images/default2.jpg" width="300" height="400">`);
+                document.getElementById('fileNo').value = "";
+                $('#fileinput').html(`<input type="file" id="file1" name="file" />`);
+
+
+              },
+              error: function (e) {
+                alert('파일DB삭제 실패');
+                console.log(e);
+              }
+            });
+          },
+          error: function (e) {
+            alert('파일삭제 실패');
+            console.log(e);
+          }
+        });
+      }
+    }
+
     window.onload = function () {
       loadMenu();
       reservation();
@@ -177,16 +183,7 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Designer Page
-      <small></small>
-    </h1>
-
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
-      </li>
-      <li class="breadcrumb-item active">Designer</li>
-    </ol>
+    <h1 class="mt-4 mb-3">Designer Page</h1>
 
     <!-- Content Row -->
     <div class="row">
@@ -198,12 +195,13 @@
           <a href="javascript:timetable();" class="list-group-item">영업시간</a>
           <a href="javascript:customer();" class="list-group-item">고객현황</a>
           <a href="javascript:info();" class="list-group-item">정보수정</a>
+          <a href="javascript:leave()" class="list-group-item">회원탈퇴</a>
         </div>
       </div>
       <!-- Content Column -->
-      
-        <span class="col-lg-9" id="change"></span>
-      
+
+      <span class="col-lg-9" id="change"></span>
+
     </div>
     <!-- /.row -->
 

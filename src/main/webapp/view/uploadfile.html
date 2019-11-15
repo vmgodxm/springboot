@@ -41,23 +41,32 @@
               <!--<label for="styleName">스타일 이름</label>-->
             </div>
           </div>
-          <div class="form-group">
+           <div class="form-group">
             <div class="form-label-group">
               <select class="custom-select" name="gender" id="gender">
                 <option value="0" selected="selected">남성</option>
                 <option value="1">여성</option>
               </select>
             </div>
-          </div> <!-- 젠더가 1 이면 포스트하기전에 카테고리 벨류 +3 해주는 서비스필요-->
+          </div>  <!-- 젠더가 1 이면 포스트하기전에 카테고리 벨류 +3 해주는 서비스필요-->
            <div class="form-group">
-            <div class="form-label-group">
-              <select class="custom-select" name="categoryNo" id="categoryNo">
+            <div class="form-label-group" disabled>
+              <select class="custom-select" name="categoryNoselect" id="categoryNoselect" >
                 <option value="0" selected="selected">커트</option>
                 <option value="1">펌</option>
                 <option value="2">염색</option>
               </select>
             </div>
           </div>
+          
+          <div class="form-group">
+            <div style="display:none;" class="form-label-group">
+              <input type="text" name="categoryNo" id="categoryNo" class="form-control" placeholder="categoryNo" value=""
+               >
+              <label for="categoryNo">카테고리 넘버셋업</label>
+            </div>
+          </div>
+          
 	       <div class="form-group">
             <div class="form-label-group">
               <input type="text" name="price" id="price" class="form-control" placeholder="price"
@@ -76,7 +85,7 @@
           
           <div class="form-group">
             <div class="form-label-group">
-              <select class="custom-select" name="beginHour">
+              <select class="custom-select" name="hour" id="hour">
                 <option value="01" selected="selected">01</option>
                 <option value="02">02</option>
                 <option value="03">03</option>
@@ -141,7 +150,11 @@
 	
 	
 </div>
-	      
+	      <br/>
+	      <br/>
+	      <span class="col-lg-3">
+	        		 <a id="registHairstyle" class="btn btn-primary " href="javascript:regist();">Regist</a>
+	      </span>
 <script>
 	pageload();
 </script>

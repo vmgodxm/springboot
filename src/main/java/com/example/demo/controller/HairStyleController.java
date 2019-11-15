@@ -44,7 +44,7 @@ public class HairStyleController {
 		return hairStyle;
 	}
 	
-	@PostMapping(path="/hairStyle") 
+	@PostMapping(path="/hairStyleInsert") 
 	public int insertHairStyle(HairStyle hairStyle) throws Exception{
 		return repository.insertHairStyle(hairStyle);
 	}

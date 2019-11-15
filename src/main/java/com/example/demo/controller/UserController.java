@@ -130,7 +130,7 @@ public class UserController {
             return 0;
         }
 
-        UserRegist user = userRepository.getUser(userId);
+        //UserRegist user = userRepository.getUser(userId);
 
         LoginInfo loginInfo = authRepository.getAuthencication(userId);
         authRepository.updateLogout(loginInfo);

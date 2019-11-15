@@ -7,15 +7,23 @@
 	<select id="getHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">
 		select * from hairStyle where styleNo = #{styleNo}
 	</select>
-	<select id="insertHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">
-		select * from hairStyle where styleNo = #{styleNo}
-	</select>
-	<select id="updateHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">
-		select * from hairStyle where styleNo = #{styleNo}
-	</select>
-	<select id="deleteHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">
+	
+	<insert id="insertHairStyle" parameterType="com.example.demo.model.HairStyle">
+		insert into hairStyle values
+			(HAIRSTYLE_STYLENO_SEQ.nextVal,#{gender},#{styleName},#{price},#{hour},#{minute},#{styleComment},#{fileNo},#{categoryNo},#{userId})
+	</insert>
+	<update id="updateHairStyle" parameterType="com.example.demo.model.HairStyle">
+		update hairStyle set styleName=#{styleName},price=#{price},hour=#{hour},minute=#{minute}, styleComment=#{styleComment},categoryNo=#{categoryNo},userId=#{userId}
+   			 where fileNo=#{fileNo}
+	</update>
+
+	<delete id="deleteHairStyle" parameterType="Long">
 		delete hairStyle where styleNo = #{styleNo}
-	</select>
+	</delete>
+	
+	<delete id="deleteHairStyleFile" parameterType="Long">
+		delete hairStyle where fileNo = #{fileNo}
+	</delete>
 
 
 </mapper>

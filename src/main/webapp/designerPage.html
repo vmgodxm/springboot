@@ -9,12 +9,14 @@
 
   <title>Modern Business - Start Bootstrap Template</title>
 
-  <link href="css/sb-admin.css" rel="stylesheet">
-
   <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="./css/sb-admin.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="./css/modern-business.css" rel="stylesheet">
+  
+  
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -24,7 +26,7 @@
   <script src="js/hairStargram/login/facebook.js"></script>
   <script src="js/hairStargram/common/common_nev.js"></script>
 
-  <script>
+  <script type="text/javascript">
     function hairstyle() {
       $('#change').load('designer/designerPage-hairstyle.html');
     }
@@ -52,7 +54,7 @@
     }
 
     function fileupload() {
-      $('#change').load('designer/hairStyleRegist.html');
+      $('#change').load('designer/uploadfile.html');
     }
 
     // 회원탈퇴
@@ -92,13 +94,13 @@
         data: $('#hairstyleregist').serialize(),
         dataType: 'json',
       }).done(function (data) {
-
-        window.location.href = 'userphoto.html';
+			window.hairstyle();
+        //window.location.href = 'userphoto.html';
       }).fail(function (jqXHR, textStatus, errorThrown) {
 
         console.log(jqXHR.responseText);
       });
-
+	
 
     }
 
@@ -198,7 +200,7 @@
           <a href="javascript:timetable();" class="list-group-item">영업시간</a>
           <a href="javascript:customer();" class="list-group-item">고객현황</a>
           <a href="javascript:info();" class="list-group-item">정보수정</a>
-          <a href="javascript:leave()" class="list-group-item">회원탈퇴</a>
+          <a href="javascript:leave();" class="list-group-item">회원탈퇴</a>
         </div>
       </div>
       <!-- Content Column -->
@@ -212,7 +214,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <div id="index-footer"></div>
+  <div id="index-footer"> </div>
   <!-- Bootstrap core JavaScript -->
 </body>
 

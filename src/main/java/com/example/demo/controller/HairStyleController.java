@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import com.example.demo.model.HairStyle;
+import com.example.demo.model.HairStyleListMain;
 import com.example.demo.repository.interfaces.IHairStyleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class HairStyleController {
 	@GetMapping(path ="/hairStyle")
 	public List<HairStyle> HairStyleList() throws Exception {
 		return repository.getHairStyleList();
+	}
+	
+	@GetMapping(path ="/hairStyleJoin")
+	public List<HairStyleListMain> getHairStyleListJoin() throws Exception {
+		return repository.getHairStyleListJoin();
 	}
 	
 	@GetMapping(path="/hairStyle/{styleNo}")

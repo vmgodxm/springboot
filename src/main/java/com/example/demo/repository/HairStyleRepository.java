@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.List;
 
 import com.example.demo.model.HairStyle;
+import com.example.demo.model.HairStyleListMain;
 import com.example.demo.repository.interfaces.IHairStyleRepository;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,6 +24,11 @@ public class HairStyleRepository implements IHairStyleRepository {
 	@Override
 	public List<HairStyle> getHairStyleList() throws Exception {
 		return sqlSession.selectList("mapper.HairStyleMapper.getHairStyleList");
+	}
+	
+	@Override
+	public List<HairStyleListMain> getHairStyleListJoin() throws Exception {
+		return sqlSession.selectList("mapper.HairStyleMapper.getHairStyleListJoin");
 	}
 
 	@Override

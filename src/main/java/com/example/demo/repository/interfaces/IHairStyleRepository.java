@@ -3,6 +3,7 @@ package com.example.demo.repository.interfaces;
 import java.util.List;
 
 import com.example.demo.model.HairStyle;
+import com.example.demo.model.HairStyleListMain;
 
 public interface IHairStyleRepository {
 
@@ -12,4 +13,5 @@ public interface IHairStyleRepository {
 	int insertHairStyle(HairStyle hairStyle) throws Exception;
 	int updateHairStyle(HairStyle hairStyle) throws Exception;
 	int deleteHairStyle(Long styleNo) throws Exception;
+	List<HairStyleListMain> getHairStyleListJoin() throws Exception;
 }

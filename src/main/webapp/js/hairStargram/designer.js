@@ -20,26 +20,50 @@
 
 function makeDesignerList() {
 	
-	var html = "";
-	//for (var designer of data) {
-	for (var i = 0; i < 5; i++) {
-		html += 
-		`<div class="col-lg-2 col-sm-6 portfolio-item">
-      <div class="card h-100 text-center">
-        <a href="hairStyles.html"><img class="card-img-top" src="images/매직스트레이트d.jpg" alt=""></a>
-        <div class="card-body">
-        <h4 class="card-title">Team Member</h4>
-        <h6 class="card-subtitle mb-2 text-muted"></h6>
-        <p class="card-text">#굵은웨이브펌 #가을머리스타일</p>
-      </div>
-      <div class="card-footer">
-        <a href="#">30,000원</a>
-      </div>
-      </div>
-    </div>` ;
-	}
-	document.getElementById('desingerrr').innerHTML=html;
-	return html;
+	$.ajax({
+		url:'/hairStyleJoin',
+		method:'GET',
+		dataType:'json',
+		success:function(jsonArray){
+			alert('success'+jsonArray);
+			window.data = jsonArray;
+			
+			var html = "";
+			//for (var designer of data) {
+			for (var i = 1; i < 6; i++) {
+				var list = data[i];
+				var hairstyleImage=list.thumbNailFileName;
+				var hairstyleName=list.styleName;
+				var hairstyleComment=list.styleComment;
+				var hairstylePrice=list.price;
+				
+				
+				html += 
+				`<div class="col-lg-2 col-sm-6 portfolio-item">
+		      <div class="card h-100 text-center">
+		        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+		        <div class="card-body">
+		        <h4 class="card-title">${hairstyleName}</h4>
+		        <h6 class="card-subtitle mb-2 text-muted"></h6>
+		        <p class="card-text">${hairstyleComment}</p>
+		      </div>
+		      <div class="card-footer">
+		        <a href="#">${hairstylePrice}</a>
+		      </div>
+		      </div>
+		    </div>` ;
+			}
+			document.getElementById('desingerrr').innerHTML=html;
+			return html;	
+			
+			
+			
+		}	
+	});
+	
+	
+	
+	
 }
 
 function randomBestList() {

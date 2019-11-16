@@ -4,6 +4,14 @@
 	<select id="getHairStyleList" resultType="com.example.demo.model.HairStyle">
 		select * from hairStyle
 	</select>
+	
+	<select id="getHairStyleListJoin" resultType="com.example.demo.model.HairStyleListMain">
+		select f.THUMBNAILFILENAME,h.*
+		from hairstyle h
+		join filestorage f
+		on h.fileno = f.fileno
+	</select>
+	
 	<select id="getHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">
 		select * from hairStyle where styleNo = #{styleNo}
 	</select>
@@ -12,6 +20,7 @@
 		insert into hairStyle values
 			(HAIRSTYLE_STYLENO_SEQ.nextVal,#{gender},#{styleName},#{price},#{hour},#{minute},#{styleComment},#{fileNo},#{categoryNo},#{userId})
 	</insert>
+	
 	<update id="updateHairStyle" parameterType="com.example.demo.model.HairStyle">
 		update hairStyle set styleName=#{styleName},price=#{price},hour=#{hour},minute=#{minute}, styleComment=#{styleComment},categoryNo=#{categoryNo},userId=#{userId}
    			 where fileNo=#{fileNo}

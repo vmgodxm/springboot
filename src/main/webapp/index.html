@@ -24,6 +24,8 @@
   <script src="js/hairStargram/login/facebook.js"></script>
   <script src="js/hairStargram/common/common_nev.js"></script>
   <script src="js/hairStargram/designer.js"></script>
+  <script src="js/hairStargram/reservation.js"></script>
+  <script src="js/hairStargram/mypage.js"></script>
   <script>
     window.onload = function () {
       loadMenu();
@@ -31,7 +33,6 @@
       makeDesignerList();
       randomBestList();
     };
-
   </script>
 </head>
 
@@ -86,17 +87,13 @@
 
   <!-- Page Content -->
   <div class="container">
-    <div class="seul-row mb-1">
-      <span class="col-lg-8 seul-test"></span>
-      <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Local</a></span>
-      <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Price</a></span>
-      <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Recommand</a></span>
-    </div>
+
+  <!--젠더,헤어스타일,추천 메뉴-->
+  <div class="row">
+  <div class="col-lg-7">
     <div class="seul-row seul-color">
-
-      <div class="col-lg-2 mb-2">
+      <div class="col-lg-2">
         <ul class="col-lg-12 seul-dropdown">
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle seul-color" href="#" id="navbarDropdownBlog" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -108,25 +105,64 @@
             </div>
           </li>
         </ul>
-
       </div>
-
       <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Cut</a></span>
       <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Perm</a></span>
       <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Color</a></span>
+    </div>
+  </div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  <div class="col-lg-4" align="center">
+  <br/>
+  <span class="col-lg-10"></span>
+      <span class="col-lg-1"><a class="seul-color2" href="#">Local</a></span>
+      <span class="col-lg-1"><a class="seul-color2" href="#">Price</a></span>
+      <span class="col-lg-1"><a class="seul-color2" href="#">Recommand</a></span>
+  </div>
+  </div>
 
+
+
+
+
+  <!--  오리지날-->
+  <!--
+
+    <div class="seul-row mb-1">
+      <span class="col-lg-8 seul-test"></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Local</a></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Price</a></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color2" href="#">Recommand</a></span>
     </div>
 
+    <div class="seul-row seul-color">
+      <div class="col-lg-2 mb-2">
+        <ul class="col-lg-12 seul-dropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle seul-color" href="#" id="navbarDropdownBlog" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Gender
+            </a>
+            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownBlog">
+              <a class="dropdown-item" href="bootstrap/full-width.html">Ladies</a>
+              <a class="dropdown-item" href="bootstrap/sidebar.html">Gentleman</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Cut</a></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Perm</a></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Color</a></span>
+    </div>
+  -->
+  <!--/젠더,헤어스타일,추천 메뉴-->
 
     <h1 class="my-4">Weekly Best</h1>
-
     <!-- Marketing Icons Section -->
     <div class="row" id="desingerrr">
       <span class="col-lg-12" id="designerMain"></span>
     </div>
     <!-- /.row -->
-
-
     <!-- Portfolio Section -->
     <h2>Random Best</h2>
 
@@ -157,9 +193,7 @@
       </div>
     </div>Business Contect to Us
     <!-- /.row -->
-
     <hr>
-
     <!-- Call to Action Section -->
     <div class="row mb-4">
       <div class="col-md-8">
@@ -169,10 +203,7 @@
         <a class="btn btn-lg btn-secondary btn-block" href="#">광고문의</a>
       </div>
     </div>
-
   </div>
-
-
   <!-- Footer -->
   <div id="index-footer"></div>
   <!-- Bootstrap core JavaScript -->

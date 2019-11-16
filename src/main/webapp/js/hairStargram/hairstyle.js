@@ -13,8 +13,6 @@ $(function(){
     });
 });
 
-
-
 function hairStyle_body(){
     $('#contents').load('./hair/hairStyles-body.html');
 }
@@ -23,5 +21,6 @@ function designer(){
         $('#contents').load('./desinger/designers.html');
     });
 }
-    
+
+
 

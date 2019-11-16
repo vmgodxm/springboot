@@ -2,33 +2,41 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Modern Business - Start Bootstrap Template</title>
+  <title>Hair Stargram</title>
 
-<!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="../css/sb-admin.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="../css/modern-business.css" rel="stylesheet">
+  <!-- Bootstrap core JavaScript-->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Core plugin JavaScript-->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../js/hairStargram/common/common_nev.js"></script>
+  <script src="../js/hairStargram/login/facebook.js"></script>
+  <script src="../js/hairStargram/designer.js"></script>
+  <script src="../js/hairStargram/reservation.js"></script>
+  <script src="../js/hairStargram/mypage.js"></script>
+  <script>
+    window.onload = function () {
+      loadMenu();
+    };
+  </script>
 </head>
 
 <body>
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-    
-    window.onload=   
-   $(function(){
-      $("#contents").load("index-menu.html");
-    });
-    </script>
   <!-- Navigation -->
-  <div id="contents"></div>
+  <div id="menuContents"></div>
   
   <!-- Page Content -->
   <div class="container">
@@ -42,7 +50,6 @@
       <li class="breadcrumb-item">
         <a href="index.html">Home</a>
       </li>
-      <li class="breadcrumb-item active">Portfolio 4</li>
     </ol>
 
     <div class="row">
@@ -162,20 +169,8 @@
     </ul>
 
   </div>
-  <!-- /.container -->
-
-  <!-- Footer -->
-  <script>
-window.onload=   
-   $(function(){
-      $("#index-footer").load("index-footer.html");
-    });
-    </script>
   <!-- Footer -->
   <div id="index-footer"></div>
-    <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

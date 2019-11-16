@@ -1,7 +1,27 @@
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+$(function() {
+            $.ajax({
+                url:"http://localhost/reservation",
+                Type:"GET",
+                dataType:"json"
+            }).then(function(data){
+            	$.each(data,function(i,v){
+					var reviewList = data[i];
+			
+				//   $('#reviewNo').text(data[i].replyNo);    		
+            	
+            		console.log('데이타 리플번호 -> '+data[i].resNo);
+            		console.log('시작일-> '+data[i].beginDay);
+                console.log('폰넘버->'+data[i].styleName);
+					
+          		$("#revtable").append('<tr><td>'+data[i].resNo+'</td><td>'+data[i].beginDay+'</td><td>'+data[i].beginHour+'</td><td>'+data[i].beginMinute+'</td><td>'+data[i].designerId+'</td><td>'+data[i].styleName+'</td><td>'+data[i].useComment+'</td></tr>');
+            	});
+            });
+        });;
+    </script>
       <!-- Content Column -->
-  <table id="revtable">
-        <thead>
+    <table class="col-lg-12" align="center">
     <tr>
       <th>번호</th>
       <th>예약일</th>
@@ -11,34 +31,10 @@
       <th>헤어스타일</th>
       <th>요청사항</th>
     </tr> 
-    </thead>
-    <tbody>
-    <tr>
-      <th>1</th>
-      <th>2019-11-11</th>
-      <th>11시10분</th>
-      <th>장삐쭈</th>
-      <th>010-4567-8998</th>
-      <th>해병대머리</th>
-      <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-    </tr>
-    <tr>
-        <th>1</th>
-        <th>2019-11-11</th>
-        <th>11시10분</th>
-        <th>장삐쭈</th>
-        <th>010-4567-8998</th>
-        <th>해병대머리</th>
-        <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-      </tr>
-      <tr>
-          <th>1</th>
-          <th>2019-11-11</th>
-          <th>11시10분</th>
-          <th>장삐쭈</th>
-          <th>010-4567-8998</th>
-          <th>해병대머리</th>
-          <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-        </tr>
-       </tbody> 
+    </table>
+  <table id="revtable" class="col-lg-12" align="center"></table>
+    
+
+   
+
      

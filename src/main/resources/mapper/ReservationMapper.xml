@@ -5,7 +5,7 @@
 		SELECT * FROM reservation where resNo = #{resNo}
 	</select>
 	<select id="getReserviatonList" parameterType="String" resultType="com.example.demo.model.Reservation">
-		SELECT * FROM reservation
+		SELECT * FROM reservation A JOIN userregist B ON A.designerId = B.userId JOIN hairstyle C ON C.styleNo = A.styleNo
 	</select>
 	<select id="insertReserviaton" parameterType="com.example.demo.model.Reservation">
 		INSERT INTO reservation(resNo,year,month,Day,beginHour,endHour,beingMinute,endMinute,useComment,useComplete,styleNo,designerId,userId) VALUES(RESERVATION_RESNO_SEQ.nextval,#{year},#{month},#{beginDay},#{beginHour},#{endHour},#{beginMinute},#{endMinute},#{useComment},#{useComplete},#{styleNo},#{desinerId},#{userId})

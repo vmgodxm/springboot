@@ -1,12 +1,38 @@
-  <script src="js/hairStargram/mypage.js"></script>
-  <script src="js/hairStargram/hairstyle.js"></script>
     <!-- Blog Post -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+$(function() {
+            $.ajax({
+                url:"http://localhost/hstylefav",
+                Type:"GET",
+                dataType:"json"
+            }).then(function(data){
+            	$.each(data,function(i,v){
+					var hairStyleFavList = data[i];
+	
+            		console.log('데이타 리플번호 -> '+hairStyleFavList.hfavoriteNo);
+            		console.log('데이타 리플번호 -> '+data[i].designerId);
+            		console.log('데이타 리플번호 -> '+data[i].userId);
+            		console.log('데이타 리플번호 -> '+data[i].styleNo);
+            	
+					
+          		$("#hairStyleFav").append('<div class="card mb-4"><div class="card-body"><div class="row"><div class="col-lg-6"><a href="#"><img class="img-fluid rounded" src="../images/WE97496996_ori (2).jpg" alt=""></a></div><div class="col-lg-6"><h2 class="card-title">Post Title'+ data[i].hfavoriteNo + '</h2><p class="card-text">' +data[i].designerId+ '</p><a id="btnHairRev" href="#" class="btn btn-primary">예약하기</a></div></div></div><div class="card-footer text-muted">유저아이디'+data[i].userId+' 2017 by<a href="#">Start Bootstrap</a></div></div>');
+            	});
+            });
+        });;
+    </script>
+    
+   
+   <div>
+   <table id="hairStyleFav"></table>
+  <!-- 
+
     <div class="card mb-4">
       <div class="card-body">
         <div class="row">
           <div class="col-lg-6">
             <a href="#">
-              <img class="img-fluid rounded" src="images/WE97496996_ori (2).jpg" alt="">
+              <img class="img-fluid rounded" src="../images/WE97496996_ori (2).jpg" alt="">
             </a>
           </div>
           <div class="col-lg-6">
@@ -21,13 +47,13 @@
         <a href="#">Start Bootstrap</a>
       </div>
     </div>
-     <!-- Blog Post -->
+
      <div class="card mb-4">
         <div class="card-body">
           <div class="row">
             <div class="col-lg-6">
               <a href="#">
-                <img class="img-fluid rounded" src="images/WE97496996_ori (2).jpg" alt="">
+                <img class="img-fluid rounded" src="../images/WE97496996_ori (2).jpg" alt="">
               </a>
             </div>
             <div class="col-lg-6">
@@ -42,13 +68,13 @@
           <a href="#">Start Bootstrap</a>
         </div>
       </div>
-       <!-- Blog Post -->
+
     <div class="card mb-4">
         <div class="card-body">
           <div class="row">
             <div class="col-lg-6">
               <a href="#">
-                <img class="img-fluid rounded" src="images/WE97496996_ori (2).jpg" alt="">
+                <img class="img-fluid rounded" src="../images/WE97496996_ori (2).jpg" alt="">
               </a>
             </div>
             <div class="col-lg-6">
@@ -63,6 +89,7 @@
           <a href="#">Start Bootstrap</a>
         </div>
       </div>
+  -->
 
     
 
@@ -77,8 +104,3 @@
     </ul>
 
   </div>
-
-  </div>
-      </div>
-    </div>
-    <!-- /.row -->

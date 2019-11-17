@@ -3,10 +3,9 @@
   $(function(){
     $("#review").click(function(){
       $("#change").load("../reply/blog-reply.html");
-    }).done(function(){
-      location.replace('javascript:review()');
     });
   });
+
 $(function() {
             $.ajax({
                 url:"http://localhost/reservation",
@@ -16,20 +15,18 @@ $(function() {
 
             	$.each(data,function(i,v){
 					var reviewList = data[i];
-            		console.log('데이타 리플번호 -> '+data[i].resNo);
-            		console.log('시작일-> '+data[i].beginDay);
-                console.log('폰넘버->'+data[i].phone);
-					
-          		$("#revtable").append('<tr><td>'+data[i].resNo+'</td><td>'+data[i].beginDay+'</td><td>'+data[i].beginHour+'</td><td>'+data[i].beginMinute+'</td><td>'+data[i].designerId+'</td><td>'+data[i].phone+'</td><td>'+data[i].styleName+'</td><td>'+data[i].useComment+'</td></tr>');
+            		if(data[i].useComplete == 1){
+          		$("#historyTable").append('<tr><td>'+data[i].resNo+'</td><td>'+data[i].year+'-'+data[i].month+'-'+data[i].day+'</td><td>'+data[i].beginHour+'-'+data[i].beingMinute+'</td><td>'+data[i].designerId+'</td><td>'+data[i].phone+'</td><td>'+data[i].styleName+'</td><td>'+data[i].useComment+'</td><td> <a id ="review" class="btn-1 btn-primary" href="#">평가</a></td></tr>');
+                }
+                 console.log('데이타 리플번호 -> '+data[i].resNo);
             	});
+            }).done(function(responsData){
+                console.log(responsData);
             });
         });;
-
-
 </script>
-   <div class="col-lg-9-2 mb-4"> 
+   <div class="col-lg-12"> 
      <table class="table table-hover">
-       <thead>
          <tr>
            <th>번호</th>
            <th>예약일</th>
@@ -40,40 +37,9 @@ $(function() {
            <th>요청사항</th>
            <th>후기</th>
           </tr> 
-        </thead>
-        <tbody>
-          <tr>
-            <th>1</th>
-            <th>2019-11-11</th>
-            <th>11시10분</th>
-            <th>장삐쭈</th>
-            <th>010-4567-8998</th>
-            <th>해병대머리</th>
-            <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-            <th> <a id ="review" class="btn-1 btn-primary" href="#">평가</a></th>
-          </tr>
-          <tr>
-              <th>1</th>
-              <th>2019-11-11</th>
-              <th>11시10분</th>
-              <th>장삐쭈</th>
-              <th>010-4567-8998</th>
-              <th>해병대머리</th>
-              <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-              <th> <a id ="review" class="btn-1 btn-primary" href="#">평가</a></th>
-            </tr>
-            <tr>
-                <th>1</th>
-                <th>2019-11-11</th>
-                <th>11시10분</th>
-                <th>장삐쭈</th>
-                <th>010-4567-8998</th>
-                <th>해병대머리</th>
-                <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-                <th> <a id ="review" class="btn-1 btn-primary" href="#"평가</a></th>
-              </tr>
-        </tbody> 
-      </table>
+        </table>
+        <table id="historyTable" class="col-lg-12"></table>
+    
     </div>
   </div>
 </div> 

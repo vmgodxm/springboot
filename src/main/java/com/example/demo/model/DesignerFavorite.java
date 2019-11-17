@@ -11,6 +11,14 @@ public class DesignerFavorite {
 	// 사용자 아이디
 	private String userId;
 
+	private String userName;
+
+	private Long fileNo;
+
+	private String thumbNailFileName;
+
+
+
 	public DesignerFavorite() {
 
 	}
@@ -22,7 +30,48 @@ public class DesignerFavorite {
 		this.userId = userId;
 	}
 
+
+	public DesignerFavorite(Long dfavoriteNo, String designerId, String userId, String userName) {
+		this.dfavoriteNo = dfavoriteNo;
+		this.designerId = designerId;
+		this.userId = userId;
+		this.userName = userName;
+	}
+
+	public DesignerFavorite(Long dfavoriteNo, String designerId, String userId, String userName, Long fileNo, String thumbNailFileName) {
+		this.dfavoriteNo = dfavoriteNo;
+		this.designerId = designerId;
+		this.userId = userId;
+		this.userName = userName;
+		this.fileNo = fileNo;
+		this.thumbNailFileName = thumbNailFileName;
+	}
+
 	
+
+	public Long getFileNo() {
+		return this.fileNo;
+	}
+
+	public void setFileNo(Long fileNo) {
+		this.fileNo = fileNo;
+	}
+
+	public String getThumbNailFileName() {
+		return this.thumbNailFileName;
+	}
+
+	public void setThumbNailFileName(String thumbNailFileName) {
+		this.thumbNailFileName = thumbNailFileName;
+	}
+
+	public String getUserName() {
+		return this.userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	
 	public Long getDfavoriteNo() {
 		return dfavoriteNo;

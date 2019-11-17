@@ -3,7 +3,7 @@
 <mapper namespace="mapper.DesignerFavoriteMapper">
 
 	<select id="getDesignerList" parameterType="String" resultType="com.example.demo.model.DesignerFavorite">
-		SELECT * FROM  designerfavorite
+		SELECT * FROM  designerfavorite A JOIN userregist B ON A.designerId = B.userId JOIN filestorage C ON C.fileNo = B.fileNo
 	</select>
 
 	<select id="getDesigner" parameterType="String" resultType="com.example.demo.model.DesignerFavorite">

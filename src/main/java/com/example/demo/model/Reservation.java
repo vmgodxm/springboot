@@ -13,7 +13,7 @@ public class Reservation {
 	private Long month;
 
 	// ?��
-	private Long beginDay;
+	private Long day;
 
 	// ?��?��?���?
 	private Long beginHour;
@@ -22,7 +22,7 @@ public class Reservation {
 	private Long endHour;
 
 	// ?��?���?
-	private Long beginMinute;
+	private Long beingMinute;
 
 	// 종료�?
 	private Long endMinute;
@@ -37,7 +37,7 @@ public class Reservation {
 	private Long styleNo;
 
 	// ?��?��?��?�� ?��?��?��
-	private String desinerId;
+	private String designerId;
 
 	// ?��?��?�� ?��?��?��
 	private String userId;
@@ -50,75 +50,75 @@ public class Reservation {
 	}
 
 
-	public Reservation(Long resNo, Long year, Long month, Long beginDay, Long beginHour, Long endHour, Long beginMinute, Long endMinute, String useComment, Integer useComplete, Long styleNo, String desinerId, String userId, String styleName, String phone) {
+	public Reservation(Long resNo, Long year, Long month, Long day, Long beginHour, Long endHour, Long beingMinute, Long endMinute, String useComment, Integer useComplete, Long styleNo, String designerId, String userId, String styleName, String phone) {
 		this.resNo = resNo;
 		this.year = year;
 		this.month = month;
-		this.beginDay = beginDay;
+		this.day = day;
 		this.beginHour = beginHour;
 		this.endHour = endHour;
-		this.beginMinute = beginMinute;
+		this.beingMinute = beingMinute;
 		this.endMinute = endMinute;
 		this.useComment = useComment;
 		this.useComplete = useComplete;
 		this.styleNo = styleNo;
-		this.desinerId = desinerId;
+		this.designerId = designerId;
 		this.userId = userId;
 		this.styleName = styleName;
 		this.phone = phone;
 	}
 
 
-	public Reservation(Long resNo, Long year, Long month, Long beginDay, Long beginHour, Long endHour, Long beginMinute, Long endMinute, String useComment, Integer useComplete, Long styleNo, String desinerId, String userId, String styleName) {
+	public Reservation(Long resNo, Long year, Long month, Long day, Long beginHour, Long endHour, Long beingMinute, Long endMinute, String useComment, Integer useComplete, Long styleNo, String designerId, String userId, String styleName) {
 		this.resNo = resNo;
 		this.year = year;
 		this.month = month;
-		this.beginDay = beginDay;
+		this.day = day;
 		this.beginHour = beginHour;
 		this.endHour = endHour;
-		this.beginMinute = beginMinute;
+		this.beingMinute = beingMinute;
 		this.endMinute = endMinute;
 		this.useComment = useComment;
 		this.useComplete = useComplete;
 		this.styleNo = styleNo;
-		this.desinerId = desinerId;
+		this.designerId = designerId;
 		this.userId = userId;
 		this.styleName = styleName;
 	}
 
 
-	public Reservation(Long resNo, Long year, Long month, Long beginDay, Long beginHour, Long endHour, Long beginMinute,
-			Long endMinute, String useComment, Integer useComplete, Long styleNo, String desinerId, String userId) {
+	public Reservation(Long resNo, Long year, Long month, Long day, Long beginHour, Long endHour, Long beingMinute,
+			Long endMinute, String useComment, Integer useComplete, Long styleNo, String designerId, String userId) {
 		super();
 		this.resNo = resNo;
 		this.year = year;
 		this.month = month;
-		this.beginDay = beginDay;
+		this.day = day;
 		this.beginHour = beginHour;
 		this.endHour = endHour;
-		this.beginMinute = beginMinute;
+		this.beingMinute = beingMinute;
 		this.endMinute = endMinute;
 		this.useComment = useComment;
 		this.useComplete = useComplete;
 		this.styleNo = styleNo;
-		this.desinerId = desinerId;
+		this.designerId = designerId;
 		this.userId = userId;
 	}
 
-	public Reservation(Long year, Long month, Long beginDay, Long beginHour, Long endHour, Long beginMinute,
-			Long endMinute, String useComment, Integer useComplete, Long styleNo, String desinerId, String userId) {
+	public Reservation(Long year, Long month, Long day, Long beginHour, Long endHour, Long beingMinute,
+			Long endMinute, String useComment, Integer useComplete, Long styleNo, String designerId, String userId) {
 		super();
 		this.year = year;
 		this.month = month;
-		this.beginDay = beginDay;
+		this.day = day;
 		this.beginHour = beginHour;
 		this.endHour = endHour;
-		this.beginMinute = beginMinute;
+		this.beingMinute = beingMinute;
 		this.endMinute = endMinute;
 		this.useComment = useComment;
 		this.useComplete = useComplete;
 		this.styleNo = styleNo;
-		this.desinerId = desinerId;
+		this.designerId = designerId;
 		this.userId = userId;
 	}
 
@@ -156,12 +156,12 @@ public class Reservation {
 		this.month = month;
 	}
 
-	public Long getBeginDay() {
-		return beginDay;
+	public Long getday() {
+		return day;
 	}
 
-	public void setBeginDay(Long beginDay) {
-		this.beginDay = beginDay;
+	public void setday(Long day) {
+		this.day = day;
 	}
 
 	public Long getBeginHour() {
@@ -180,12 +180,12 @@ public class Reservation {
 		this.endHour = endHour;
 	}
 
-	public Long getBeginMinute() {
-		return beginMinute;
+	public Long getBeingMinute() {
+		return beingMinute;
 	}
 
-	public void setBeginMinute(Long beginMinute) {
-		this.beginMinute = beginMinute;
+	public void setBeingMinute(Long beingMinute) {
+		this.beingMinute = beingMinute;
 	}
 
 	public Long getEndMinute() {
@@ -220,12 +220,12 @@ public class Reservation {
 		this.styleNo = styleNo;
 	}
 
-	public String getDesinerId() {
-		return desinerId;
+	public String getDesignerId() {
+		return designerId;
 	}
 
-	public void setDesinerId(String desinerId) {
-		this.desinerId = desinerId;
+	public void setDesignerId(String designerId) {
+		this.designerId = designerId;
 	}
 
 	public String getUserId() {
@@ -246,10 +246,10 @@ public class Reservation {
 
 	@Override
 	public String toString() {
-		return "Reservation [resNo=" + resNo + ", year=" + year + ", month=" + month + ", beginDay=" + beginDay
-				+ ", beginHour=" + beginHour + ", endHour=" + endHour + ", beginMinute=" + beginMinute + ", endMinute="
+		return "Reservation [resNo=" + resNo + ", year=" + year + ", month=" + month + ", beginday=" + day
+				+ ", beginHour=" + beginHour + ", endHour=" + endHour + ", beingMinute=" + beingMinute + ", endMinute="
 				+ endMinute + ", useComment=" + useComment + ", useComplete=" + useComplete + ", styleNo=" + styleNo
-				+ ", desinerId=" + desinerId + ", userId=" + userId + "]";
+				+ ", designerId=" + designerId + ", userId=" + userId + "]";
 	}
 
 }

@@ -18,7 +18,6 @@ $(function() {
             		if(data[i].useComplete == 1){
           		$("#historyTable").append('<tr><td>'+data[i].resNo+'</td><td>'+data[i].year+'-'+data[i].month+'-'+data[i].day+'</td><td>'+data[i].beginHour+'-'+data[i].beingMinute+'</td><td>'+data[i].designerId+'</td><td>'+data[i].phone+'</td><td>'+data[i].styleName+'</td><td>'+data[i].useComment+'</td><td> <a id ="review" class="btn-1 btn-primary" href="#">평가</a></td></tr>');
                 }
-                 console.log('데이타 리플번호 -> '+data[i].resNo);
             	});
             }).done(function(responsData){
                 console.log(responsData);

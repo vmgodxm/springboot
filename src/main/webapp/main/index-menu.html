@@ -1,14 +1,14 @@
+<script src="//developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="js/hairStargram/login/facebook.js"></script>
 <script>
   function menuLogin() {
-    $(document).on('click', '#menuLogin', function (e) {
-      e.preventDefault();
-      var userId = getCookie('userId');
-      if (userId == undefined) {
-        window.location.href = 'login.html';
-      } else {
-        logout(userId);
-      }
-    });
+    
+    var userId = getCookie('userId');
+    if (userId == undefined) {
+      window.location.href = 'login.html';
+    } else {
+      logout(userId);
+    }
   }
 </script>>
 

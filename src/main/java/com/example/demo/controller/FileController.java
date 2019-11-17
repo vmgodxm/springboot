@@ -2,19 +2,18 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import com.example.demo.model.DeleteFileInfo;
+import com.example.demo.model.FileStorage;
+import com.example.demo.repository.interfaces.IFileRepository;
+import com.example.demo.service.FileUploadDownloadService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.model.DeleteFileInfo;
-import com.example.demo.model.FileStorage;
-import com.example.demo.repository.interfaces.IFileRepository;
-import com.example.demo.service.FileUploadDownloadService;
 
 @RestController
 public class FileController {
@@ -25,16 +24,16 @@ public class FileController {
 	@Autowired
     private FileUploadDownloadService service;
 	
-	@GetMapping(path = "/filetest")
-	public FileStorage getFileInfo(@RequestParam(required=true, defaultValue="1")Long fileNo ) throws Exception {
-		FileStorage file = repository.getFile(fileNo);
+	@GetMapping(path = "/file/{fileNo}")
+	public FileStorage getFileInfo(@PathVariable int fileNo ) throws Exception {
+		FileStorage file = repository.getFile(new Long(fileNo));
 		return file;
 	}
 	
-	@GetMapping(path = "/getFileNo")
-	public Long getFileInfo(String storageFileName ) throws Exception {
-		return repository.getFileNo(storageFileName);
-	}
+	// @GetMapping(path = "/file/{fileName}")
+	// public Long getFileInfo(@PathVariable String storageFileName ) throws Exception {
+	// 	return repository.getFileNo(storageFileName);
+	// }
 	
 	@PostMapping(path = "/fileUpload")
 	public int insertFile(FileStorage files) throws Exception {

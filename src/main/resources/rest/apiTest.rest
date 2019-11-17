@@ -74,3 +74,9 @@ GET http://localhost/preCompanyList/hairstargram@outlook.com HTTP/1.1
 ### delete preCompanyNo
 DELETE http://localhost/preCompany/1 HTTP/1.1
 
+######################################################################################
+### File
+######################################################################################
+
+### get FileInfo
+GET http://localhost/file/1 HTTP/1.1

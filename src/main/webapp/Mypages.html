@@ -25,7 +25,6 @@
   <script src="js/hairStargram/login/facebook.js"></script>
   <script src="js/hairStargram/common/common_nev.js"></script>
   <script src="js/hairStargram/hairstyle.js"></script>
-  <script src="js/hairStargram/reservation.js"></script>
   <script>
 
     function reservation() {
@@ -44,12 +43,13 @@
       $("#change").load("./mypage/mypages-history.html");
     };
 
+
     // 사용자 정보
     function myInfo() {
       $("#change").load("./mypage/mypages-info.html", function (e) {
         var userId = localStorage.userId;
         if (userId != null && userId != "") {
-          getUser(userId);
+          getUserInfo(userId);
         }
       });
     };

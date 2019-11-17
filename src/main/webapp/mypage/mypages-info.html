@@ -1,41 +1,68 @@
 <script>
-  function getUser(userId) {
+
+  async function getUserInfo(userId) {
+    var userResult = await fetch(`http://localhost/user/${userId}`);
+    var responseData = await userResult.json();
+    $('#userNo').val(responseData.userNo);
+    $('#userId').val(responseData.userId);
+    $('#userName').val(responseData.userName);
+    $('#gender').val(responseData.gender);
+    $('#phone').val(responseData.phone);
+    $('#nickName').val(responseData.nickName);
+    $('#regionNo').val(responseData.regionNo);
+    $('#fileNo').val(responseData.fileNo);
+
+    if (responseData.fileNo != null && responseData.fileNo != "") {
+      var fileResult = await fetch(`http://localhost/file/${responseData.fileNo}`);
+      var resposneFileData = await fileResult.json();
+      $('#imgProfile').attr('src', `http://localhost/images/${resposneFileData.thumbNailFileName}`);
+    }
+  }
+
+  async function modifyUser() {
+    var fileNo = $('#fileNo').val();
+    if (fileNo == "") {
+      var result = await profileFileUpload();
+      var responseData = await result.json();
+      $('#fileNo').val(responseData.fileNo);
+    }
+
+    //수정 버튼 눌렀을 때
+    var user = $('#user').serialize();
     $.ajax({
-      url: `http://localhost/user/${userId}`,
-      type: 'GET',
-      dataType: 'json',
-    }).done(function (data) {
-      // 성공 시 처리되는 함수
-      $('#userNo').val(data.userNo);
-      $('#userId').val(data.userId);
-      $('#userName').val(data.userName);
-      $('#gender').val(data.gender);
-      $('#phone').val(data.phone);
-      $('#nickName').val(data.nickName);
-      $('#regionNo').val(data.regionNo);
+      url: `http://localhost/user/${user.userId}`,
+      type: 'PUT',
+      data: user,
+      dataType: 'json'
+    }).done(function (responseData) {
+      console.log(responseData);
     }).fail(function (jqXHR, textStatus, errorThrown) {
       // 실패 시 처리되는 함수
       console.log(jqXHR.responseText);
     });
   }
 
-  function modifyUser() {
-    // 수정 버튼 눌렀을 때
-    $('#btnModify').on('click', function (e) {
-      var user = $('#user').serialize();
-      $.ajax({
-        url: `http://localhost/user/${user.userId}`,
-        type: 'PUT',
-        data: user,
-        dataType: 'json'
-      }).done(function (responseData) {
-        console.log(responseData);
-      }).fail(function (jqXHR, textStatus, errorThrown) {
-        // 실패 시 처리되는 함수
-        console.log(jqXHR.responseText);
-      });
+  async function profileFileUpload() {
+    var formData = new FormData();
+    formData.append('file', $('#selectFile')[0].files[0]);
+    formData.append('userId', localStorage.userId);
+
+    return await fetch("/uploadFile", {
+      method: "POST",
+      body: formData
     });
-  }
+  };
+
+  $("#selectFile").on('change', function (e) {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#imgProfile').attr('src', this.result);
+      }
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+
 </script>
 
 <div class="card card-register mx-auto mt-1">
@@ -91,12 +118,13 @@
       </div>
       <div class="form-group">
         <div class="form-label-group">
-          <input type="hidden" name="userLevel" id="userLevel" class="form-control" placeholder="userLevel"
-            required="required" value="0">
+          <input type="hidden" name="userLevel" id="userLevel" class="form-control">
+          <input type="hidden" name="fileNo" id="fileNo" class="form-control">
         </div>
       </div>
-
-      <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modifyUser();">수정하기</a>
     </form>
+    <input type='file' id="selectFile" />
+    <img id="imgProfile" src="../images/default2.jpg" width="300" height="400" /><br><br>
+    <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modifyUser();">수정하기</a>
   </div>
 </div>

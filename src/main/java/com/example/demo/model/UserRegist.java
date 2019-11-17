@@ -9,7 +9,7 @@ public class UserRegist {
 	private String phone;
 	private String nickName;
 	private Long regionNo;
-	private Long fileStorage;
+	private Long fileNo;
 	private Long userLevel;
 	
 	public UserRegist() { }
@@ -24,19 +24,19 @@ public class UserRegist {
 	}
 	
 	public UserRegist(String userId, String userName, Long gender, String phone,
-			String nickName, Long regionNo, Long fileStorage, Long userLevel) {
+			String nickName, Long regionNo, Long fileNo, Long userLevel) {
 		this.userId = userId;
 		this.userName = userName;
 		this.gender = gender;
 		this.phone = phone;
 		this.nickName = nickName;
 		this.regionNo = regionNo;
-		this.fileStorage = fileStorage;
+		this.fileNo = fileNo;
 		this.userLevel = userLevel;
 	}
 	
 	public UserRegist(Long userNo, String userId, String userName, Long gender, String phone,
-			String nickName, Long regionNo, Long fileStorage, Long userLevel) {
+			String nickName, Long regionNo, Long fileNo, Long userLevel) {
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userName = userName;
@@ -44,7 +44,7 @@ public class UserRegist {
 		this.phone = phone;
 		this.nickName = nickName;
 		this.regionNo = regionNo;
-		this.fileStorage = fileStorage;
+		this.fileNo = fileNo;
 		this.userLevel = userLevel;
 	}
 
@@ -119,13 +119,13 @@ public class UserRegist {
 	}
 
 
-	public Long getFileStorage() {
-		return fileStorage;
+	public Long getFileNo() {
+		return fileNo;
 	}
 
 
-	public void setFileStorage(Long fileStorage) {
-		this.fileStorage = fileStorage;
+	public void setFileNo(Long fileNo) {
+		this.fileNo = fileNo;
 	}
 
 
@@ -143,7 +143,7 @@ public class UserRegist {
 	public String toString() {
 		return "UserRegist [userNo=" + userNo + ", userId=" + userId + ", userName=" + userName + ", gender=" + gender
 				+ ", phone=" + phone + ", nickName=" + nickName + ", regionNo="
-				+ regionNo + ", fileStorage=" + fileStorage + ", userLevel=" + userLevel + "]";
+				+ regionNo + ", fileNo=" + fileNo + ", userLevel=" + userLevel + "]";
 	}
 	
 	

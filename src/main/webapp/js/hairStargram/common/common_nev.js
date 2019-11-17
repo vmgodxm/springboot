@@ -5,10 +5,7 @@ function loadMenu() {
         if (userId != null && userId != "") {
           $('#menuContents #menuLogin').html('Logout');
           $('#menuContents #menuUserId').html(userId);
-        } else {
-          console.log('logout')
-        }
-        
+        }        
       });
 
     $('#index-footer').load('./main/index-footer.html');

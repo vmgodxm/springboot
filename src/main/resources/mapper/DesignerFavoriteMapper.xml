@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.DesignerFavoriteMapper">
+
 	<select id="getDesignerList" parameterType="String" resultType="com.example.demo.model.DesignerFavorite">
-		SELECT * FROM  designerfavorite WHERE userId = #{userId}
+		SELECT * FROM  designerfavorite A JOIN userregist B ON A.designerId = B.userId JOIN filestorage C ON C.fileNo = B.fileNo
+	</select>
+
+	<select id="getDesigner" parameterType="String" resultType="com.example.demo.model.DesignerFavorite">
+		SELECT * FROM  designerfavorite
+	</select>
+
+	<select id="insertDesigner" parameterType="int" resultType="com.example.demo.model.DesignerFavorite">
+		SELECT * FROM  designerfavorite
+	</select>
+
+	<select id="updateDesigner" parameterType="int" resultType="com.example.demo.model.DesignerFavorite">
+		SELECT * FROM  designerfavorite
+	</select>
+
+	<select id="deleteDesigner" parameterType="int" resultType="com.example.demo.model.DesignerFavorite">
+		SELECT * FROM  designerfavorite
 	</select>
 </mapper>

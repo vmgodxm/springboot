@@ -1,7 +1,12 @@
 
 var init = {
 	
-	
+	gotoview  : function(styleNo) {
+		localStorage.setItem('styleNo',styleNo);
+		location.href='hairStyles.html';
+	},
+		
+		
 	makeDesignerList : function() {
 			$.ajax({
 				url:'/hairStyleJoin',
@@ -15,18 +20,18 @@ var init = {
 					init.numberArray =new Array(jsonArray.length);
 					var html = "";
 					//for (var designer of data) {
-					for (var i = 1; i < 6; i++) {
+					for (var i = 0; i < 5; i++) {
 						var list = init.data[i];
 						var hairstyleImage=list.thumbNailFileName;
 						var hairstyleName=list.styleName;
 						var hairstyleComment=list.styleComment;
 						var hairstylePrice=list.price;
-						
+						var styleNo =list.styleNo;
 						
 						html += 
 						`<div class="col-lg-2 col-sm-6 portfolio-item">
 				      <div class="card h-100 text-center">
-				        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+				        <a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
 				        <div class="card-body">
 				        <h4 class="card-title">${hairstyleName}</h4>
 				        <h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -71,7 +76,7 @@ var init = {
 		//for (var designer of data) {
 		for (var i = 0; i < init.datalength; i++) {
 			var j=init.numberArray[i];
-			if(!(j==0)){
+			
 			var list = init.data[j];
 			var hairstyleImage=list.thumbNailFileName;
 			var hairstyleName=list.styleName;
@@ -94,14 +99,14 @@ var init = {
 			    </div>` ;
 			
 			}
-		}
+		
 		document.getElementById('randombest').innerHTML=html;
 		return html;
 	},
 	
 	sortBygentleman : function () {
 		var html1 = "";
-		for (var i = 1; i < 6; i++) {
+		for (var i = 0; i < 11; i++) {
 			var list = init.data[i];
 			if(list.gender==0){
 			var hairstyleImage=list.thumbNailFileName;
@@ -129,7 +134,7 @@ var init = {
 		var html2 = "";
 		for (var i = 0; i < init.datalength; i++) {
 			var j=init.numberArray[i];
-			if(!(j==0)){
+			
 			var list = init.data[j];
 			
 			if(list.gender==0){
@@ -153,7 +158,7 @@ var init = {
 			      </div>
 			    </div>` ;
 				}
-			}
+			
 			
 		}
 		
@@ -172,7 +177,7 @@ var init = {
 	
 	sortByladies : function () {
 		var html1 = "";
-		for (var i = 1; i < 6; i++) {
+		for (var i = 1; i < 11; i++) {
 			var list = init.data[i];
 			if(list.gender==1){
 			var hairstyleImage=list.thumbNailFileName;
@@ -200,7 +205,7 @@ var init = {
 		var html2 = "";
 		for (var i = 0; i < init.datalength; i++) {
 			var j=init.numberArray[i];
-			if(!(j==0)){
+			
 			var list = init.data[j];
 			
 			if(list.gender==1){
@@ -225,7 +230,7 @@ var init = {
 			
 			
 				}
-			}
+			
 			
 		}
 		

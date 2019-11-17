@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.DesignerFavorite;
@@ -18,9 +17,8 @@ public class DesignerFavoriteController {
 	
 	
 	@GetMapping(path = "/dfavorite")
-	public List<DesignerFavorite> getDesigner(@RequestParam(required=true, defaultValue="test@test.com")String userId ) throws Exception {
-		List<DesignerFavorite> designerList = repository.getDesignerList(userId);
-		return designerList;
+	public List<DesignerFavorite> getDesigner() throws Exception {
+		return repository.getDesignerList();
 	}
 
 }

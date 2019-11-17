@@ -28,11 +28,17 @@ public class UserController {
     @Autowired
     private IAuthRepository authRepository;
 
+    @GetMapping(value = "/kakaoLogin")
+    public String kakaoLogin(String code) throws Exception {
+
+        return code;
+    }
+
     @PostMapping(path = "/user/login")
     public ResponseEntity<ResponseData> loginUser(HttpEntity<LoginInfo> httpEntity) {
         ResponseEntity<ResponseData> retVal = new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
-        ResponseData responseData = new ResponseData();        
+        ResponseData responseData = new ResponseData();
         try {
             LoginInfo loginInfo = httpEntity.getBody();
             UserRegist user = userRepository.getUser(loginInfo.getUserId());
@@ -130,7 +136,7 @@ public class UserController {
             return 0;
         }
 
-        //UserRegist user = userRepository.getUser(userId);
+        // UserRegist user = userRepository.getUser(userId);
 
         LoginInfo loginInfo = authRepository.getAuthencication(userId);
         authRepository.updateLogout(loginInfo);

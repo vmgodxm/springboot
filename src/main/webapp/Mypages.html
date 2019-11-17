@@ -27,99 +27,92 @@
   <script src="js/hairStargram/hairstyle.js"></script>
   <script src="js/hairStargram/reservation.js"></script>
   <script>
-  
-function reservation() {
-  $("#change").load("./mypage/mypages-reservation.html");
-}
 
+    function reservation() {
+      $("#change").load("./mypage/mypages-reservation.html");
+    };
 
-function hairStyleFav() {
-  $("#change").load("./mypage/mypages-hairFav.html");
-}
+    function hairStyleFav() {
+      $("#change").load("./mypage/mypages-hairFav.html");
+    };
 
-function designerFav() {
-  $("#change").load("./mypage/mypages-designerFav.html");
-}
+    function designerFav() {
+      $("#change").load("./mypage/mypages-designerFav.html");
+    };
 
-function history() {
-  $("#change").load("./mypage/mypages-history.html");
-}
+    function history() {
+      $("#change").load("./mypage/mypages-history.html");
+    };
 
-// 사용자 정보
-function myInfo() {
-  $("#change").load("./mypage/mypages-info.html", function (e) {
-    var userId = getCookie('userId');
-    if (userId != null && userId != "") {
-      getUser(userId);
-    }
-  });
-}
+    // 사용자 정보
+    function myInfo() {
+      $("#change").load("./mypage/mypages-info.html", function (e) {
+        var userId = localStorage.userId;
+        if (userId != null && userId != "") {
+          getUser(userId);
+        }
+      });
+    };
 
-function review() {
-  $("#change").load("./reply/blog-reply.html");
-}
+    function review() {
+      $("#change").load("./reply/blog-reply.html");
+    };
 
-$(function () {
-  $("#btnHairRev").on('click', function (e) {
-    $("#change").load("./hair/hairStyles-rev.html");
-    e.preventDefault();
-  });
-});
-$(function () {
-  $("#btnRev").on('click', function (e) {
-    $("#change").load("./hair/hairStyles-done.html");
-    e.preventDefault();
-  });
-});
+    // 회원탈퇴
+    function leave() {
+      $("#change").load("./mypage/mypages-leave.html", function (e) {
+        var userId = localStorage.userId;
+        if (userId != null && userId != "") {
+          getUser(userId);
+        }
+      });
+    };
 
-// 회원탈퇴
-function leave() {
-  $("#change").load("./mypage/mypages-leave.html", function (e) {
-    var userId = getCookie('userId');
-    if (userId != null && userId != "") {
-      getUser(userId);
-    }
-  });
-}
+    function reservationList() {
+      $.ajax({
+        url: 'http://localhost/reservation',
+        method: 'GET',
+        dataType: 'json',
+        success: function (jsonArray) {
+          window.data = jsonArray;
 
-function reservationList() {
-        $.ajax({
-            url:'http://localhost/reservation',
-            method:'GET',
-            dataType:'json',
-            success:function(jsonArray){
-                window.data = jsonArray;
-                
-                var html = "";
-                //for (var designer of data) {
-                for (var i = 0; i < data.length; i++) {
-                    var list = data[i];
-                    var resNo=list.resNo;
-                    var beginDay=list.beginDay;
-                    var beginHour=list.beginHour;
-                    var desinerId=list.desinerId;
-                    var beginMinute=list.phone;
-                    var styleNo=list.styleNo;
-                    var useComment=list.useComment;
-                    var styleName=list.styleName;
-                    console.log('돌아버리겠네');
-                   
-                    html += 
-                    ``;
-                }
-                document.getElementById('revtable').innerHTML=html;
-                return html;	
-            }	
-        });
-    }
+          var html = "";
+          //for (var designer of data) {
+          for (var i = 0; i < data.length; i++) {
+            var list = data[i];
+            var resNo = list.resNo;
+            var beginDay = list.beginDay;
+            var beginHour = list.beginHour;
+            var desinerId = list.desinerId;
+            var beginMinute = list.phone;
+            var styleNo = list.styleNo;
+            var useComment = list.useComment;
+            var styleName = list.styleName;
+            console.log('돌아버리겠네');
 
-  </script>
+            html +=
+              ``;
+          }
+          document.getElementById('revtable').innerHTML = html;
+          return html;
+        }
+      });
+    };
 
-  <script> 
     window.onload = function () {
       loadMenu();
       reservation();
-             };
+
+      $("#btnHairRev").on('click', function (e) {
+        $("#change").load("./hair/hairStyles-rev.html");
+        e.preventDefault();
+      });
+
+      $("#btnRev").on('click', function (e) {
+        $("#change").load("./hair/hairStyles-done.html");
+        e.preventDefault();
+      });
+    };
   </script>
 
 <body>

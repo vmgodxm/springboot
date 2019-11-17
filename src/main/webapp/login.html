@@ -23,11 +23,14 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/hairStargram/login/facebook.js"></script>
     <script src="js/hairStargram/common/common_nev.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="js/hairStargram/login/facebook.js"></script>
     <script>
-        window.onload = function () {
+        
+        window.onload = function() {
             loadMenu();
+            Kakao.init('9a197f81d49dad80ceb9726d53f65a57');
         };
     </script>
 </head>
@@ -53,13 +56,19 @@
                             <label for="password">Password</label>
                         </div>
                     </div>
+                    <a id="btnModify" class="btn btn-primary btn-block" href="javascript:login()">Log In</a>
+                </form>
+                <div class="card-body">
                     <div class="container" style="display: inline-block;text-align: center;">
-                        <div class="fb-login-button" scope="public_profile,email" data-width="50" data-size="large"
+                        <!-- 페이스북 로그인 <div class="fb-login-button" scope="public_profile,email" data-width="50" data-size="large"
                             data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"
                             onlogin="checkLoginState()">
-                        </div>
+                        </div> -->
+                        <a id="custom-login-btn" href="javascript:kakoLogin()">
+                            <img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300" />
+                        </a>
                     </div>
-                </form>
+                </div>
                 <div class="text-center">
                     <a class="d-block small mt-3" href="register.html">Register an Account</a>
                 </div>

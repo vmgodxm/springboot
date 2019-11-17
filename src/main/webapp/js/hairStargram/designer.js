@@ -1,7 +1,11 @@
 
 var init = {
 	
-	
+	gotoview  : function(styleNo) {
+		
+	},
+		
+		
 	makeDesignerList : function() {
 			$.ajax({
 				url:'/hairStyleJoin',
@@ -21,12 +25,12 @@ var init = {
 						var hairstyleName=list.styleName;
 						var hairstyleComment=list.styleComment;
 						var hairstylePrice=list.price;
-						
+						var styleNo =list.styleNo;
 						
 						html += 
 						`<div class="col-lg-2 col-sm-6 portfolio-item">
 				      <div class="card h-100 text-center">
-				        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+				        <a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
 				        <div class="card-body">
 				        <h4 class="card-title">${hairstyleName}</h4>
 				        <h6 class="card-subtitle mb-2 text-muted"></h6>

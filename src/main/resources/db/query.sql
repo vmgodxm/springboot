@@ -114,9 +114,9 @@ INSERT INTO company values ('hairstargram@outlook.com', '000-00-00000',0,'리안
 INSERT INTO company values ('hairstargram@outlook.com', '000-00-00000',0,'리안헤어','서울 강남점');
 INSERT INTO company values ('hairstargram@outlook.com', '000-00-00000',0,'리안헤어','서울 강남점');
 
-INSERT INTO fileStorage values (900, 'hairstargram@outlook.com', 'images/' , 'test2.png', '멍충이.png', 'th_AFVJBjIFuCnJ8s4t.jpg');
-INSERT INTO fileStorage values (901, 'hairstargram@outlook.com', 'images/' , 'test2.png', '멍충이.png', 'th_AFVJBjIFuCnJ8s4t.jpg');
-INSERT INTO fileStorage values (902, 'hairstargram@outlook.com', 'images/' , 'test2.png', '멍충이.png', 'th_AFVJBjIFuCnJ8s4t.jpg');
+--INSERT INTO fileStorage values (900, 'hairstargram@outlook.com', 'images/' , 'test2.png', '멍충이.png', 'th_AFVJBjIFuCnJ8s4t.jpg');
+--INSERT INTO fileStorage values (901, 'hairstargram@outlook.com', 'images/' , 'test2.png', '멍충이.png', 'th_AFVJBjIFuCnJ8s4t.jpg');
+--INSERT INTO fileStorage values (902, 'hairstargram@outlook.com', 'images/' , 'test2.png', '멍충이.png', 'th_AFVJBjIFuCnJ8s4t.jpg');
 
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, 'hairstargram@outlook.com', 0, '차홍룸', '분당점');
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, 'hairstargram@outlook.com', 0, '블루클럽', '강남점');
@@ -126,9 +126,9 @@ INSERT INTO companyOperation VALUES(2019, 11, 29, 30, 09, 20, 00, 00, 'hairstarg
 INSERT INTO companyOperation VALUES(2019, 11, 29, 30, 09, 20, 00, 00, 'hairstargram@outlook.com');
 INSERT INTO companyOperation VALUES(2019, 11, 29, 30, 09, 20, 00, 00, 'hairstargram@outlook.com');
 
-INSERT INTO hairStyle VALUES (800, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 900, 'hairstargram@outlook.com');
-INSERT INTO hairStyle VALUES (801, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 901, 'hairstargram@outlook.com');
-INSERT INTO hairStyle VALUES (802, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 902, 'hairstargram@outlook.com');
+--INSERT INTO hairStyle VALUES (800, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 900, 'hairstargram@outlook.com');
+--INSERT INTO hairStyle VALUES (801, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 901, 'hairstargram@outlook.com');
+--INSERT INTO hairStyle VALUES (802, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 902, 'hairstargram@outlook.com');
 
 INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'hairstargram@outlook.com', 'test@test.com');
 INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'hairstargram@outlook.com', 'test2@test.com');

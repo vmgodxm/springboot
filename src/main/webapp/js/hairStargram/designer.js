@@ -2,7 +2,8 @@
 var init = {
 	
 	gotoview  : function(styleNo) {
-		
+		localStorage.setItem('styleNo',styleNo);
+		location.href='hairStyles.html';
 	},
 		
 		
@@ -19,7 +20,7 @@ var init = {
 					init.numberArray =new Array(jsonArray.length);
 					var html = "";
 					//for (var designer of data) {
-					for (var i = 1; i < 6; i++) {
+					for (var i = 0; i < 5; i++) {
 						var list = init.data[i];
 						var hairstyleImage=list.thumbNailFileName;
 						var hairstyleName=list.styleName;
@@ -75,7 +76,7 @@ var init = {
 		//for (var designer of data) {
 		for (var i = 0; i < init.datalength; i++) {
 			var j=init.numberArray[i];
-			if(!(j==0)){
+			
 			var list = init.data[j];
 			var hairstyleImage=list.thumbNailFileName;
 			var hairstyleName=list.styleName;
@@ -98,14 +99,14 @@ var init = {
 			    </div>` ;
 			
 			}
-		}
+		
 		document.getElementById('randombest').innerHTML=html;
 		return html;
 	},
 	
 	sortBygentleman : function () {
 		var html1 = "";
-		for (var i = 1; i < 6; i++) {
+		for (var i = 0; i < 11; i++) {
 			var list = init.data[i];
 			if(list.gender==0){
 			var hairstyleImage=list.thumbNailFileName;
@@ -133,7 +134,7 @@ var init = {
 		var html2 = "";
 		for (var i = 0; i < init.datalength; i++) {
 			var j=init.numberArray[i];
-			if(!(j==0)){
+			
 			var list = init.data[j];
 			
 			if(list.gender==0){
@@ -157,7 +158,7 @@ var init = {
 			      </div>
 			    </div>` ;
 				}
-			}
+			
 			
 		}
 		
@@ -176,7 +177,7 @@ var init = {
 	
 	sortByladies : function () {
 		var html1 = "";
-		for (var i = 1; i < 6; i++) {
+		for (var i = 1; i < 11; i++) {
 			var list = init.data[i];
 			if(list.gender==1){
 			var hairstyleImage=list.thumbNailFileName;
@@ -204,7 +205,7 @@ var init = {
 		var html2 = "";
 		for (var i = 0; i < init.datalength; i++) {
 			var j=init.numberArray[i];
-			if(!(j==0)){
+			
 			var list = init.data[j];
 			
 			if(list.gender==1){
@@ -229,7 +230,7 @@ var init = {
 			
 			
 				}
-			}
+			
 			
 		}
 		

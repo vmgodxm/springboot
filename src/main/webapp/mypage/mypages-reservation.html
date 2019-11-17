@@ -6,22 +6,20 @@ $(function() {
                 Type:"GET",
                 dataType:"json"
             }).then(function(data){
+
             	$.each(data,function(i,v){
 					var reviewList = data[i];
-			
-				//   $('#reviewNo').text(data[i].replyNo);    		
-            	
             		console.log('데이타 리플번호 -> '+data[i].resNo);
             		console.log('시작일-> '+data[i].beginDay);
-                console.log('폰넘버->'+data[i].styleName);
+                console.log('폰넘버->'+data[i].phone);
 					
-          		$("#revtable").append('<tr><td>'+data[i].resNo+'</td><td>'+data[i].beginDay+'</td><td>'+data[i].beginHour+'</td><td>'+data[i].beginMinute+'</td><td>'+data[i].designerId+'</td><td>'+data[i].styleName+'</td><td>'+data[i].useComment+'</td></tr>');
+          		$("#revtable").append('<tr><td>'+data[i].resNo+'</td><td>'+data[i].beginDay+'</td><td>'+data[i].beginHour+'</td><td>'+data[i].beginMinute+'</td><td>'+data[i].designerId+'</td><td>'+data[i].phone+'</td><td>'+data[i].styleName+'</td><td>'+data[i].useComment+'</td></tr>');
             	});
             });
         });;
     </script>
       <!-- Content Column -->
-    <table class="col-lg-12" align="center">
+    <table id="table2" class="col-lg-12" align="center">
     <tr>
       <th>번호</th>
       <th>예약일</th>
@@ -32,7 +30,7 @@ $(function() {
       <th>요청사항</th>
     </tr> 
     </table>
-  <table id="revtable" class="col-lg-12" align="center"></table>
+  <table  align="center" id="revtable" class="col-lg-12" align="center"></table>
     
 
    

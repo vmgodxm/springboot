@@ -1,4 +1,4 @@
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript">
   $(function(){
     $("#review").click(function(){
@@ -7,6 +7,24 @@
       location.replace('javascript:review()');
     });
   });
+$(function() {
+            $.ajax({
+                url:"http://localhost/reservation",
+                Type:"GET",
+                dataType:"json"
+            }).then(function(data){
+
+            	$.each(data,function(i,v){
+					var reviewList = data[i];
+            		console.log('데이타 리플번호 -> '+data[i].resNo);
+            		console.log('시작일-> '+data[i].beginDay);
+                console.log('폰넘버->'+data[i].phone);
+					
+          		$("#revtable").append('<tr><td>'+data[i].resNo+'</td><td>'+data[i].beginDay+'</td><td>'+data[i].beginHour+'</td><td>'+data[i].beginMinute+'</td><td>'+data[i].designerId+'</td><td>'+data[i].phone+'</td><td>'+data[i].styleName+'</td><td>'+data[i].useComment+'</td></tr>');
+            	});
+            });
+        });;
+
 
 </script>
    <div class="col-lg-9-2 mb-4"> 
@@ -52,7 +70,7 @@
                 <th>010-4567-8998</th>
                 <th>해병대머리</th>
                 <th>윗머리는 8mm 옆머리는 3mm 뒷머리는 5mm로 해주세요</th>
-                <th> <a id ="review" class="btn-1 btn-primary" href="#">평가</a></th>
+                <th> <a id ="review" class="btn-1 btn-primary" href="#"평가</a></th>
               </tr>
         </tbody> 
       </table>

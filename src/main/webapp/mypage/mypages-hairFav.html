@@ -12,11 +12,11 @@ $(function() {
 	
             		console.log('데이타 리플번호 -> '+hairStyleFavList.hfavoriteNo);
             		console.log('데이타 리플번호 -> '+data[i].designerId);
-            		console.log('데이타 리플번호 -> '+data[i].userId);
-            		console.log('데이타 리플번호 -> '+data[i].styleNo);
+            		console.log('데이타 리플번호 -> '+data[i].styleComment);
+            		console.log('데이타 리플번호 -> '+data[i].styleName);
             	
 					
-          		$("#hairStyleFav").append('<div class="card mb-4"><div class="card-body"><div class="row"><div class="col-lg-6"><a href="#"><img class="img-fluid rounded" src="../images/WE97496996_ori (2).jpg" alt=""></a></div><div class="col-lg-6"><h2 class="card-title">Post Title'+ data[i].hfavoriteNo + '</h2><p class="card-text">' +data[i].designerId+ '</p><a id="btnHairRev" href="#" class="btn btn-primary">예약하기</a></div></div></div><div class="card-footer text-muted">유저아이디'+data[i].userId+' 2017 by<a href="#">Start Bootstrap</a></div></div>');
+          		$("#hairStyleFav").append('<div class="card mb-4"><div class="card-body"><div class="row"><div class="col-lg-6"><a href="#"><img class="img-fluid rounded" src="../images/WE97496996_ori (2).jpg" alt=""></a></div><div class="col-lg-6"><h2 class="card-title">'+ data[i].styleName + '</h2><p class="card-text">디자이너 ' +data[i].styleComment+ '</p><a id="btnHairRev" href="#" class="btn btn-primary">예약하기</a></div></div></div><div class="card-footer text-muted">'+data[i].designerId+' 2019 by<a href="#">final project</a></div></div>');
             	});
             });
         });;

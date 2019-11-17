@@ -13,8 +13,23 @@ public class HairStyleFavorite {
 	// ?��?��?��????�� 번호
 	private Long styleNo;
 
+	private String styleName;
+
+	private String styleComment;
+
 	public HairStyleFavorite() {
 	}
+
+
+	public HairStyleFavorite(Long hfavoriteNo, String designerId, String userId, Long styleNo, String styleName, String styleComment) {
+		this.hfavoriteNo = hfavoriteNo;
+		this.designerId = designerId;
+		this.userId = userId;
+		this.styleNo = styleNo;
+		this.styleName = styleName;
+		this.styleComment = styleComment;
+	}
+
 
 	public HairStyleFavorite(Long hfavoriteNo, String designerId, String userId, Long styleNo) {
 		super();
@@ -25,6 +40,23 @@ public class HairStyleFavorite {
 	}
 
 	
+
+	public String getStyleName() {
+		return this.styleName;
+	}
+
+	public void setStyleName(String styleName) {
+		this.styleName = styleName;
+	}
+
+	public String getStyleComment() {
+		return this.styleComment;
+	}
+
+	public void setStyleComment(String styleComment) {
+		this.styleComment = styleComment;
+	}
+
 
 	public Long getHfavoriteNo() {
 		return hfavoriteNo;

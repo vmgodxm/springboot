@@ -3,7 +3,7 @@
 <mapper namespace="mapper.HStyleFavoriteMapper">
 	
 	<select id="getHStyleFavList" parameterType="String" resultType="com.example.demo.model.HairStyleFavorite">
-	select * from hairStyleFavorite
+	select * from hairStyleFavorite A JOIN hairstyle B ON A.styleNo = B.styleNo
 	</select>
 	<select id="getHStyleFav" parameterType="String" resultType="com.example.demo.model.HairStyleFavorite">
 	select * from hairStyleFavorite where hfavoriteNo=#{hfavoriteNo}

@@ -15,6 +15,13 @@
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="vendor/full-calendar/vendor/css/fullcalendar.min.css" />
+<link rel="stylesheet" href='vendor/full-calendar/vendor/css/select2.min.css' />
+<link rel="stylesheet" href='vendor/full-calendar/vendor/css/bootstrap-datetimepicker.min.css' />
+<link rel="stylesheet" href="vendor/full-calendar/css/main.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -29,8 +36,8 @@
       $('#change').load('designer/designerPage-hairstyle.html');
     }
 
-    function timetable() {
-      $('#change').load('designer/designerPage-timetable.html');
+    function schedule() {
+      $('#change').load('designer/designerPage-schedule.html');
     }
 
     function reservation() {
@@ -173,7 +180,7 @@
 
     window.onload = function () {
       loadMenu();
-      timetable();
+      schedule();
     };
   </script>
 </head>
@@ -193,7 +200,7 @@
       <!-- Sidebar Column -->
       <div class="col-lg-3 mb-4">
         <div class="list-group">
-          <a href="javascript:timetable();" class="list-group-item">영업시간</a>
+          <a href="javascript:schedule();" class="list-group-item">영업시간</a>
           <a href="javascript:reservation();" class="list-group-item">예약현황</a>
           <a href="javascript:hairstyle();" class="list-group-item">헤어스타일 관리</a>
           <a href="javascript:customer();" class="list-group-item">고객현황</a>

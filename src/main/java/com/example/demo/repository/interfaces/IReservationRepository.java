@@ -8,7 +8,7 @@ public interface IReservationRepository {
 	
 	List<Reservation> getResvation() throws Exception;
 
-	Long getResvation(Long resNo) throws Exception;
+	Reservation getResvation(Long resNo) throws Exception;
 
 	int updateRes(Long resNo) throws Exception;
 

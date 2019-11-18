@@ -29,9 +29,31 @@
     window.onload = function () {
       loadMenu();
       hairStyle_body();
+      
     };
   
-   
+var pageLoad = {
+		
+		pageload.styleNo : localStorage.getItem(styleNo),
+		pageLoad.userId : localStorage.userId,
+     	selectDesignerByStlyeNo : async function () {
+
+		var result = await fetch('/user/'+userId);
+		var user = await result.json();
+		
+		
+		
+		
+		
+		
+	},
+	
+
+		
+		
+		
+}   
+    
     
     
     

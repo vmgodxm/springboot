@@ -271,7 +271,23 @@ var init = {
 		document.getElementById('desingerrr').innerHTML = html1;
 		document.getElementById('Random').innerHTML ="";
 		document.getElementById('randombest').innerHTML = "";
+	},
+
+	sortByRecommend: function(){
+		var html1 = "";
+		for (var i = 0; i < init.datalength; i++) {
+			var list = init.data[i];
+			if (list.recommend >= 0) {
+				html1 += this.printHairStyle(list);
+			}
+		}
+		document.getElementById('Weekly').innerHTML =
+			`<h1 class="my-4" id="Weekly">Recommend</h1>`;
+		document.getElementById('desingerrr').innerHTML = html1;
+		document.getElementById('Random').innerHTML ="";
+		document.getElementById('randombest').innerHTML = "";
 	}
+
 
 
 

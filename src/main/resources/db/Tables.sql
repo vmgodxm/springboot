@@ -217,7 +217,8 @@ CREATE TABLE hairStyle(
 		styleComment                  		VARCHAR2(255)		 NOT NULL,
 		fileNo                        		NUMBER(10)		 NULL ,
 		categoryNo                    		NUMBER(10)		 NULL ,
-		userId                        		VARCHAR2(100)		 NULL 
+		userId                        		VARCHAR2(100)		 NULL,
+		recommend							NUMBER(10)		NULL
 );
 
 DROP SEQUENCE HAIRSTYLE_STYLENO_SEQ;
@@ -237,6 +238,7 @@ COMMENT ON COLUMN hairStyle.styleComment is '스타일 소개';
 COMMENT ON COLUMN hairStyle.fileNo is 'SEQ';
 COMMENT ON COLUMN hairStyle.categoryNo is '카테고리 번호';
 COMMENT ON COLUMN hairStyle.userId is '사용자 아이디';
+COMMENT ON COLUMN hairStyle.recommend is '헤어스타일 추천수';
 
 
 /**********************************/

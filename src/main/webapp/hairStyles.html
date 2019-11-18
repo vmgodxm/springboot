@@ -29,9 +29,35 @@
     window.onload = function () {
       loadMenu();
       hairStyle_body();
+      
     };
   
-   
+var pageLoad = {
+		
+	styleNo : localStorage.styleNo ,
+	userId : localStorage.userId ,
+
+	selectDesignerByStlyeNo : async function () {
+
+	var result = await fetch('/user/'+userId);
+	var user = await result.json();
+		
+	html= 
+		`<div class="col-lg-2 col-sm-4 mb-4" id="designerPhoto">
+  			  <img class="img-fluid"
+      		 	 src="https://i.ytimg.com/vi/8LMla1wMC-A/maxresdefault.jpg" alt="">
+		</div>`
+		
+		document.getElementById('desingerrr').innerHTML = html;
+	
+	}
+	
+
+		
+		
+		
+}   
+    
     
     
     

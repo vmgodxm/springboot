@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-public class UserRegist {
+public class UserRegistJoinFile {
 
 	private Long userNo;
 	private String userId;
@@ -11,33 +11,15 @@ public class UserRegist {
 	private Long regionNo;
 	private Long fileNo;
 	private Long userLevel;
+	private String thumbNailFileName;
+
 	
-	
-	public UserRegist() { }
-	
-	public UserRegist(String userId, String userName, Long gender, String phone, String nickName, Long userLevel) {
-		this.userId = userId;
-		this.userName = userName;
-		this.gender = gender;
-		this.phone = phone;
-		this.nickName = nickName;
-		this.userLevel = userLevel;
-	}
-	
-	public UserRegist(String userId, String userName, Long gender, String phone,
-			String nickName, Long regionNo, Long fileNo, Long userLevel) {
-		this.userId = userId;
-		this.userName = userName;
-		this.gender = gender;
-		this.phone = phone;
-		this.nickName = nickName;
-		this.regionNo = regionNo;
-		this.fileNo = fileNo;
-		this.userLevel = userLevel;
-	}
-	
-	public UserRegist(Long userNo, String userId, String userName, Long gender, String phone,
-			String nickName, Long regionNo, Long fileNo, Long userLevel) {
+	public UserRegistJoinFile() { }
+
+
+	public UserRegistJoinFile(Long userNo, String userId, String userName, Long gender, String phone, String nickName,
+			Long regionNo, Long fileNo, Long userLevel, String thumbNailFileName) {
+		super();
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userName = userName;
@@ -47,7 +29,9 @@ public class UserRegist {
 		this.regionNo = regionNo;
 		this.fileNo = fileNo;
 		this.userLevel = userLevel;
+		this.thumbNailFileName = thumbNailFileName;
 	}
+
 
 	public Long getUserNo() {
 		return userNo;
@@ -109,7 +93,6 @@ public class UserRegist {
 	}
 
 
-
 	public Long getRegionNo() {
 		return regionNo;
 	}
@@ -140,12 +123,23 @@ public class UserRegist {
 	}
 
 
+	public String getThumbNailFileName() {
+		return thumbNailFileName;
+	}
+
+
+	public void setThumbNailFileName(String thumbNailFileName) {
+		this.thumbNailFileName = thumbNailFileName;
+	}
+
+
 	@Override
 	public String toString() {
-		return "UserRegist [userNo=" + userNo + ", userId=" + userId + ", userName=" + userName + ", gender=" + gender
-				+ ", phone=" + phone + ", nickName=" + nickName + ", regionNo="
-				+ regionNo + ", fileNo=" + fileNo + ", userLevel=" + userLevel + "]";
+		return "UserRegistJoinFile [userNo=" + userNo + ", userId=" + userId + ", userName=" + userName + ", gender="
+				+ gender + ", phone=" + phone + ", nickName=" + nickName + ", regionNo=" + regionNo + ", fileNo="
+				+ fileNo + ", userLevel=" + userLevel + ", thumbNailFileName=" + thumbNailFileName + "]";
 	}
+	
 	
 	
 }

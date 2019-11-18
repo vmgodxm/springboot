@@ -24,12 +24,14 @@ public class HairStyleListMain {
 	private String userId;
 	
 	private String thumbNailFileName;
+	
+	private String recommend;
 
 	public HairStyleListMain() {
 	}
 
 	public HairStyleListMain(Long styleNo, Long gender, String styleName, Long categoryNo, Long price, Long hour,
-			Long minute, String styleComment, Long fileNo, String userId, String thumbNailFileName) {
+			Long minute, String styleComment, Long fileNo, String userId, String thumbNailFileName, String recommend) {
 		super();
 		this.styleNo = styleNo;
 		this.gender = gender;
@@ -42,6 +44,7 @@ public class HairStyleListMain {
 		this.fileNo = fileNo;
 		this.userId = userId;
 		this.thumbNailFileName = thumbNailFileName;
+		this.recommend = recommend;
 	}
 
 	public Long getStyleNo() {
@@ -132,13 +135,23 @@ public class HairStyleListMain {
 		this.thumbNailFileName = thumbNailFileName;
 	}
 
+	public String getRecommend() {
+		return recommend;
+	}
+
+	public void setRecommend(String recommend) {
+		this.recommend = recommend;
+	}
+
 	@Override
 	public String toString() {
 		return "HairStyleListMain [styleNo=" + styleNo + ", gender=" + gender + ", styleName=" + styleName
 				+ ", categoryNo=" + categoryNo + ", price=" + price + ", hour=" + hour + ", minute=" + minute
 				+ ", styleComment=" + styleComment + ", fileNo=" + fileNo + ", userId=" + userId
-				+ ", thumbNailFileName=" + thumbNailFileName + "]";
+				+ ", thumbNailFileName=" + thumbNailFileName + ", recommend=" + recommend + "]";
 	}
+
+	
 
 	
 	

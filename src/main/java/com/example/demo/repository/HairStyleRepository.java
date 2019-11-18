@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.model.HairStyle;
 import com.example.demo.model.HairStyleListMain;
+import com.example.demo.model.UserRegistJoinFile;
 import com.example.demo.repository.interfaces.IHairStyleRepository;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,15 +28,31 @@ public class HairStyleRepository implements IHairStyleRepository {
 	}
 	
 	@Override
+	public List<HairStyle> getHairStyleListReco() throws Exception{
+		return sqlSession.selectList("mapper.HairStyleMapper.getHairStyleListReco");
+	}
+	
+	@Override
 	public List<HairStyleListMain> getHairStyleListJoin() throws Exception {
 		return sqlSession.selectList("mapper.HairStyleMapper.getHairStyleListJoin");
 	}
-
+	
+	@Override
+	public List<HairStyleListMain> hairStyleJoinbyUserId(String userId) throws Exception {
+		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleJoinbyUserId");
+	}
+	
+	
 	@Override
 	public HairStyle getHairStyle(Long styleNo) throws Exception {
 		return sqlSession.selectOne("mapper.HairStyleMapper.getHairStyle", styleNo);
 	}
 
+	@Override
+	public UserRegistJoinFile getHairStyleJoinFile(String userId) throws Exception {
+		return sqlSession.selectOne("mapper.HairStyleMapper.getHairStyleJoinFile",userId);
+	}
+	
 	@Override
 	public HairStyle getHairStyle(HairStyle hairStyle) throws Exception {
 		return sqlSession.selectOne("mapper.HairStyleMapper.getHairStyle",hairStyle);

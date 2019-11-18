@@ -4,24 +4,7 @@ var init = {
 		localStorage.setItem('styleNo', styleNo);
 		location.href = 'hairStyles.html';
 	},
-	
-	
-	printHairStyle : function (hairStyle) {
-    	
-    	return `<div class="col-lg-2 col-sm-6 portfolio-item">
-    			  <div class="card h-100 text-center">
-    			<a href="javascript:gotoviewf(${hairStyle.styleNo});"><img class="card-img-top" src="/images/${hairStyle.thumbNailFileName}" alt=""></a>
-    			<div class="card-body">
-    			<h4 class="card-title">${hairStyle.styleName}</h4>
-    			<h6 class="card-subtitle mb-2 text-muted"></h6>
-    			<p class="card-text">${hairStyle.styleComment}</p>
-    		  </div>
-    		  <div class="card-footer">
-    			<a href="#">${hairStyle.price}</a>
-    		  </div>
-    		  </div>
-    		</div>`;
-    },
+
 
 	makeDesignerList: async function () {
 
@@ -31,33 +14,30 @@ var init = {
 		init.data = jsonArray;
 		init.datalength = jsonArray.length;
 		init.numberArray = new Array(jsonArray.length);
-		
 		var html = "";
 		//for (var designer of data) {
 		for (var i = 3; i < 8; i++) {
-			html += this.printHairStyle(init.data[i]);
-		
-			
-//			var hairstyleImage = list.thumbNailFileName;
-//			var hairstyleName = list.styleName;
-//			var hairstyleComment = list.styleComment;
-//			var hairstylePrice = list.price;
-//			var styleNo = list.styleNo;
-//
-//			html +=
-//				`<div class="col-lg-2 col-sm-6 portfolio-item">
-//			  <div class="card h-100 text-center">
-//				<a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
-//				<div class="card-body">
-//				<h4 class="card-title">${hairstyleName}</h4>
-//				<h6 class="card-subtitle mb-2 text-muted"></h6>
-//				<p class="card-text">${hairstyleComment}</p>
-//			  </div>
-//			  <div class="card-footer">
-//				<a href="#">${hairstylePrice}</a>
-//			  </div>
-//			  </div>
-//			</div>`;
+			var list = init.data[i];
+			var hairstyleImage = list.thumbNailFileName;
+			var hairstyleName = list.styleName;
+			var hairstyleComment = list.styleComment;
+			var hairstylePrice = list.price;
+			var styleNo = list.styleNo;
+
+			html +=
+				`<div class="col-lg-2 col-sm-6 portfolio-item">
+			  <div class="card h-100 text-center">
+				<a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+				<div class="card-body">
+				<h4 class="card-title">${hairstyleName}</h4>
+				<h6 class="card-subtitle mb-2 text-muted"></h6>
+				<p class="card-text">${hairstyleComment}</p>
+			  </div>
+			  <div class="card-footer">
+				<a href="#">${hairstylePrice}</a>
+			  </div>
+			  </div>
+			</div>`;
 		}
 
 		document.getElementById('desingerrr').innerHTML = html;
@@ -135,33 +115,30 @@ var init = {
 			var j = init.numberArray[i];
 
 			var list = init.data[j];
-//			var hairstyleImage = list.thumbNailFileName;
-//			var hairstyleName = list.styleName;
-//			var hairstyleComment = list.styleComment;
-//			var hairstylePrice = list.price;
-//			var styleNo = list.styleNo;
-			
-			html += this.printHairStyle(init.data[j]);
-			
-//			html +=
-//				`<div class="col-lg-2 col-sm-6 portfolio-item">
-//			      <div class="card h-100 text-center">
-//			        <a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
-//			        <div class="card-body">
-//			        <h4 class="card-title">${hairstyleName}</h4>
-//			        <h6 class="card-subtitle mb-2 text-muted"></h6>
-//			        <p class="card-text">${hairstyleComment}</p>
-//			      </div>
-//			      <div class="card-footer">
-//			        <a href="#">${hairstylePrice}</a>
-//			      </div>
-//			      </div>
-//			    </div>`;
+			var hairstyleImage = list.thumbNailFileName;
+			var hairstyleName = list.styleName;
+			var hairstyleComment = list.styleComment;
+			var hairstylePrice = list.price;
+			var styleNo = list.styleNo;
+			html +=
+				`<div class="col-lg-2 col-sm-6 portfolio-item">
+			      <div class="card h-100 text-center">
+			        <a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+			        <div class="card-body">
+			        <h4 class="card-title">${hairstyleName}</h4>
+			        <h6 class="card-subtitle mb-2 text-muted"></h6>
+			        <p class="card-text">${hairstyleComment}</p>
+			      </div>
+			      <div class="card-footer">
+			        <a href="#">${hairstylePrice}</a>
+			      </div>
+			      </div>
+			    </div>`;
 
 		}
 
 		document.getElementById('randombest').innerHTML = html;
-		
+		return html;
 	},
 
 	sortBygentleman: function () {
@@ -169,8 +146,25 @@ var init = {
 		for (var i = 3; i < 12; i++) {
 			var list = init.data[i];
 			if (list.gender == 0) {
-				
-				html1 += this.printHairStyle(list);
+				var hairstyleImage = list.thumbNailFileName;
+				var hairstyleName = list.styleName;
+				var hairstyleComment = list.styleComment;
+				var hairstylePrice = list.price;
+				var styleNo = list.styleNo;
+				html1 +=
+					`<div class="col-lg-2 col-sm-6 portfolio-item">
+		      <div class="card h-100 text-center">
+		        <a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+		        <div class="card-body">
+		        <h4 class="card-title">${hairstyleName}</h4>
+		        <h6 class="card-subtitle mb-2 text-muted"></h6>
+		        <p class="card-text">${hairstyleComment}</p>
+		      </div>
+		      <div class="card-footer">
+		        <a href="#">${hairstylePrice}</a>
+		      </div>
+		      </div>
+			</div>`;
 			}
 		}
 
@@ -181,7 +175,25 @@ var init = {
 			var list = init.data[j];
 
 			if (list.gender == 0) {
-				html2 += this.printHairStyle(list);
+				var hairstyleImage = list.thumbNailFileName;
+				var hairstyleName = list.styleName;
+				var hairstyleComment = list.styleComment;
+				var hairstylePrice = list.price;
+				var styleNo = list.styleNo;
+				html2 +=
+					`<div class="col-lg-2 col-sm-6 portfolio-item">
+			      <div class="card h-100 text-center">
+			        <a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+			        <div class="card-body">
+			        <h4 class="card-title">${hairstyleName}</h4>
+			        <h6 class="card-subtitle mb-2 text-muted"></h6>
+			        <p class="card-text">${hairstyleComment}</p>
+			      </div>
+			      <div class="card-footer">
+			        <a href="#">${hairstylePrice}</a>
+			      </div>
+			      </div>
+			    </div>`;
 			}
 
 
@@ -205,7 +217,25 @@ var init = {
 		for (var i = 1; i < 14; i++) {
 			var list = init.data[i];
 			if (list.gender == 1) {
-				html1 += this.printHairStyle(list);
+				var hairstyleImage = list.thumbNailFileName;
+				var hairstyleName = list.styleName;
+				var hairstyleComment = list.styleComment;
+				var hairstylePrice = list.price;
+				var styleNo = list.styleNo;
+				html1 +=
+					`<div class="col-lg-2 col-sm-6 portfolio-item">
+		      <div class="card h-100 text-center">
+		        <a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+		        <div class="card-body">
+		        <h4 class="card-title">${hairstyleName}</h4>
+		        <h6 class="card-subtitle mb-2 text-muted"></h6>
+		        <p class="card-text">${hairstyleComment}</p>
+		      </div>
+		      <div class="card-footer">
+		        <a href="#">${hairstylePrice}</a>
+		      </div>
+		      </div>
+			</div>`;
 			}
 		}
 
@@ -216,8 +246,29 @@ var init = {
 			var list = init.data[j];
 
 			if (list.gender == 1) {
-				html2 += this.printHairStyle(list);
+				var hairstyleImage = list.thumbNailFileName;
+				var hairstyleName = list.styleName;
+				var hairstyleComment = list.styleComment;
+				var hairstylePrice = list.price;
+				var styleNo = list.styleNo;
+				html2 += `<div class="col-lg-2 col-sm-6 portfolio-item">
+				<div class="card h-100 text-center">
+				<a href="javascript:gotoviewf(${styleNo});"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+				<div class="card-body">
+				<h4 class="card-title">${hairstyleName}</h4>
+				<h6 class="card-subtitle mb-2 text-muted"></h6>
+				<p class="card-text">${hairstyleComment}</p>
+					</div>
+					<div class="card-footer">
+				        <a href="#">${hairstylePrice}</a>
+				      </div>
+				      </div>
+				    </div>`
+
+
 			}
+
+
 		}
 
 
@@ -230,14 +281,30 @@ var init = {
 			`<h2 class="my-3" id="Random">Random Ladies Best</h2>`;
 		document.getElementById('randombest').innerHTML = html2;
 	},
-	
 	sortByCut: function(){
 		var html1 = "";
 		for (var i = 0; i < init.datalength; i++) {
 			var list = init.data[i];
-			
 			if (list.categoryNo == 0 || list.categoryNo == 3) {
-				html1 += this.printHairStyle(list);
+				var hairstyleImage = list.thumbNailFileName;
+				var hairstyleName = list.styleName;
+				var hairstyleComment = list.styleComment;
+				var hairstylePrice = list.price;
+
+				html1 +=
+					`<div class="col-lg-2 col-sm-6 portfolio-item">
+		      <div class="card h-100 text-center">
+		        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+		        <div class="card-body">
+		        <h4 class="card-title">${hairstyleName}</h4>
+		        <h6 class="card-subtitle mb-2 text-muted"></h6>
+		        <p class="card-text">${hairstyleComment}</p>
+		      </div>
+		      <div class="card-footer">
+		        <a href="#">${hairstylePrice}</a>
+		      </div>
+		      </div>
+			</div>`;
 			}
 		}
 		document.getElementById('Weekly').innerHTML =
@@ -251,7 +318,25 @@ var init = {
 		for (var i = 0; i < init.datalength; i++) {
 			var list = init.data[i];
 			if (list.categoryNo == 1 || list.categoryNo == 4) {
-				html1 += this.printHairStyle(list);
+				var hairstyleImage = list.thumbNailFileName;
+				var hairstyleName = list.styleName;
+				var hairstyleComment = list.styleComment;
+				var hairstylePrice = list.price;
+
+				html1 +=
+					`<div class="col-lg-2 col-sm-6 portfolio-item">
+		      <div class="card h-100 text-center">
+		        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+		        <div class="card-body">
+		        <h4 class="card-title">${hairstyleName}</h4>
+		        <h6 class="card-subtitle mb-2 text-muted"></h6>
+		        <p class="card-text">${hairstyleComment}</p>
+		      </div>
+		      <div class="card-footer">
+		        <a href="#">${hairstylePrice}</a>
+		      </div>
+		      </div>
+			</div>`;
 			}
 		}
 		document.getElementById('Weekly').innerHTML =
@@ -265,7 +350,25 @@ var init = {
 		for (var i = 0; i < init.datalength; i++) {
 			var list = init.data[i];
 			if (list.categoryNo == 2 || list.categoryNo == 5) {
-				html1 += this.printHairStyle(list);
+				var hairstyleImage = list.thumbNailFileName;
+				var hairstyleName = list.styleName;
+				var hairstyleComment = list.styleComment;
+				var hairstylePrice = list.price;
+
+				html1 +=
+					`<div class="col-lg-2 col-sm-6 portfolio-item">
+		      <div class="card h-100 text-center">
+		        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
+		        <div class="card-body">
+		        <h4 class="card-title">${hairstyleName}</h4>
+		        <h6 class="card-subtitle mb-2 text-muted"></h6>
+		        <p class="card-text">${hairstyleComment}</p>
+		      </div>
+		      <div class="card-footer">
+		        <a href="#">${hairstylePrice}</a>
+		      </div>
+		      </div>
+			</div>`;
 			}
 		}
 		document.getElementById('Weekly').innerHTML =
@@ -273,23 +376,7 @@ var init = {
 		document.getElementById('desingerrr').innerHTML = html1;
 		document.getElementById('Random').innerHTML ="";
 		document.getElementById('randombest').innerHTML = "";
-	},
-
-	sortByRecommend: function(){
-		var html1 = "";
-		for (var i = 0; i < init.datalength; i++) {
-			var list = init.data[i];
-			if (list.recommend >= 0) {
-				html1 += this.printHairStyle(list);
-			}
-		}
-		document.getElementById('Weekly').innerHTML =
-			`<h1 class="my-4" id="Weekly">Recommend</h1>`;
-		document.getElementById('desingerrr').innerHTML = html1;
-		document.getElementById('Random').innerHTML ="";
-		document.getElementById('randombest').innerHTML = "";
 	}
-
 
 
 

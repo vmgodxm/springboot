@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.model.HairStyle;
 import com.example.demo.model.HairStyleListMain;
+import com.example.demo.model.UserRegistJoinFile;
 import com.example.demo.repository.interfaces.IHairStyleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,15 +40,30 @@ public class HairStyleController {
 		return repository.getHairStyleList();
 	}
 	
+	@GetMapping(path ="/hairStyleList")
+	public List<HairStyle> getHairStyleListReco() throws Exception {
+		return repository.getHairStyleListReco();
+	}
+	
 	@GetMapping(path ="/hairStyleJoin")
 	public List<HairStyleListMain> getHairStyleListJoin() throws Exception {
 		return repository.getHairStyleListJoin();
+	}
+	
+	@GetMapping(path ="/hairStyleJoinbyUserId/{userId}")
+	public List<HairStyleListMain> hairStyleJoinbyUserId(@PathVariable String userId) throws Exception {
+		return repository.hairStyleJoinbyUserId(userId);
 	}
 	
 	@GetMapping(path="/hairStyle/{styleNo}")
 	public HairStyle HairStyleInfo(Long styleNo) throws Exception {
 		HairStyle hairStyle = repository.getHairStyle(styleNo);
 		return hairStyle;
+	}
+	
+	@GetMapping(path="/getHairStyleJoinFile/{userId}")
+	public UserRegistJoinFile getHairStyleJoinFile(String userId) throws Exception {
+		return  repository.getHairStyleJoinFile(userId); 
 	}
 	
 	@PostMapping(path="/hairStyleInsert") 

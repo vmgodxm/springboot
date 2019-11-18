@@ -8,8 +8,9 @@
   <meta name="author" content="">
 
   <title>Hair Stargram</title>
-
+  
   <link href="css/sb-admin.css" rel="stylesheet">
+ 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -41,8 +42,20 @@
     	init.sortByladies();
     }
     
-     function sortByCutf() {
+    function sortByCutf() {
     	init.sortByCut();
+    }
+    
+    function sortByPermf() {
+    	init.sortByPerm();
+    }
+    
+    function sortByColorf(){
+    	init.sortByColor();
+    }
+    
+    function sortByRecommendf(){
+    	init.sortByRecommend();
     }
     
     function gotoviewf(styleNo) {
@@ -50,6 +63,8 @@
     	init.gotoview(styleNo);
     }
    
+    
+    
     
   </script>
 </head>
@@ -128,8 +143,8 @@
    <!--  </div> -->
   </div>
       <span class="col-lg-1 seul-test"><a class="seul-color" href="javascript:sortByCutf();">Cut</a></span>
-      <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Perm</a></span>
-      <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Color</a></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color" href="javascript:sortByPermf();">Perm</a></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color" href="javascript:sortByColorf();">Color</a></span>
   <!--<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>-->
  
   <div class="col-lg-5" align="center">
@@ -138,7 +153,7 @@
   <span class="col-lg-5"></span>
       <span class="col-lg-1"><a class="seul-color2" href="#">Local</a></span>
       <span class="col-lg-1"><a class="seul-color2" href="#">Price</a></span>
-      <span class="col-lg-1"><a class="seul-color2" href="#">Recommand</a></span>
+      <span class="col-lg-1"><a class="seul-color2" href="javascript:sortByRecommendf();">Recommand</a></span>
   </div>
   </div> 
 

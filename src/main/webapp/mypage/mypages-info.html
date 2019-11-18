@@ -10,9 +10,9 @@
     $('#phone').val(responseData.phone);
     $('#nickName').val(responseData.nickName);
     $('#regionNo').val(responseData.regionNo);
-    $('#fileNo').val(responseData.fileNo);
 
     if (responseData.fileNo != null && responseData.fileNo != "") {
+      $('#fileNo').val(responseData.fileNo);
       var fileResult = await fetch(`http://localhost/file/${responseData.fileNo}`);
       var resposneFileData = await fileResult.json();
       $('#imgProfile').attr('src', `http://localhost/images/${resposneFileData.thumbNailFileName}`);
@@ -20,11 +20,15 @@
   }
 
   async function modifyUser() {
-    var fileNo = $('#fileNo').val();
-    if (fileNo == "") {
-      var result = await profileFileUpload();
-      var responseData = await result.json();
-      $('#fileNo').val(responseData.fileNo);
+    if ($('#selectFile')[0].files[0] != undefined) {
+      var fileNo = $('#fileNo').val();
+      if (fileNo == "") {
+        var result = await uploadProfileFile();
+        var responseData = await result.json();
+        $('#fileNo').val(responseData.fileNo);
+      } else {
+        await modifyProfileFile(fileNo);
+      }
     }
 
     //수정 버튼 눌렀을 때
@@ -42,7 +46,7 @@
     });
   }
 
-  async function profileFileUpload() {
+  async function uploadProfileFile() {
     var formData = new FormData();
     formData.append('file', $('#selectFile')[0].files[0]);
     formData.append('userId', localStorage.userId);
@@ -52,6 +56,18 @@
       body: formData
     });
   };
+
+  async function modifyProfileFile(fileNo) {
+    var formData = new FormData();
+    formData.append('file', $('#selectFile')[0].files[0]);
+    formData.append('userId', localStorage.userId);
+
+    await fetch(`/file/${fileNo}`, {
+      method: "PUT",
+      body: formData
+    });
+  }
+
 
   $("#selectFile").on('change', function (e) {
     if (this.files && this.files[0]) {
@@ -122,9 +138,10 @@
           <input type="hidden" name="fileNo" id="fileNo" class="form-control">
         </div>
       </div>
+      <input type='file' id="selectFile" />
+      <input type="hidden" name="fileNo" id="fileNo" class="form-control">
+      <img id="imgProfile" src="../images/default2.jpg" width="300" height="400" /><br><br>
+      <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modifyUser();">수정하기</a>
     </form>
-    <input type='file' id="selectFile" />
-    <img id="imgProfile" src="../images/default2.jpg" width="300" height="400" /><br><br>
-    <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modifyUser();">수정하기</a>
   </div>
 </div>

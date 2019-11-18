@@ -10,9 +10,9 @@
     $('#phone').val(responseData.phone);
     $('#nickName').val(responseData.nickName);
     $('#regionNo').val(responseData.regionNo);
-    $('#fileNo').val(responseData.fileNo);
 
     if (responseData.fileNo != null && responseData.fileNo != "") {
+      $('#fileNo').val(responseData.fileNo);
       var fileResult = await fetch(`http://localhost/file/${responseData.fileNo}`);
       var resposneFileData = await fileResult.json();
       $('#imgProfile').attr('src', `http://localhost/images/${resposneFileData.thumbNailFileName}`);
@@ -49,35 +49,37 @@
   }
 
   async function modifyUser() {
-    // 수정 버튼 눌렀을 때
-    var fileNo = $('#fileNo').val();
-    if (fileNo == "") {
-      var result = await profileFileUpload();
-      var responseData = await result.json();
-      $('#fileNo').val(responseData.fileNo);
+    if ($('#selectFile')[0].files[0] != undefined) {
+      var fileNo = $('#fileNo').val();
+      if (fileNo == "") {
+        var result = await uploadProfileFile();
+        var responseData = await result.json();
+        $('#fileNo').val(responseData.fileNo);
+      } else {
+        await modifyProfileFile(fileNo);
+      }
     }
 
-    $('#btnModify').on('click', function (e) {
-      var user = $('#user').serialize();
-      $.ajax({
-        url: `http://localhost/user/${user.userId}`,
-        type: 'PUT',
-        data: user,
-        dataType: 'json'
-      }).done(function (responseData) {
-        console.log(responseData);
-      }).fail(function (jqXHR, textStatus, errorThrown) {
-        // 실패 시 처리되는 함수
-        console.log(jqXHR.responseText);
-      });
+    var user = $('#user').serialize();
+    $.ajax({
+      url: `http://localhost/user/${user.userId}`,
+      type: 'PUT',
+      data: user,
+      dataType: 'json'
+    }).done(function (responseData) {
+      console.log(responseData);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      // 실패 시 처리되는 함수
+      console.log(jqXHR.responseText);
     });
   }
+
 
   function openPreCompanyWindow() {
     window.open("designer/designerPage-preCompany.html", "이전 사업장 정보 입력", "width=800, height=700, toolbar=no, menubar=no, scrollbars=yes, resizable=yes");
   }
 
-  async function profileFileUpload() {
+  async function uploadProfileFile() {
     var formData = new FormData();
     formData.append('file', $('#selectFile')[0].files[0]);
     formData.append('userId', localStorage.userId);
@@ -87,6 +89,17 @@
       body: formData
     });
   };
+
+  async function modifyProfileFile(fileNo) {
+    var formData = new FormData();
+    formData.append('file', $('#selectFile')[0].files[0]);
+    formData.append('userId', localStorage.userId);
+
+    await fetch(`/file/${fileNo}`, {
+      method: "PUT",
+      body: formData
+    });
+  }
 
   $("#selectFile").on('change', function (e) {
     if (this.files && this.files[0]) {
@@ -171,10 +184,11 @@
       <div class="form-group">
         <div class="form-label-group">
           <input type="hidden" name="userLevel" id="userLevel" class="form-control">
-          <input type="hidden" name="fileNo" id="fileNo" class="form-control">
+
         </div>
       </div>
       <input type='file' id="selectFile" />
+      <input type="hidden" name="fileNo" id="fileNo" class="form-control">
       <img id="imgProfile" src="../images/default2.jpg" width="300" height="400" /><br><br>
       <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modifyUser();">수정하기</a>
     </form>

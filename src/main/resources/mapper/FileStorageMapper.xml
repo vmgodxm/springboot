@@ -11,7 +11,8 @@
 		INSERT INTO fileStorage values (FILESTORAGE_FILENO_SEQ.nextVal,#{userId}, #{filePath}, #{originFileName}, #{storageFileName}, #{thumbNailFileName})
 	</insert>
 	<update id="updateFile" parameterType="com.example.demo.model.FileStorage"> 
-		UPDATE filestorage SET #{userId}, #{filePath}, #{originFileName}, #{storageFileName}, #{thumbNailFileName}
+		UPDATE filestorage SET 
+		    userId = #{userId}, filePath = #{filePath}, originFileName = #{originFileName}, storageFileName = #{storageFileName}, thumbNailFileName = #{thumbNailFileName}
 		WHERE fileNo=#{fileNo}
 	</update>
 	<delete id="deleteFile" parameterType="Long" >

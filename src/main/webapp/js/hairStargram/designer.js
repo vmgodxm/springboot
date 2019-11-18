@@ -249,25 +249,7 @@ var init = {
 		for (var i = 0; i < init.datalength; i++) {
 			var list = init.data[i];
 			if (list.categoryNo == 1 || list.categoryNo == 4) {
-				var hairstyleImage = list.thumbNailFileName;
-				var hairstyleName = list.styleName;
-				var hairstyleComment = list.styleComment;
-				var hairstylePrice = list.price;
-
-				html1 +=
-					`<div class="col-lg-2 col-sm-6 portfolio-item">
-		      <div class="card h-100 text-center">
-		        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
-		        <div class="card-body">
-		        <h4 class="card-title">${hairstyleName}</h4>
-		        <h6 class="card-subtitle mb-2 text-muted"></h6>
-		        <p class="card-text">${hairstyleComment}</p>
-		      </div>
-		      <div class="card-footer">
-		        <a href="#">${hairstylePrice}</a>
-		      </div>
-		      </div>
-			</div>`;
+				html1 += this.printHairStyle(list);
 			}
 		}
 		document.getElementById('Weekly').innerHTML =
@@ -281,25 +263,7 @@ var init = {
 		for (var i = 0; i < init.datalength; i++) {
 			var list = init.data[i];
 			if (list.categoryNo == 2 || list.categoryNo == 5) {
-				var hairstyleImage = list.thumbNailFileName;
-				var hairstyleName = list.styleName;
-				var hairstyleComment = list.styleComment;
-				var hairstylePrice = list.price;
-
-				html1 +=
-					`<div class="col-lg-2 col-sm-6 portfolio-item">
-		      <div class="card h-100 text-center">
-		        <a href="hairStyles.html"><img class="card-img-top" src="/images/${hairstyleImage}" alt=""></a>
-		        <div class="card-body">
-		        <h4 class="card-title">${hairstyleName}</h4>
-		        <h6 class="card-subtitle mb-2 text-muted"></h6>
-		        <p class="card-text">${hairstyleComment}</p>
-		      </div>
-		      <div class="card-footer">
-		        <a href="#">${hairstylePrice}</a>
-		      </div>
-		      </div>
-			</div>`;
+				html1 += this.printHairStyle(list);
 			}
 		}
 		document.getElementById('Weekly').innerHTML =

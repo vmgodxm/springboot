@@ -39,6 +39,11 @@ public class HairStyleController {
 		return repository.getHairStyleList();
 	}
 	
+	@GetMapping(path ="/hairStyleList")
+	public List<HairStyle> getHairStyleListReco() throws Exception {
+		return repository.getHairStyleListReco();
+	}
+	
 	@GetMapping(path ="/hairStyleJoin")
 	public List<HairStyleListMain> getHairStyleListJoin() throws Exception {
 		return repository.getHairStyleListJoin();

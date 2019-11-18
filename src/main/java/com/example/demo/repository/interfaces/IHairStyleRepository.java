@@ -14,4 +14,5 @@ public interface IHairStyleRepository {
 	int updateHairStyle(HairStyle hairStyle) throws Exception;
 	int deleteHairStyle(Long styleNo) throws Exception;
 	List<HairStyleListMain> getHairStyleListJoin() throws Exception;
+	List<HairStyle> getHairStyleListReco() throws Exception;
 }

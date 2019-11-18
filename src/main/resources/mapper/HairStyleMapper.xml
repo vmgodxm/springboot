@@ -12,6 +12,10 @@
 		on h.fileno = f.fileno
 	</select>
 	
+	<select id="getHairStyleListReco" resultType="com.example.demo.model.HairStyle">
+		select * from hairStyle order by RECOMMEND desc
+	</select>
+	
 	<select id="getHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">
 		select * from hairStyle where styleNo = #{styleNo}
 	</select>

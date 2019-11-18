@@ -16,7 +16,7 @@ var init = {
 		init.numberArray = new Array(jsonArray.length);
 		var html = "";
 		//for (var designer of data) {
-		for (var i = 0; i < 5; i++) {
+		for (var i = 3; i < 8; i++) {
 			var list = init.data[i];
 			var hairstyleImage = list.thumbNailFileName;
 			var hairstyleName = list.styleName;
@@ -143,7 +143,7 @@ var init = {
 
 	sortBygentleman: function () {
 		var html1 = "";
-		for (var i = 0; i < 11; i++) {
+		for (var i = 3; i < 12; i++) {
 			var list = init.data[i];
 			if (list.gender == 0) {
 				var hairstyleImage = list.thumbNailFileName;
@@ -214,7 +214,7 @@ var init = {
 
 	sortByladies: function () {
 		var html1 = "";
-		for (var i = 1; i < 11; i++) {
+		for (var i = 1; i < 14; i++) {
 			var list = init.data[i];
 			if (list.gender == 1) {
 				var hairstyleImage = list.thumbNailFileName;

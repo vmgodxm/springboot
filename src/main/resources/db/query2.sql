@@ -18,7 +18,7 @@ INSERT INTO company values ('designer3@test.com', '000-02-00000',0,'리안헤어
 
            
 -- 디자이너
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com',  'desigName1', 1, 'desigName1','000-00-00000',0,null,1);
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com',  'desigName1', 1, '000-00-00000','desigName1',0,null,1);
 --INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramTester1@outlook.com', 'desigName2', 1, 'desigName2','000-00-00000',0,1,1);
 --INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramTester1@outlook.com', 'desigName3', 1, 'desigName3','000-00-00000',0,1,1); 
 

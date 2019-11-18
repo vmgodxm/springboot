@@ -230,10 +230,12 @@ var init = {
 			`<h2 class="my-3" id="Random">Random Ladies Best</h2>`;
 		document.getElementById('randombest').innerHTML = html2;
 	},
+	
 	sortByCut: function(){
 		var html1 = "";
 		for (var i = 0; i < init.datalength; i++) {
 			var list = init.data[i];
+			
 			if (list.categoryNo == 0 || list.categoryNo == 3) {
 				html1 += this.printHairStyle(list);
 			}

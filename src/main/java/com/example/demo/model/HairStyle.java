@@ -32,6 +32,8 @@ public class HairStyle {
 
 	// ?��?��?�� ?��?��?��
 	private String userId;
+	
+	private Long recommend;
 
 	public HairStyle() {
 	}
@@ -63,6 +65,39 @@ public class HairStyle {
 		this.styleComment = styleComment;
 		this.fileNo = fileNo;
 		this.userId = userId;
+	}
+	
+
+	public HairStyle(Long styleNo, Long gender, String styleName, Long categoryNo, Long price, Long hour, Long minute,
+			String styleComment, Long fileNo, String userId, Long recommend) {
+		super();
+		this.styleNo = styleNo;
+		this.gender = gender;
+		this.styleName = styleName;
+		this.categoryNo = categoryNo;
+		this.price = price;
+		this.hour = hour;
+		this.minute = minute;
+		this.styleComment = styleComment;
+		this.fileNo = fileNo;
+		this.userId = userId;
+		this.recommend = recommend;
+	}
+	
+
+	public HairStyle(Long gender, String styleName, Long categoryNo, Long price, Long hour, Long minute,
+			String styleComment, Long fileNo, String userId, Long recommend) {
+		super();
+		this.gender = gender;
+		this.styleName = styleName;
+		this.categoryNo = categoryNo;
+		this.price = price;
+		this.hour = hour;
+		this.minute = minute;
+		this.styleComment = styleComment;
+		this.fileNo = fileNo;
+		this.userId = userId;
+		this.recommend = recommend;
 	}
 
 	/**
@@ -204,6 +239,20 @@ public class HairStyle {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
+	/**
+	 * @return the recommend
+	 */
+	public Long getRecommend() {
+		return recommend;
+	}
+
+	/**
+	 * @param recommend the recommend to set
+	 */
+	public void setRecommend(Long recommend) {
+		this.recommend = recommend;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -212,8 +261,9 @@ public class HairStyle {
 	public String toString() {
 		return "HairStyle [styleNo=" + styleNo + ", gender=" + gender + ", styleName=" + styleName + ", categoryNo="
 				+ categoryNo + ", price=" + price + ", hour=" + hour + ", minute=" + minute + ", styleComment="
-				+ styleComment + ", fileNo=" + fileNo + ", userId=" + userId + "]";
+				+ styleComment + ", fileNo=" + fileNo + ", userId=" + userId + ", recommend=" + recommend + "]";
 	}
 
+	
 	
 }

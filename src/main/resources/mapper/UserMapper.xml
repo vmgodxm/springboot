@@ -12,6 +12,12 @@
 	<select id="getUser" parameterType="String" resultType="com.example.demo.model.UserRegist">
 		SELECT * FROM userRegist WHERE userId = #{userId}
 	</select>
+	
+	<select id="">
+		select * from userregist u
+		join filestorage f
+		on u.fileno = f.fileno
+	</select>
 
 	<insert id="insertUser" parameterType="com.example.demo.model.UserRegist">
 		INSERT INTO userRegist(userNo, userId, userName, gender, phone, nickName, regionNo, userLevel) VALUES 

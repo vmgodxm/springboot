@@ -435,8 +435,8 @@ ALTER TABLE fileStorage ADD CONSTRAINT IDX_fileStorage_PK PRIMARY KEY (fileNo);
 ALTER TABLE userLevel ADD CONSTRAINT IDX_userLevel_PK PRIMARY KEY (userLevel);
 
 ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_PK PRIMARY KEY (userId);
-ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK0 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo);
-ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK1 FOREIGN KEY (userLevel) REFERENCES userLevel (userLevel);
+ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK0 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo) ON DELETE CASCADE;
+ALTER TABLE userRegist ADD CONSTRAINT IDX_userRegist_FK1 FOREIGN KEY (userLevel) REFERENCES userLevel (userLevel) ON DELETE CASCADE;
 
 ALTER TABLE company ADD CONSTRAINT IDX_company_PK PRIMARY KEY (userId);
 
@@ -444,28 +444,28 @@ ALTER TABLE region ADD CONSTRAINT IDX_region_PK PRIMARY KEY (regionNo);
 
 ALTER TABLE admin ADD CONSTRAINT IDX_admin_PK PRIMARY KEY (adminNo, adminUserId);
 
-ALTER TABLE companyOperation ADD CONSTRAINT IDX_companyOperation_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId);
+ALTER TABLE companyOperation ADD CONSTRAINT IDX_companyOperation_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId) ON DELETE CASCADE;
 
 ALTER TABLE hairCategory ADD CONSTRAINT IDX_hairCategory_PK PRIMARY KEY (categoryNo);
 
 ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_PK PRIMARY KEY (styleNo);
-ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK0 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo);
-ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId);
-ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK2 FOREIGN KEY (categoryNo) REFERENCES hairCategory (categoryNo);
+ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK0 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo) ON DELETE CASCADE;
+ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId) ON DELETE CASCADE;
+ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK2 FOREIGN KEY (categoryNo) REFERENCES hairCategory (categoryNo) ON DELETE CASCADE;
 
 ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_PK PRIMARY KEY (resNo, designerId, userId);
-ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_FK0 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
+ALTER TABLE reservation ADD CONSTRAINT IDX_reservation_FK0 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo) ON DELETE CASCADE;
 
-ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId);
-ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK1 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
+ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId) ON DELETE CASCADE;
+ALTER TABLE designerFavorite ADD CONSTRAINT IDX_designerFavorite_FK1 FOREIGN KEY (designerId) REFERENCES userRegist (userId) ON DELETE CASCADE;
 
 ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_PK PRIMARY KEY (HFavoriteNo);
-ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId);
-ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK1 FOREIGN KEY (designerId) REFERENCES userRegist (userId);
-ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK2 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
+ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK0 FOREIGN KEY (userId) REFERENCES userRegist (userId) ON DELETE CASCADE;
+ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK1 FOREIGN KEY (designerId) REFERENCES userRegist (userId) ON DELETE CASCADE;
+ALTER TABLE hairStyleFavorite ADD CONSTRAINT IDX_hairStyleFavorite_FK2 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo) ON DELETE CASCADE;
 
 ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_PK PRIMARY KEY (replyNo, resNo);
-ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_FK0 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo);
+ALTER TABLE useReply ADD CONSTRAINT IDX_useReply_FK0 FOREIGN KEY (styleNo) REFERENCES hairStyle (styleNo) ON DELETE CASCADE;
 
 ALTER TABLE authentication ADD CONSTRAINT IDX_authentication_PK PRIMARY KEY (authNo, userId);
 

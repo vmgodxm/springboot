@@ -12,6 +12,7 @@ public class UserRegist {
 	private Long fileNo;
 	private Long userLevel;
 	
+	
 	public UserRegist() { }
 	
 	public UserRegist(String userId, String userName, Long gender, String phone, String nickName, Long userLevel) {

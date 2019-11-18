@@ -93,7 +93,7 @@ INSERT INTO hairCategory VALUES (5, '염색', 1);
 
 -- 헤어 스타일
 
-INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,1,'핑크 스타일 염색',150000,12,30,'핑크 염색',2,3,'hairstargramtester1@outlook.com');
+INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,1,'핑크 스타일 염색',150000,12,30,'핑크 염색',2,5,'hairstargramtester1@outlook.com');
 INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,0,'남자카키브라운',100000,1,30,'카키브라운염색,가을컬러',3,2,'hairstargramtester1@outlook.com');
 INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,0,'남성숏컷',30000,1,0,'숏컷.남자머리',2,0,'hairstargramtester1@outlook.com');
 INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,1,'여성보니펌',150000,3,0,'단발머리,보니펌',4,4,'hairstargramtester1@outlook.com');

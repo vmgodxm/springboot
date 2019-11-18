@@ -23,12 +23,14 @@
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="js/hairStargram/common/common_nev.js"></script>
   <script src="js/hairStargram/designer.js"></script>
+ 
   <script src="js/hairStargram/mypage.js"></script>
   <script>
     window.onload = function () {
       loadMenu();
       $("#body").load("main/index-body.html");
       init.makeDesignerList();
+     
     };
     
     function sortBygentlemanf() {
@@ -39,10 +41,16 @@
     	init.sortByladies();
     }
     
+     function sortByCutf() {
+    	init.sortByCut();
+    }
+    
     function gotoviewf(styleNo) {
     	//var styleNo = ${styleNo};
     	init.gotoview(styleNo);
     }
+   
+    
   </script>
 </head>
 
@@ -116,7 +124,7 @@
           </li>
         </ul>
       </div>
-      <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Cut</a></span>
+      <span class="col-lg-1 seul-test"><a class="seul-color" href="javascript:sortByCutf();">Cut</a></span>
       <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Perm</a></span>
       <span class="col-lg-1 seul-test"><a class="seul-color" href="#">Color</a></span>
     </div>

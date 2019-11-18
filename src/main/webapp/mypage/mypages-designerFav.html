@@ -13,7 +13,7 @@ $(function() {
 	
             		console.log('데이타 리플번호 -> '+designerFavList.hfavoriteNo);
 					
-          		$("#designerFav1").append('<div class="card mb-4"><div class="card-body"><div class="row"><div class="col-lg-6"><a href="#"><img class="img-fluid rounded" src="images/'+data[i].thumbNailFileName+'" alt=""></a></div><div class="col-lg-6"><h2 class="card-title">'+data[i].userName+'</h2><p class="card-text">디자이너 홍보 문구나 소개글 디비 필요</p><a href="../designer/designers.html" class="btn btn-primary">정보보기</a></div></div></div></div>');
+          		$("#designerFav1").append('<div class="card mb-4"><div class="card-body"><div class="row"><div class="col-lg-6"><a href="#"><img class="img-fluid-2 rounded" src="images/'+data[i].thumbNailFileName+'" alt=""></a></div><div class="col-lg-6"><h2 class="card-title">'+data[i].userName+'</h2><p class="card-text">디자이너 홍보 문구나 소개글 디비 필요</p><a href="../designer/designers.html" class="btn btn-primary">정보보기</a></div></div></div></div>');
             	});
             }).done(function(responseData){
               console.log(responseData);

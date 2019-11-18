@@ -39,7 +39,14 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public int updateUser(UserRegist userRegist) throws Exception {
-        return sqlSession.update(NAMESPACE + "updateUser", userRegist);
+        int retVal = 0;
+        if (userRegist.getFileNo() == null) {
+            retVal = sqlSession.update(NAMESPACE + "updateUserNoFileNo", userRegist);
+        } else {
+            retVal = sqlSession.update(NAMESPACE + "updateUserWithFileNo", userRegist);
+        }
+
+        return retVal;
     }
 
     @Override

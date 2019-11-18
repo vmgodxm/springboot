@@ -18,7 +18,14 @@
 				(USERREGIST_USERNO_SEQ.nextVal, #{userId}, #{userName}, #{gender}, #{phone}, #{nickName}, #{regionNo}, #{userLevel})
 	</insert>
 
-	<update id="updateUser" parameterType="com.example.demo.model.UserRegist">
+	<update id="updateUserNoFileNo" parameterType="com.example.demo.model.UserRegist">
+		UPDATE userRegist SET
+			 userName = #{userName}, gender = #{gender}, phone = #{phone}, nickName = #{nickName}
+		WHERE
+			 userId = #{userId}
+	</update>
+
+	<update id="updateUserWithFileNo" parameterType="com.example.demo.model.UserRegist">
 		UPDATE userRegist SET
 			 userName = #{userName}, gender = #{gender}, phone = #{phone}, nickName = #{nickName}, fileNo = #{fileNo}
 		WHERE

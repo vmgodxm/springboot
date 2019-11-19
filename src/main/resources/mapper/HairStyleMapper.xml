@@ -24,7 +24,7 @@
 		where u.userid = #{userid}
 	</select>
 	
-	<select id="getHairStyleListReco" resultType="com.example.demo.model.HairStyle">
+	<select id="getHairStyleListReco" resultType="com.example.demo.model.HairStyleListMain">
 		select * from hairStyle order by RECOMMEND desc
 	</select>
 	

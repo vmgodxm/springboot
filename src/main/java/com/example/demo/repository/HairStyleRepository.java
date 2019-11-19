@@ -28,7 +28,7 @@ public class HairStyleRepository implements IHairStyleRepository {
 	}
 	
 	@Override
-	public List<HairStyle> getHairStyleListReco() throws Exception{
+	public List<HairStyleListMain> getHairStyleListReco() throws Exception{
 		return sqlSession.selectList("mapper.HairStyleMapper.getHairStyleListReco");
 	}
 	

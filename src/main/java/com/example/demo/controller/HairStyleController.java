@@ -41,7 +41,7 @@ public class HairStyleController {
 	}
 	
 	@GetMapping(path ="/hairStyleList")
-	public List<HairStyle> getHairStyleListReco() throws Exception {
+	public List<HairStyleListMain> getHairStyleListReco() throws Exception {
 		return repository.getHairStyleListReco();
 	}
 	

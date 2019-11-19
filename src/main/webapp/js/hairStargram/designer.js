@@ -1,7 +1,8 @@
 var init = {
 
-	gotoview: function (styleNo) {
+	gotoview: function (styleNo,designerId) {
 		localStorage.setItem('styleNo', styleNo);
+		localStorage.setItem('designerId', designerId);
 		location.href = 'hairStyles.html';
 	},
 	
@@ -10,7 +11,7 @@ var init = {
     	
     	return `<div class="col-lg-2 col-sm-6 portfolio-item">
     			  <div class="card h-100 text-center">
-    			<a href="javascript:gotoviewf(${hairStyle.styleNo});"><img class="card-img-top" src="/images/${hairStyle.thumbNailFileName}" alt=""></a>
+    			<a href="javascript:gotoviewf(${hairStyle.styleNo},'${hairStyle.userId}');"><img class="card-img-top" src="/images/${hairStyle.thumbNailFileName}" alt=""></a>
     			<div class="card-body">
     			<h5 class="card-title">${hairStyle.styleName}</h5>
     			<h6 class="card-subtitle mb-2 text-muted"></h6>
@@ -23,11 +24,17 @@ var init = {
     		</div>`;
     },
 
-	makeDesignerList: async function () {
-
-		var result = await fetch('/hairStyleJoin');
-		var jsonArray = await result.json();
-		//alert('success'+jsonArray);
+    makeDesignerList : function () {
+		
+		$.ajax({
+			 	url: '/hairStyleJoin',
+			 	method: 'GET',
+			 	async: false,
+			 	dataType: 'json',
+			 	success: function (jsonArray) {
+//		var result = await fetch('/hairStyleJoin');
+//		var jsonArray = await result.json();
+		
 		init.data = jsonArray;
 		init.datalength = jsonArray.length;
 		init.numberArray = new Array(jsonArray.length);
@@ -35,7 +42,7 @@ var init = {
 		var html = "";
 		//for (var designer of data) {
 		for (var i = 3; i < 8; i++) {
-			html += this.printHairStyle(init.data[i]);
+			html += init.printHairStyle(init.data[i]);
 		
 			
 //			var hairstyleImage = list.thumbNailFileName;
@@ -58,10 +65,10 @@ var init = {
 //			  </div>
 //			  </div>
 //			</div>`;
-		}
-
+				}
 		document.getElementById('desingerrr').innerHTML = html;
-
+			}
+		});
 		this.generateListRandom();
 		init.randomBestList();
 
@@ -141,7 +148,7 @@ var init = {
 //			var hairstylePrice = list.price;
 //			var styleNo = list.styleNo;
 			
-			html += this.printHairStyle(init.data[j]);
+			html += init.printHairStyle(init.data[j]);
 			
 //			html +=
 //				`<div class="col-lg-2 col-sm-6 portfolio-item">
@@ -165,6 +172,8 @@ var init = {
 	},
 
 	sortBygentleman: function () {
+		this.generateListRandom();
+		
 		var html1 = "";
 		for (var i = 3; i < 12; i++) {
 			var list = init.data[i];
@@ -184,7 +193,6 @@ var init = {
 				html2 += this.printHairStyle(list);
 			}
 
-
 		}
 
 
@@ -201,6 +209,8 @@ var init = {
 	},
 
 	sortByladies: function () {
+		this.generateListRandom();
+		
 		var html1 = "";
 		for (var i = 1; i < 14; i++) {
 			var list = init.data[i];
@@ -279,12 +289,12 @@ var init = {
 	sortByRecommend: async function(){
 		var result = await fetch('/hairStyleList')
 		var jsonArray = await result.json();
-		init.data = jsonArray;
-		init.datalength = jsonArray.length;
-		init.numberArray = new Array(jsonArray.length);
+//		init.data = jsonArray;
+//		init.datalength = jsonArray.length;
+//		init.numberArray = new Array(jsonArray.length);
 		var html1 = "";
-		for (var i = 0; i < init.datalength; i++) {
-			var list = init.data[i];
+		for (var i = 0; i < jsonArray.length; i++) {
+			var list = jsonArray[i];
 				html1 += this.printHairStyle(list);
 			
 		}
@@ -298,12 +308,12 @@ var init = {
 	sortByPrice: async function(){
 		var result = await fetch('/hairStylePrice')
 		var jsonArray = await result.json();
-		init.data = jsonArray;
-		init.datalength = jsonArray.length;
-		init.numberArray = new Array(jsonArray.length);
+//		init.data = jsonArray;
+//		init.datalength = jsonArray.length;
+//		init.numberArray = new Array(jsonArray.length);
 		var html1 = "";
-		for (var i = 0; i < init.datalength; i++) {
-			var list = init.data[i];
+		for (var i = 0; i < jsonArray.length; i++) {
+			var list = jsonArray[i];
 				html1 += this.printHairStyle(list);
 			
 		}

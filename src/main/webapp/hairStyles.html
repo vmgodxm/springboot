@@ -30,22 +30,24 @@
   
 var pageLoad = {
 		
-
+	
+	
+	
 	selectDesignerByStlyeNo : async function () {
 	pageLoad.styleNo= localStorage.styleNo;
-	pageLoad.userId = localStorage.userId;
+	pageLoad.designerId = localStorage.designerId;
 
-	var result = await fetch(`/getHairStyleJoinFile/${pageLoad.userId}`);
+	var result = await fetch(`/getHairStyleJoinFile/${pageLoad.designerId}`);
 	var userphoto = await result.json();
 		
-	html= 
+	var html= 
 		`
   			  <img class="img-fluid"  width="150" height="200"
       		 	 src="/images/${userphoto.thumbNailFileName}" alt="">
       		 	 `
 		document.getElementById('designerPhoto').innerHTML = html;
 	
-	html2= `
+	var html2= `
 	
 		   <div>
 	        헤어디자이너 정보<br>${userphoto.nickName}<br>청담역 3번출구 한가운데<br>
@@ -55,59 +57,67 @@ var pageLoad = {
 	   
 	      		`
 		document.getElementById('designerInfo').innerHTML = html2;	
+		
+		pageLoad.detail();
+		
 	},
 	
 	detail : async function () {
 		
-		var result2 = await fetch(`/hairStyleJoinbyUser/${pageLoad.userId}`);
+		var result2 = await fetch(`/hairStyleJoinbyUser/${pageLoad.designerId}`);
 		var designerDetail = await result2.json();
 		pageLoad.hairStyleJoinbyUser = designerDetail;
 		pageLoad.hairStyleJoinbyUserlength = designerDetail.length;
-		var html="";
+		
+		pageLoad.numberArray = new Array();
+		
+		for(var i=0; i < pageLoad.hairStyleJoinbyUserlength; i++){
+				if(!(pageLoad.hairStyleJoinbyUser[i].styleNo == pageLoad.styleNo)) {
+			   pageLoad.numberArray[i]=pageLoad.hairStyleJoinbyUser[i]; 
+			}
+		};
+		 pageLoad.numberArray= pageLoad.numberArray.filter(Boolean);
+		var html3 ="";
 		for (var i = 0; i < 8; i++) {
-			var list = designerDetail[i];
+			var list = pageLoad.numberArray[i];
 			
-			
-			
-			
-			
-			html +=	
-		`
-		 <div class="col-lg-3 col-sm-4 mb-4">
-		<a href="javascript:gotoviewf(${list.styleNo});"><img class="img-fluid" src="/images/${list.thumbNailFileName}" alt=""></a>
-			</div> `
+			html3 +=	`
+		  <div class="col-lg-3 col-sm-4 mb-4">
+		    <a href="javascript:gotoviewf(${list.styleNo},'${list.userId}');"><img class="img-fluid" src="/images/${list.thumbNailFileName}" alt=""></a>
+		  </div> `
 		}
 		
-		document.getElementById('designersHair').innerHTML = html;
+		document.getElementById('designersHair').innerHTML = html3;
+		
 		
 		pageLoad.selectstyleno();
-		this.otherDesigner();
-		
+		pageLoad.otherDesigner();
 		
 	},
 	
 	 selectstyleno :  function () {
 		
-		//var list2 = pageLoad.hairStyleJoinbyUser;
+		
 		
 		 for(var j = 0 ; j < pageLoad.hairStyleJoinbyUserlength; j++){
 		 if(pageLoad.hairStyleJoinbyUser[j].styleNo == pageLoad.styleNo) {
 		 		var getThisStyle = pageLoad.hairStyleJoinbyUser[j];
 		 
-		html1 = 
+		 html1 = 
 		
 		`
-        <img class="img-fluid rounded mb-4" src="images/${getThisStyle.thumbNailFileName}" alt="">
+        <a href="javascript:gotoviewf(${getThisStyle.styleNo},'${getThisStyle.userId}');"><img class="img-fluid rounded mb-4" src="images/${getThisStyle.thumbNailFileName}" alt=""></a>
        `
 		document.getElementById('styleimage').innerHTML = html1;
 		
 		
-		html2 =	
+		
+		 html2 =	
 		`<div >${getThisStyle.styleName}</div>
 		<div >${getThisStyle.styleComment}</div>
         <div>소요시간 ${getThisStyle.hour}시간 ${getThisStyle.minute}분</div>
         <div>${getThisStyle.price}원</div>
-        <br> <br>`
+        <br> <br>`;
         
 		 
         document.getElementById('detailview').innerHTML = html2;
@@ -118,35 +128,46 @@ var pageLoad = {
 	 otherDesigner : async function () {
 	 	var result3 = await fetch('/hairStyleJoin');
 		var list3 = await result3.json();
-	 		for(var i = 0; i< list3.length; i++){
-	 			if(!(list3[i].userId == pageLoad.userId)) {
-	 				
+		var html = "";
+	 		for(var i = 0; i< 10; i++){
+	 			if((list3[i].userId == pageLoad.designerId)) {
+	 				var getThisStyle= list3[i];
 	 				html +=
 	 				
 	 				`
 	 				<div class="col-lg-2 col-sm-4 mb-4">
-                        <img class="img-fluid" src="images/${list3[i].thumbNailFileName}" alt="">
+                        <a href="javascript:gotoviewf(${getThisStyle.styleNo},'${getThisStyle.userId}');"><img class="img-fluid" src="images/${getThisStyle.thumbNailFileName}" alt=""></a>
                     </div>
-	 				`
+	 				`;
 	 			
 	 			}
 	 		
 	 		}
 	 		document.getElementById('otherDesigner').innerHTML = html;
-	 }
+	 },
+	 
+	 gotoview: function (styleNo,designerId) {
+		localStorage.setItem('styleNo', styleNo);
+		localStorage.setItem('designerId', designerId);
+		location.href = 'hairStyles.html';
+	 },
 	
 		
 		
-};   
+	};   
     
     window.onload = function () {
       loadMenu();
       hairStyle_body();
       pageLoad.selectDesignerByStlyeNo();
-      pageLoad.detail();
       
+     
     }; 
     
+     function gotoviewf(styleNo,designerId) {
+      
+      init.gotoview(styleNo,designerId);
+    }
     
     
   </script>

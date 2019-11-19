@@ -65,7 +65,7 @@ Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,T
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성그레이스펌.jpg','t4uaxvdUpXVBlKpj.jpg','t4uaxvdUpXVBlKpj_th.JPG');
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성글램펌.jpg','YUI3wO3Bwo1I7UFn.jpg','YUI3wO3Bwo1I7UFn_th.JPG');
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성단발펌.jpg','mBAimNUhfLeXTdqG.jpg','mBAimNUhfLeXTdqG_th.JPG');
-Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','가로수길_디자이너12.jpg','mBINbxqsiBCtq4lP.jpg','mBAimNUhfLeXTdqG_th.JPG');
+Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','가로수길_디자이너12.jpg','mBINbxqsiBCtq4lP.JPG','mBINbxqsiBCtq4lP_th.JPG');
 
 	
 

@@ -166,26 +166,16 @@ COMMENT ON COLUMN admin.address is '주소';
 /* Table Name: 사업장 운영시간 테이블 */
 /**********************************/
 CREATE TABLE companyOperation(
-		year                          		NUMBER(10)		 NOT NULL,
-		month                         		NUMBER(10)		 NOT NULL,
-		beginDay                      		NUMBER(10)		 NOT NULL,
-		endDay                        		NUMBER(10)		 NOT NULL,
-		beginHour                     		NUMBER(10)		 NOT NULL,
-		endHour                       		NUMBER(10)		 NOT NULL,
-		beginMinute                   		NUMBER(10)		 NOT NULL,
-		endMinute                     		NUMBER(10)		 NOT NULL,
-		userId                        		VARCHAR2(100)		 NULL 
+		date                          		VARCHAR2(10)		 NOT NULL,
+		startTime							VARCHAR2(10)		 NOT NULL,
+		endTime                      		VARCHAR2(10)		 NOT NULL,
+		userId                        		VARCHAR2(100)		 NOT NULL 
 );
 
 COMMENT ON TABLE companyOperation is '사업장 운영시간 테이블';
-COMMENT ON COLUMN companyOperation.year is '연도';
-COMMENT ON COLUMN companyOperation.month is '월';
-COMMENT ON COLUMN companyOperation.beginDay is '시작날짜';
-COMMENT ON COLUMN companyOperation.endDay is '종료날짜';
-COMMENT ON COLUMN companyOperation.beginHour is '시작시간';
-COMMENT ON COLUMN companyOperation.endHour is '종료시간';
-COMMENT ON COLUMN companyOperation.beginMinute is '시작분';
-COMMENT ON COLUMN companyOperation.endMinute is '종료분';
+COMMENT ON COLUMN companyOperation.date is '날짜';
+COMMENT ON COLUMN companyOperation.startTime is '시작시간';
+COMMENT ON COLUMN companyOperation.endTime is '종료시간';
 COMMENT ON COLUMN companyOperation.userId is '사용자 아이디';
 
 
@@ -246,35 +236,21 @@ COMMENT ON COLUMN hairStyle.recommend is '헤어스타일 추천수';
 /**********************************/
 CREATE TABLE reservation(
 		resNo                         		NUMBER(10)		 NOT NULL,
-		year                          		NUMBER(10)		 NOT NULL,
-		month                         		NUMBER(10)		 NOT NULL,
-		day                           		NUMBER(10)		 NOT NULL,
-		beginHour                     		NUMBER(10)		 NOT NULL,
-		endHour                       		NUMBER(10)		 NOT NULL,
-		beingMinute                   		NUMBER(10)		 NOT NULL,
-		endMinute                     		NUMBER(10)		 NOT NULL,
-		useComment                    		VARCHAR2(255)		 NULL ,
-		useComplete                   		NUMBER(2)		 NULL ,
-		styleNo                       		NUMBER(10)		 NULL ,
-		designerId                    		VARCHAR2(100)		 NULL ,
-		userId                        		VARCHAR2(100)		 NULL 
+		date                          		VARCHAR2(20)	 NOT NULL,
+		useComment                    		VARCHAR2(255)	 NULL,
+		useComplete                   		NUMBER(2)		 NOT NULL,
+		styleNo                       		NUMBER(10)		 NOT NULL,
+		designerId                    		VARCHAR2(100)	 NOT NULL,
+		userId                        		VARCHAR2(100)	 NOT NULL 
 );
 
 DROP SEQUENCE reservation_resNo_SEQ;
 
 CREATE SEQUENCE reservation_resNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
-
-
 COMMENT ON TABLE reservation is '예약 현황 테이블';
 COMMENT ON COLUMN reservation.resNo is '예약번호';
-COMMENT ON COLUMN reservation.year is '연도';
-COMMENT ON COLUMN reservation.month is '월';
-COMMENT ON COLUMN reservation.day is '일';
-COMMENT ON COLUMN reservation.beginHour is '시작시간';
-COMMENT ON COLUMN reservation.endHour is '종료시간';
-COMMENT ON COLUMN reservation.beingMinute is '시작분';
-COMMENT ON COLUMN reservation.endMinute is '종료분';
+COMMENT ON COLUMN reservation.date is '예약날짜';
 COMMENT ON COLUMN reservation.useComment is '사용자 요청사항';
 COMMENT ON COLUMN reservation.useComplete is '시술완료';
 COMMENT ON COLUMN reservation.styleNo is '스타일 번호';

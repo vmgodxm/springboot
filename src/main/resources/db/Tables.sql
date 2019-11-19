@@ -166,14 +166,14 @@ COMMENT ON COLUMN admin.address is '주소';
 /* Table Name: 사업장 운영시간 테이블 */
 /**********************************/
 CREATE TABLE companyOperation(
-		date                          		VARCHAR2(10)		 NOT NULL,
-		startTime							VARCHAR2(10)		 NOT NULL,
+		restDate                          		VARCHAR2(10)		 NOT NULL,
+		startTime						    	VARCHAR2(10)		 NOT NULL,
 		endTime                      		VARCHAR2(10)		 NOT NULL,
 		userId                        		VARCHAR2(100)		 NOT NULL 
 );
 
 COMMENT ON TABLE companyOperation is '사업장 운영시간 테이블';
-COMMENT ON COLUMN companyOperation.date is '날짜';
+COMMENT ON COLUMN companyOperation.restDate is '날짜';
 COMMENT ON COLUMN companyOperation.startTime is '시작시간';
 COMMENT ON COLUMN companyOperation.endTime is '종료시간';
 COMMENT ON COLUMN companyOperation.userId is '사용자 아이디';
@@ -236,7 +236,7 @@ COMMENT ON COLUMN hairStyle.recommend is '헤어스타일 추천수';
 /**********************************/
 CREATE TABLE reservation(
 		resNo                         		NUMBER(10)		 NOT NULL,
-		date                          		VARCHAR2(20)	 NOT NULL,
+		resDate                          		VARCHAR2(20)	 NOT NULL,
 		useComment                    		VARCHAR2(255)	 NULL,
 		useComplete                   		NUMBER(2)		 NOT NULL,
 		styleNo                       		NUMBER(10)		 NOT NULL,
@@ -250,7 +250,7 @@ CREATE SEQUENCE reservation_resNo_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 COMMENT ON TABLE reservation is '예약 현황 테이블';
 COMMENT ON COLUMN reservation.resNo is '예약번호';
-COMMENT ON COLUMN reservation.date is '예약날짜';
+COMMENT ON COLUMN reservation.resDate is '예약날짜';
 COMMENT ON COLUMN reservation.useComment is '사용자 요청사항';
 COMMENT ON COLUMN reservation.useComplete is '시술완료';
 COMMENT ON COLUMN reservation.styleNo is '스타일 번호';

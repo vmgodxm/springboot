@@ -64,6 +64,9 @@ Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,T
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성그레이스펌.jpg','t4uaxvdUpXVBlKpj.jpg','t4uaxvdUpXVBlKpj_th.JPG');
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성글램펌.jpg','YUI3wO3Bwo1I7UFn.jpg','YUI3wO3Bwo1I7UFn_th.JPG');
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성단발펌.jpg','mBAimNUhfLeXTdqG.jpg','mBAimNUhfLeXTdqG_th.JPG');
+Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','20170731172441_8.jpg','wFV9l3HwGXJOSR5b.jpg','wFV9l3HwGXJOSR5b_th.JPG');
+Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','images (1).jpg','kXcK8GMtDRNRipf8.jpg','kXcK8GMtDRNRipf8_th.JPG');
+Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','images (2).jpg','KE0xbcdbtWkqfvka.jpg','KE0xbcdbtWkqfvka_th.JPG');
 
 
 -- 이전 사업장

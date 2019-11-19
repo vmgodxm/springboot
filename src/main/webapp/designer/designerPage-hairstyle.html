@@ -1,101 +1,24 @@
-<!DOCTYPE html>
-      <!-- Content Column -->
-      
-         <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">등록된 헤어스타일
-      <a class="btn btn-primary" href="javascript:fileupload();">추가하기</a>
-    </h1>
-    <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">싱글펌</a>
-            </h4>
-            <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">등록된 헤어스타일
+    <a class="btn btn-primary" href="javascript:fileupload();">추가하기</a>
+  </h1>
+  <div id="regHairStyle"></div>
+<!-- 
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">싱글펌</a>
+          </h4>
+          <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
+          <a class="btn btn-primary" href="#">수정</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="#">삭제</a>
         </div>
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-             <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-             <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-             <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-             <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-             <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Seven</a>
-            </h4>
-             <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Eight</a>
-            </h4>
-             <p class="card-text">20000원<br>소요시간 : 2시간<br>괜찮아요</p>
-          </div>
-        </div>
-      </div>
-    </div>
-<!-- Pagination -->
+    </div> -->
+
+    <!-- Pagination -->
     <ul class="pagination justify-content-center">
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
@@ -119,6 +42,51 @@
         </a>
       </li>
     </ul>
+  </div>
+  </div>
+  <script src="../js/hairStargram/designer.js"></script>
+  <script>
+    function regHairStyle(hairStyle){
+      console.log('test');
+      var time;
+      if(hairStyle.hour == null || hairStyle.hour == undefined){
+        time = hairStyle.minute + '분';
+      }else if(hairStyle.minute == null || hairStyle.undefined){
+        time = hairStyle.hour + '시';
+      }else{
+        time = hairStyle.hour + '시' + hairStyle.minute + '분';
+      }
+      
+      return `<div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="/images/${hairStyle.thumbNailFileName}" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">${hairStyle.styleName}</a>
+          </h4>
+          <p class="card-text">${hairStyle.price}<br>소요시간 : ${time}<br>${hairStyle.styleComment}</p>
+          <a class="btn btn-primary" href="#">수정</a>&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="#">삭제</a>
+        </div>
       </div>
-    </div>
-  
+    </div>`;
+    };
+
+    $(function () {
+      $.ajax({
+        url: "/hairStyle",
+        Type: 'GET',
+        dataType: 'json'
+      }).then(function (data) {
+        var html = "";
+        console.log('get');
+        $.each(data, function (i, v) {
+          var hairStyleList = data[i];
+          html += regHairStyle(hairStyleList);
+          console.log('디자이너 등록한 헤어스타일' + data[i].styleNo);
+          
+        });
+        $('#regHairStyle').html(html);
+      });
+    });
+  </script>

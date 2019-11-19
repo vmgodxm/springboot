@@ -1,16 +1,13 @@
 package com.example.demo.model;
 
 public class HairStyleFavorite {
-	// 즐겨찾기 번호(?���?)
+
 	private Long hfavoriteNo;
 
-	// ?��?��?��?�� ?��?��?��
 	private String designerId;
 
-	// ?��?��?�� ?��?��?��
 	private String userId;
-
-	// ?��?��?��????�� 번호
+ 
 	private Long styleNo;
 
 	private String styleName;

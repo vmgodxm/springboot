@@ -22,26 +22,13 @@ public class HairStyleController {
 	private IHairStyleRepository repository;
 	
 
-	// @GetMapping(path="/hairStyle")
-	// public ResponseEntity<List<HairStyle>> HairStyleList() throws Exception{
-	// ResponseEntity<List<HairStyle>> retVal = null;
-
-	// List<HairStyle> list = repository.getHairStyleList();
-	// if (list != null) {
-	// retVal = new ResponseEntity<>(list, HttpStatus.OK);
-	// } else {
-	// retVal = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	// }
-	// return retVal;
-	// }
-
 	@GetMapping(path ="/hairStyle")
 	public List<HairStyle> HairStyleList() throws Exception {
 		return repository.getHairStyleList();
 	}
 	
 	@GetMapping(path ="/hairStyleList")
-	public List<HairStyle> getHairStyleListReco() throws Exception {
+	public List<HairStyleListMain> getHairStyleListReco() throws Exception {
 		return repository.getHairStyleListReco();
 	}
 	
@@ -50,9 +37,14 @@ public class HairStyleController {
 		return repository.getHairStyleListJoin();
 	}
 	
-	@GetMapping(path ="/hairStyleJoinbyUserId/{userId}")
-	public List<HairStyleListMain> hairStyleJoinbyUserId(@PathVariable String userId) throws Exception {
+	@GetMapping(path ="/hairStyleJoinbyUser/{userId}")
+	public List<HairStyleListMain> hairStyleJoinbyUserId(String userId) throws Exception {
 		return repository.hairStyleJoinbyUserId(userId);
+	}
+	
+	@GetMapping(path ="/hairStylePrice")
+	public List<HairStyleListMain> hairStyleListPrice() throws Exception{
+		return repository.hairStyleListPrice();
 	}
 	
 	@GetMapping(path="/hairStyle/{styleNo}")

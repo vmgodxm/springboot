@@ -1,36 +1,25 @@
 package com.example.demo.model;
 
-//?��?��?��????�� ?��?���? 
 public class HairStyle {
 
-	// ?��?��?��????�� 번호
 	private Long styleNo;
 
-	// ?���?
 	private Long gender;
 
-	// ?��?��?��????�� ?���?
 	private String styleName;
 
-	// 카테고리 번호
 	private Long categoryNo;
 
-	// �?�?
 	private Long price;
 
-	// ?��?��?���?(?���?)
 	private Long hour;
 
-	// ?��?��?���?(�?)
 	private Long minute;
 
-	// ?��????�� ?���?
 	private String styleComment;
 
-	// ?��?��?��????�� ?��?�� 번호
 	private Long fileNo;
 
-	// ?��?��?�� ?��?��?��
 	private String userId;
 	
 	private Long recommend;
@@ -67,7 +56,8 @@ public class HairStyle {
 		this.userId = userId;
 	}
 	
-
+	
+	
 	public HairStyle(Long styleNo, Long gender, String styleName, Long categoryNo, Long price, Long hour, Long minute,
 			String styleComment, Long fileNo, String userId, Long recommend) {
 		super();
@@ -84,22 +74,7 @@ public class HairStyle {
 		this.recommend = recommend;
 	}
 	
-
-	public HairStyle(Long gender, String styleName, Long categoryNo, Long price, Long hour, Long minute,
-			String styleComment, Long fileNo, String userId, Long recommend) {
-		super();
-		this.gender = gender;
-		this.styleName = styleName;
-		this.categoryNo = categoryNo;
-		this.price = price;
-		this.hour = hour;
-		this.minute = minute;
-		this.styleComment = styleComment;
-		this.fileNo = fileNo;
-		this.userId = userId;
-		this.recommend = recommend;
-	}
-
+	
 	/**
 	 * @return the styleNo
 	 */

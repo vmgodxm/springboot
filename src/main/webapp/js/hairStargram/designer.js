@@ -12,7 +12,7 @@ var init = {
     			  <div class="card h-100 text-center">
     			<a href="javascript:gotoviewf(${hairStyle.styleNo});"><img class="card-img-top" src="/images/${hairStyle.thumbNailFileName}" alt=""></a>
     			<div class="card-body">
-    			<h4 class="card-title">${hairStyle.styleName}</h4>
+    			<h5 class="card-title">${hairStyle.styleName}</h5>
     			<h6 class="card-subtitle mb-2 text-muted"></h6>
     			<p class="card-text">${hairStyle.styleComment}</p>
     		  </div>
@@ -246,6 +246,7 @@ var init = {
 		document.getElementById('Random').innerHTML ="";
 		document.getElementById('randombest').innerHTML = "";
 	},
+	
 	sortByPerm: function(){
 		var html1 = "";
 		for (var i = 0; i < init.datalength; i++) {
@@ -275,20 +276,44 @@ var init = {
 		document.getElementById('randombest').innerHTML = "";
 	},
 
-	sortByRecommend: function(){
+	sortByRecommend: async function(){
+		var result = await fetch('/hairStyleList')
+		var jsonArray = await result.json();
+		init.data = jsonArray;
+		init.datalength = jsonArray.length;
+		init.numberArray = new Array(jsonArray.length);
 		var html1 = "";
 		for (var i = 0; i < init.datalength; i++) {
 			var list = init.data[i];
-			if (list.recommend >= 0) {
 				html1 += this.printHairStyle(list);
-			}
+			
 		}
 		document.getElementById('Weekly').innerHTML =
 			`<h1 class="my-4" id="Weekly">Recommend</h1>`;
 		document.getElementById('desingerrr').innerHTML = html1;
 		document.getElementById('Random').innerHTML ="";
 		document.getElementById('randombest').innerHTML = "";
+	},
+	
+	sortByPrice: async function(){
+		var result = await fetch('/hairStylePrice')
+		var jsonArray = await result.json();
+		init.data = jsonArray;
+		init.datalength = jsonArray.length;
+		init.numberArray = new Array(jsonArray.length);
+		var html1 = "";
+		for (var i = 0; i < init.datalength; i++) {
+			var list = init.data[i];
+				html1 += this.printHairStyle(list);
+			
+		}
+		document.getElementById('Weekly').innerHTML =
+			`<h1 class="my-4" id="Weekly">Price</h1>`;
+		document.getElementById('desingerrr').innerHTML = html1;
+		document.getElementById('Random').innerHTML ="";
+		document.getElementById('randombest').innerHTML = "";
 	}
+	
 
 
 

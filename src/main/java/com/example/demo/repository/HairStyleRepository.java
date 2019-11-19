@@ -10,6 +10,7 @@ import com.example.demo.repository.interfaces.IHairStyleRepository;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Repository
 public class HairStyleRepository implements IHairStyleRepository {
@@ -28,7 +29,7 @@ public class HairStyleRepository implements IHairStyleRepository {
 	}
 	
 	@Override
-	public List<HairStyle> getHairStyleListReco() throws Exception{
+	public List<HairStyleListMain> getHairStyleListReco() throws Exception{
 		return sqlSession.selectList("mapper.HairStyleMapper.getHairStyleListReco");
 	}
 	
@@ -42,6 +43,10 @@ public class HairStyleRepository implements IHairStyleRepository {
 		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleJoinbyUserId");
 	}
 	
+	@Override
+	public List<HairStyleListMain> hairStyleListPrice() throws Exception{
+		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleListPrice");
+	}
 	
 	@Override
 	public HairStyle getHairStyle(Long styleNo) throws Exception {

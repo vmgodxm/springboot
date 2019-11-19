@@ -43,6 +43,10 @@ public class HairStyleRepository implements IHairStyleRepository {
 		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleJoinbyUserId");
 	}
 	
+	@Override
+	public List<HairStyleListMain> hairStyleListPrice() throws Exception{
+		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleListPrice");
+	}
 	
 	@Override
 	public HairStyle getHairStyle(Long styleNo) throws Exception {

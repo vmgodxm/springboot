@@ -64,7 +64,9 @@ Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,T
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성그레이스펌.jpg','t4uaxvdUpXVBlKpj.jpg','t4uaxvdUpXVBlKpj_th.JPG');
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성글램펌.jpg','YUI3wO3Bwo1I7UFn.jpg','YUI3wO3Bwo1I7UFn_th.JPG');
 Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','여성단발펌.jpg','mBAimNUhfLeXTdqG.jpg','mBAimNUhfLeXTdqG_th.JPG');
+Insert into FILESTORAGE (FILENO,USERID,FILEPATH,ORIGINFILENAME,STORAGEFILENAME,THUMBNAILFILENAME) values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester1@outlook.com','src\main\webapp\images','가로수길_디자이너12.jpg','mBINbxqsiBCtq4lP.jpg','mBAimNUhfLeXTdqG_th.JPG');
 
+	
 
 -- 이전 사업장
 /*
@@ -187,7 +189,8 @@ INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test5@t
 INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test6@test.com', 'sdklkqwek23', sysdate, sysdate+1, 0);
 */
 
-
+-- 디자이너 사진파일 번호부여
+UPDATE userRegist SET fileNo = 41 where userId = 'hairstargramtester1@outlook.com'; 
 
 
 

@@ -12,16 +12,21 @@
 		on h.fileno = f.fileno
 	</select>
 	
-	<select id="hairStyleJoinbyUserId"  parameterType="String" resultType="com.example.demo.model.HairStyleListMain">
-		select * from hairStyle where userId=#{userid}
+	<select id="hairStyleJoinbyUserId" parameterType="String" resultType="com.example.demo.model.HairStyleListMain">
+		select * from
+		(select f.THUMBNAILFILENAME,h.*
+		from hairstyle h
+		join filestorage f
+		on h.fileno = f.fileno) u
+        where u.userId = #{userId}
 	</select>
 	
 	<select id="getHairStyleJoinFile" parameterType="String" resultType="com.example.demo.model.UserRegistJoinFile">
-		select f.thumbnailfilename, u.* 
+		select u.* , f.thumbnailfilename 
 		from userregist u 
 		join filestorage f 
 		on u.fileno = f.fileno 
-		where u.userid = #{userid}
+		where u.userId = #{userId}
 	</select>
 	
 	<select id="getHairStyleListReco" resultType="com.example.demo.model.HairStyleListMain">

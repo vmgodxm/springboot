@@ -58,10 +58,10 @@ INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal, 0, '핑크 스타�
 INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 2, 'designer3@test.com');
             
 -- 예약 내역
-INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, 2019, 11, 29, 12, 13, 00, 30, '이쁘게 해주세요', 0, 1, 'designer1@test.com', 'test@test.com');
-INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, 2019, 11, 29, 12, 13, 00, 30, '이쁘게 해주세요', 0, 1, 'designer1@test.com', 'test@test.com');
-INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, 2019, 11, 29, 12, 13, 00, 30, '이쁘게 해주세요', 0, 1, 'designer2@test.com', 'test@test.com');
-INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, 2019, 11, 29, 12, 13, 00, 30, '이쁘게 해주세요', 0, 1, 'designer3@test.com', 'test@test.com');
+INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, '2019-11-30T14:30', '이쁘게 해주세요', 0, 1, 'designer1@test.com', 'test@test.com');
+INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, '2019-11-30T14:30', '이쁘게 해주세요', 0, 1, 'designer1@test.com', 'test@test.com');
+INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, '2019-11-30T14:30', '이쁘게 해주세요', 0, 1, 'designer2@test.com', 'test@test.com');
+INSERT INTO reservation VALUES(RESERVATION_RESNO_SEQ.nextVal, '2019-11-30T14:30', '이쁘게 해주세요', 0, 1, 'designer3@test.com', 'test@test.com');
 
 -- 디자이너 즐겨찾기
 INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'designer1@test.com', 'test@test.com');
@@ -122,9 +122,11 @@ INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, 'hairstargram@out
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, 'hairstargram@outlook.com', 0, '블루클럽', '강남점');
 INSERT INTO preCompany values(PRECOMPANY_PRECOMNO_SEQ.nextVal, 'hairstargram@outlook.com', 0, '동네미용실', '분당점');
 
-INSERT INTO companyOperation VALUES(2019, 11, 29, 30, 09, 20, 00, 00, 'hairstargram@outlook.com');
-INSERT INTO companyOperation VALUES(2019, 11, 29, 30, 09, 20, 00, 00, 'hairstargram@outlook.com');
-INSERT INTO companyOperation VALUES(2019, 11, 29, 30, 09, 20, 00, 00, 'hairstargram@outlook.com');
+-- 쉬는날짜
+INSERT INTO companyOperation VALUES('2019-11-20','09:00', '20:00', 'hairstargram@outlook.com');
+
+-- 운영시간
+INSERT INTO companyOperation VALUES('0000-00-00','09:00', '20:00', 'hairstargram@outlook.com');
 
 --INSERT INTO hairStyle VALUES (800, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 900, 'hairstargram@outlook.com');
 --INSERT INTO hairStyle VALUES (801, 0, '핑크 스타일 염색(여성)',150000,12, 30,'핑크 염색',1, 901, 'hairstargram@outlook.com');
@@ -137,10 +139,6 @@ INSERT INTO designerFavorite VALUES(DESIGNERFAVORITENO_SEQ.nextVal, 'hairstargra
 INSERT INTO hairStyleFavorite VALUES(HAIRSTYLEFAVORITE_STYLENO_SEQ.nextVal, 'hairstargram@outlook.com', 'test@test.com', 800);
 INSERT INTO hairStyleFavorite VALUES(HAIRSTYLEFAVORITE_STYLENO_SEQ.nextVal, 'hairstargram@outlook.com', 'test2@test.com', 801);
 INSERT INTO hairStyleFavorite VALUES(HAIRSTYLEFAVORITE_STYLENO_SEQ.nextVal, 'hairstargram@outlook.com', 'test@test.com', 802);
-
-
-
-
 
 
 

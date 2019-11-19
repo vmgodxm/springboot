@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-
 public class HairStyleListMain {
 
 	private Long styleNo;
@@ -25,13 +24,13 @@ public class HairStyleListMain {
 	
 	private String thumbNailFileName;
 	
-	private String recommend;
+	private Long recommend;
 
 	public HairStyleListMain() {
 	}
 
 	public HairStyleListMain(Long styleNo, Long gender, String styleName, Long categoryNo, Long price, Long hour,
-			Long minute, String styleComment, Long fileNo, String userId, String thumbNailFileName, String recommend) {
+			Long minute, String styleComment, Long fileNo, String userId, String thumbNailFileName, Long recommend) {
 		super();
 		this.styleNo = styleNo;
 		this.gender = gender;
@@ -135,11 +134,11 @@ public class HairStyleListMain {
 		this.thumbNailFileName = thumbNailFileName;
 	}
 
-	public String getRecommend() {
+	public Long getRecommend() {
 		return recommend;
 	}
 
-	public void setRecommend(String recommend) {
+	public void setRecommend(Long recommend) {
 		this.recommend = recommend;
 	}
 

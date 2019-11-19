@@ -18,10 +18,10 @@ INSERT INTO company values ('designer3@test.com', '000-02-00000',0,'리안헤어
 
            
 -- 디자이너
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com',  'desigName1', 1, '000-00-00000','desigName1',0,null,1);
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramTester2@outlook.com', 'desigName2', 1, 'desigName2','000-00-00000',0,42,1);
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramTester3@outlook.com', 'desigName3', 1, 'desigName3','000-00-00000',0,43,1); 
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramTester4@outlook.com', 'desigName3', 1, 'desigName3','000-00-00000',0,44,1); 
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com', 'desigName1', 1, '000-00-00000', 'desigName1', 0, null, 1);
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester2@outlook.com', 'desigName2', 1, '000-00-00000', 'desigName2', 0, null, 1);
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester3@outlook.com', 'desigName3', 1, '000-00-00000', 'desigName3', 0, null, 1); 
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester4@outlook.com', 'desigName3', 1, '000-00-00000', 'desigName3', 0, null, 1); 
 
 -- 파일스토리지
 
@@ -192,12 +192,10 @@ INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test6@t
 
 -- 디자이너 사진파일 번호부여
 
-UPDATE userRegist SET fileNo = 48 where userId = 'hairstargramtester1@outlook.com'; 
-
-
+UPDATE userRegist SET fileNo = 41 where userId = 'hairstargramtester1@outlook.com'; 
 UPDATE userRegist SET fileNo = 42 where userId = 'hairstargramtester2@outlook.com'; 
-UPDATE userRegist SET fileNo = 43 where userId = 'hairstargramtester3@outlook.com'; 
-UPDATE userRegist SET fileNo = 44 where userId = 'hairstargramtester4@outlook.com'; 
+--UPDATE userRegist SET fileNo = 43 where userId = 'hairstargramtester3@outlook.com'; 
+--UPDATE userRegist SET fileNo = 44 where userId = 'hairstargramtester4@outlook.com'; 
 
 
 

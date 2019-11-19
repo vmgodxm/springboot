@@ -1,5 +1,6 @@
-  <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">등록된 헤어스타일
+<!-- Page Heading/Breadcrumbs -->
+<script src="../js/hairStargram/designer.js"></script>
+<h1 class="mt-4 mb-3">등록된 헤어스타일
     <a class="btn btn-primary" href="javascript:fileupload();">추가하기</a>
   </h1>
   <div id="regHairStyle"></div>
@@ -44,19 +45,36 @@
     </ul>
   </div>
   </div>
-  <script src="../js/hairStargram/designer.js"></script>
   <script>
+ $(function () {
+       $.ajax({
+        url: "/hairStyle",
+        Type: 'GET',
+        dataType: 'json'
+      }).then(function (data) {
+        var html = "";
+        $.each(data, function (i, v) {
+          var hairStyleList = data[i];
+          html += regHairStyle(hairStyleList);
+          console.log('디자이너 등록한 헤어스타일' + data[i].styleNo);
+          
+        });
+        $('#regHairStyle').html(html);
+      });
+    });
+
+
     function regHairStyle(hairStyle){
-      console.log('test');
       var time;
       if(hairStyle.hour == null || hairStyle.hour == undefined){
         time = hairStyle.minute + '분';
-      }else if(hairStyle.minute == null || hairStyle.undefined){
+      }else if(hairStyle.minute == null || hairStyle.minute == undefined || hairStyle.minute == 0){
         time = hairStyle.hour + '시';
       }else{
         time = hairStyle.hour + '시' + hairStyle.minute + '분';
       }
       
+      console.log(time);
       return `<div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
       <div class="card h-100">
@@ -72,21 +90,5 @@
     </div>`;
     };
 
-    $(function () {
-      $.ajax({
-        url: "/hairStyle",
-        Type: 'GET',
-        dataType: 'json'
-      }).then(function (data) {
-        var html = "";
-        console.log('get');
-        $.each(data, function (i, v) {
-          var hairStyleList = data[i];
-          html += regHairStyle(hairStyleList);
-          console.log('디자이너 등록한 헤어스타일' + data[i].styleNo);
-          
-        });
-        $('#regHairStyle').html(html);
-      });
-    });
+   
   </script>

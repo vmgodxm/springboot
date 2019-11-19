@@ -4,18 +4,35 @@
 	<select id="getCompanyOperation" parameterType="String" resultType="com.example.demo.model.CompanyOperation">
 		SELECT * FROM companyOperation WHERE userId = #{userId}
     </select>
-    
+
 	<insert id="insertCompanyOperation" parameterType="com.example.demo.model.CompanyOperation">
-		INSERT INTO companyOperation(restDate, startTime, endTime, userId) VALUES 
-			(#{restDate}, #{startTime}, #{endTime}, #{userId})
+		MERGE INTO companyOperation
+            USING DUAL
+                ON ( restDate = '0000-00-00' AND userId = #{userId} )
+        WHEN MATCHED
+        THEN
+        UPDATE SET
+                startTime = #{startTime},
+                endTime = #{endTime}
+        WHEN NOT MATCHED
+        THEN
+        INSERT (restDate, startTime, endTime, userId)
+        VALUES  ('0000-00-00', #{startTime}, #{endTime}, #{userId})
     </insert>
 
     <update id="updateCompanyOperation" parameterType="com.example.demo.model.CompanyOperation">
         UPDATE companyOperation SET
-            restDate = #{restDate},
             startTime = #{startTime},
             endTime = #{endTime}
         WHERE
-            userId = #{userId}
+            userId = #{userId} AND 
+            restDate = #{restDate}
     </update>
+
+    <delete id="deleteCompanyOperation" parameterType="com.example.demo.model.CompanyOperation">
+        DELETE FROM companyOperation
+        WHERE
+            userId = #{userId} AND 
+            restDate = #{restDate}
+    </delete>
 </mapper>

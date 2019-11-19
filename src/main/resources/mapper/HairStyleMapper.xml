@@ -5,6 +5,10 @@
 		select * from hairStyle
 	</select>
 	
+	<select id="getRegHairStyle" resultType="com.example.demo.model.HairStyleFile">
+		SELECT * FROM hairstyle A JOIN filestorage B ON a.fileno = b.fileno
+	</select>
+	
 	<select id="getHairStyleListJoin" resultType="com.example.demo.model.HairStyleListMain">
 		select f.THUMBNAILFILENAME,h.*
 		from hairstyle h

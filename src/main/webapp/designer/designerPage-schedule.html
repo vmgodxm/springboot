@@ -22,117 +22,117 @@
             </ul>
         </div> -->
 <div class="row">
-    <div class="col-lg-9 mb-4">
-        <div id="wrapper">
-            <div id="calendar"></div>
-        </div>
+<div class="col-lg-9 mb-4">
+    <div id="wrapper">
+        <div id="calendar"></div>
     </div>
-    <!-- <div id="loading"></div>
-        <div id="calendar"></div> -->
-    <div id="timepicker" class="col-lg-3 mb-4">
-        <br><br><br><br><br>
-        시작시간:<input id="startTime" type="text" class="time" style="width:50%" value="00:00"><br>
-        종료시간:<input id="endTime" type="text" class="time" style="width:50%" value="23:30">
-        <p></p>
-        <a id="btnCommit" class="btn btn-primary btn-block" href="#">운영시간 등록</a>
-    </div>
+</div>
+<!-- <div id="loading"></div>
+    <div id="calendar"></div> -->
+<div id="timepicker" class="col-lg-3 mb-4">
+    <br><br><br><br><br>
+    시작시간:<input id="startTime" type="text" class="time" style="width:50%" value="00:00"><br>
+    종료시간:<input id="endTime" type="text" class="time" style="width:50%" value="23:30">
+    <p></p>
+    <a id="btnCommit" class="btn btn-primary btn-block" href="#">운영시간 등록</a>
+</div>
 
-    <script>
-        $(function () {
-            $('#startTime').timepicker({
-                timeFormat: 'H:i',
-                minTime: '00:00',
-                interval: 30
-            });
+<script>
+    $(function () {
+        $('#startTime').timepicker({
+            timeFormat: 'H:i',
+            minTime: '00:00',
+            interval: 30
+        });
 
-            $('#endTime').timepicker({
-                defaultDate: '23:30',
-                timeFormat: 'H:i',
-                minTime: '00:00',
-                interval: 30
-            });
+        $('#endTime').timepicker({
+            defaultDate: '23:30',
+            timeFormat: 'H:i',
+            minTime: '00:00',
+            interval: 30
+        });
 
-            $('#btnCommit').on('click', function (e) {
-                var startTime = $('#startTime').val();
-                var endTime = $('#endTime').val();
+        $('#btnCommit').on('click', function (e) {
+            var startTime = $('#startTime').val();
+            var endTime = $('#endTime').val();
 
-                if (startTime == null || endTime == null) {
-                    return;
-                }
+            if (startTime == null || endTime == null) {
+                return;
+            }
 
-                var companyOperation = {
-                    restData: '',
-                    startTime: startTime,
-                    endTime: endTime,
-                    userId: localStorage.userId
-                }
+            var companyOperation = {
+                restDate: '0000-00-00',
+                startTime: startTime,
+                endTime: endTime,
+                userId: localStorage.userId
+            }
 
-                $.ajax({
-                   url: 'http://localhost/companyOperation',
-                   type: 'POST',
-                   contentType : 'application/json',
-                   data: JSON.stringify(companyOperation),
-                   dataType: 'json'
-                }).done(function (responseData) {
-                    console.log(responseData);
-                }).fail(function (xhr, status, message) {
-                    console.log(xhr, status, message);
-                });
+            $.ajax({
+                url: 'http://localhost/companyOperation',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(companyOperation),
+                dataType: 'json'
+            }).done(function (responseData) {
+                console.log(responseData);
+            }).fail(function (xhr, status, message) {
+                console.log(xhr, status, message);
             });
         });
-    </script>
+    });
+</script>
 
-    <!-- <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">필터</h3>
-            </div>
-            <div class="panel-body">
-                <div class="col-lg-6">
-                    <label for="calendar_view">구분별</label>
-                    <div class="input-group">
-                        <select class="filter" id="type_filter" multiple="multiple">
-                            <option value="카테고리1">카테고리1</option>
-                            <option value="카테고리2">카테고리2</option>
-                            <option value="카테고리3">카테고리3</option>
-                            <option value="카테고리4">카테고리4</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <label for="calendar_view">등록자별</label>
-                    <div class="input-group">
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="정연" checked>정연</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="다현" checked>다현</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="사나" checked>사나</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="나연" checked>나연</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="지효" checked>지효</label>
-                    </div>
+<!-- <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">필터</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-lg-6">
+                <label for="calendar_view">구분별</label>
+                <div class="input-group">
+                    <select class="filter" id="type_filter" multiple="multiple">
+                        <option value="카테고리1">카테고리1</option>
+                        <option value="카테고리2">카테고리2</option>
+                        <option value="카테고리3">카테고리3</option>
+                        <option value="카테고리4">카테고리4</option>
+                    </select>
                 </div>
             </div>
-        </div> -->
-    <!-- </div> -->
-    <div class="col-md-9">
-        <p>영업시간</p>
-    </div>
-    <div id="timeTable" class="col-lg-11">
-        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
-        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
-        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
-        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
 
-    </div>
-    <br><br><br>
+            <div class="col-lg-6">
+                <label for="calendar_view">등록자별</label>
+                <div class="input-group">
+                    <label class="checkbox-inline"><input class='filter' type="checkbox" value="정연" checked>정연</label>
+                    <label class="checkbox-inline"><input class='filter' type="checkbox" value="다현" checked>다현</label>
+                    <label class="checkbox-inline"><input class='filter' type="checkbox" value="사나" checked>사나</label>
+                    <label class="checkbox-inline"><input class='filter' type="checkbox" value="나연" checked>나연</label>
+                    <label class="checkbox-inline"><input class='filter' type="checkbox" value="지효" checked>지효</label>
+                </div>
+            </div>
+        </div>
+    </div> -->
+<!-- </div> -->
+<div class="col-md-9">
+    <p>영업시간</p>
+</div>
+<div id="timeTable" class="col-lg-11">
+    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
+    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
+    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
+    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
 
-    <script src="../vendor/full-calendar/vendor/js/moment.min.js"></script>
-    <script src="../vendor/full-calendar/vendor/js/fullcalendar.min.js"></script>
-    <script src="../vendor/full-calendar/vendor/js/ko.js"></script>
-    <script src="../vendor/full-calendar/vendor/js/select2.min.js"></script>
-    <script src="../vendor/full-calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="../vendor/full-calendar/js/main.js"></script>
-    <script src="../vendor/full-calendar/js/addEvent.js"></script>
-    <script src="../vendor/full-calendar/js/editEvent.js"></script>
-    <script src="../vendor/full-calendar/js/etcSetting.js"></script>
+</div>
+<br><br><br>
 
-    <script src="../vendor/timepicker/jquery.timepicker.js"></script>
-    <script src="../vendor/timepicker/lib/bootstrap-datepicker.js"></script>
+<script src="../vendor/full-calendar/vendor/js/moment.min.js"></script>
+<script src="../vendor/full-calendar/vendor/js/fullcalendar.min.js"></script>
+<script src="../vendor/full-calendar/vendor/js/ko.js"></script>
+<script src="../vendor/full-calendar/vendor/js/select2.min.js"></script>
+<script src="../vendor/full-calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../vendor/full-calendar/js/main.js"></script>
+<script src="../vendor/full-calendar/js/addEvent.js"></script>
+<script src="../vendor/full-calendar/js/editEvent.js"></script>
+<script src="../vendor/full-calendar/js/etcSetting.js"></script>
+
+<script src="../vendor/timepicker/jquery.timepicker.js"></script>
+<script src="../vendor/timepicker/lib/bootstrap-datepicker.js"></script>

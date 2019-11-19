@@ -26,5 +26,10 @@ public class CompanyOperationRepository implements ICompanyOperationRepository {
     @Override
     public int updateCompanyOperation(CompanyOperation companyOperation) throws Exception {
         return sqlSession.insert("mapper.CompanyOperationMapper.updateCompanyOperation", companyOperation);
+    }   
+
+    @Override
+    public int deleteCompanyOperation(CompanyOperation companyOperation) throws Exception {
+        return sqlSession.insert("mapper.CompanyOperationMapper.deleteCompanyOperation", companyOperation);
     }
 }

@@ -21,7 +21,7 @@
     "_id": 3,
     "title": "철수 생일",
     "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
-    "start": "2019-11-12",
+    "start": "2019-11-12T15:30",
     "username": "다현",
     "backgroundColor": "#ffa94d",
     "textColor": "#ffffff"
@@ -66,7 +66,7 @@
     "_id": 8,
     "title": "세차예약",
     "description": "Lorem ipsum dolor sit incid idunt ut Lorem ipsum sit.",
-    "start": "2019-11-24T09:00",
+    "start": "2019-11-24T08:00",
     "username": "정연",
     "backgroundColor": "#4d638c",
     "textColor": "#ffffff"

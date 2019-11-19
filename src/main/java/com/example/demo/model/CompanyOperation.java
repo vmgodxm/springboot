@@ -3,116 +3,53 @@ package com.example.demo.model;
 //사업장 운영시간 테이블 
 public class CompanyOperation {
 
-	// 연도
-	private Long year;
+	/** 쉬는날짜 */
+	private String restDate;
 
-	// 월
-	private Long month;
+	/** 시작시작 */
+	private String startTime;
 
-	// 시작날짜
-	private Long beginDay;
+	/** 종료시간 */
+	private String endTime;
 
-	// 종료날짜
-	private Long endDay;
-
-	// 시작시간
-	private Long beginHour;
-
-	// 종료시간
-	private Long endHour;
-
-	// 시작분
-	private Long beginMinute;
-
-	// 종료분
-	private Long endMinute;
-
-	// 사용자 아이디
+	/** 사용자 아이디 */
 	private String userId;
 
-	public CompanyOperation() {
-	}
+	public CompanyOperation() { }
 
-	public CompanyOperation(Long year, Long month, Long beginDay, Long endDay, Long beginHour, Long endHour,
-			Long beginMinute, Long endMinute, String userId) {
-		super();
-		this.year = year;
-		this.month = month;
-		this.beginDay = beginDay;
-		this.endDay = endDay;
-		this.beginHour = beginHour;
-		this.endHour = endHour;
-		this.beginMinute = beginMinute;
-		this.endMinute = endMinute;
+	public CompanyOperation(String restDate, String startTime, String endTime, String userId) {
+		this.restDate = restDate;
+		this.startTime = startTime;
+		this.endTime = endTime;
 		this.userId = userId;
 	}
 
-	public Long getYear() {
-		return year;
+	public String getRestDate() {
+		return this.restDate;
 	}
 
-	public void setYear(Long year) {
-		this.year = year;
+	public void setRestDate(String restDate) {
+		this.restDate = restDate;
 	}
 
-	public Long getMonth() {
-		return month;
+	public String getStartTime() {
+		return this.startTime;
 	}
 
-	public void setMonth(Long month) {
-		this.month = month;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
 
-	public Long getBeginDay() {
-		return beginDay;
+	public String getEndTime() {
+		return this.endTime;
 	}
 
-	public void setBeginDay(Long beginDay) {
-		this.beginDay = beginDay;
-	}
-
-	public Long getEndDay() {
-		return endDay;
-	}
-
-	public void setEndDay(Long endDay) {
-		this.endDay = endDay;
-	}
-
-	public Long getBeginHour() {
-		return beginHour;
-	}
-
-	public void setBeginHour(Long beginHour) {
-		this.beginHour = beginHour;
-	}
-
-	public Long getEndHour() {
-		return endHour;
-	}
-
-	public void setEndHour(Long endHour) {
-		this.endHour = endHour;
-	}
-
-	public Long getBeginMinute() {
-		return beginMinute;
-	}
-
-	public void setBeginMinute(Long beginMinute) {
-		this.beginMinute = beginMinute;
-	}
-
-	public Long getEndMinute() {
-		return endMinute;
-	}
-
-	public void setEndMinute(Long endMinute) {
-		this.endMinute = endMinute;
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 	public String getUserId() {
-		return userId;
+		return this.userId;
 	}
 
 	public void setUserId(String userId) {
@@ -121,9 +58,12 @@ public class CompanyOperation {
 
 	@Override
 	public String toString() {
-		return "CompanyOperation [year=" + year + ", month=" + month + ", beginDay=" + beginDay + ", endDay=" + endDay
-				+ ", beginHour=" + beginHour + ", endHour=" + endHour + ", beginMinute=" + beginMinute + ", endMinute="
-				+ endMinute + ", userId=" + userId + "]";
+		return "{" +
+			" restDate='" + getRestDate() + "'" +
+			", startTime='" + getStartTime() + "'" +
+			", endTime='" + getEndTime() + "'" +
+			", userId='" + getUserId() + "'" +
+			"}";
 	}
 
 }

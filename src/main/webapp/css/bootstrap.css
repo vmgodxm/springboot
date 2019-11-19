@@ -4587,6 +4587,7 @@ input[type="button"].btn-block {
 
 .card-title {
   margin-bottom: 0.75rem;
+  
 }
 
 .card-subtitle {
@@ -10097,5 +10098,9 @@ a.text-dark:hover, a.text-dark:focus {
 	padding-top: 40px;
 }
 
+.seul-font{
+	font-weight: bold;
+	/*font-family: Georgia, "Malgun Gothic", serif;*/
+}
 
 /*# sourceMappingURL=bootstrap.css.map */

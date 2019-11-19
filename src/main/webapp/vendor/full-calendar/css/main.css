@@ -1,18 +1,29 @@
+#calendar {
+  width: 100%;
+  margin-left: 0%;
+}
+
 #calendar td {
   vertical-align: middle !important;
 }
-.fc {
+
+.fc td {
   text-align: center !important;
 }
 
-.fc-day-number.fc-sat.fc-past { color:#0000FF; }
-    .fc-day-number.fc-sun.fc-past { color:#FF0000; }
+.fc-day-number.fc-sat.fc-past {
+  color: #0000FF;
+}
 
+.fc-day-number.fc-sun.fc-past {
+  color: #FF0000;
+}
 
 .fc td {
   padding: 0;
   vertical-align: middle !important;
 }
+
 .dropNewEvent {
   font-size: 13px;
 }
@@ -210,10 +221,6 @@
   text-transform: uppercase;
 }
 
-.fc-unthemed .fc-day-grid td:not(.fc-axis).fc-event-container {
-  /* padding: 0.2rem 0.5rem; */
-}
-
 .fc-unthemed .fc-content,
 .fc-unthemed .fc-divider,
 .fc-unthemed .fc-list-heading td,
@@ -302,7 +309,7 @@ select.filter {
 
   /* Support for IE. */
   -webkit-font-feature-settings: 'liga';
-          font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
 }
 
 #add-color,

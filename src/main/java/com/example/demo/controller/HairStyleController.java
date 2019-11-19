@@ -28,7 +28,7 @@ public class HairStyleController {
 	}
 	
 	@GetMapping(path ="/hairStyleList")
-	public List<HairStyle> getHairStyleListReco() throws Exception {
+	public List<HairStyleListMain> getHairStyleListReco() throws Exception {
 		return repository.getHairStyleListReco();
 	}
 	
@@ -40,6 +40,11 @@ public class HairStyleController {
 	@GetMapping(path ="/hairStyleJoinbyUser/{userId}")
 	public List<HairStyleListMain> hairStyleJoinbyUserId(@PathVariable String userId) throws Exception {
 		return repository.hairStyleJoinbyUserId(userId);
+	}
+	
+	@GetMapping(path ="/hairStylePrice")
+	public List<HairStyleListMain> hairStyleListPrice() throws Exception{
+		return repository.hairStyleListPrice();
 	}
 	
 	@GetMapping(path="/hairStyle/{styleNo}")

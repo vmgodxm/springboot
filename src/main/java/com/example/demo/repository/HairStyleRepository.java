@@ -29,7 +29,7 @@ public class HairStyleRepository implements IHairStyleRepository {
 	}
 	
 	@Override
-	public List<HairStyle> getHairStyleListReco() throws Exception{
+	public List<HairStyleListMain> getHairStyleListReco() throws Exception{
 		return sqlSession.selectList("mapper.HairStyleMapper.getHairStyleListReco");
 	}
 	
@@ -43,6 +43,10 @@ public class HairStyleRepository implements IHairStyleRepository {
 		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleJoinbyUserId",userId);
 	}
 	
+	@Override
+	public List<HairStyleListMain> hairStyleListPrice() throws Exception{
+		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleListPrice");
+	}
 	
 	@Override
 	public HairStyle getHairStyle(Long styleNo) throws Exception {

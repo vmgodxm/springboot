@@ -80,3 +80,65 @@ DELETE http://localhost/preCompany/1 HTTP/1.1
 
 ### get FileInfo
 GET http://localhost/file/1 HTTP/1.1
+
+
+######################################################################################
+### CompanyOperation
+######################################################################################
+
+### get companyOperation
+GET http://localhost/companyOperation/hairstargram@outlook.com HTTP/1.1
+
+
+### insert companyOperation
+POST http://localhost/companyOperation HTTP/1.1
+Content-Type: application/json
+
+{
+    "restDate" : "0000-00-00",
+    "startTime" : "09:30",
+    "endTime" : "20:30",
+    "userId" : "hairstargram@outlook.com"
+}
+
+### update companyOperation
+PUT http://localhost/companyOperation HTTP/1.1
+Content-Type: application/json
+
+{
+    "restDate" : "2019-11-20",
+    "startTime" : "09:30",
+    "endTime" : "18:30",
+    "userId" : "hairstargram@outlook.com"
+}
+
+######################################################################################
+### Reservation
+######################################################################################
+
+### 디자이너의 예약 리스트 가져오기(선택한 날짜를 기준)
+GET http://localhost/reservation/hairstargramtester1@outlook.com/resDate/2019-11-19T18:30 HTTP/1.1
+
+
+### 사용자가 예약한 정보 가져오기
+GET http://localhost/reservation/hairstargram@outlook.com/designer/hairstargramtester1@outlook.com HTTP/1.1
+
+
+### 예약정보 입력
+POST http://localhost/reservation HTTP/1.1
+Content-Type: application/json
+
+{
+    "resDate" : "2019-11-20T19:20",
+    "useComment" : "comment~~",
+    "useComplete" : "0",
+    "styleNo" : "4",
+    "designerId" : "hairstargramtester1@outlook.com",
+    "userId" : "hairstargram@outlook.com"
+}
+
+### 사용자가 예약한 시술사항 완료(useComplete)
+PUT http://localhost/reservation/4 HTTP/1.1
+
+### 예약정보 삭제
+DELETE http://localhost/reservation/4 HTTP/1.1

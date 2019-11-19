@@ -25,7 +25,7 @@ public class ReservationController {
 	}
 	
 	@GetMapping(path = "/reservation/{resNo}")
-	public Long getRes(Long resNo) throws Exception {
+	public Reservation getRes(Long resNo) throws Exception {
 		return reposiroty.getResvation(resNo);
 	}
 	

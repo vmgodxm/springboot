@@ -38,7 +38,7 @@ public class HairStyleController {
 	}
 	
 	@GetMapping(path ="/hairStyleJoinbyUser/{userId}")
-	public List<HairStyleListMain> hairStyleJoinbyUserId( String userId) throws Exception {
+	public List<HairStyleListMain> hairStyleJoinbyUserId(String userId) throws Exception {
 		return repository.hairStyleJoinbyUserId(userId);
 	}
 	

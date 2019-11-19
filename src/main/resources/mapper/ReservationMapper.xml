@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ReservationMapper">
-	<select id="getReserviaton" parameterType="String" resultType="com.example.demo.model.Reservation">
-		SELECT * FROM reservation where resNo = #{resNo}
+	<select id="getReserviatonCollectionAsDate" parameterType="com.example.demo.model.Reservation" resultType="com.example.demo.model.CustomerReservation">
+		SELECT R.resNo, R.resDate, R.useComment, U.userName, HS.styleName
+		FROM (	
+			SELECT resNo, resDate, useComment, userId, styleNo
+			FROM reservation
+			WHERE	
+				resDate = '2019-11-19T18:30' AND
+				designerId = 'hairstargramtester1@outlook.com'
+			) R
+		JOIN userRegist U
+		ON U.userId = R.userId
+		
+		JOIN hairStyle HS
+		ON HS.styleNo = R.styleNo
 	</select>
-	<select id="getReserviatonList" parameterType="String" resultType="com.example.demo.model.Reservation">
-		SELECT * FROM reservation A JOIN userregist B ON A.designerId = B.userId JOIN hairstyle C ON C.styleNo = A.styleNo
+
+	<select id="getReserviatonAsOnlyUser" parameterType="com.example.demo.model.Reservation" resultType="com.example.demo.model.Reservation">
+		SELECT * 
+		FROM reservation 
+		WHERE 
+			designerId = #{designerId} AND 
+			userId = #{userId} AND
+			useComplete = 0
 	</select>
-	<select id="insertReserviaton" parameterType="com.example.demo.model.Reservation">
-		INSERT INTO reservation(resNo,year,month,day,beginHour,endHour,beingMinute,endMinute,useComment,useComplete,styleNo,designerId,userId) VALUES(RESERVATION_RESNO_SEQ.nextval,#{year},#{month},#{beginDay},#{beginHour},#{endHour},#{beginMinute},#{endMinute},#{useComment},#{useComplete},#{styleNo},#{desinerId},#{userId})
-	</select>
-	<select id="deleteReserviaton" parameterType="long" >
-		DELETE reservation WHERE resNo = #{resNo}
-	</select>
-	<select id="updateReserviaton" parameterType="long" resultType="com.example.demo.model.Reservation">
-		UPDATE reservation SET ?? where resNo = #{resNo}
-	</select>
+
+	<insert id="insertReserviaton" parameterType="com.example.demo.model.Reservation">
+		INSERT INTO reservation(resNo, resDate, useComment, useComplete, styleNo, designerId, userId) VALUES
+			(RESERVATION_RESNO_SEQ.nextVal, #{resDate}, #{useComment}, #{useComplete}, #{styleNo}, #{designerId}, #{userId})
+	</insert>
+
+	<update id="updateReservationAsUseComplete" parameterType="Long">
+		UPDATE reservation SET
+			useComplete = 1
+		WHERE
+			resNo = #{resNo}
+	</update>
+
+	<delete id="deleteReserviaton" parameterType="Long" >
+		DELETE FROM reservation WHERE resNo = #{resNo}
+	</delete>
+
+	
 </mapper>

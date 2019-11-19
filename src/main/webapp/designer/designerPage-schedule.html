@@ -6,11 +6,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 
 
-<div id="container">
+<!-- <div class="container" id="calendar"> -->
 
-    <!-- 일자 클릭시 메뉴오픈 -->
-    <!-- 이 부분은 사용자가 휴일등 선택 메뉴로 지정할 수 있게 한다. -->
-    <!-- <div id="contextMenu" class="dropdown clearfix">
+<!-- 일자 클릭시 메뉴오픈 -->
+<!-- 이 부분은 사용자가 휴일등 선택 메뉴로 지정할 수 있게 한다. -->
+<!-- <div id="contextMenu" class="dropdown clearfix">
             <ul class="dropdown-menu dropNewEvent" role="menu" aria-labelledby="dropdownMenu"
                 style="display:block;position:static;margin-bottom:5px;">
                 <li><a tabindex="-1" href="#">카테고리1</a></li>
@@ -21,12 +21,66 @@
                 <li><a tabindex="-1" href="#" data-role="close">Close</a></li>
             </ul>
         </div> -->
-
-    <div id="wrapper">
-        <div id="loading"></div>
-        <div id="calendar"></div>
+<div class="row">
+    <div class="col-lg-9 mb-4">
+        <div id="wrapper">
+            <div id="calendar"></div>
+        </div>
+    </div>
+    <!-- <div id="loading"></div>
+        <div id="calendar"></div> -->
+    <div id="timepicker" class="col-lg-3 mb-4">
+        <br><br><br><br><br>
+        시작시간:<input id="startTime" type="text" class="time" style="width:50%" value="00:00"><br>
+        종료시간:<input id="endTime" type="text" class="time" style="width:50%" value="23:30">
+        <p></p>
+        <a id="btnCommit" class="btn btn-primary btn-block" href="#">운영시간 등록</a>
     </div>
 
+    <script>
+        $(function () {
+            $('#startTime').timepicker({
+                timeFormat: 'H:i',
+                minTime: '00:00',
+                interval: 30
+            });
+
+            $('#endTime').timepicker({
+                defaultDate: '23:30',
+                timeFormat: 'H:i',
+                minTime: '00:00',
+                interval: 30
+            });
+
+            $('#btnCommit').on('click', function (e) {
+                var startTime = $('#startTime').val();
+                var endTime = $('#endTime').val();
+
+                if (startTime == null || endTime == null) {
+                    return;
+                }
+
+                var companyOperation = {
+                    restData: '',
+                    startTime: startTime,
+                    endTime: endTime,
+                    userId: localStorage.userId
+                }
+
+                $.ajax({
+                   url: 'http://localhost/companyOperation',
+                   type: 'POST',
+                   contentType : 'application/json',
+                   data: JSON.stringify(companyOperation),
+                   dataType: 'json'
+                }).done(function (responseData) {
+                    console.log(responseData);
+                }).fail(function (xhr, status, message) {
+                    console.log(xhr, status, message);
+                });
+            });
+        });
+    </script>
 
     <!-- <div class="panel panel-default">
             <div class="panel-heading">
@@ -57,18 +111,28 @@
                 </div>
             </div>
         </div> -->
-</div>
-<div class="row mb-4">
+    <!-- </div> -->
+    <div class="col-md-9">
+        <p>영업시간</p>
+    </div>
+    <div id="timeTable" class="col-lg-11">
+        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
+        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
+        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
+        <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
 
-</div>
+    </div>
+    <br><br><br>
 
-<!-- <script src="../vendor/full-calendar/vendor/js/bootstrap.min.js"></script> -->
-<script src="../vendor/full-calendar/vendor/js/moment.min.js"></script>
-<script src="../vendor/full-calendar/vendor/js/fullcalendar.min.js"></script>
-<script src="../vendor/full-calendar/vendor/js/ko.js"></script>
-<script src="../vendor/full-calendar/vendor/js/select2.min.js"></script>
-<script src="../vendor/full-calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
-<script src="../vendor/full-calendar/js/main.js"></script>
-<script src="../vendor/full-calendar/js/addEvent.js"></script>
-<script src="../vendor/full-calendar/js/editEvent.js"></script>
-<script src="../vendor/full-calendar/js/etcSetting.js"></script>
+    <script src="../vendor/full-calendar/vendor/js/moment.min.js"></script>
+    <script src="../vendor/full-calendar/vendor/js/fullcalendar.min.js"></script>
+    <script src="../vendor/full-calendar/vendor/js/ko.js"></script>
+    <script src="../vendor/full-calendar/vendor/js/select2.min.js"></script>
+    <script src="../vendor/full-calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../vendor/full-calendar/js/main.js"></script>
+    <script src="../vendor/full-calendar/js/addEvent.js"></script>
+    <script src="../vendor/full-calendar/js/editEvent.js"></script>
+    <script src="../vendor/full-calendar/js/etcSetting.js"></script>
+
+    <script src="../vendor/timepicker/jquery.timepicker.js"></script>
+    <script src="../vendor/timepicker/lib/bootstrap-datepicker.js"></script>

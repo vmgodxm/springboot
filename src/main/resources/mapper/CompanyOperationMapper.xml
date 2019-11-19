@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CompanyOperationMapper">
+	<select id="getCompanyOperation" parameterType="String" resultType="com.example.demo.model.CompanyOperation">
+		SELECT * FROM companyOperation WHERE userId = #{userId}
+    </select>
+    
+	<insert id="insertCompanyOperation" parameterType="com.example.demo.model.CompanyOperation">
+		INSERT INTO companyOperation(restDate, startTime, endTime, userId) VALUES 
+			(#{restDate}, #{startTime}, #{endTime}, #{userId})
+    </insert>
+
+    <update id="updateCompanyOperation" parameterType="com.example.demo.model.CompanyOperation">
+        UPDATE companyOperation SET
+            restDate = #{restDate},
+            startTime = #{startTime},
+            endTime = #{endTime}
+        WHERE
+            userId = #{userId}
+    </update>
+</mapper>

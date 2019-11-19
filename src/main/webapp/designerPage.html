@@ -17,11 +17,14 @@
   <link href="css/modern-business.css" rel="stylesheet">
 
   <link rel="stylesheet" href="vendor/full-calendar/vendor/css/fullcalendar.min.css" />
-<link rel="stylesheet" href='vendor/full-calendar/vendor/css/select2.min.css' />
-<link rel="stylesheet" href='vendor/full-calendar/vendor/css/bootstrap-datetimepicker.min.css' />
-<link rel="stylesheet" href="vendor/full-calendar/css/main.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href='vendor/full-calendar/vendor/css/select2.min.css' />
+  <link rel="stylesheet" href='vendor/full-calendar/vendor/css/bootstrap-datetimepicker.min.css' />
+  <link rel="stylesheet" href="vendor/full-calendar/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="vendor/timepicker/jquery.timepicker.css" />
+  <link rel="stylesheet" href="vendor/timepicker/lib/bootstrap-datepicker.css" />
+  <!-- <link rel="stylesheet" href="vendor/timepicker/lib/site.css" /> -->
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -99,13 +102,13 @@
         data: $('#hairstyleregist').serialize(),
         dataType: 'json',
       }).done(function (data) {
-			window.hairstyle();
+        window.hairstyle();
         //window.location.href = 'userphoto.html';
       }).fail(function (jqXHR, textStatus, errorThrown) {
 
         console.log(jqXHR.responseText);
       });
-	
+
 
     }
 
@@ -188,13 +191,10 @@
 <body>
   <!-- Navigation -->
   <div id="menuContents"></div>
-
   <!-- Page Content -->
   <div class="container">
-
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">Designer Page</h1>
-
     <!-- Content Row -->
     <div class="row">
       <!-- Sidebar Column -->
@@ -211,16 +211,17 @@
       <!-- Content Column -->
 
       <span class="col-lg-9" id="change"></span>
-
+      
     </div>
+    
     <!-- /.row -->
-
   </div>
   <!-- /.container -->
-
   <!-- Footer -->
+
   <div id="index-footer"> </div>
   <!-- Bootstrap core JavaScript -->
+
 </body>
 
 </html>

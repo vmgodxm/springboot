@@ -26,39 +26,126 @@
   <script src="js/hairStargram/designer.js"></script>
   <script src="js/hairStargram/hairstyle.js"></script>
   <script>
-    window.onload = function () {
-      loadMenu();
-      hairStyle_body();
-      
-    };
+   
   
 var pageLoad = {
 		
-	styleNo : localStorage.styleNo ,
-	userId : localStorage.userId ,
 
 	selectDesignerByStlyeNo : async function () {
+	pageLoad.styleNo= localStorage.styleNo;
+	pageLoad.userId = localStorage.userId;
 
-	var result = await fetch('/user/'+userId);
-	var user = await result.json();
+	var result = await fetch(`/getHairStyleJoinFile/${pageLoad.userId}`);
+	var userphoto = await result.json();
 		
 	html= 
-		`<div class="col-lg-2 col-sm-4 mb-4" id="designerPhoto">
-  			  <img class="img-fluid"
-      		 	 src="https://i.ytimg.com/vi/8LMla1wMC-A/maxresdefault.jpg" alt="">
-		</div>`
-		
-		document.getElementById('desingerrr').innerHTML = html;
+		`
+  			  <img class="img-fluid"  width="150" height="200"
+      		 	 src="/images/${userphoto.thumbNailFileName}" alt="">
+      		 	 `
+		document.getElementById('designerPhoto').innerHTML = html;
 	
-	}
+	html2= `
 	
-
+		   <div>
+	        헤어디자이너 정보<br>${userphoto.nickName}<br>청담역 3번출구 한가운데<br>
+	        <input class="btn btn-primary" id="btnDesigner" type="button" value="정보보기" onClick="location.href='designer/designers.html'">
+		    </div>
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	   
+	      		`
+		document.getElementById('designerInfo').innerHTML = html2;	
+	},
+	
+	detail : async function () {
+		
+		var result2 = await fetch(`/hairStyleJoinbyUser/${pageLoad.userId}`);
+		var designerDetail = await result2.json();
+		pageLoad.hairStyleJoinbyUser = designerDetail;
+		pageLoad.hairStyleJoinbyUserlength = designerDetail.length;
+		var html="";
+		for (var i = 0; i < 8; i++) {
+			var list = designerDetail[i];
+			
+			
+			
+			
+			
+			html +=	
+		`
+		 <div class="col-lg-3 col-sm-4 mb-4">
+		<a href="javascript:gotoviewf(${list.styleNo});"><img class="img-fluid" src="/images/${list.thumbNailFileName}" alt=""></a>
+			</div> `
+		}
+		
+		document.getElementById('designersHair').innerHTML = html;
+		
+		pageLoad.selectstyleno();
+		this.otherDesigner();
 		
 		
+	},
+	
+	 selectstyleno :  function () {
 		
-}   
+		//var list2 = pageLoad.hairStyleJoinbyUser;
+		
+		 for(var j = 0 ; j < pageLoad.hairStyleJoinbyUserlength; j++){
+		 if(pageLoad.hairStyleJoinbyUser[j].styleNo == pageLoad.styleNo) {
+		 		var getThisStyle = pageLoad.hairStyleJoinbyUser[j];
+		 
+		html1 = 
+		
+		`
+        <img class="img-fluid rounded mb-4" src="images/${getThisStyle.thumbNailFileName}" alt="">
+       `
+		document.getElementById('styleimage').innerHTML = html1;
+		
+		
+		html2 =	
+		`<div >${getThisStyle.styleName}</div>
+		<div >${getThisStyle.styleComment}</div>
+        <div>소요시간 ${getThisStyle.hour}시간 ${getThisStyle.minute}분</div>
+        <div>${getThisStyle.price}원</div>
+        <br> <br>`
+        
+		 
+        document.getElementById('detailview').innerHTML = html2;
+		 
+			}
+		}
+	},
+	 otherDesigner : async function () {
+	 	var result3 = await fetch('/hairStyleJoin');
+		var list3 = await result3.json();
+	 		for(var i = 0; i< list3.length; i++){
+	 			if(!(list3[i].userId == pageLoad.userId)) {
+	 				
+	 				html +=
+	 				
+	 				`
+	 				<div class="col-lg-2 col-sm-4 mb-4">
+                        <img class="img-fluid" src="images/${list3[i].thumbNailFileName}" alt="">
+                    </div>
+	 				`
+	 			
+	 			}
+	 		
+	 		}
+	 		document.getElementById('otherDesigner').innerHTML = html;
+	 }
+	
+		
+		
+};   
     
-    
+    window.onload = function () {
+      loadMenu();
+      hairStyle_body();
+      pageLoad.selectDesignerByStlyeNo();
+      pageLoad.detail();
+      
+    }; 
     
     
     

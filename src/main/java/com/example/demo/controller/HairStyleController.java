@@ -38,18 +38,18 @@ public class HairStyleController {
 	}
 	
 	@GetMapping(path ="/hairStyleJoinbyUser/{userId}")
-	public List<HairStyleListMain> hairStyleJoinbyUserId(String userId) throws Exception {
+	public List<HairStyleListMain> hairStyleJoinbyUserId(@PathVariable String userId) throws Exception {
 		return repository.hairStyleJoinbyUserId(userId);
 	}
 	
 	@GetMapping(path="/hairStyle/{styleNo}")
-	public HairStyle HairStyleInfo(Long styleNo) throws Exception {
+	public HairStyle HairStyleInfo(@PathVariable Long styleNo) throws Exception {
 		HairStyle hairStyle = repository.getHairStyle(styleNo);
 		return hairStyle;
 	}
 	
 	@GetMapping(path="/getHairStyleJoinFile/{userId}")
-	public UserRegistJoinFile getHairStyleJoinFile(String userId) throws Exception {
+	public UserRegistJoinFile getHairStyleJoinFile(@PathVariable String userId) throws Exception {
 		return  repository.getHairStyleJoinFile(userId); 
 	}
 	

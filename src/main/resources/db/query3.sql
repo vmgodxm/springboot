@@ -190,7 +190,7 @@ INSERT INTO authenticationHistory VALUES(authHistory_hisNo_SEQ.nextVal, 'test6@t
 */
 
 -- 디자이너 사진파일 번호부여
-UPDATE userRegist SET fileNo = 41 where userId = 'hairstargramtester1@outlook.com'; 
+UPDATE userRegist SET fileNo = 48 where userId = 'hairstargramtester1@outlook.com'; 
 
 
 

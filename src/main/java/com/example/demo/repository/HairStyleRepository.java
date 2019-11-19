@@ -40,7 +40,7 @@ public class HairStyleRepository implements IHairStyleRepository {
 	
 	@Override
 	public List<HairStyleListMain> hairStyleJoinbyUserId(String userId) throws Exception {
-		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleJoinbyUserId");
+		return sqlSession.selectList("mapper.HairStyleMapper.hairStyleJoinbyUserId",userId);
 	}
 	
 	

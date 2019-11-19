@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-//?��?��?��????�� ?��?���? 
+
 public class HairStyleListMain {
 
 	private Long styleNo;

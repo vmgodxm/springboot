@@ -30,7 +30,19 @@
 	</select>
 	
 	<select id="getHairStyleListReco" resultType="com.example.demo.model.HairStyleListMain">
-		select * from hairStyle order by RECOMMEND desc
+		select f.THUMBNAILFILENAME,h.*
+		from hairstyle h
+		join filestorage f
+		on h.fileno = f.fileno
+        order by RECOMMEND desc
+	</select>
+	
+	<select id="hairStyleListPrice" resultType="com.example.demo.model.HairStyleListMain">
+		select f.THUMBNAILFILENAME,h.*
+		from hairstyle h
+		join filestorage f
+		on h.fileno = f.fileno
+        order by price desc
 	</select>
 	
 	<select id="getHairStyle" parameterType="Long" resultType="com.example.demo.model.HairStyle">

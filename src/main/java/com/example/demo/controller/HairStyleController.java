@@ -42,6 +42,11 @@ public class HairStyleController {
 		return repository.hairStyleJoinbyUserId(userId);
 	}
 	
+	@GetMapping(path ="/hairStylePrice")
+	public List<HairStyleListMain> hairStyleListPrice() throws Exception{
+		return repository.hairStyleListPrice();
+	}
+	
 	@GetMapping(path="/hairStyle/{styleNo}")
 	public HairStyle HairStyleInfo(Long styleNo) throws Exception {
 		HairStyle hairStyle = repository.getHairStyle(styleNo);

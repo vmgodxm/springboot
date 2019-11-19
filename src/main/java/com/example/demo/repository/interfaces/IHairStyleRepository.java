@@ -18,4 +18,5 @@ public interface IHairStyleRepository {
 	List<HairStyleListMain> getHairStyleListReco() throws Exception;
 	UserRegistJoinFile getHairStyleJoinFile(String userId) throws Exception;
 	List<HairStyleListMain> hairStyleJoinbyUserId(String userId) throws Exception;
+	List<HairStyleListMain> hairStyleListPrice() throws Exception;
 }

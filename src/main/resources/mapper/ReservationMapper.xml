@@ -67,7 +67,7 @@
 			H.minute AS hairUseMinute, 
 			H.price AS hairPrice, 
 			D.userNo AS designerNo, 
-			D.nickName AS designerNickName, 
+			D.userName AS designerName, 
 			D.phone AS designerPhone, 
 			D.userId AS designerEmail,
 			C.companyName || ' ' || C.companyAddress AS designerCompanyName,

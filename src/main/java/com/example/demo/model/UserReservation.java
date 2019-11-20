@@ -22,8 +22,8 @@ public class UserReservation {
     // 디자이너 번호
     private Long designerNo;
 
-    // 디자이너 닉네임
-    private String designerNickName;
+    // 디자이너 이름
+    private String designerName;
 
     // 디자이너 연락처
     private String designerPhone;
@@ -58,7 +58,8 @@ public class UserReservation {
     public UserReservation() { }
 
 
-    public UserReservation(Long styleNo, String styleName, String styleComment, String hairUseHour, String hairUseMinute, String hairPrice, Long designerNo, String designerNickName, String designerPhone, String designerEmail, String designerCompanyName, String startTime, String endTime, String hairThumbNailFileName, String designerThumbNailFileName, Long resNo, String resDate, String useComment) {
+
+    public UserReservation(Long styleNo, String styleName, String styleComment, String hairUseHour, String hairUseMinute, String hairPrice, Long designerNo, String designerName, String designerPhone, String designerEmail, String designerCompanyName, String startTime, String endTime, String hairThumbNailFileName, String designerThumbNailFileName, Long resNo, String resDate, String useComment) {
         this.styleNo = styleNo;
         this.styleName = styleName;
         this.styleComment = styleComment;
@@ -66,7 +67,7 @@ public class UserReservation {
         this.hairUseMinute = hairUseMinute;
         this.hairPrice = hairPrice;
         this.designerNo = designerNo;
-        this.designerNickName = designerNickName;
+        this.designerName = designerName;
         this.designerPhone = designerPhone;
         this.designerEmail = designerEmail;
         this.designerCompanyName = designerCompanyName;
@@ -135,12 +136,12 @@ public class UserReservation {
         this.designerNo = designerNo;
     }
 
-    public String getDesignerNickName() {
-        return this.designerNickName;
+    public String getDesignerName() {
+        return this.designerName;
     }
 
-    public void setDesignerNickName(String designerNickName) {
-        this.designerNickName = designerNickName;
+    public void setDesignerName(String designerName) {
+        this.designerName = designerName;
     }
 
     public String getDesignerPhone() {
@@ -233,7 +234,7 @@ public class UserReservation {
             ", hairUseMinute='" + getHairUseMinute() + "'" +
             ", hairPrice='" + getHairPrice() + "'" +
             ", designerNo='" + getDesignerNo() + "'" +
-            ", designerNickName='" + getDesignerNickName() + "'" +
+            ", designerName='" + getDesignerName() + "'" +
             ", designerPhone='" + getDesignerPhone() + "'" +
             ", designerEmail='" + getDesignerEmail() + "'" +
             ", designerCompanyName='" + getDesignerCompanyName() + "'" +
@@ -246,6 +247,5 @@ public class UserReservation {
             ", useComment='" + getUseComment() + "'" +
             "}";
     }
-
-
+    
 }

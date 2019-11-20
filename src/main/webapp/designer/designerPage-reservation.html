@@ -7,11 +7,11 @@
 <br><br>
 <div id="reservation"></div>
 
-<script src="../vendor/full-calendar/vendor/js/moment.min.js"></script>
+<!-- <script src="../vendor/full-calendar/vendor/js/moment.min.js"></script>
 <script src="../vendor/full-calendar/vendor/js/fullcalendar.min.js"></script>
 <script src="../vendor/full-calendar/vendor/js/ko.js"></script>
 <script src="../vendor/full-calendar/vendor/js/select2.min.js"></script>
-<script src="../vendor/full-calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../vendor/full-calendar/vendor/js/bootstrap-datetimepicker.min.js"></script> -->
 <script>
   $('#calendar').fullCalendar({
     /**
@@ -214,12 +214,12 @@
                 <th>${iter.styleName}</th>
                 <th>${iter.useComment == null ? "" : iter.useComment}</th>
                 
-                ${iter.useComplete == 0 ? 
-                  `<th> <a id="btnComplete" class="btn btn-primary" href="#">완료</a></th>
+                ${iter.useComplete == 0 ?
+          `<th> <a id="btnComplete" class="btn btn-primary" href="#">완료</a></th>
                   <th> <a id="btnCancel" class="btn btn-primary" href="#">취소</a></th>`
-                : 
-                  ''
-                }
+          :
+          ''
+        }
                 
               </tr>`;
     }
@@ -233,7 +233,7 @@
 
     if (event.allDay == false) {
       var startTimeEventInfo = moment(event.start).format('HH:mm');
-      displayEventDate = startTimeEventInfo 
+      displayEventDate = startTimeEventInfo
     }
 
     return displayEventDate;
@@ -259,39 +259,39 @@
 
   function getCategoryBgColor(category) {
     switch (category % 3) {
-      case 0 : return '#ffa94d';  // 커트
-      case 1 : return '#D25565';  // 펌
-      case 2 : return '#f06595';  // 염색
+      case 0: return '#ffa94d';  // 커트
+      case 1: return '#D25565';  // 펌
+      case 2: return '#f06595';  // 염색
     }
   };
 
   function getHairType(category) {
     console.log(category);
     switch (category % 3) {
-      case 0 : return '[커트]';  // 커트
-      case 1 : return '[펌]';  // 펌
-      case 2 : return '[염색]';  // 염색
+      case 0: return '[커트]';  // 커트
+      case 1: return '[펌]';  // 펌
+      case 2: return '[염색]';  // 염색
     }
   }
 
   $(() => {
     // 디자이너가 예약 확인 후 시술 완료
-    $(document).on('click', '#btnComplete', async function(e) {
+    $(document).on('click', '#btnComplete', async function (e) {
       //console.log('resNo', $(this).parent().parent().attr('resNo'));
 
       var resNo = $(this).parent().parent().attr('resNo');
-      var result = await fetch(`/reservation/${resNo}`, {method : 'PUT'});
+      var result = await fetch(`/reservation/${resNo}`, { method: 'PUT' });
       var responseData = await result.json();
       //console.log('승인', responseData);
       reservation();
     });
 
     // 디자이너가 해당 예약 취소
-    $(document).on('click', '#btnCancel', async function(e) {
+    $(document).on('click', '#btnCancel', async function (e) {
       // console.log('resNo', $(this).parent().parent().attr('resNo'));
 
       var resNo = $(this).parent().parent().attr('resNo');
-      var result = await fetch(`/reservation/${resNo}`, {method : 'DELETE'});
+      var result = await fetch(`/reservation/${resNo}`, { method: 'DELETE' });
       var responseData = await result.json();
       // console.log('취소', responseData);
       reservation();

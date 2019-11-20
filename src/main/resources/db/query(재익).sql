@@ -3,7 +3,9 @@ commit;
 ------------------------------------------------------
 -- Reservation Table
 ------------------------------------------------------
-INSERT INTO reservation VALUES (RESERVATION_RESNO_SEQ.nextVal, '2019-11-20T18:30', '아무거나~~', 0, 28, 'hairstargramtester1@outlook.com', 'hairstargramtester3@outlook.com');
+INSERT INTO reservation VALUES (RESERVATION_RESNO_SEQ.nextVal, '2019-11-20T18:30', '아무거나~~', 0, 28, 'hairstargramtester1@outlook.com', 'hairstargramtester1@outlook.com');
+INSERT INTO company values ('hairstargramtester1@outlook.com', '000-00-00000',0,'리안헤어','서울 강남점');
+
 
 SELECT 
     *
@@ -48,7 +50,7 @@ SELECT
     H.minute AS hairUseMinute, 
     H.price AS hairPrice, 
     D.userNo AS designerNo, 
-    D.nickName AS designerNickName, 
+    D.userName AS designerName, 
     D.phone AS designerPhone, 
     D.userId AS designerEmail,
     C.companyName || ' ' || C.companyAddress AS designerCompanyName, 

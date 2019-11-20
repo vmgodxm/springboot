@@ -1,16 +1,15 @@
 
 $(function(){
     $('#btnReservation').on('click',function(e){
-        console.log("hair rev");
         $('#contents').load('./hair/hairStyles-rev.html');
-        e.preventDefault();
+        // e.preventDefault();
     });
 });
 
 $(function(){
     $('#btnRev').on('click',function(e){
         $('#contents').load('./hair/hairStyles-done.html');
-        e.preventDefault();
+        //e.preventDefault();
     });
 });
 

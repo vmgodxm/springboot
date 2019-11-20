@@ -87,7 +87,7 @@ GET http://localhost/file/1 HTTP/1.1
 ######################################################################################
 
 ### get companyOperation
-GET http://localhost/companyOperation/hairstargram@outlook.com HTTP/1.1
+GET http://localhost/companyOperation/hairstargramtester1@outlook.com HTTP/1.1
 
 
 ### insert companyOperation

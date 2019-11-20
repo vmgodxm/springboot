@@ -49,8 +49,8 @@ public class HairStyleController {
 	
 	@GetMapping(path="/hairStyle/{styleNo}")
 	public HairStyle HairStyleInfo(@PathVariable Long styleNo) throws Exception {
-		HairStyle hairStyle = repository.getHairStyle(styleNo);
-		return hairStyle;
+		
+		return  repository.getHairStyle(styleNo);
 	}
 	
 	@GetMapping(path="/getHairStyleJoinFile/{userId}")

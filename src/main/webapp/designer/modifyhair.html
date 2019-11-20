@@ -1,5 +1,37 @@
 <!DOCTYPE html>
 
+<script>
+
+async function getHairInfo(styleNo) {
+    var hairResult = await fetch(`/hairStyle/{styleNo}`);
+    var responseData = await hairResult.json();
+    var categorytemp = responseData.categoryNo
+    var categoryNo ="";
+    if(categorytemp>=3) {categoryNo= categorytemp-3;}
+    
+    $('#styleNo').val(responseData.styleNo);
+    $('#fileNo').val(responseData.fileNo);
+    $('#recommand').val(responseData.recommand);
+    $('#userId').val(responseData.userId);
+    $('#styleName').val(responseData.styleName);
+    $('#gender').val(responseData.gender);
+    $('#categoryNoselect').val(categoryNo);
+    $('#price').val(responseData.price);
+    $('#styleComment').val(responseData.styleComment);
+	
+
+	if (responseData.fileNo != null && responseData.fileNo != "") {
+      $('#fileNo').val(responseData.fileNo);
+      var fileResult = await fetch(`http://localhost/file/${responseData.fileNo}`);
+      var resposneFileData = await fileResult.json();
+      $('#imgProfile').attr('src', `http://localhost/images/${resposneFileData.thumbNailFileName}`);
+    }
+  }
+</script>
+
+
+
+
 
 
 <div class="col-lg-9 mb-4">
@@ -25,6 +57,13 @@
             </div>
           </div>
           
+           <div class="form-group">
+            <div style="display:none;" class="form-label-group">
+              <input type="text" name="recommand" id="recommand" class="form-control" placeholder="recommand"  value=""
+               >
+              <label for="recommand">추천수</label>
+            </div>
+          </div> 
            
 	      <div class="form-group">
             <div style="display:none;" class="form-label-group">

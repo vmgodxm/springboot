@@ -77,8 +77,8 @@
 
 
     function pageload() {
-      //var userId = getCookie('userId');
-      var userId = "test2@test.com";
+      var userId = localStorage.userId;
+      //var userId = "test2@test.com";
       //$('#getUserId').html(`<input type='hidden' name='userId' value="${userId}">`);
       document.getElementById('userId').value = userId;
       document.getElementById('getUserIdtest').value = userId;

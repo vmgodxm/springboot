@@ -106,8 +106,8 @@
     function regist() {
       categoryCheck();
       $.ajax({
-        url: "/hairStyleInsert",
         type: "POST",
+        url: "/hairStyleInsert",
         data: $('#hairstyleregist').serialize(),
         dataType: 'json',
       }).done(function (data) {
@@ -118,9 +118,42 @@
         console.log(jqXHR.responseText);
       });
 
-
     }
 
+    function modify() {
+        categoryCheck();
+        $.ajax({
+          type: "PUT",
+          url: "/hairStyleUpdate/" + localStorage.modifystyleNo,
+          data: $('#hairstyleregist').serialize(),
+          dataType: 'json',
+        }).done(function (data) {
+          window.hairstyle();
+          console.log(data);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+
+          console.log(jqXHR.responseText);
+        });
+
+      }
+    
+    function deleteHairstyle(delstyleNo) {
+       
+        $.ajax({
+          type: "DELETE",
+          url: "/hairStyleDelete/" + delstyleNo,
+          dataType: 'json',
+        }).done(function (result4) {
+        	alert('파일삭제 성공');
+          window.hairstyle();
+          console.log(result4);
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+
+          console.log(jqXHR.responseText);
+        });
+
+      }
+    
 
 
     function uploadFile() {
@@ -189,7 +222,40 @@
         });
       }
     }
-    
+    function deleteFilemodify() {
+        if (!(document.getElementById('fileNo').value == "")) {
+          $.ajax({
+            type: 'DELETE',
+            url: "/fileDeleteStorageByfileNo/" + localStorage.deleteFileNo,
+            success: function (result1) {
+              alert('파일삭제 성공');
+              console.log(result1);
+              $.ajax({
+                type: 'DELETE',
+                url: "/fileDelete/" + localStorage.deleteFileNo,
+                success: function (result2) {
+                  alert('파일DB삭제 성공');
+                  console.log(result2);
+                  $('#img_src').html
+                    (`<img id="target_image" src="/images/default2.jpg" width="300" height="400">`);
+                  document.getElementById('fileNo').value = "";
+                  $('#fileinput').html(`<input type="file" id="file1" name="file" />`);
+
+
+                },
+                error: function (e) {
+                  alert('파일DB삭제 실패');
+                  console.log(e);
+                }
+              });
+            },
+            error: function (e) {
+              alert('파일삭제 실패');
+              console.log(e);
+            }
+          });
+        }
+      }
    
 
     window.onload = function () {

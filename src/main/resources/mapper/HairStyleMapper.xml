@@ -59,8 +59,8 @@
 	</insert>
 	
 	<update id="updateHairStyle" parameterType="com.example.demo.model.HairStyle">
-		update hairStyle set styleName=#{styleName},price=#{price},hour=#{hour},minute=#{minute}, styleComment=#{styleComment},categoryNo=#{categoryNo},userId=#{userId}
-   			 where fileNo=#{fileNo}
+		update hairStyle set gender=#{gender}, styleName=#{styleName},fileNo=#{fileNo},price=#{price},hour=#{hour},minute=#{minute}, styleComment=#{styleComment},categoryNo=#{categoryNo},userId=#{userId}
+   			 where styleNo=#{styleNo}
 	</update>
 
 	<delete id="deleteHairStyle" parameterType="Long">

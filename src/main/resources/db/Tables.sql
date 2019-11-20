@@ -427,7 +427,7 @@ ALTER TABLE companyOperation ADD CONSTRAINT IDX_companyOperation_FK0 FOREIGN KEY
 ALTER TABLE hairCategory ADD CONSTRAINT IDX_hairCategory_PK PRIMARY KEY (categoryNo);
 
 ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_PK PRIMARY KEY (styleNo);
-ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK0 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo) ON DELETE CASCADE;
+--ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK0 FOREIGN KEY (fileNo) REFERENCES fileStorage (fileNo);-- ON DELETE CASCADE;
 ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK1 FOREIGN KEY (userId) REFERENCES userRegist (userId) ON DELETE CASCADE;
 ALTER TABLE hairStyle ADD CONSTRAINT IDX_hairStyle_FK2 FOREIGN KEY (categoryNo) REFERENCES hairCategory (categoryNo) ON DELETE CASCADE;
 
@@ -453,14 +453,14 @@ ALTER TABLE preCompany ADD CONSTRAINT IDX_preCompany_PK PRIMARY KEY (preComNo, u
 
 
 -- 날짜의 월 정보만 가져오는 함수
-CREATE OR REPLACE FUNCTION getResMonth (resDate IN VARCHAR2) 
-RETURN NUMBER 
-IS 
-    retVal VARCHAR2(10);
-BEGIN
-  retVal := EXTRACT(MONTH FROM TO_DATE(SUBSTR(resDate, 1,10), 'YYYY-MM-DD'));
-RETURN retVal;
-END;
+--CREATE OR REPLACE FUNCTION getResMonth (resDate IN VARCHAR2) 
+--RETURN NUMBER 
+--IS 
+--    retVal VARCHAR2(10);
+--BEGIN
+--  retVal := EXTRACT(MONTH FROM TO_DATE(SUBSTR(resDate, 1,10), 'YYYY-MM-DD'));
+--RETURN retVal;
+--END;
 
 
 commit;

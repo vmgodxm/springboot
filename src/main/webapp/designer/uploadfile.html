@@ -2,10 +2,11 @@
 
 
 
-<div class="col-lg-9 mb-4">
+<div class="card card-register mx-auto mt-1">
 
-			
-	        <h2>헤어스타일 등록</h2>
+
+			<div class="card-header">헤어스타일 등록</div>
+	      
 	        
 	     <form id="hairstyleregist">
 	      <div class="form-group">
@@ -18,11 +19,9 @@
           
           <div class="form-group">
             <div style="display:none;" class="form-label-group">
-<<<<<<< HEAD
-              <input type="text" name="recommand" id="recommand" class="form-control" placeholder="recommand"  value=""
-=======
+
               <input type="text" name="recommend" id="recommend" class="form-control" placeholder="recommend"  value=""
->>>>>>> branch 'master' of https://github.com/vmgodxm/springboot
+
                >
               <label for="recommend">추천수</label>
             </div>
@@ -127,11 +126,11 @@
 	        
 	        <br/>
 	        
-	        <span id="img_src">
+	        <span id="img_src" style="text-align:center">
 	         <img id="target_image" src="/images/default2.jpg" alt="My Image" width="300" height="400">
              </span>
 	        	
-	        	<div> 
+	        	<div class="card card-register mx-auto mt-1"> 
 	        		<form id="uploadForm" enctype="multipart/form-data" method="POST"> 
 		        		<label for="file1">사진을 선택후 upload 버튼을 눌러주세요. 사진의 비율은 3x4 입니다.</label> 
 		        			<div >
@@ -139,7 +138,7 @@
 		        				<input type="file" id="file1" name="file" />
 		        				</span>
 		        				<span id="getUserId">
-		        				<input type='hidden' name='userId' id="getUserIdtest"  value='test@test.com'>
+		        				<input type='hidden' name='userId' id="getUserIdtest"  value=''>
 		        				</span>
 		        			</div>
 		        	 	<!--<label for="file2">파일 두 번째</label> 
@@ -149,24 +148,28 @@
 	        		
 	        		</form>
 	        		
-	        	</div> 
+	      	<br/>
 	        	
-	        	<br/>
-	        	<span class="col-lg-3">
+	        	<span align="center">
 	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:uploadFile();">upload</a>
-	        	</span>
-	        	<span class="col-lg-3">
+	        	
+	        	
 	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:deleteFile();">cancel</a>
 	        	</span>
+	        	
+	        	
+	        	</div> 
 	
 	
-	
-</div>
 	      <br/>
-	      <br/>
-	      <span class="col-lg-3">
+	      <span class="col-lg-12"></span>
 	        		 <a id="registHairstyle" class="btn btn-primary " href="javascript:regist();">Regist</a>
-	      </span>
+	      <br/>
+	      
+	
+			
+</div>	      
+	       <div class="form-group" ></div>
 <script>
 	pageload();
 </script>

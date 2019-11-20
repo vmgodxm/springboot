@@ -137,7 +137,7 @@
 		        				<input type="file" id="file1" name="file" />
 		        				</span>
 		        				<span id="getUserId">
-		        				<input type='hidden' name='userId' id="getUserIdtest"  value='test@test.com'>
+		        				<input type='hidden' name='userId' id="getUserIdtest1"  value=''>
 		        				</span>
 		        			</div>
 		        	 	<!--<label for="file2">파일 두 번째</label> 
@@ -154,7 +154,7 @@
 	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:uploadFile();">upload</a>
 	        	
 	        	
-	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:deleteFile();">cancel</a>
+	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:deleteFilemodify();">cancel</a>
 	        	</span>
 	        	
 	        	
@@ -163,7 +163,7 @@
 	
 	      <br/>
 	      <span class="col-lg-12"></span>
-	      <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modifyUser();">수정하기</a>
+	      <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modify();">수정하기</a>
 	      
 	       <br/>
 	      
@@ -182,7 +182,7 @@
     var categoryNo ="";
     if (categorytemp>=3) {categoryNo= categorytemp-3;}
     else{ categoryNo = responseData.categoryNo;}
-    
+    localStorage.setItem('deleteFileNo',responseData.fileNo);
     console.log(responseData);
     console.log(responseData.hour);
     
@@ -190,6 +190,7 @@
     $('#styleNo').val(responseData.styleNo);
     $('#recommand').val(responseData.recommand);
     $('#userId').val(responseData.userId);
+    $('#getUserIdtest1').val(responseData.userId);
     $('#styleName').val(responseData.styleName);
     $('#gender').val(responseData.gender).attr("selected","selected");
     $('#categoryNoselect > option[value='+categoryNo+']').attr("selected","true");

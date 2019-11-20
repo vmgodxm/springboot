@@ -22,12 +22,80 @@
   <!-- Core plugin JavaScript-->
   <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="../js/hairStargram/login/facebook.js"></script>
-  <script src="../js/hairStargram/common/common_nev2.js"></script>
+  <script src="../js/hairStargram/common/common_nev.js"></script>
   <script src="../js/hairStargram/designer.js"></script>
   <script>
-    window.onload = function () {
-      loadMenu();
-    };
+    
+    
+var pageLoad = {
+		
+		gotoview: function (styleNo,designerId) {
+			localStorage.setItem('styleNo', styleNo);
+			localStorage.setItem('designerId', designerId);
+			location.href = 'http://localhost/hairStyles.html';
+		},
+		
+		selectDesignerByStlyeNo : async function () {
+			pageLoad.designerId = localStorage.designerId;
+
+			var result = await fetch(`/getHairStyleJoinFile/${pageLoad.designerId}`);
+			var userphoto = await result.json();
+				
+			var html= 
+				`
+		  			   <img class="img-fluid rounded mb-4 mb-lg-0" src="/images/${userphoto.thumbNailFileName}" alt="">
+		      		 	 `
+				document.getElementById('designerPhoto').innerHTML = html;
+			
+			var html2= `
+			
+				<h1 class="font-weight-light">${userphoto.userName}</h1>`
+				document.getElementById('designerName').innerHTML = html2;	
+			
+			var html4= `${userphoto.nickName} ` 
+				
+				document.getElementById('location').innerHTML = html4;
+				
+				pageLoad.hairstyles();
+			},
+		
+		hairstyles : async function () {
+			var result2 = await fetch(`/hairStyleJoinbyUser/${pageLoad.designerId}`);
+			var hairstyleList = await result2.json();
+			var html3 ="";
+			for (var i = 0; i < hairstyleList.length; i++) {
+							var list = hairstyleList[i];
+				html3 +=
+				`<div class="col-lg-2 col-sm-6 portfolio-item">
+  				  <div class="card h-100 text-center">
+  					<a href="javascript:gotoviewf(${list.styleNo},'${list.userId}');"><img class="card-img-top" src="/images/${list.thumbNailFileName}" alt=""></a>
+  					<div class="card-body">
+  					<h5 class="card-title" style="font-weight: bold">${list.styleName}</h5>
+  					<h6 class="card-subtitle mb-2 text-muted"></h6>
+  					<p class="card-text">${list.styleComment}</p>
+  					  </div>
+  		 			 <div class="card-footer">
+  					<a href="#">${list.price}</a>
+		  		 	 </div>
+		  		  </div>
+  				</div>`
+			}
+			document.getElementById('hairstyleList').innerHTML = html3;
+		}
+		
+		
+}
+
+function gotoviewf(styleNo,designerId) {
+    
+	pageLoad.gotoview(styleNo,designerId);
+}
+
+window.onload = function () {
+    loadMenu();
+    pageLoad.selectDesignerByStlyeNo();
+  };
+
 
   </script>
 </head>
@@ -41,20 +109,21 @@
 
     <!-- Heading Row -->
     <div class="row align-items-center my-5">
-      <div class="col-lg-7">
+      <div class="col-lg-6" id="designerPhoto" align="center">
         <img class="img-fluid rounded mb-4 mb-lg-0" src="../images/article.jpg" alt="">
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
-        <h1 class="font-weight-light">곽실장</h1>
+        <span id="designerName"><h1 class="font-weight-light"></h1></span>
         <p>서울시 강남구 역삼동에 위치한 강남미용실 라리엔 헤어살롱입니다.
             라리엔는 천연성분으로 이루어진 유기농 AVEDA 제품을 사용합니다. 개별화 된 리츄얼 서비스는 당신을 따뜻하게 감싸고 상쾌하게 만들어주며, 아베다만의 독특한 감각의 경험은 고객에게 잊지 못할 시간을 제공합니다</p>
         <a class="btn btn-primary" href="#" id="call">연락하기</a>
       </div>
+      <div class="col-lg-1" ></div>
       <script type="text/javascript">
         $(function(){
           $("#call").on("click",function(){
-            alert("메신저나 뭐 기타 등등");
+            alert("오늘은 쉬는날 입니다.");
           });
         });
       </script>
@@ -63,53 +132,9 @@
     <!-- /.row -->
 
     <!-- Call to Action Well -->
-    <!-- Call to Action Well -->
-    <div class="col-lg-12 card text-white bg-secondary my-5 py-4 text-center">
-        <h2>고객 평가</h2>
-        <div class="card-body">
-            <!-- Comments Form -->
-            <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">댓글달기</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Single Comment -->
-            <div class="media mb-4">
-                <img class="d-flex mr-3 rounded-circle"
-                    src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                    vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                    nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-            </div>
-
-            <!-- Comment with nested comments -->
-            <div class="media mb-4">
-                <img class="d-flex mr-3 rounded-circle"
-                    src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                    vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                    nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Content Row -->
-    <div class="row">
+    
+        <!-- Content Row -->
+    <div class="row" id="hairstyleList">
           <div class="col-lg-2 mb-4">
         <div class="card h-100 text-center">
           <img class="card-img-top" src="../images/긴웨이브.jpg" alt="">
@@ -164,7 +189,7 @@
         </div>
       </div>
       <!-- /.col-md-4 -->
-  <div class="col-lg-2 mb-4">
+  	 <div class="col-lg-2 mb-4">
         <div class="card h-100 text-center">
           <img class="card-img-top" src="../images/매직스트레이트d.jpg" alt="">
           <div class="card-body">
@@ -181,6 +206,53 @@
       
     </div>
     <!-- /.row -->
+    <!-- Call to Action Well -->
+    <div class="col-lg-12 card text-white bg-secondary my-5 py-4 text-center">
+        <h2>고객 평가</h2>
+        <div class="card-body">
+           
+
+            <!-- Single Comment -->
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle"
+                    src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">이사람 아주 진짜 못된인간입니다.</h5>
+                   <p> 아니 사람 머리를 그렇게 잘라놓다니요..
+                    머리가 도토리가 됐습니다. 눌려가지고,,,, 진짜 여자친구가 뭐라하고 
+                    난리도 아님.  여기 다시는 안가고싶음..   근데 잘생김; ㅎㅎ
+                    가격도 커트 20만원이면뭐 싼편인듯요.</p>
+                </div>
+            </div>
+
+            <!-- Comment with nested comments -->
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle"
+                    src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">전 정말 태어나서 처음 겪었습니다.</h5>
+                   머리를 발로 자릅니다. 라이터로 불붙여서 자르기도하고, 낫으로도 자르네요
+                   세상에 이런일이 .. 근데 머리감을땐 또 셀프라 샴프도 한번 밖에 못짜게하고,
+                   아주그냥 망할라고 작정한듯. 그런데 또 사람은 많네요;;
+                </div>
+            </div>
+            
+             <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">댓글달기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
       <!-- Content Row -->
     <div class="row">
       <!-- Map Column -->
@@ -191,7 +263,7 @@
       <!-- Contact Details Column -->
       <div class="col-lg-4 mb-4">
         <h3>헤어샵 위치</h3>
-        <p>
+        <p id="location">
          강남구 암구정 어쩌고 저쩌고
           <br>
         </p>
@@ -200,7 +272,7 @@
         </p>
         <p>
           <abbr title="Email">E</abbr>:
-          <a href="mailto:name@example.com">name@example.com
+          <a href="mailto:name@example.com">nintendo@switch.com
           </a>
         </p>
         <p>

@@ -163,7 +163,6 @@ public class FileUploadDownloadService {
 //	}
     
 
-    /** * 썸네일을 생성합니다. * 250 x 150 크기의 썸네일을 만듭니다. */ 
 
     
     

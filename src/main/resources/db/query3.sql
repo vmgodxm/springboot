@@ -6,10 +6,10 @@ INSERT INTO region VALUES (1, '경기');
 INSERT INTO region VALUES (2, '부산');
 
 -- 디자이너
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com', 'desigName1', 1, '000-00-00000', 'desigName1', 0, null, 1);
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester2@outlook.com', 'desigName2', 1, '000-00-00000', 'desigName2', 0, null, 1);
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester3@outlook.com', 'desigName3', 1, '000-00-00000', 'desigName3', 0, null, 1); 
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester4@outlook.kr', 'desigName3', 1, '000-00-00000', 'desigName3', 0, null, 1); 
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com', '곽실장장님', 1, '02-723-2323', '청담동 정동남 400미터', 0, null, 1);
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester2@outlook.com', '정마담', 1, '02-488-4885', '장안동 한미타운 4층', 0, null, 1);
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester3@outlook.com', '갬재익', 1, '02-434-4424', '갱냄역 노년역 사이 패라곤 3층', 0, null, 1); 
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester4@outlook.kr', '유슈라슈라', 1, '032-324-9494', '죽산 터미널 맞은편 ', 0, null, 1); 
 
 -- 파일스토리지
 Insert into FILESTORAGE values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester3@outlook.com','src\main\webapp\images','남자숏컷.jpg','Z9AaMcyw3NzGmG0j.jpg','Z9AaMcyw3NzGmG0j_th.JPG');
@@ -107,6 +107,7 @@ INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,1,'그레이스펌',
 INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,1,'글램펌',220000,2,30,'여자글램펌',39,4,'hairstargramtester3@outlook.com',1);
 INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,1,'단발머리펌',230000,2,30,'여자단발머리펌',40,4,'hairstargramtester4@outlook.kr',0);
 
+INSERT INTO hairStyle VALUES (HAIRSTYLE_STYLENO_SEQ.nextVal,1,'단발머리펌',230000,2,30,'여자단발머리펌',41,4,'hairstargramtester4@outlook.kr',0);
 
 -- 디자이너 예약현황
 INSERT INTO reservation VALUES (RESERVATION_RESNO_SEQ.nextVal, '2019-11-20T10:30', '핑크말고 보라색으로 해주세요. ^-^', 0, 1, 'hairstargramtester3@outlook.com', 'hairstargramtester2@outlook.com');

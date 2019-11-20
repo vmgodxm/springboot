@@ -1,6 +1,6 @@
 
 function loadMenu() {
-    $('#menuContents').load('./main/index-menu.html', function (e) {
+    $('#menuContents').load('/main/index-menu.html', function (e) {
         var userId = getCookie('userId');
         if (userId != null && userId != "") {
           $('#menuContents #menuLogin').html('Logout');
@@ -8,5 +8,5 @@ function loadMenu() {
         }        
       });
 
-    $('#index-footer').load('./main/index-footer.html');
+    $('#index-footer').load('/main/index-footer.html');
 };

@@ -53,7 +53,7 @@
 
     function info() {
       $('#change').load('designer/designerPage-info.html', function () {
-        var userId = getCookie('userId');
+        var userId = localStorage.userId;
         if (userId != null && userId != "") {
           getUser(userId);
           getPreCompanyList(userId);
@@ -75,7 +75,7 @@
     // 회원탈퇴
     function leave() {
       $("#change").load("./designer/designerPage-leave.html", function (e) {
-        var userId = getCookie('userId');
+        var userId = localStorage.userId;
         if (userId != null && userId != "") {
           getUser(userId);
         }

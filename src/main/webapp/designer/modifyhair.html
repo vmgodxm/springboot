@@ -4,11 +4,11 @@
 
 
 
+<div class="card card-register mx-auto mt-1">
 
-<div class="col-lg-9 mb-4">
 
-			
-	        <h2>헤어스타일 수정</h2>
+			<div class="card-header">헤어스타일 수정</div>
+	        
 	        
 	     <form id="hairstyleregist">
 	      <div class="form-group">
@@ -125,11 +125,11 @@
 	        
 	        <br/>
 	        
-	        <span id="img_src">
+	        <span id="img_src" style="text-align:center">
 	         <img id="target_image" src="/images/default2.jpg" alt="My Image" width="300" height="400">
              </span>
 	        	
-	        	<div> 
+	        	<div class="card card-register mx-auto mt-1"> 
 	        		<form id="uploadForm" enctype="multipart/form-data" method="POST"> 
 		        		<label for="file1">사진을 선택후 upload 버튼을 눌러주세요. 사진의 비율은 3x4 입니다.</label> 
 		        			<div >
@@ -147,28 +147,30 @@
 	        		
 	        		</form>
 	        		
-	        	</div> 
 	        	
 	        	<br/>
-	        	<span class="col-lg-3">
+	        	<div class="row" style="text-align:center">
+	        	<span style="text-align:center">
 	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:uploadFile();">upload</a>
-	        	</span>
-	        	<span class="col-lg-3">
+	        	
+	        	
 	        		 <a id="btnLogin" class="btn btn-primary " href="javascript:deleteFile();">cancel</a>
 	        	</span>
+	        	
+	        	</div>
+	        	</div> 
 	
 	
-	
-</div>
 	      <br/>
-	      <br/>
-	      <span class="col-lg-3">
-	        		 <a id="registHairstyle" class="btn btn-primary " href="javascript:regist();">Regist</a>
-	      </span>
+	      <span class="col-lg-12"></span>
+	      <a id="btnModify" class="btn btn-primary btn-block" href="#" onclick="modifyUser();">수정하기</a>
 	      
+	       <br/>
 	      
-	      
-	      
+	
+			
+</div>	      
+	       <div class="form-group" ></div>
 <script>
 
  async function getHairInfo() {
@@ -178,23 +180,22 @@
     var responseData = await styleNoResult.json();
     var categorytemp = responseData.categoryNo;
     var categoryNo ="";
-    if(categorytemp>=3) {categoryNo= categorytemp-3;}
+    if (categorytemp>=3) {categoryNo= categorytemp-3;}
+    else{ categoryNo = responseData.categoryNo;}
+    
+    console.log(responseData);
+    console.log(responseData.hour);
+    
     
     $('#styleNo').val(responseData.styleNo);
     $('#recommand').val(responseData.recommand);
     $('#userId').val(responseData.userId);
     $('#styleName').val(responseData.styleName);
-    
     $('#gender').val(responseData.gender).attr("selected","selected");
-    $('#categoryNoselect').val(categoryNo);
+    $('#categoryNoselect > option[value='+categoryNo+']').attr("selected","true");
     $('#price').val(responseData.price);
     $('#styleComment').val(responseData.styleComment);
     $('#hour > option[value='+responseData.hour+']').attr("selected","true");
-    console.log(responseData);
-    console.log(responseData.hour);
-    
-    
-    //$('#minute').val();
 	$('#minute > option[value='+responseData.minute+']').attr("selected","true");
 
 	if (responseData.fileNo != null && responseData.fileNo != "") {
@@ -204,8 +205,7 @@
       $('#target_image').attr('src', `/images/${resposneFileData.thumbNailFileName}`);
       }
       
-    //}
-  //});
+  
  
   }
   

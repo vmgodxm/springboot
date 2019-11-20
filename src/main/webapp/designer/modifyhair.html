@@ -1,5 +1,26 @@
 <!DOCTYPE html>
 
+<script>
+
+async function getHairInfo(styleNo) {
+    var hairResult = await fetch(`/hairStyle/{styleNo}`);
+    var responseData = await hairResult.json();
+    $('#userNo').val(responseData.userNo);
+    $('#userId').val(responseData.userId);
+    $('#userName').val(responseData.userName);
+
+	if (responseData.fileNo != null && responseData.fileNo != "") {
+      $('#fileNo').val(responseData.fileNo);
+      var fileResult = await fetch(`http://localhost/file/${responseData.fileNo}`);
+      var resposneFileData = await fileResult.json();
+      $('#imgProfile').attr('src', `http://localhost/images/${resposneFileData.thumbNailFileName}`);
+    }
+  }
+</script>
+
+
+
+
 
 
 <div class="col-lg-9 mb-4">

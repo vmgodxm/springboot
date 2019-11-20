@@ -308,9 +308,8 @@ var init = {
 	sortByPrice: async function(){
 		var result = await fetch('/hairStylePrice')
 		var jsonArray = await result.json();
-//		init.data = jsonArray;
-//		init.datalength = jsonArray.length;
-//		init.numberArray = new Array(jsonArray.length);
+			
+		
 		var html1 = "";
 		for (var i = 0; i < jsonArray.length; i++) {
 			var list = jsonArray[i];

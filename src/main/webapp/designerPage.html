@@ -64,7 +64,14 @@
     function fileupload() {
       $('#change').load('designer/uploadfile.html');
     }
-
+	
+	
+	function getHairInfof(styleNo){
+		$('#change').load('designer/modifyhair.html');
+     	 localStorage.setItem('modifystyleNo', styleNo);
+	}
+	
+	
     // 회원탈퇴
     function leave() {
       $("#change").load("./designer/designerPage-leave.html", function (e) {
@@ -77,8 +84,8 @@
 
 
     function pageload() {
-      //var userId = getCookie('userId');
-      var userId = "test2@test.com";
+      var userId = localStorage.userId;
+      //var userId = "test2@test.com";
       //$('#getUserId').html(`<input type='hidden' name='userId' value="${userId}">`);
       document.getElementById('userId').value = userId;
       document.getElementById('getUserIdtest').value = userId;
@@ -180,6 +187,8 @@
         });
       }
     }
+    
+   
 
     window.onload = function () {
       loadMenu();

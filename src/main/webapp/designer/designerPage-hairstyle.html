@@ -36,6 +36,9 @@
   <script src=""></script>
   <script>
 
+	
+
+
     function regHairStyle(hairStyle){
       var time;
       if(hairStyle.hour == null || hairStyle.hour == undefined){
@@ -57,7 +60,7 @@
           <p class="card-text">비용 : ${hairStyle.price}<br>소요시간 : ${time}<br>${hairStyle.styleComment}</p>
           </div>
           <div class="card-footer">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">수정</a>&nbsp;&nbsp;&nbsp;<a href="#">삭제</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:getHairInfof(${hairStyle.styleNo})">수정</a>&nbsp;&nbsp;&nbsp;<a href="#">삭제</a>
         </div>
       </div>
     </div>`;
@@ -80,5 +83,5 @@
            $('#regHairStyle').html(html);
          });
        });
-   
+  	 
   </script>

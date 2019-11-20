@@ -1,33 +1,4 @@
-<!DOCTYPE html>
 
-<script>
-
-async function getHairInfo(styleNo) {
-    var hairResult = await fetch(`/hairStyle/{styleNo}`);
-    var responseData = await hairResult.json();
-    var categorytemp = responseData.categoryNo
-    var categoryNo ="";
-    if(categorytemp>=3) {categoryNo= categorytemp-3;}
-    
-    $('#styleNo').val(responseData.styleNo);
-    $('#fileNo').val(responseData.fileNo);
-    $('#recommand').val(responseData.recommand);
-    $('#userId').val(responseData.userId);
-    $('#styleName').val(responseData.styleName);
-    $('#gender').val(responseData.gender);
-    $('#categoryNoselect').val(categoryNo);
-    $('#price').val(responseData.price);
-    $('#styleComment').val(responseData.styleComment);
-	
-
-	if (responseData.fileNo != null && responseData.fileNo != "") {
-      $('#fileNo').val(responseData.fileNo);
-      var fileResult = await fetch(`http://localhost/file/${responseData.fileNo}`);
-      var resposneFileData = await fileResult.json();
-      $('#imgProfile').attr('src', `http://localhost/images/${resposneFileData.thumbNailFileName}`);
-    }
-  }
-</script>
 
 
 
@@ -125,15 +96,15 @@ async function getHairInfo(styleNo) {
           <div class="form-group">
             <div class="form-label-group">
               <select class="custom-select" name="hour" id="hour">
-                <option value="01" selected="selected">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
+                <option value="1" selected="selected">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
@@ -143,8 +114,8 @@ async function getHairInfo(styleNo) {
           
            <div class="form-group">
             <div class="form-label-group">
-              <select class="custom-select" name="minute">
-                <option value="00" selected="selected">00</option>
+              <select class="custom-select" name="minute" id="minute">
+                <option value="0" selected="selected">00</option>
                 <option value="30">30</option>
               </select>
             </div>
@@ -194,8 +165,53 @@ async function getHairInfo(styleNo) {
 	      <span class="col-lg-3">
 	        		 <a id="registHairstyle" class="btn btn-primary " href="javascript:regist();">Regist</a>
 	      </span>
+	      
+	      
+	      
+	      
 <script>
-	pageload();
+
+ async function getHairInfo() {
+      var styleNo = localStorage.modifystyleNo;
+    
+    var styleNoResult = await fetch(`/hairStyle/${styleNo}`);
+    var responseData = await styleNoResult.json();
+    var categorytemp = responseData.categoryNo;
+    var categoryNo ="";
+    if(categorytemp>=3) {categoryNo= categorytemp-3;}
+    
+    $('#styleNo').val(responseData.styleNo);
+    $('#recommand').val(responseData.recommand);
+    $('#userId').val(responseData.userId);
+    $('#styleName').val(responseData.styleName);
+    
+    $('#gender').val(responseData.gender).attr("selected","selected");
+    $('#categoryNoselect').val(categoryNo);
+    $('#price').val(responseData.price);
+    $('#styleComment').val(responseData.styleComment);
+    $('#hour > option[value='+responseData.hour+']').attr("selected","true");
+    console.log(responseData);
+    console.log(responseData.hour);
+    
+    
+    //$('#minute').val();
+	$('#minute > option[value='+responseData.minute+']').attr("selected","true");
+
+	if (responseData.fileNo != null && responseData.fileNo != "") {
+      $('#fileNo').val(responseData.fileNo);
+      var fileResult = await fetch(`http://localhost/file/${responseData.fileNo}`);
+      var resposneFileData = await fileResult.json();
+      $('#target_image').attr('src', `/images/${resposneFileData.thumbNailFileName}`);
+      }
+      
+    //}
+  //});
+ 
+  }
+  
+  getHairInfo();
+		
+	
 </script>
 
 	

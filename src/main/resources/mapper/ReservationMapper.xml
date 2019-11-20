@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ReservationMapper">
-	<select id="getReserviatonCollectionAsDate" parameterType="com.example.demo.model.Reservation" resultType="com.example.demo.model.CustomerReservation">
-		SELECT R.resNo, R.resDate, R.useComment, U.userName, HS.styleName
+
+	<select id="getReservationCollectionSelectionMonth" parameterType="com.example.demo.model.ReservationSelector" resultType="com.example.demo.model.CustomerReservation">
+		SELECT R.resNo, HS.categoryNo, R.resDate, R.useComment, U.userName, HS.styleName, useComplete
 		FROM (	
-			SELECT resNo, resDate, useComment, userId, styleNo
-			FROM reservation
-			WHERE	
-				resDate = '2019-11-19T18:30' AND
-				designerId = 'hairstargramtester1@outlook.com'
+				SELECT resNo, resDate, useComment, userId, styleNo, useComplete
+				FROM reservation R1
+				WHERE	
+					designerId = #{designerId} AND
+					getResMonth(R1.resDate) = #{month}
 			) R
 		JOIN userRegist U
 		ON U.userId = R.userId
@@ -17,11 +18,26 @@
 		ON HS.styleNo = R.styleNo
 	</select>
 
-	<select id="getReserviatonAsOnlyUser" parameterType="com.example.demo.model.Reservation" resultType="com.example.demo.model.Reservation">
+	<select id="getReservationCollectionSelectionDate" parameterType="com.example.demo.model.Reservation" resultType="com.example.demo.model.CustomerReservation">
+		SELECT R.resNo, HS.categoryNo, R.resDate, R.useComment, U.userName, HS.styleName, R.useComplete
+		FROM (	
+				SELECT resNo, resDate, useComment, userId, styleNo, useComplete
+				FROM reservation R1
+				WHERE	
+					TO_DATE(SUBSTR(R1.resDate, 1,10), 'YYYY-MM-DD') = #{resDate} AND
+					designerId = #{designerId}
+			) R
+		JOIN userRegist U
+		ON U.userId = R.userId
+		
+		JOIN hairStyle HS
+		ON HS.styleNo = R.styleNo
+	</select>
+
+	<select id="getReserviatonAsOnlyUser" parameterType="String" resultType="com.example.demo.model.Reservation">
 		SELECT * 
 		FROM reservation 
 		WHERE 
-			designerId = #{designerId} AND 
 			userId = #{userId} AND
 			useComplete = 0
 	</select>
@@ -42,5 +58,48 @@
 		DELETE FROM reservation WHERE resNo = #{resNo}
 	</delete>
 
+	<select id="getReserviatonAsUserMyPage" parameterType="String" resultType="com.example.demo.model.UserReservation">
+		SELECT 
+			H.styleNo, 
+			H.styleName, 
+			H.styleComment,
+			H.hour AS hairUseHour, 
+			H.minute AS hairUseMinute, 
+			H.price AS hairPrice, 
+			D.userNo AS designerNo, 
+			D.nickName AS designerNickName, 
+			D.phone AS designerPhone, 
+			D.userId AS designerEmail,
+			C.companyName || ' ' || C.companyAddress AS designerCompanyName,
+			OP.startTime, 
+			OP.endTime, 
+			HF.thumbnailFileName AS hairThumbNailFileName, 
+			DF.thumbnailFileName AS designerThumbNailFileName,
+			R.resNo,
+			R.resDate, 
+			R.useComment
+		FROM(
+				SELECT resNo, styleNo, useComment, designerId, resDate
+				FROM reservation
+				WHERE userId = #{userId} AND useComplete = 0
+			) R
+		LEFT OUTER JOIN hairStyle H
+			ON H.styleNo = R.styleNo
+
+		LEFT OUTER JOIN fileStorage HF
+			ON HF.fileNo = H.fileNo
+
+		LEFT OUTER JOIN userRegist D
+			ON D.userId = R.designerId
+
+		LEFT OUTER JOIN fileStorage DF
+			ON DF.fileNo = D.fileNo
+
+		LEFT OUTER JOIN company C
+			ON C.userId = D.userId
+
+		LEFT OUTER JOIN companyOperation OP
+			ON OP.userId = D.userId
+	</select>
 	
 </mapper>

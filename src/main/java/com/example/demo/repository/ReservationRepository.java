@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.example.demo.model.CustomerReservation;
 import com.example.demo.model.Reservation;
+import com.example.demo.model.ReservationSelector;
+import com.example.demo.model.UserReservation;
 import com.example.demo.repository.interfaces.IReservationRepository;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,15 +17,26 @@ public class ReservationRepository implements IReservationRepository {
 
 	@Autowired
 	private SqlSession sqlSessoin;
-	
+
 	@Override
-	public List<CustomerReservation> getReservationCollection(Reservation reservation) throws Exception {
-		return sqlSessoin.selectList("mapper.ReservationMapper.getReserviatonCollectionAsDate", reservation);
+	public List<CustomerReservation> getReservationCollectionSelectionMonth(ReservationSelector selector)
+			throws Exception {
+		return sqlSessoin.selectList("mapper.ReservationMapper.getReservationCollectionSelectionMonth", selector);
 	}
 
 	@Override
-	public Reservation getReservation(Reservation reservation) throws Exception {
-		return sqlSessoin.selectOne("mapper.ReservationMapper.getReserviatonAsOnlyUser", reservation);
+	public List<CustomerReservation> getReservationCollectionSelectionDate(Reservation reservation) throws Exception {
+		return sqlSessoin.selectList("mapper.ReservationMapper.getReservationCollectionSelectionDate", reservation);
+	}
+
+	@Override
+	public Reservation getReservation(String userId) throws Exception {
+		return sqlSessoin.selectOne("mapper.ReservationMapper.getReserviatonAsOnlyUser", userId);
+	}
+
+	@Override
+	public UserReservation getUserReservation(String userId) throws Exception {
+		return sqlSessoin.selectOne("mapper.ReservationMapper.getReserviatonAsUserMyPage", userId);
 	}
 
 	@Override

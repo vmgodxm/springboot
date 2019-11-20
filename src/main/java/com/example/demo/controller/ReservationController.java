@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.example.demo.model.CustomerReservation;
 import com.example.demo.model.Reservation;
+import com.example.demo.model.ReservationSelector;
+import com.example.demo.model.UserReservation;
 import com.example.demo.repository.interfaces.IReservationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +25,45 @@ public class ReservationController {
 	@Autowired
 	private IReservationRepository repository;
 	
-	@GetMapping(path = "/reservation/{designerId}/resDate/{resDate}")
-	public ResponseEntity<List<CustomerReservation>> getReservationCollection(@PathVariable String designerId, @PathVariable String resDate) throws Exception {
+	/**
+	 * 디자이너 예약현황에서 해당되는 월의 예약 정보들을 가져온다.
+	 */
+	@GetMapping(path = "/reservation/{designerId}/month/{month}")
+	public ResponseEntity<List<CustomerReservation>> getReservationCollectionSelectionMonth(@PathVariable String designerId, @PathVariable int month) throws Exception {
 		ResponseEntity<List<CustomerReservation>> retVal = null;
 
-		if(resDate == null || designerId == null) {
+		if(month < 1 || 12 < month || designerId == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
-		Reservation reservation = new Reservation(resDate, designerId, 0);
+		ReservationSelector selector = new ReservationSelector(designerId, month);
 
 		try {
-			List<CustomerReservation> result = repository.getReservationCollection(reservation);
+			List<CustomerReservation> result = repository.getReservationCollectionSelectionMonth(selector);
+			retVal = new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			retVal = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		return retVal;
+	}
+
+
+	/**
+	 * 디자이너가 선택한 날짜의 예약 정보들을 가져온다.
+	 */
+	@GetMapping(path = "/reservation/{designerId}/date/{date}")
+	public ResponseEntity<List<CustomerReservation>> getReservationCollectionSelectionDate(@PathVariable String designerId, @PathVariable String date) throws Exception {
+		ResponseEntity<List<CustomerReservation>> retVal = null;
+
+		if(date == null || designerId == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		Reservation reservation = new Reservation(date, designerId, 0);
+
+		try {
+			List<CustomerReservation> result = repository.getReservationCollectionSelectionDate(reservation);
 			retVal = new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			retVal = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -43,17 +72,16 @@ public class ReservationController {
 		return retVal;
 	}
 	
-	@GetMapping(path = "/reservation/{userId}/designer/{designerId}")
-	public ResponseEntity<Reservation> getReservation(@PathVariable String userId, @PathVariable String designerId) throws Exception {
+	@GetMapping(path = "/reservation/{userId}")
+	public ResponseEntity<Reservation> getReservation(@PathVariable String userId) throws Exception {
 		ResponseEntity<Reservation> retVal = null;
 
-		if(userId == null || designerId == null) {
+		if(userId == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
-		Reservation reservation = new Reservation(designerId, userId);
 		try {
-			Reservation result = repository.getReservation(reservation);
+			Reservation result = repository.getReservation(userId);
 			retVal = new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			retVal = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -116,5 +144,23 @@ public class ReservationController {
 
 		return retVal;
 	}
-	
+
+	@GetMapping(path = "/reservation/{userId}/all")
+	public ResponseEntity<UserReservation> getUserReservertion(@PathVariable String userId) throws Exception { 
+
+		ResponseEntity<UserReservation> retVal = null;
+
+		if(userId == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		try {
+			UserReservation result = repository.getUserReservation(userId);
+			retVal = new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			retVal = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		return retVal;
+	}
 }

@@ -6,10 +6,10 @@ INSERT INTO region VALUES (1, '경기');
 INSERT INTO region VALUES (2, '부산');
 
 -- 디자이너
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com', '곽실장', 1, '000-00-00000', '곽실장장님', 0, null, 1);
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester2@outlook.com', '정마담', 1, '000-00-00000', '정마담', 0, null, 1);
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester3@outlook.com', '황산벌', 1, '000-00-00000', '황산벌', 0, null, 1); 
-INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester4@outlook.kr', '유슈라', 1, '000-00-00000', '유슈라슈라', 0, null, 1); 
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester1@outlook.com', '곽실장장님', 1, '02-723-2323', '청담동 정동남 400미터', 0, null, 1);
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester2@outlook.com', '정마담', 1, '02-488-4885', '장안동 한미타운 4층', 0, null, 1);
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester3@outlook.com', '갬재익', 1, '02-434-4424', '갱냄역 노년역 사이 패라곤 3층', 0, null, 1); 
+INSERT INTO userRegist VALUES(USERREGIST_USERNO_SEQ.nextVal, 'hairstargramtester4@outlook.kr', '유슈라슈라', 1, '032-324-9494', '죽산 터미널 맞은편 ', 0, null, 1); 
 
 -- 파일스토리지
 Insert into FILESTORAGE values (fileStorage_fileNo_SEQ.nextVal,'hairstargramtester3@outlook.com','src\main\webapp\images','남자숏컷.jpg','Z9AaMcyw3NzGmG0j.jpg','Z9AaMcyw3NzGmG0j_th.JPG');

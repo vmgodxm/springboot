@@ -49,9 +49,9 @@ var pageLoad = {
 	
 	var html2= `
 	
-		   <div>
-	        ${userphoto.nickName}<br>청담역 3번출구 한가운데<br><br><br><br>
-	        <input class="btn btn-primary" id="btnDesigner" type="button" value="정보보기" onClick="location.href='designer/designers.html'">
+		   <div class="media-body">
+	        <br>${userphoto.userName}<br><br>${userphoto.nickName}<br>${userphoto.phone}<br><br>
+	        <input class="btn btn-primary" id="btnDesigner" type="button" value="정보보기" onClick="gotodesigners('${userphoto.userId}');">
 		    </div>`
 		document.getElementById('designerInfo').innerHTML = html2;	
 		
@@ -116,10 +116,15 @@ var pageLoad = {
 		<div >${getThisStyle.styleComment}</div>
         <div>소요시간 ${getThisStyle.hour}시간 ${getThisStyle.minute}분</div>
         <div>${getThisStyle.price}원</div>
-        <br> <br>`;
+        `;
         
-		 
         document.getElementById('detailview').innerHTML = html2;
+		 
+		 html3 =`
+		 ${getThisStyle.recommend}
+		 `
+        document.getElementById('btnFavRecode').innerHTML = html3;
+		 
 		 
 			}
 		}
@@ -167,6 +172,12 @@ var pageLoad = {
       
       init.gotoview(styleNo,designerId);
     }
+	
+	 function gotodesigners(designerId) {
+      localStorage.setItem('designerId', designerId);
+      location.href = 'designer/designers.html';
+    }
+	
 	
     
   </script>

@@ -1,6 +1,7 @@
 
 $(function(){
     $('#btnReservation').on('click',function(e){
+        console.log("hair rev");
         $('#contents').load('./hair/hairStyles-rev.html');
         e.preventDefault();
     });

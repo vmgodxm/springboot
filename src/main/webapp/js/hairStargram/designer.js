@@ -13,7 +13,7 @@ var init = {
     			  <div class="card h-100 text-center">
     			<a href="javascript:gotoviewf(${hairStyle.styleNo},'${hairStyle.userId}');"><img class="card-img-top" src="/images/${hairStyle.thumbNailFileName}" alt=""></a>
     			<div class="card-body">
-    			<h5 class="card-title">${hairStyle.styleName}</h5>
+    			<h5 class="card-title" style="font-weight: bold">${hairStyle.styleName}</h5>
     			<h6 class="card-subtitle mb-2 text-muted"></h6>
     			<p class="card-text">${hairStyle.styleComment}</p>
     		  </div>

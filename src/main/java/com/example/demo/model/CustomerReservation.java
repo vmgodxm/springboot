@@ -5,14 +5,19 @@ package com.example.demo.model;
  */
 public class CustomerReservation {
     private Long resNo;
+    private Long categoryNo;
+    private Long useComplete;
     private String resDate;
     private String useComment;
     private String userName;
     private String styleName;
 
+    public CustomerReservation() { }
 
-    public CustomerReservation(Long resNo, String resDate, String useComment, String userName, String styleName) {
+    public CustomerReservation(Long resNo, Long categoryNo, Long useComplete, String resDate, String useComment, String userName, String styleName) {
         this.resNo = resNo;
+        this.categoryNo = categoryNo;
+        this.useComplete = useComplete;
         this.resDate = resDate;
         this.useComment = useComment;
         this.userName = userName;
@@ -25,6 +30,22 @@ public class CustomerReservation {
 
     public void setResNo(Long resNo) {
         this.resNo = resNo;
+    }
+
+    public Long getCategoryNo() {
+        return this.categoryNo;
+    }
+
+    public void setCategoryNo(Long categoryNo) {
+        this.categoryNo = categoryNo;
+    }
+
+    public Long getUseComplete() {
+        return this.useComplete;
+    }
+
+    public void setUseComplete(Long useComplete) {
+        this.useComplete = useComplete;
     }
 
     public String getResDate() {
@@ -63,11 +84,13 @@ public class CustomerReservation {
     public String toString() {
         return "{" +
             " resNo='" + getResNo() + "'" +
+            ", categoryNo='" + getCategoryNo() + "'" +
+            ", useComplete='" + getUseComplete() + "'" +
             ", resDate='" + getResDate() + "'" +
             ", useComment='" + getUseComment() + "'" +
             ", userName='" + getUserName() + "'" +
             ", styleName='" + getStyleName() + "'" +
             "}";
     }
-    
+
 }

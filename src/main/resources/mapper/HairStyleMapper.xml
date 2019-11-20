@@ -55,7 +55,7 @@
 	
 	<insert id="insertHairStyle" parameterType="com.example.demo.model.HairStyle">
 		insert into hairStyle values
-			(HAIRSTYLE_STYLENO_SEQ.nextVal,#{gender},#{styleName},#{price},#{hour},#{minute},#{styleComment},#{fileNo},#{categoryNo},#{userId})
+			(HAIRSTYLE_STYLENO_SEQ.nextVal,#{gender},#{styleName},#{price},#{hour},#{minute},#{styleComment},#{fileNo},#{categoryNo},#{userId},#{recommend})
 	</insert>
 	
 	<update id="updateHairStyle" parameterType="com.example.demo.model.HairStyle">

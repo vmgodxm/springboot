@@ -451,4 +451,16 @@ ALTER TABLE authenticationHistory ADD CONSTRAINT IDX_authenticationHistory_PK PR
 
 ALTER TABLE preCompany ADD CONSTRAINT IDX_preCompany_PK PRIMARY KEY (preComNo, userId);
 
+
+-- 날짜의 월 정보만 가져오는 함수
+CREATE OR REPLACE FUNCTION getResMonth (resDate IN VARCHAR2) 
+RETURN NUMBER 
+IS 
+    retVal VARCHAR2(10);
+BEGIN
+  retVal := EXTRACT(MONTH FROM TO_DATE(SUBSTR(resDate, 1,10), 'YYYY-MM-DD'));
+RETURN retVal;
+END;
+
+
 commit;

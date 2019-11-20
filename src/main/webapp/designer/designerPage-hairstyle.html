@@ -72,9 +72,10 @@
            var html = "";
            $.each(data, function (i, v) {
              var hairStyleList = data[i];
+           if(hairStyleList.userId==localStorage.userId){
              html += regHairStyle(hairStyleList);
              console.log('디자이너 등록한 헤어스타일' + data[i].styleNo);
-             
+             }
            });
            $('#regHairStyle').html(html);
          });

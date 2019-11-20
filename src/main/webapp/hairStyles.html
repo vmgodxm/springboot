@@ -77,7 +77,9 @@ var pageLoad = {
 		var html3 ="";
 		for (var i = 0; i < 8; i++) {
 			var list = pageLoad.numberArray[i];
-			
+					if(list==undefined){
+						html3 += "";
+					}
 			html3 +=	`
 		  <div class="col-lg-3 col-sm-4 mb-4">
 		    <a href="javascript:gotoviewf(${list.styleNo},'${list.userId}');"><img class="img-fluid" src="/images/${list.thumbNailFileName}" alt=""></a>
@@ -126,8 +128,8 @@ var pageLoad = {
 	 	var result3 = await fetch('/hairStyleJoin');
 		var list3 = await result3.json();
 		var html = "";
-	 		for(var i = 0; i< 10; i++){
-	 			if((list3[i].userId == pageLoad.designerId)) {
+	 		for(var i = 0; i< 13; i++){
+	 			if(!(list3[i].userId == localStorage.designerId)) {
 	 				var getThisStyle= list3[i];
 	 				html +=
 	 				

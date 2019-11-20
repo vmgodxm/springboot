@@ -50,12 +50,9 @@ var pageLoad = {
 	var html2= `
 	
 		   <div>
-	        헤어디자이너 정보<br>${userphoto.nickName}<br>청담역 3번출구 한가운데<br>
+	        ${userphoto.nickName}<br>청담역 3번출구 한가운데<br><br><br><br>
 	        <input class="btn btn-primary" id="btnDesigner" type="button" value="정보보기" onClick="location.href='designer/designers.html'">
-		    </div>
-		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	   
-	      		`
+		    </div>`
 		document.getElementById('designerInfo').innerHTML = html2;	
 		
 		pageLoad.detail();
@@ -168,7 +165,7 @@ var pageLoad = {
       
       init.gotoview(styleNo,designerId);
     }
-    
+	
     
   </script>
 	

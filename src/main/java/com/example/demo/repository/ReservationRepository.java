@@ -55,7 +55,7 @@ public class ReservationRepository implements IReservationRepository {
 	}
 
 	@Override
-	public int checkReservation(String userId) throws Exception {
+	public String checkReservation(String userId) throws Exception {
 		return sqlSessoin.selectOne("mapper.ReservationMapper.checkReservation", userId);
 	}
 

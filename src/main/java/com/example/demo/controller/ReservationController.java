@@ -101,8 +101,8 @@ public class ReservationController {
 		}
 
 		try {
-			int resNo = repository.checkReservation(body.getUserId());
-			if (resNo > 0) {
+			String checkId = repository.checkReservation(body.getUserId());
+			if (checkId != null) {
 				retVal = new ResponseEntity<>(HttpStatus.CONFLICT);
 			} else {
 				Integer result = repository.insertReservation(body);

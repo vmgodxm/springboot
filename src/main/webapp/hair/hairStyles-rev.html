@@ -279,7 +279,7 @@
         localStorage.removeItem('selectDate');
         localStorage.removeItem('selectTime');
         alert('예약이 완료 되었습니다.');
-        $('#contents').load('/hair/hairStyles-done.html');
+        window.location.href = '/mypages.html';
       }
     } catch (e) {
        var confirmed = confirm('이미 신청한 예약이 있습니다. 확인하시겠습니까?');
@@ -305,8 +305,8 @@
   });
 
   $('#btnRev').on('click', function (e) {
-    var comment = $(this).text();
-    //console.log(localStorage.userId, localStorage.selectDate, localStorage.selectTime, comment);
+    var comment = $('#useComment').val();
+    console.log(localStorage.userId, localStorage.selectDate, localStorage.selectTime, comment);
 
     postReservationAsync(comment);
   });

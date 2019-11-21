@@ -42,8 +42,8 @@
 			useComplete = 0
 	</select>
 
-	<select id="checkReservation" parameterType="String" resultType="int">
-		SELECT resNo
+	<select id="checkReservation" parameterType="String" resultType="String">
+		SELECT userId
 		FROM reservation 
 		WHERE 
 			userId = #{userId} AND

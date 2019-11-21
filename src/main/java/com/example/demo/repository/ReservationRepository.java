@@ -53,4 +53,11 @@ public class ReservationRepository implements IReservationRepository {
 	public int deleteReservation(Long resNo) throws Exception {
 		return sqlSessoin.delete("mapper.ReservationMapper.deleteReserviaton", resNo);
 	}
+
+	@Override
+	public int checkReservation(String userId) throws Exception {
+		return sqlSessoin.selectOne("mapper.ReservationMapper.checkReservation", userId);
+	}
+
+	
 }

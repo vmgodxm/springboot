@@ -2,68 +2,67 @@
 
 <!-- Page Content -->
 <div class="container">
-<br>
+  <br>
   <!-- Page Heading/Breadcrumbs -->
   <h2 class="mt-4 mb-3" align="center">예약
   </h2>
 
   <div class="card mb-3 col-lg-5">
-            <div class="row">
-                <div class="col-lg-4 col-sm-4 mb-4" id="designerPhoto" style="margin-top: 24px">
-                    <img class="img-fluid" width="150" height="200" src="" alt="">
-                </div>
-                <span id="designerInfo">
-                    <div>
-                        바르다 김선생<br>청담역 3번출구 한가운데<br>
-                        <br><br><br><br><br>
-                        <input class="btn btn-primary" id="btnDesigner" type="button" value="정보보기"
-                            onClick="location.href='designer/designers.html'">
-                    </div>
-                </span>
-                <span class="col-lg-1">
-                </span>
-                <span class="col-lg-1">
-
-                    <a id="recommeddd"><button id="btnFavRecode" type="button"
-                            class="btn btn-danger">4</button><br><br><br><br></a>
-                </span>
-            </div>
-        </div>
-        
-         <div class="card mb-4">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div align="center" id="styleimage" style="margin-top: 24px">
-                        <img class="img-fluid rounded mb-4" src="\" alt="">
-                    </div>
-                    <div align="center">
-                        <h3>Detail</h3>
-                    </div>
-                    <div id="detailview" align="center">
-                        <div>#연예인머리 #애쉬브라운 #애쉬그레이 #고데기머리</div>
-                        <div>소요시간 4시간</div>
-                        <div>40,000원</div>
-                    </div>
-                                       <br>
-                </div>
-                
-         
-     
-       
-    <div class="col-lg-7">
-      <br><br><br>
-      <div>
-        <div id="wrapper">
-          <div id="calendar"></div>
-        </div>
+    <div class="row">
+      <div class="col-lg-4 col-sm-4 mb-4" id="designerPhoto" style="margin-top: 24px">
+        <img class="img-fluid" width="150" height="200" src="" alt="">
       </div>
-      <div id="opTime">
+      <span id="designerInfo">
+        <div>
+          바르다 김선생<br>청담역 3번출구 한가운데<br>
+          <br><br><br><br><br>
+          <input class="btn btn-primary" id="btnDesigner" type="button" value="정보보기"
+            onClick="location.href='designer/designers.html'">
+        </div>
+      </span>
+      <span class="col-lg-1">
+      </span>
+      <span class="col-lg-1">
 
-      </div>
-		<br><br>
-
+        <a id="recommeddd"><button id="btnFavRecode" type="button" class="btn btn-danger">4</button><br><br><br><br></a>
+      </span>
     </div>
   </div>
+
+  <div class="card mb-4">
+    <div class="row">
+      <div class="col-lg-4">
+        <div align="center" id="styleimage" style="margin-top: 24px">
+          <img class="img-fluid rounded mb-4" src="\" alt="">
+        </div>
+        <div align="center">
+          <h3>Detail</h3>
+        </div>
+        <div id="detailview" align="center">
+          <div>#연예인머리 #애쉬브라운 #애쉬그레이 #고데기머리</div>
+          <div>소요시간 4시간</div>
+          <div>40,000원</div>
+        </div>
+        <br>
+      </div>
+
+
+
+
+      <div class="col-lg-7">
+        <br><br><br>
+        <div>
+          <div id="wrapper">
+            <div id="calendar"></div>
+          </div>
+        </div>
+        <div id="opTime">
+
+        </div>
+        <br><br>
+
+      </div>
+    </div>
   </div>
 
 
@@ -77,8 +76,8 @@
     </div>
   </div>
 </div>
- </div>
-    </div>
+</div>
+</div>
 <script src="../vendor/full-calendar/vendor/js/moment.min.js"></script>
 <script src="../vendor/full-calendar/vendor/js/fullcalendar.min.js"></script>
 <script src="../vendor/full-calendar/vendor/js/ko.js"></script>
@@ -86,8 +85,8 @@
 <script src="../vendor/full-calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
 <script>
 
-pageLoad.selectDesignerByStlyeNo();
-pageLoad.revstyleno();
+  pageLoad.selectDesignerByStlyeNo();
+  pageLoad.revstyleno();
   $('#calendar').fullCalendar({
     /**
       이벤트 일정 받는 콜백함수 - onload / $('#calendar').fullCalendar() 호출 시 함수 호출
@@ -263,22 +262,32 @@ pageLoad.revstyleno();
       userId: localStorage.userId           //"hairstargram@outlook.com"
     };
 
-    var result = await fetch('http://localhost/reservation', {
-      method: 'POST',
-      body: JSON.stringify(reservation),
-      headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    try {
 
-    var responseData = await result.json();
-    //console.log(responseData);
-    if (responseData == 1) {
-      localStorage.removeItem('selectDate');
-      localStorage.removeItem('selectTime');
-      alert('예약이 완료 되었습니다.');
-      $('#contents').load('/hair/hairStyles-done.html');
+      var result = await fetch('http://localhost/reservation', {
+        method: 'POST',
+        body: JSON.stringify(reservation),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+
+      var responseData = await result.json();
+      console.log(responseData);
+      if (responseData == 1) {
+        localStorage.removeItem('selectDate');
+        localStorage.removeItem('selectTime');
+        alert('예약이 완료 되었습니다.');
+        $('#contents').load('/hair/hairStyles-done.html');
+      }
+    } catch (e) {
+       var confirmed = confirm('이미 신청한 예약이 있습니다. 확인하시겠습니까?');
+        if(confirmed) {
+          window.location.href = '/mypages.html';
+        }
     }
+
   };
 
 

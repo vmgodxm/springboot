@@ -42,6 +42,14 @@
 			useComplete = 0
 	</select>
 
+	<select id="checkReservation" parameterType="String" resultType="int">
+		SELECT resNo
+		FROM reservation 
+		WHERE 
+			userId = #{userId} AND
+			useComplete = 0
+	</select>
+
 	<insert id="insertReserviaton" parameterType="com.example.demo.model.Reservation">
 		INSERT INTO reservation(resNo, resDate, useComment, useComplete, styleNo, designerId, userId) VALUES
 			(RESERVATION_RESNO_SEQ.nextVal, #{resDate}, #{useComment}, #{useComplete}, #{styleNo}, #{designerId}, #{userId})

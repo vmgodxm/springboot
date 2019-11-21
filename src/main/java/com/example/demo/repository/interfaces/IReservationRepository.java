@@ -15,4 +15,6 @@ public interface IReservationRepository {
 	int insertReservation(Reservation reservation) throws Exception;
 	int updateReservation(Long resNo) throws Exception;
 	int deleteReservation(Long resNo) throws Exception;
+
+	int checkReservation(String userId) throws Exception;
 }

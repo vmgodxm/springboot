@@ -6,12 +6,12 @@ $(function(){
     });
 });
 
-$(function(){
-    $('#btnRev').on('click',function(e){
-        $('#contents').load('./hair/hairStyles-done.html');
-        //e.preventDefault();
-    });
-});
+// $(function(){
+//     $('#btnRev').on('click',function(e){
+//         $('#contents').load('./hair/hairStyles-done.html');
+//         //e.preventDefault();
+//     });
+// });
 
 function hairStyle_body(){
     $('#contents').load('./hair/hairStyles-body.html');

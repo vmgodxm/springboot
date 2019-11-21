@@ -42,14 +42,14 @@
       </div>
     </div>
     <div class="col-lg-7">
-    <br><br><br><br><br>
+      <br><br><br><br><br>
       <div>
         <div id="wrapper">
           <div id="calendar"></div>
         </div>
       </div>
       <div id="opTime">
-        
+
       </div>
 
 
@@ -60,11 +60,11 @@
 
   <div class="card mb-4">
     <div class="card-footer text-muted">
-      <input type="text" class="form-control" placeholder="요청사항" aria-describedby="sizing-addon1">
+      <input id="useComment" type="text" class="form-control" placeholder="요청사항" aria-describedby="sizing-addon1">
     </div>
     <div class="card-footer text-muted" align="center">
-      <a id="btnRev" href="#" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;<a id="cancle" href="index.html"
-        class="btn btn-primary">취소하기</a>
+      <a id="btnRev" href="#" class="btn btn-primary">예약하기</a>&nbsp;&nbsp;
+      <a id="cancle" href="index.html" class="btn btn-primary">취소하기</a>
     </div>
   </div>
 </div>
@@ -80,10 +80,10 @@
       이벤트 일정 받는 콜백함수 - onload / $('#calendar').fullCalendar() 호출 시 함수 호출
     */
     events: function (start, end, timezone, callback) {
-      
+
     },
 
-    
+
     //일정 리사이즈
     eventResize: function (event, delta, revertFunc, jsEvent, ui, view) {
       $('.popover.fade.top').remove();
@@ -110,16 +110,12 @@
     /**
       켈린더 선택 이벤트
     */
-    select: async function (startDate, endDate, jsEvent, view) {
-      //printOpTimeButtons();
+    select: function (startDate, endDate, jsEvent, view) {
       // console.log('Date: ' + startDate.format());
       var selectedDate = startDate.format();
 
-      var result = await fetch(`http://localhost/companyOperation/${localStorage.designerId}`).then(res => console.log(res));
-      var responseData = await result.json();
-
-      var startTime = new Date.parse(responseData.startTime);
-      console.log(startTime);
+      localStorage.selectDate = selectedDate;
+      viewOpTimes(selectedDate);
     },
 
     /**
@@ -199,52 +195,98 @@
     return newDates;
   };
 
-  function printOpTimeButtons() {
-    var html = `<div class="col-md-10">
-    <p>영업시간</p> 
-</div>
-<div id="timeTable" class="col-lg-11">
-    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
-    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
-    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
-    <a class="btn btn-primary btn-block-sm-10" href="#">20:00</a>
 
-</div>`;
+  async function viewOpTimes(date) {
+    var opResult = await fetch(`http://localhost/companyOperation/${localStorage.designerId}`);
+    var responseOpData = await opResult.json();
+
+    if (responseOpData == "") {
+      return;
+    }
+
+    var resResult = await fetch(`http://localhost/reservation/${localStorage.designerId}/date/${date}`);
+    var responseResData = await resResult.json();
+
+    var resTimes = responseResData.map((res) => { return new Date(res.resDate).getHours(); });
+    printOpTimeButtons(responseOpData.startTime, responseOpData.endTime, resTimes);
+  }
+
+  function printOpTimeButtons(startTime, endTime, resTimes) {
+    var startTime = startTime.split(':').map((num) => { return parseInt(num, 10); });
+    var endTime = endTime.split(':').map((num) => { return parseInt(num, 10); });
+
+    var count = endTime[0] - startTime[0];
+    var html = `<div class="col-md-10">
+                      <p>영업시간</p> 
+                  </div>
+                  <div id="timeTable" class="col-lg-11">`;
+    var minute = startTime[1];
+
+    var timeTable = new Array(count);
+    for (var i = 0; i < count; i++) {
+      timeTable.push(startTime[0]++);
+    }
+
+    timeTable.forEach((hour) => {
+      html += resTimes.includes(hour) == false
+        ?
+        `<button id="btnTime" class="btn btn-primary btn-block">${hour}:${minute}</button>`
+
+        : '';
+    });
+
+    html += `</div>`;
 
     $('#opTime').html(html);
   };
 
-  function getHairType(category) {
-    console.log(category);
-    switch (category % 3) {
-      case 0: return '[커트]';  // 커트
-      case 1: return '[펌]';  // 펌
-      case 2: return '[염색]';  // 염색
+  async function postReservationAsync(useComment) {
+    var reservation = {
+      resDate: `${localStorage.selectDate}T${localStorage.selectTime}`,//"2019-11-20T19:20",
+      useComment: useComment,               //"comment~~",
+      useComplete: '0',                     //"0",
+      styleNo: localStorage.styleNo,        //"4",
+      designerId: localStorage.designerId,  //"hairstargramtester1@outlook.com",
+      userId: localStorage.userId           //"hairstargram@outlook.com"
+    };
+
+    var result = await fetch('http://localhost/reservation', {
+      method: 'POST',
+      body: JSON.stringify(reservation),
+      headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    var responseData = await result.json();
+    //console.log(responseData);
+    if (responseData == 1) {
+      localStorage.removeItem('selectDate');
+      localStorage.removeItem('selectTime');
+      alert('예약이 완료 되었습니다.');
+      $('#contents').load('/hair/hairStyles-done.html');
     }
-  }
+  };
 
-  $(() => {
-    // 디자이너가 예약 확인 후 시술 완료
-    $(document).on('click', '#btnComplete', async function (e) {
-      //console.log('resNo', $(this).parent().parent().attr('resNo'));
 
-      var resNo = $(this).parent().parent().attr('resNo');
-      var result = await fetch(`/reservation/${resNo}`, { method: 'PUT' });
-      var responseData = await result.json();
-      //console.log('승인', responseData);
-      reservation();
+  $(document).on('click', '#btnTime', function (e) {
+    $(this).parent().children().each((index, item) => {
+      $(item).attr('class', 'btn btn-primary btn-block');
+      // console.log(item);
     });
+    // $('button > #btnTime').attr('class', 'btn btn-primary btn-block');   
+    $(this).attr('class', 'btn btn-danger btn-block');
+    localStorage.selectTime = $(this).text();
+    //console.log(localStorage.selectTime);
 
-    // 디자이너가 해당 예약 취소
-    $(document).on('click', '#btnCancel', async function (e) {
-      // console.log('resNo', $(this).parent().parent().attr('resNo'));
+    //console.log($(this).parent().children());
+  });
 
-      var resNo = $(this).parent().parent().attr('resNo');
-      var result = await fetch(`/reservation/${resNo}`, { method: 'DELETE' });
-      var responseData = await result.json();
-      // console.log('취소', responseData);
-      reservation();
-    });
+  $('#btnRev').on('click', function (e) {
+    var comment = $(this).text();
+    //console.log(localStorage.userId, localStorage.selectDate, localStorage.selectTime, comment);
+
+    postReservationAsync(comment);
   });
 
   $('#btnRevcancle').click(function () {

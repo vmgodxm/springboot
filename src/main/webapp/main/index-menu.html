@@ -1,23 +1,7 @@
 <script src="//developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="js/hairStargram/login/facebook.js"></script>
 
-<script>
 
-
-  function menuLogin() {
-    
-    var userId = getCookie('userId');
-    if (userId == undefined) {
-      window.location.href = 'login.html';
-    } else {
-      logout(userId);
-    }
-  }
-
-  
-
-  
-</script>
 
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark ">
@@ -44,9 +28,9 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
           <!---->
-            <a class="dropdown-item" href="">Cut</a>
-            <a class="dropdown-item" href="">Perm</a>
-            <a class="dropdown-item" href="">Color</a>
+            <a class="dropdown-item" href="javascript:sortByCutMenu();">Cut</a>
+            <a class="dropdown-item" href="javascript:sortByPermMenu();">Perm</a>
+            <a class="dropdown-item" href="javascript:sortByColorMenu();">Color</a>
           </div>
         </li>
 
@@ -67,3 +51,117 @@
     </div>
   </div>
 </nav>
+
+<script>
+
+
+  function menuLogin() {
+    
+    var userId = getCookie('userId');
+    if (userId == undefined) {
+      window.location.href = 'login.html';
+    } else {
+      logout(userId);
+    }
+  }
+var menuhair = {
+
+	makeDesignerList : function () {
+		
+		$.ajax({
+			 	url: '/hairStyleJoin',
+			 	method: 'GET',
+			 	async: false,
+			 	dataType: 'json',
+			 	success: function (jsonArray) {
+		menuhair.data = jsonArray;
+		menuhair.datalength = jsonArray.length;
+		menuhair.numberArray = new Array(jsonArray.length);
+		
+		}
+		
+		});
+		
+	
+	},
+	printHairStyle : function (hairStyle) {
+    	
+    	return `<div class="col-lg-2 col-sm-6 portfolio-item">
+    			  <div class="card h-100 text-center">
+    			<a href="javascript:gotoviewf(${hairStyle.styleNo},'${hairStyle.userId}');"><img class="card-img-top" src="/images/${hairStyle.thumbNailFileName}" alt=""></a>
+    			<div class="card-body">
+    			<h5 class="card-title" style="font-weight: bold">${hairStyle.styleName}</h5>
+    			<h6 class="card-subtitle mb-2 text-muted"></h6>
+    			<p class="card-text">${hairStyle.styleComment}</p>
+    		  </div>
+    		  <div class="card-footer">
+    			<a href="#">${hairStyle.price}</a>
+    		  </div>
+    		  </div>
+    		</div>`;
+    },
+	sortByCut: function(){
+		var html1 = "";
+		for (var i = 0; i < menuhair.datalength; i++) {
+			var list = menuhair.data[i];
+			
+			if (list.categoryNo == 0 || list.categoryNo == 3) {
+				html1 += this.printHairStyle(list);
+			}
+		}
+		document.getElementById('Weekly').innerHTML =
+			`<h1 class="my-4" id="Weekly">Hair Style - Cut</h1>`;
+		document.getElementById('desingerrr').innerHTML = html1;
+		document.getElementById('Random').innerHTML ="";
+		document.getElementById('randombest').innerHTML = "";
+	},
+	sortByPerm: function(){
+		var html1 = "";
+		for (var i = 0; i < menuhair.datalength; i++) {
+			var list = menuhair.data[i];
+			if (list.categoryNo == 1 || list.categoryNo == 4) {
+				html1 += this.printHairStyle(list);
+			}
+		}
+		document.getElementById('Weekly').innerHTML =
+			`<h1 class="my-4" id="Weekly">Hair Style - Perm</h1>`;
+		document.getElementById('desingerrr').innerHTML = html1;
+		document.getElementById('Random').innerHTML ="";
+		document.getElementById('randombest').innerHTML = "";
+	},
+	sortByColor: function(){
+		var html1 = "";
+		for (var i = 0; i < menuhair.datalength; i++) {
+			var list = menuhair.data[i];
+			if (list.categoryNo == 2 || list.categoryNo == 5) {
+				html1 += this.printHairStyle(list);
+			}
+		}
+		document.getElementById('Weekly').innerHTML =
+			`<h1 class="my-4" id="Weekly">Hair Style - Color</h1>`;
+		document.getElementById('desingerrr').innerHTML = html1;
+		document.getElementById('Random').innerHTML ="";
+		document.getElementById('randombest').innerHTML = "";
+	}
+
+
+
+}
+
+menuhair.makeDesignerList();
+	function sortByCutMenu() {
+      menuhair.sortByCut();
+    }
+
+    function sortByPermMenu() {
+      menuhair.sortByPerm();
+    }
+
+    function sortByColorMenu() {
+      menuhair.sortByColor();
+    }
+
+  
+
+  
+</script>

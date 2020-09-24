@@ -14,7 +14,7 @@ import com.example.demo.service.FileUploadDownloadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -39,11 +39,11 @@ public class FileController {
 				.normalize();
 	}
 
-	@GetMapping(path = "/file/{fileNo}")
-	public FileStorage getFileInfo(@PathVariable int fileNo) throws Exception {
-		FileStorage file = repository.getFile(new Long(fileNo));
-		return file;
-	}
+//	@GetMapping(path = "/file/{fileNo}")
+//	public FileStorage getFileInfo(@PathVariable int fileNo) throws Exception {
+//		FileStorage file = repository.getFile(new Long(fileNo));
+//		return file;
+//	}
 
 	// @GetMapping(path = "/file/{fileName}")
 	// public Long getFileInfo(@PathVariable String storageFileName ) throws

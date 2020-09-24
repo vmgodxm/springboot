@@ -49,7 +49,11 @@ public class FileUploadDownloadService {
     
    
     
-    
+	/**
+	 * 
+	 * @param file
+	 * @return
+	 */
     public String storeFile(MultipartFile file)   {
         String originalfileName = StringUtils.cleanPath(file.getOriginalFilename());
         	

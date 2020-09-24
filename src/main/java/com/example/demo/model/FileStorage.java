@@ -41,6 +41,14 @@ public class FileStorage {
 		this.thumbNailFileName = thumbNailFileName;
 	}
 
+	
+	public FileStorage(String filePath, String originFileName, String storageFileName) {
+		super();
+		this.filePath = filePath;
+		this.originFileName = originFileName;
+		this.storageFileName = storageFileName;
+	}
+
 	public Long getFileNo() {
 		return fileNo;
 	}
